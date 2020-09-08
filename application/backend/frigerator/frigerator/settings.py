@@ -26,14 +26,16 @@ SECRET_KEY = 'l*p-)r90&d206&84_(+4wea158_@%r_l(!czu72q80g$at6cb2'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	'34.66.161.176',
-	'allensun623.com',
+    '127.0.0.1',
+	'34.66.161.176', # Apache-server IP
+	'allensun623.com', # Public domain
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'magician.apps.MagicianConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,5 +121,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+import os
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
