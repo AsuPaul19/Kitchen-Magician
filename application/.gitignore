@@ -1,0 +1,7 @@
+// __pycache__ folder
+__pycache__/
+
+
+// pyc files
+.pyc
+
