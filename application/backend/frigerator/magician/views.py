@@ -6,3 +6,9 @@ def home(request):
         "title": "Frigerator Magician", 
     }
     return render(request, 'home.html', content)
+
+def test(request):
+    content = {
+        "title": "Frigerator Magician", 
+    }
+    return render(request, 'test.html', content)

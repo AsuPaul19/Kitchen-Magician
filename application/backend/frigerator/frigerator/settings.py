@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 	'34.66.161.176', # Apache-server IP
 	'allensun623.com', # Public domain
+	'www.allensun623.com', # Public domain
 ]
 
 
@@ -80,8 +81,20 @@ WSGI_APPLICATION = 'frigerator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        # database IP（local: localhost or 127.0.0.1）
+        'HOST': '34.123.110.159',
+        # MySQL port
+        'PORT': 3306,
+        # database user and password
+        'USER': 'team1',
+        'PASSWORD': 'team1',
+        #Database Name
+        'NAME': 'frigerator',
+        # character 
+        'CHARSET': 'utf8',
+        # Timezone
+        'TIME_ZONE': 'UTC',
     }
 }
 
