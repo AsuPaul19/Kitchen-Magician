@@ -1,11 +1,11 @@
 import React from 'react';
-import penguin from '../images/penguin.jpg';
+import jeffAvatar from '../images/jeffAvatar.jpg';
 
 const apisorder = () => {
   return (
     <div>
       <center>
-        <img src={penguin} alt="this is Jeff's avatar" />
+        <img src={jeffAvatar} alt="this is Jeff's avatar" />
       </center>
       <h5>
         <p>
