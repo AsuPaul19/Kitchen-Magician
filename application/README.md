@@ -558,4 +558,4 @@ sudo ufw allow https
     ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '/home/allensun623/env/lib/python3.8/site-packages/numpy-1.19.1.dist-info'
     Consider using the `--user` option or check the permissions.
     ```
-  - Solution: don't use `remote shh key` install python3-venv; instead, open `GCP SSH`.
+  - Solution: don't use `remote shh key` and `GCP SSH` to access the same user and make installation.
