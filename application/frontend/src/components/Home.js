@@ -1,23 +1,15 @@
-
-
 import React, { Component } from 'react';
 import apisorder from './apisorder';
 
-import {
-  BrowserRouter,
-  Route,
-  Link,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
 export default class Home extends Component {
-
   render() {
     return (
       <BrowserRouter>
         <div>
-
           <ol>
             <li>
               <Link to='/allensun7'>
@@ -59,7 +51,7 @@ export default class Home extends Component {
           <hr />
 
           <Route path='/allensun7' />
-          <Route path='/apisorder' component={ apisorder } />
+          <Route path='/apisorder' component={apisorder} />
           <Route path='/Kebit01' />
           <Route path='/KevinWeiHadExtra' />
           <Route path='/npng16' />
@@ -69,4 +61,3 @@ export default class Home extends Component {
     );
   }
 }
-
