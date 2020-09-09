@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import apisorder from './apisorder';
 import allensun7 from './allensun7';
+import KevinWeiHadExtra from './KevinWeiHadExtra.js';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
@@ -54,7 +55,7 @@ export default class Home extends Component {
           <Route path='/allensun7' component={allensun7} />
           <Route path='/apisorder' component={apisorder} />
           <Route path='/Kebit01' />
-          <Route path='/KevinWeiHadExtra' />
+          <Route path='/KevinWeiHadExtra' component={KevinWeiHadExtra} />
           <Route path='/npng16' />
           <Route path='/AsuPaul19' />
         </div>
