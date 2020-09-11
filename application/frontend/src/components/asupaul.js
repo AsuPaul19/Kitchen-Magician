@@ -1,10 +1,10 @@
+
 import React from 'react';
 
 const asupaul = () => {
   return (
     <div>
-      <center>
-      </center>
+     
       <h5>
         <p>
             Asu Paul is a senior student in the Computer Science department 

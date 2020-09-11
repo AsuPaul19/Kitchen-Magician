@@ -4,6 +4,7 @@ import allensun7 from './allensun7';
 import KevinWeiHadExtra from './KevinWeiHadExtra.js';
 import kebit01 from './kebit01';
 import npng16 from './npng16';
+import asupaul from './asupaul';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
@@ -46,7 +47,7 @@ export default class Home extends Component {
             </li>
 
             <li>
-              <Link to='/AsuPaul19'>
+              <Link to='/asupaul'>
                 <button>Paul Asu</button>
               </Link>
             </li>
@@ -59,7 +60,7 @@ export default class Home extends Component {
           <Route path='/kebit01' component={kebit01} />
           <Route path='/KevinWeiHadExtra' component={KevinWeiHadExtra} />
           <Route path='/npng16' component={npng16} />
-          <Route path='/AsuPaul19' />
+          <Route path='/asupaul' component={asupaul} />
         </div>
       </BrowserRouter>
     );
