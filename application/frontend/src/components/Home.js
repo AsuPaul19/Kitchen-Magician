@@ -4,12 +4,12 @@ import allensun7 from './allensun7';
 import KevinWeiHadExtra from './KevinWeiHadExtra.js';
 import kebit01 from './kebit01';
 import npng16 from './npng16';
-import psau19 from './AsuPaul19';
+import AsuPaul19 from './AsuPaul19';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
-import AsuPaul19 from './AsuPaul19';
+
 
 export default class Home extends Component {
   render() {
