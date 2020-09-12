@@ -4,11 +4,12 @@ import allensun7 from './allensun7';
 import KevinWeiHadExtra from './KevinWeiHadExtra.js';
 import kebit01 from './kebit01';
 import npng16 from './npng16';
-import psau19 from './psau19';
+import psau19 from './AsuPaul19';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
+import AsuPaul19 from './AsuPaul19';
 
 export default class Home extends Component {
   render() {
@@ -47,7 +48,7 @@ export default class Home extends Component {
             </li>
 
             <li>
-              <Link to='/psau19'>
+              <Link to='/AsuPaul19'>
                 <button>Paul Asu</button>
               </Link>
             </li>
@@ -60,7 +61,7 @@ export default class Home extends Component {
           <Route path='/kebit01' component={kebit01} />
           <Route path='/KevinWeiHadExtra' component={KevinWeiHadExtra} />
           <Route path='/npng16' component={npng16} />
-          <Route path='/psau19' component={psau19} />
+          <Route path='/AsuPaul19' component={AsuPaul19} />
         </div>
       </BrowserRouter>
     );
