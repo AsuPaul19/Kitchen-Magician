@@ -10,13 +10,14 @@ const AsuPaul19 = () => {
         <h1>Welcome to my profile page.</h1>
         
         <p>
-          I am Asu Paul a senior in the Computer Science department 
+          <h4>I am Asu Paul a senior in the Computer Science department 
           at the San Francisco State University.
           <br />
           I love traveling and spending time with my family.
           <br />
           Originally I'm from Nigeria-the most populous black nation, in West Africa 
           <br />
+          </h4>
         </p>
       </center>
     </div>
