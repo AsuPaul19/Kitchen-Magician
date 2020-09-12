@@ -11,7 +11,7 @@ const AsuPaul19 = () => {
         <h1>Welcome to my profile page.</h1>
         
         <p>
-          Asu Paul is a senior in the Computer Science department 
+          I am Asu Paul a senior in the Computer Science department 
           at the San Francisco State University.
           <br>
           </br>
