@@ -7,17 +7,17 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
-Implement APP to GCP.
+**Implement APP to GCP**
 
-- [Ubuntu](#Ubuntu)
-- [MySQL-on-GCP-CM-Engine](#MySQL-on-GCP-CM-Engine)
-- [Apache-Server](#Apache-Server)
-- [Domain](#Domain)
-- [Create-SSL-Certificate](#Create-SSL-Certificate)
-- [Issues](#Issues)
+- [Ubuntu](##Ubuntu)
+- [MySQL-on-GCP-CM-Engine](##MySQL-on-GCP-CM-Engine)
+- [Apache-Server](##Apache-Server)
+- [Domain](##Domain)
+- [Create-SSL-Certificate](##Create-SSL-Certificate)
+- [Issues](##Issues)
 
 
-# Ubuntu 
+## Ubuntu 
 
 Get ubuntu version: 
 version -- 20.04.1 LTS (Focal Fossa)
@@ -153,7 +153,7 @@ cat /etc/os-release
     ```
 
 
-# MySQL-on-GCP-CM-Engine
+## MySQL-on-GCP-CM-Engine
 
 *Reference*
 
@@ -303,7 +303,7 @@ DATABASES = {
 ```
 
 
-# Apache-Server 
+## Apache-Server 
 
 *Reference* 
 
@@ -446,7 +446,7 @@ sudo serveice apache2 restart
 ```
 
 
-# Domain
+## Domain
 
 *Reference*
 
@@ -454,7 +454,7 @@ sudo serveice apache2 restart
 
 Domain and server must be under the same account.
 
-# Create-SSL-Certificate
+## Create-SSL-Certificate
 
 *Reference*
 
@@ -469,7 +469,7 @@ sudo ufw allow https
 ```
 
 
-# Issues:
+## Issues:
 - **Virtual Environment**
   - ERROR
 
