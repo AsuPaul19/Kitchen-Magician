@@ -24,13 +24,13 @@
 Enter command:
 
 ```
-ssh -i <key path> allen@34.123.110.159
+ssh -i <key path> allen@34.66.161.176
 ```
 
 `<key path>` is the place where you store the downloaded keys `team1` and `team1.pub`, i.g.:
 
 ```
-ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.123.110.159
+ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
 ```
 
 Input password: `team1`
