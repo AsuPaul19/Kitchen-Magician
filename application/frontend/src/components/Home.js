@@ -1,23 +1,21 @@
-
-
 import React, { Component } from 'react';
 import apisorder from './apisorder';
+import allensun7 from './allensun7';
+import KevinWeiHadExtra from './KevinWeiHadExtra.js';
+import kebit01 from './kebit01';
+import npng16 from './npng16';
+import AsuPaul19 from './AsuPaul19';
 
-import {
-  BrowserRouter,
-  Route,
-  Link,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-export default class Home extends Component {
 
+export default class Home extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-
           <ol>
             <li>
               <Link to='/allensun7'>
@@ -32,7 +30,7 @@ export default class Home extends Component {
             </li>
 
             <li>
-              <Link to='/Kebit01'>
+              <Link to='/kebit01'>
                 <button>Kevin Ortiz</button>
               </Link>
             </li>
@@ -58,15 +56,14 @@ export default class Home extends Component {
 
           <hr />
 
-          <Route path='/allensun7' />
-          <Route path='/apisorder' component={ apisorder } />
-          <Route path='/Kebit01' />
-          <Route path='/KevinWeiHadExtra' />
-          <Route path='/npng16' />
-          <Route path='/AsuPaul19' />
+          <Route path='/allensun7' component={allensun7} />
+          <Route path='/apisorder' component={apisorder} />
+          <Route path='/kebit01' component={kebit01} />
+          <Route path='/KevinWeiHadExtra' component={KevinWeiHadExtra} />
+          <Route path='/npng16' component={npng16} />
+          <Route path='/AsuPaul19' component={AsuPaul19} />
         </div>
       </BrowserRouter>
     );
   }
 }
-
