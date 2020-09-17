@@ -53,7 +53,7 @@ cat /etc/os-release
 
    2. Create env and activate 
 
-      - create env
+      - create env (If `env` not created yet.)
 
         ```
         python3 -m venv env
