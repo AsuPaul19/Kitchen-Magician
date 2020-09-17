@@ -10,7 +10,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 **Implement APP to GCP**
 
 - [Ubuntu](##Ubuntu)
-- [MySQL-on-GCP-CM-Engine](##MySQL-on-GCP-CM-Engine)
+- [MySQL-on-GCP-VM-Engine](##MySQL-on-GCP-VM-Engine)
 - [Apache-Server](##Apache-Server)
 - [Domain](##Domain)
 - [Create-SSL-Certificate](##Create-SSL-Certificate)
@@ -153,7 +153,7 @@ cat /etc/os-release
     ```
 
 
-## MySQL-on-GCP-CM-Engine
+## MySQL-on-GCP-VM-Engine
 
 *Reference*
 
