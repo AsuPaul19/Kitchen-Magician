@@ -9,6 +9,6 @@ def home(request):
 
 def test(request):
     content = {
-        "title": "Frigerator Magician", 
+        "title": "About", 
     }
-    return render(request, 'test.html', content)
+    return render(request, 'about.html', content)

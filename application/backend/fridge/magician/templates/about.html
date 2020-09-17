@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    {% endblock stylesheet %}
+
+    {% block content %}
+    <section id="ABOUT">
+        <div class="container">
+            <div id="ABOUT-title">
+                <h1>ABOUT US</h1>
+                <div id="about-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="people-images">
+        <div class="container">
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/1NP.jpg' %}" alt="" id="NP" class="images-img"/>
+                    <!-- <div class="overlay"></div> -->
+                </div>
+                <div class="image-title">
+                    <h1>Nicole Pang</h1>
+                    <h2>Team Lead</h2>
+                </div>
+            </div>
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/2JC.jpg' %}" alt="" id="NP" class="images-img"/>
+                    <!-- <div class="overlay"></div> -->
+                </div>    
+                <div class="image-title">
+                    <h1>Jeff Cheng</h1>
+                    <h2>Frontend Lead</h2>
+                </div>
+            </div>
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/3AS.jpg' %}" alt="" id="NP" class="images-img"/>
+                    <!-- <div class="overlay"></div> -->
+                </div>
+                <div class="image-title">
+                    <h1>Allen Sun</h1>
+                    <h2>Backend Lead & Database Master</h2>
+                </div>
+            </div>
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/4PA.jpg' %}" alt="" id="PA" class="images-img"/>
+                    <!-- <div class="overlay"></div> -->
+                </div>   
+                <div class="image-title">
+                    <h1>Paul Asu</h1>
+                    <h2>Github Master</h2>
+                </div>  
+            </div>  
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/5KO.jpg' %}" alt="" id="KO" class="images-img"/>
+                    <!-- <div class="overlay"></div> -->
+                </div>   
+                <div class="image-title">
+                    <h1>Kevin Ortiz</h1>
+                    <h2>Developer</h2>
+                </div>
+            </div>  
+            <div class="image-block">
+                <div class="image-block-wrapper">
+                    <img src="{% static 'images/6KW.jpg' %}" alt="" id="KW" class="images-img"/>
+                </div>   
+                <div class="image-title">
+                    <h1>Kevin Wei</h1>
+                    <h2>Developer</h2>
+                </div>
+            </div>      
+        </div>
+    </section>
+    {% endblock content%}
+
+{% block active-nav-link %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock active-nav-link %}
