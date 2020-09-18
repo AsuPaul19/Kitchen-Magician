@@ -16,65 +16,17 @@
 
     <section id="people-images">
         <div class="container">
+            {% for k, v in team.items %}
             <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/1NP.jpg' %}" alt="" id="NP" class="images-img"/>
-                    <!-- <div class="overlay"></div> -->
-                </div>
+                <a class="image-block-wrapper" href="{% url 'profile' name=v.name id=v.id %}">
+                    <img src="{% static v.img %}" alt="" id="NP" class="images-img"/>
+                </a>
                 <div class="image-title">
-                    <h1>Nicole Pang</h1>
-                    <h2>Team Lead</h2>
+                    <h1>{{ v.name }}</h1>
+                    <h2>{{ v.title }}</h2>
                 </div>
             </div>
-            <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/2JC.jpg' %}" alt="" id="NP" class="images-img"/>
-                    <!-- <div class="overlay"></div> -->
-                </div>    
-                <div class="image-title">
-                    <h1>Jeff Cheng</h1>
-                    <h2>Frontend Lead</h2>
-                </div>
-            </div>
-            <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/3AS.jpg' %}" alt="" id="NP" class="images-img"/>
-                    <!-- <div class="overlay"></div> -->
-                </div>
-                <div class="image-title">
-                    <h1>Allen Sun</h1>
-                    <h2>Backend Lead & Database Master</h2>
-                </div>
-            </div>
-            <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/4PA.jpg' %}" alt="" id="PA" class="images-img"/>
-                    <!-- <div class="overlay"></div> -->
-                </div>   
-                <div class="image-title">
-                    <h1>Paul Asu</h1>
-                    <h2>Github Master</h2>
-                </div>  
-            </div>  
-            <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/5KO.jpg' %}" alt="" id="KO" class="images-img"/>
-                    <!-- <div class="overlay"></div> -->
-                </div>   
-                <div class="image-title">
-                    <h1>Kevin Ortiz</h1>
-                    <h2>Developer</h2>
-                </div>
-            </div>  
-            <div class="image-block">
-                <div class="image-block-wrapper">
-                    <img src="{% static 'images/6KW.jpg' %}" alt="" id="KW" class="images-img"/>
-                </div>   
-                <div class="image-title">
-                    <h1>Kevin Wei</h1>
-                    <h2>Developer</h2>
-                </div>
-            </div>      
+            {% endfor %}
         </div>
     </section>
     {% endblock content%}

@@ -1,0 +1,42 @@
+/* SHOWCASE */
+#profile-block {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-image: url('../images/profile-bg.jpg');
+    width: 100%;
+    min-height: 900px;
+}
+
+#profile-block img {
+    height: auto;
+    position: 0 0;
+}
+
+#intro .container {
+    display: grid;
+    font-size: 1rem;
+    grid-template-columns: 1fr auto;
+    grid-gap: 2em;
+}
+
+#intro .container p {
+    line-height: 2rem;
+}
+
+#intro-block {
+    place-items: center;
+    align-items: center;
+}
+
+#intro-block img {
+    width: 100%;
+    height: auto;
+}
+
+#intro-block .intro-info {
+    line-height: 2rem;
+}
+
+#intro-block #intro-name {
+    font-size: 1.5rem;
+}
