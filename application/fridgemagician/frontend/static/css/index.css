@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.peopel {
+  justify-content: space-between;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
