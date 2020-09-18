@@ -7,7 +7,9 @@
     {% block content %}
     <section class="showcase">
         <div id="profile-block">
-
+            <div id="profile-image-block">
+                <img src="{% static profile.img %}" alt="" class="profile-img">
+            </div>
         </div>
     </section>
 
@@ -19,7 +21,6 @@
                 {% endfor %}
             </div>
             <div id="intro-block">
-                <img src="{% static profile.img %}" alt="" class="profile-block-images">
                 <div id="intro-name" class="intro-info">{{ profile.name }}</div>
                 <div id="intro-title" class="intro-info">{{ profile.title }}</div>
             </div>        
