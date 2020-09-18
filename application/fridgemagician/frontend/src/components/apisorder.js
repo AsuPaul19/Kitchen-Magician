@@ -1,5 +1,5 @@
 import React from 'react';
-// import jeffAvatar from '../images/jeffAvatar.jpg';
+// import jeffAvatar from './images/jeffAvatar.jpg';
 
 const apisorder = () => {
   return (

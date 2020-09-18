@@ -26,7 +26,7 @@ SECRET_KEY = 'u=cu^+roeqzx(%6%uz_4+9f766dcvc3anrwx9t%mj1ep*gu0l_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.94.169.203:8000']
+ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176']
 
 
 # Application definition
@@ -79,8 +79,20 @@ WSGI_APPLICATION = 'fridgemagician.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        # database IP（local: localhost or 127.0.0.1）
+        'HOST': '34.123.110.159',
+        # MySQL port
+        'PORT': 3306,
+        # database user and password
+        'USER': 'team1',
+        'PASSWORD': 'team1',
+        #Database Name
+        'NAME': 'fridge',
+        # character 
+        'CHARSET': 'utf8',
+        # Timezone
+        'TIME_ZONE': 'UTC',
     }
 }
 

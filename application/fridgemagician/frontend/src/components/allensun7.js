@@ -1,5 +1,5 @@
 import React from 'react';
-// import allenAvatar from '../images/allenAvatar.jpg';
+// import allenAvatar from './images/allenAvatar.jpg';
 
 const allensun7 = () => {
   return (

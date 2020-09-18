@@ -1,5 +1,5 @@
 import React from 'react';
-// import kevinWeiAvatar from '../images/kevinWeiAvatar.jpg';
+// import kevinWeiAvatar from './images/kevinWeiAvatar.jpg';
 const KevinWeiHadExtra = () => {
   return (
     <div>

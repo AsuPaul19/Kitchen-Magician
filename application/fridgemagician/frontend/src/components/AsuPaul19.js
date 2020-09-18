@@ -1,5 +1,4 @@
 import React from 'react';
-// import AsuPaul19Avatar from '../images/AsuPaul19Avatar.jpg';
 
 const AsuPaul19 = () => {
   return (
