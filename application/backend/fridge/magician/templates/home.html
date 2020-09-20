@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    {% endblock stylesheet %}
+
+    {% block content %}
+    <section id="showcase">
+        <div class="container">
+            <div id="showcase-title">
+                <h1>Welcome to<br> FRIDGE MAGICIAN</h1>
+                <div id="title-line"></div>
+                <h2>Fresh Healthy Convenient</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="images">
+        <div class="container">
+            <img src="{% static 'images/1.jpg' %}" alt="" id="img1" class="images-img"/>
+            <img src="{% static 'images/2.jpg' %}" alt="" class="images-img"/>
+            <img src="{% static 'images/3.jpg' %}" alt="" class="images-img"/>
+        </div>    
+    </section>
+    {% endblock content%}
+
+{% block active-nav-link %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock active-nav-link %}
