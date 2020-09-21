@@ -7,7 +7,24 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
-**Implement APP to GCP**
+# High-level system architecture and technologies used
+
+|    :---:     |     :---:     |
+| Server Host | Google Compute Engine 2vCPU 4 GB RAM |
+| Operating System | Ubuntu 20.04 LTS |
+| Database | MySQL 8.0.21 |
+| Web Server | Apache 2.4 |
+| Server-Side Language | Python3.7+ |
+| Front-Side Language | HTML, CSS, JavaScript |
+| Supported Browsers | Chrome, Firefox |
+| Web Framework | React, Django |
+| IDE | VSCode |
+| Web Analytics | GTmetrix |
+| SSL Cert | Certbot |
+
+
+
+# **Implementation to GCP**
 
 - [Ubuntu](##Ubuntu)
 - [MySQL-on-GCP-VM-Engine](##MySQL-on-GCP-VM-Engine)
@@ -322,8 +339,14 @@ DATABASES = {
   ```
   sudo apachectl start
   ```
+  
+  or use the heigher authority, system control
 
-  open External Ip or localhost to see a "It works" page.
+  ```
+  sudo systemctl start apache2.service
+  ```
+
+  open External Ip or localhost to see a "It works" or "Ubuntu" page.
 
 
 3. **Install WSGI**
