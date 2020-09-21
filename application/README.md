@@ -9,7 +9,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 # High-level system architecture and technologies used
 
-| System architecture and technologies | Tootls/Version |
+| System Architecture and Technologies | Tootls/Version |
 |    :--    |     :--     |
 | Server Host | Google Compute Engine 2vCPU 4 GB RAM |
 | Operating System | Ubuntu 20.04 LTS |
