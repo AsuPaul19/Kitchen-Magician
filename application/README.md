@@ -334,6 +334,8 @@ DATABASES = {
 
   - **[27 | Host django application using apache and wsgi | by Hardik Patel](https://www.youtube.com/watch?v=s0RX_YU9eJM&t=948s)**
 
+  - **[Using Apache Bench for Simple Load Testing](https://www.petefreitag.com/item/689.cfm)**
+
 1. **Install Apache**
 
   ```
