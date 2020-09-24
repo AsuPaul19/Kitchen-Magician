@@ -1,8 +1,15 @@
-# __pycache__ folder
+### Django ###
+*.log
+*.pot
+*.pyc
 __pycache__/
-
-
-# files
-.pyc
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
 .DS_Store
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
 

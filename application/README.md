@@ -19,7 +19,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 | Front-Side Language | HTML, CSS, JavaScript |
 | Supported Browsers | Chrome, Firefox |
 | Web Framework | React, Django |
-| IDE | VSCode |
+| IDE | VS Code |
 | Web Analytics | GTmetrix |
 | SSL Cert | Certbot |
 
@@ -179,6 +179,11 @@ cat /etc/os-release
 
   - **[Tutorial - Remote access to mysql on google compute engine](https://www.youtube.com/watch?v=8oF4ku_7vxM)**
 
+  - **[MySQL Crash Course | Learn SQL](https://www.youtube.com/watch?v=9ylj9NR0Lcg)**
+
+  - **[MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3)**
+
+    - **[Handy MySQL Commands](http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm)**
 
 1. **Install MySQL on VM Instance**
 
