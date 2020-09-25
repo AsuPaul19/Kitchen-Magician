@@ -52,5 +52,11 @@ Input password: `team1`
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
 
+**Django admin**
+
+```
+user: team1
+password: team1
+```
 
 
