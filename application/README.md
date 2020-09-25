@@ -19,6 +19,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 | Front-Side Language | HTML, CSS, JavaScript |
 | Supported Browsers | Chrome, Firefox |
 | Web Framework | React, Django |
+| API Test | Postman |
 | IDE | VS Code |
 | Web Analytics | GTmetrix |
 | SSL Cert | Certbot |
