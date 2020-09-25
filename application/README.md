@@ -405,8 +405,8 @@ DATABASES = {
     ```
         DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static>
+        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static
+        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static>
             Require all granted
         </Directory>
         
@@ -450,8 +450,8 @@ DATABASES = {
 
         DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static>
+        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static
+        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static>
             Require all granted
         </Directory>
 
@@ -591,3 +591,29 @@ sudo ufw allow https
     Consider using the `--user` option or check the permissions.
     ```
   - Solution: don't use `remote shh key` and `GCP SSH` to access the same user and make installation.
+
+- **Django Admin Page No CSS**
+  *Reference*
+    - **[Django admin site not showing CSS style](https://stackoverflow.com/questions/28728912/django-admin-site-not-showing-css-style/28728935)**
+
+    - **[why my django admin site does not have the css style](https://stackoverflow.com/questions/4420378/why-my-django-admin-site-does-not-have-the-css-style)**
+
+  - ERROR
+  ```
+  Django admin website (it's completely default, not customized) is not showing the expected CSS.
+  ```
+
+  - Solution: collect static, and change Apache Configurations static to project path
+
+  ```
+  python manage.py collectstatic
+  python3 manage.py collectstatic
+  ```
+  
+  In `settings.py`
+  ```
+  import os.path  import sys
+  PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+  STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+  STATIC_URL = '/static/'
+  ```
