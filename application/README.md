@@ -28,12 +28,12 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 # **Implementation to GCP**
 
-- [Ubuntu](##Ubuntu)
-- [MySQL-on-GCP-VM-Engine](##MySQL-on-GCP-VM-Engine)
-- [Apache-Server](##Apache-Server)
-- [Domain](##Domain)
-- [Create-SSL-Certificate](##Create-SSL-Certificate)
-- [Issues](##Issues)
+- [Ubuntu](#Ubuntu)
+- [MySQL-on-GCP-VM-Engine](#MySQL-on-GCP-VM-Engine)
+- [Apache-Server](#Apache-Server)
+- [Domain](#Domain)
+- [Create-SSL-Certificate](#Create-SSL-Certificate)
+- [Issues](#Issues)
 
 
 ## Ubuntu 
