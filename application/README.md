@@ -184,7 +184,7 @@ cat /etc/os-release
 
   - **[MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3)**
 
-    - **[Handy MySQL Commands](http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm)**
+  - **[Handy MySQL Commands](http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm)**
 
 1. **Install MySQL on VM Instance**
 
