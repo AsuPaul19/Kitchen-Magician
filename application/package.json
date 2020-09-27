@@ -1,11 +1,11 @@
 {
-  "name": "fridge_magician",
+  "name": "kitchen_magician",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./fridgemagician/frontend/src/index.js --output ./fridgemagician/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./fridgemagician/frontend/src/index.js --output ./fridgemagician/frontend/static/frontend/main.js"
+    "dev": "webpack --mode development --watch ./kitchenmagician/frontend/src/index.js --output ./kitchenmagician/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./kitchenmagician/frontend/src/index.js --output ./kitchenmagician/frontend/static/frontend/main.js"
   },
   "author": "",
   "license": "ISC",
