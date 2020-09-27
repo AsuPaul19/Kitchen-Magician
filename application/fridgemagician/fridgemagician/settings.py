@@ -26,7 +26,7 @@ SECRET_KEY = 'u=cu^+roeqzx(%6%uz_4+9f766dcvc3anrwx9t%mj1ep*gu0l_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176']
+ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176', 'localhost']
 
 
 # Application definition
@@ -87,9 +87,9 @@ DATABASES = {
         # database user and password
         'USER': 'team1',
         'PASSWORD': 'team1',
-        #Database Name
+        # Database Name
         'NAME': 'fridge',
-        # character 
+        # character
         'CHARSET': 'utf8',
         # Timezone
         'TIME_ZONE': 'UTC',
