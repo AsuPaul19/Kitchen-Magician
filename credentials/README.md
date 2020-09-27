@@ -87,6 +87,6 @@ password: team1
   For example, if an attacker somehow gains access to any of the accounts on your system, then they'd be able access the key, as opposed to having to get access to your account specifically. This gives them too many opportunities to get to the private key.
 
   ```
-  ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
+  sudo ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
   ```
 
