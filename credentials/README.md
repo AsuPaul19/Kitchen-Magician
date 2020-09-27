@@ -54,7 +54,7 @@ Input password: `team1`
 
 ## Django Admin
 
-**Administration**: https://www.allensun623.com/admin
+**Application Administration**: https://www.allensun623.com/admin
 
 ```
 user: team1
