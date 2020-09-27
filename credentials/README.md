@@ -63,7 +63,8 @@ password: team1
 
 ## Issues
 
-  - ERROR:  UNPROTECTED PRIVATE KEY FILE! 
+- **UNPROTECTED PRIVATE KEY FILE!**
+  - ERROR
 
   ```
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -75,8 +76,8 @@ password: team1
   Load key "/Users/allen/Desktop/team1.pub": bad permissions
   ```
 
-  - Solution: 
-  
+  - Solution
+
   What happened is the key you're trying to use (key.pem in the example above) is too accessible to users on the system.
 
   This is a bad thing because then you're not the only one able to use the key, which defeats the purpose. Private keys should only be accessible to one user.
