@@ -16,9 +16,9 @@ You are free to organize the contents of the folder as you see fit. But remember
 | Database | MySQL 8.0.21 |
 | Web Server | Apache 2.4 |
 | Server-Side Language | Python3.7+ |
-| Front-Side Language | HTML, CSS, JavaScript |
+| Front-Side Language | HTML5, CSS3, JavaScript |
 | Supported Browsers | Chrome, Firefox |
-| Web Framework | React, Django |
+| Web Framework | Django |
 | API Test | Postman |
 | IDE | VS Code |
 | Web Analytics | GTmetrix |
