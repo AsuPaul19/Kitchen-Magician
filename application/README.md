@@ -15,11 +15,10 @@ You are free to organize the contents of the folder as you see fit. But remember
 | Operating System | Ubuntu 20.04 LTS |
 | Database | MySQL 8.0.21 |
 | Web Server | Apache 2.4 |
-| Server-Side Language | Python3.7+ |
+| Server-Side Language | Python 3.7+ |
 | Front-Side Language | HTML5, CSS3, JavaScript |
-| Supported Browsers | Chrome, Firefox |
-| Web Framework | Django |
-| API Test | Postman |
+| Supported Browsers | Chrome 85.0.4183.121+, Firefox 81.0.1+|
+| Web Framework | Django 3.1.2 |
 | IDE | VS Code |
 | Web Analytics | GTmetrix |
 | SSL Cert | Certbot |
