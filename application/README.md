@@ -18,7 +18,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 | Server-Side Language | Python 3.7+ |
 | Front-Side Language | HTML5, CSS3, JavaScript |
 | Supported Browsers | Chrome 85.0.4183.121+, Firefox 81.0.1+|
-| Web Framework | Django 3.1.2 |
+| Web Framework | Django 3.1.2+ |
 | IDE | VS Code |
 | Web Analytics | GTmetrix |
 | SSL Cert | Certbot |
