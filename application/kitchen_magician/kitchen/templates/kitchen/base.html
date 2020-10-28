@@ -10,7 +10,7 @@
     <!-- Required meta tags -->
 
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- CSS Bootstrap -->
 
@@ -39,7 +39,14 @@
                         <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">About</a>
                         <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Groups</a>        
                         <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Profile</a>                                        
-                        <a class="nav-item nav-link" href="#">Search</a>
+                        
+                        <input type="text" placeholder="Search.." name="search">
+
+                        <form method="get" action="http://www.google.com">
+                            <input type="text" placeholder="Search.." name="search">
+                            <input type="submit" value="search">
+                        </form>
+                        
                         <a class="nav-item nav-link" href="{% url 'kitchen_log_in' %}">Log In</a>
                         <a class="nav-item nav-link" href="{% url 'kitchen_sign_up' %}">Sign Up</a>
                     </div>
