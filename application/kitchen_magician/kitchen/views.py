@@ -9,6 +9,7 @@ def home(request):
 
 def search(request):
   context = {
+    'title': 'Search Results',
     'recipes': Recipe.objects.all()
   }
   return render(request, 'kitchen/search.html', context)
