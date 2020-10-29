@@ -1,8 +1,44 @@
 {% extends "kitchen/base.html" %}
 
+<!-- incorporated into main.css -->
+<!-- {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'kitchen/css/home.css' %}">
+{% endblock %} -->
+
 {% block content %}
-  <br />
-  <br />
-  <br />
-  <h1>HOME!!!!!!!!!!!!!!!!!!!!</h1>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="{% static 'kitchen/image/1.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/2.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/3.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/4.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/5.jpg' %}" style="width:100%">
+
+</div>
+
+<script>
+  let slideIndex = 0;
+  carousel();
+
+  function carousel() {
+    let i;
+
+    let x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1}
+
+    x[slideIndex-1].style.display = "block";
+
+    // Change image every 2 seconds
+    setTimeout(carousel, 2000); 
+  }  
+</script>
+  
+<!-- <script src="{% static 'kitchen/js/home.js' %}"></script> -->
+
 {% endblock content %}

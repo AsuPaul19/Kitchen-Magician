@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Required meta tags -->
 
-    <!-- CSS Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- CSS Bootstrap -->
+    <!-- Bootstrap CSS -->
+
+    <!-- Google Fonts -->        
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->        
 
     <!-- CSS style sheet with customized font -->
-    <link rel="stylesheet" type="text/css" href="{% static 'kitchen/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
     <!-- CSS style sheet with customized font -->
+
+    <!-- using CSS in a separate file instead -->
+    <!-- {% block css %}
+    {% endblock css %} -->
 
     {% if title %}
     <title>Kitchen Magician - {{ title }}</title>
@@ -32,16 +39,20 @@
                 <a class="navbar-brand mr-4" href="{% url 'kitchen_home' %}">Kitchen Magician</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarToggle">
+
                     <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">About</a>
-                        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Groups</a>        
-                        <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Profile</a>                                        
-                        
-                        <input type="text" placeholder="Search.." name="search">
+                        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Groups</a>                            
+                        <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Profile</a>                                  
+                    </div>    
 
+                    <!-- dividing the nav bar into two divs for better appearance -->
+
+                    <div class="navbar-nav">                  
                         <form method="get" action="http://www.google.com">
                             <input type="text" placeholder="Search.." name="search">
                             <input type="submit" value="search">
@@ -50,6 +61,7 @@
                         <a class="nav-item nav-link" href="{% url 'kitchen_log_in' %}">Log In</a>
                         <a class="nav-item nav-link" href="{% url 'kitchen_sign_up' %}">Sign Up</a>
                     </div>
+
                 </div>
             </div>
         </nav>
@@ -85,6 +97,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    {% block script %}
+    {% endblock %}
 </body>
 
 </html>

@@ -1,0 +1,18 @@
+{% extends "kitchen/base.html" %}
+
+{% block content %}
+    {% for recipe in recipes %}
+
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">By {{ recipe.author }}</a>
+                <!-- no need to show the seconds so only show month, day and year -->
+                <small class="text-muted">On {{ recipe.date_created|date:"F d, Y" }}</small>
+            </div>
+            <h3><a class="article-title" href="#">Title: {{ recipe.title }}</a></h3>
+            <p class="article-content">{{ recipe.content }}</p>
+            </div>
+        </article>    
+    {% endfor %}
+{% endblock content %}

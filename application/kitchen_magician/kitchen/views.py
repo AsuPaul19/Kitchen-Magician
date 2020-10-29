@@ -1,10 +1,17 @@
 from django.shortcuts import render
+from .models import Recipe
 
 def home(request):
   context = {
     'title': 'Home'
   }
   return render(request, 'kitchen/home.html', context)
+
+def search(request):
+  context = {
+    'recipes': Recipe.objects.all()
+  }
+  return render(request, 'kitchen/search.html', context)
 
 def about(request):
   context = {
