@@ -52,6 +52,12 @@ def allen_sun(request):
   }
   return render(request, 'kitchen/allen_sun.html', context)
 
+def kevin_ortiz(request):
+  context = {
+    'title': 'Kevin Ortiz'
+  }
+  return render(request, 'kitchen/kevin_ortiz.html', context)
+
 def groups(request):
   context = {
     'title': 'Groups'

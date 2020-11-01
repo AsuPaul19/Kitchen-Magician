@@ -12,6 +12,7 @@ urlpatterns = [
     path('search/', views.search, name='kitchen_search'),
     path('about/', views.about, name='kitchen_about'),
     path('allen_sun/', views.allen_sun, name='kitchen_allen_sun'),
+    path('kevin_ortiz/', views.kevin_ortiz, name="kitchen_kevin_ortiz"),
     path('groups/', views.groups, name='kitchen_groups'),
     path('profile/', views.profile, name='kitchen_profile'),
     path('log_in/', views.log_in, name='kitchen_log_in'),
