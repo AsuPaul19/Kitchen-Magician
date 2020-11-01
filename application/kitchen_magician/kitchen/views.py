@@ -51,7 +51,7 @@ def allen_sun(request):
     'title': 'Allen Sun'
   }
   return render(request, 'kitchen/allen_sun.html', context)
-  
+
 def groups(request):
   context = {
     'title': 'Groups'
