@@ -1,10 +1,11 @@
 <!-- kitchen/template/kevin_wei.html -->
 <!-- Programmers: Jeff C Cheng -->
 <!-- Last Modified: 11/1/2020 -->
-<!-- added Kevin Ortiz's bio -->
+<!-- added Kevin Wei's bio and avatar -->
 <!-- use Django template in base.html -->
 
 {% extends "kitchen/base.html" %}
+{% load static %}
 
 {% block content %}
   <br />
@@ -14,13 +15,20 @@
     <br />
     <div>
       <br />
-      <h1>About Kevin Ortiz</h1>
-      Kevin Ortiz is a 4th year undergraduate at San Francisco State University.
+      <center>
+        <img src="{% static 'kitchen/image/kevin_wei.jpg' %}" alt="this is Kevin Wei's avatar" />
+      </center>
+
+      <br />
+      <h1>About Kevin</h1>
+      Kevin is a fourth year undergraduate student at San Francisco State
+      University
+      <br />
+      He is studying Computer Science
       <br />
       <br />
-      Kevin's major is Computer Science. On the days he is not in class, he walks
-      his two dogs and also goes bike riding. He also enjoys traveling and if he
-      can live anywhere it will be anywhere that is near the beach!
+      He really likes playing Video Games and has a special attachment to
+      Pokemon since childhood :D
       <br />
     </div>
 {% endblock content %}
