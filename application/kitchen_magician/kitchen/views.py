@@ -76,6 +76,12 @@ def nicole_pang(request):
   }
   return render(request, 'kitchen/nicole_pang.html', context)
 
+def paul_asu(request):
+  context = {
+    'title': 'Paul Asu'
+  }
+  return render(request, 'kitchen/paul_asu.html', context)
+
 def groups(request):
   context = {
     'title': 'Groups'
