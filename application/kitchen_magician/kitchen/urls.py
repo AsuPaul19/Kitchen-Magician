@@ -1,4 +1,7 @@
-
+# kitchen/urls.py
+# Programmer: Jeff C Cheng
+# Last Modified: 11/1/2020
+# define all app-specific routes here
 
 from django.urls import path
 from . import views

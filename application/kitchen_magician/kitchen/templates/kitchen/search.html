@@ -1,21 +1,15 @@
+<!-- kitchen/template/search.html -->
+<!-- Programmers: Jeff C Cheng, Allen Sun -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- get results from kitchen/views.py through context, which includes user's search query -->
+<!-- use Django template in base.html -->
+
 {% extends "kitchen/base.html" %}
 from django.contrib.auth.models import User
 from .models import Recipe
 from django.db.models import Q
 
-{% block content %}
-    <!-- <form action="{% url 'kitchen_search' %}" method="get">
-        <input name="author" type="text" placeholder="author...">
-        <input name="content" type="text" placeholder="content...">
-        <input type="submit" value="Submit">
-    </form> -->
-
-    <!-- {% if recipes %}
-        recipes = Recipes.objects.all()
-    {% else %}
-        recipes = Recipes.objects.all()    
-    {% endif %} -->
-     
+{% block content %}   
     {% for recipe in recipes %}
         <article class="media content-section">
             <div class="media-body">

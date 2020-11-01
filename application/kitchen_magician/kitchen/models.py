@@ -1,4 +1,7 @@
-
+# kitchen/models.py
+# Programmer: Jeff C Cheng
+# Last Modified: 11/1/2020
+# import model User here
 
 from django.db import models
 from django.utils import timezone
@@ -12,6 +15,6 @@ class Recipe(models.Model):
   date_created = models.DateTimeField(default=timezone.now)
   content = models.TextField()
 
-  # to make the output more descriptive in the shell
+  # to make output more descriptive in Python shell
   def __str__(self):
     return self.title
