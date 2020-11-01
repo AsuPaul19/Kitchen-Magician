@@ -12,7 +12,29 @@ body {
   ul {
     margin: 0;
   }
-  
+
+  .trending-pic {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .trending-box {
+    display: flex;
+    align-items: center;
+    height: 75vh;
+  }
+
+  .trending-border {
+    border-width:3px !important;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
   .bg-steel {
     background-color: #5f788a;
   }

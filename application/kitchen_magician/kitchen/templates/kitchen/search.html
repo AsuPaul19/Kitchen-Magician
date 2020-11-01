@@ -10,6 +10,16 @@ from .models import Recipe
 from django.db.models import Q
 
 {% block content %}   
+    <div>
+        <form method="POST" action="{% url 'kitchen_search' %}">
+            {% csrf_token %}
+            <input type="text" placeholder="title..." name="title">
+            <input type="text" placeholder="author..." name="author">
+            <input type="text" placeholder="content..." name="content">
+            <input type="submit" value="Submit">
+        </form>   
+    </div>
+    <br>
     {% for recipe in recipes %}
         <article class="media content-section">
             <div class="media-body">

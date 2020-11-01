@@ -8,6 +8,7 @@ from . import views
 
 # kitchen_magician project routes default to kitchen app routes
 urlpatterns = [
+    path('', views.home, name='kitchen_home'),
     path('home/', views.home, name='kitchen_home'),
     path('search/', views.search, name='kitchen_search'),
     path('about/', views.about, name='kitchen_about'),
