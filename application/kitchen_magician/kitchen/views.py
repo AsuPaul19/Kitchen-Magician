@@ -64,6 +64,12 @@ def kevin_ortiz(request):
   }
   return render(request, 'kitchen/kevin_ortiz.html', context)
 
+def kevin_wei(request):
+  context = {
+    'title': 'Kevin Wei'
+  }
+  return render(request, 'kitchen/kevin_wei.html', context)
+
 def groups(request):
   context = {
     'title': 'Groups'
