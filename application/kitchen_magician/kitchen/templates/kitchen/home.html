@@ -1,3 +1,8 @@
+<!-- kitchen/template/home.html -->
+<!-- Programmers: Jeff C Cheng, Allen Sun, Kevin Wei -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- use Django template in base.html -->
+
 {% extends "kitchen/base.html" %}
 
 <!-- incorporated into main.css -->
@@ -8,7 +13,9 @@
 
 {% block content %}
 
+<!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
 <div class="w3-content w3-display-container">
+  <!-- recipes to use -->
   <img class="mySlides" src="{% static 'kitchen/image/1.jpg' %}" style="width:100%">
   <img class="mySlides" src="{% static 'kitchen/image/2.jpg' %}" style="width:100%">
   <img class="mySlides" src="{% static 'kitchen/image/3.jpg' %}" style="width:100%">
@@ -24,12 +31,17 @@
   function carousel() {
     let i;
 
+    // get the slides
     let x = document.getElementsByClassName("mySlides");
+
+    // display them one by one
     for (i = 0; i < x.length; i++) {
       x[i].style.display = "none";
     }
 
     slideIndex++;
+
+    // reset counter
     if (slideIndex > x.length) {slideIndex = 1}
 
     x[slideIndex-1].style.display = "block";

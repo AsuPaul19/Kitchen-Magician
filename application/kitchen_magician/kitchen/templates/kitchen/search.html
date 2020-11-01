@@ -1,8 +1,16 @@
+<!-- kitchen/template/search.html -->
+<!-- Programmers: Jeff C Cheng, Allen Sun -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- get results from kitchen/views.py through context, which includes user's search query -->
+<!-- use Django template in base.html -->
+
 {% extends "kitchen/base.html" %}
+from django.contrib.auth.models import User
+from .models import Recipe
+from django.db.models import Q
 
-{% block content %}
+{% block content %}   
     {% for recipe in recipes %}
-
         <article class="media content-section">
             <div class="media-body">
             <div class="article-metadata">
