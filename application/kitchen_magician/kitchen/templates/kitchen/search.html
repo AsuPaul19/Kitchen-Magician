@@ -1,8 +1,22 @@
 {% extends "kitchen/base.html" %}
+from django.contrib.auth.models import User
+from .models import Recipe
+from django.db.models import Q
 
 {% block content %}
-    {% for recipe in recipes %}
+    <!-- <form action="{% url 'kitchen_search' %}" method="get">
+        <input name="author" type="text" placeholder="author...">
+        <input name="content" type="text" placeholder="content...">
+        <input type="submit" value="Submit">
+    </form> -->
 
+    <!-- {% if recipes %}
+        recipes = Recipes.objects.all()
+    {% else %}
+        recipes = Recipes.objects.all()    
+    {% endif %} -->
+     
+    {% for recipe in recipes %}
         <article class="media content-section">
             <div class="media-body">
             <div class="article-metadata">

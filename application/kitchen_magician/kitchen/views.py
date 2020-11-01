@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from .models import Recipe
+from django.db.models import Q
 
 def home(request):
   context = {
@@ -8,9 +10,26 @@ def home(request):
   return render(request, 'kitchen/home.html', context)
 
 def search(request):
+  # set defaults
+  content = "NONE"
+  author = "NONE"
+  title = "NONE"
+
+  if request.method == 'POST':
+    if request.POST['content']:
+      content = request.POST['content']
+
+    if request.POST['author']:
+      author = request.POST['author']
+
+    if request.POST['title']:
+      title = request.POST['title']
+
+  recipes = Recipe.objects.filter(Q(author__username=author)|Q(content__icontains=content)|Q(title__icontains=title))
+
   context = {
-    'title': 'Search Results',
-    'recipes': Recipe.objects.all()
+    'title': 'Search',
+    'recipes': recipes
   }
   return render(request, 'kitchen/search.html', context)
 

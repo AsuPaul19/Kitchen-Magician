@@ -9,7 +9,7 @@
     <!-- Required meta tags -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
 
@@ -28,7 +28,7 @@
     {% if title %}
     <title>Kitchen Magician - {{ title }}</title>
     {% else %}
-    <title>Kitchen Magician under Construction</title>
+    <title>Kitchen Magician</title>
     {% endif %}
 </head>
 
@@ -53,9 +53,12 @@
                     <!-- dividing the nav bar into two divs for better appearance -->
 
                     <div class="navbar-nav">                  
-                        <form method="get" action="http://www.google.com">
-                            <input type="text" placeholder="Search.." name="search">
-                            <input type="submit" value="search">
+                        <form method="POST" action="{% url 'kitchen_search' %}">
+                            {% csrf_token %}
+                            <input type="text" placeholder="author..." name="author">
+                            <input type="text" placeholder="content..." name="content">
+                            <input type="text" placeholder="title..." name="title">
+                            <input type="submit" value="Submit">
                         </form>
                         
                         <a class="nav-item nav-link" href="{% url 'kitchen_log_in' %}">Log In</a>
