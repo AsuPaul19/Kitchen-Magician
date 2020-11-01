@@ -9,11 +9,63 @@
   <br />
   <br />
   <br />
-  <h1>About</h1>
-  <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">Allen Sun</a>
-  <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Jeff C Cheng</a>                            
-  <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Kevin Ortiz</a>     
-  <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">Kevin Wei</a>
-  <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Nicole Pang</a>                            
-  <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Paul Asu</a>                               
+
+    Kitchen Magician is a community-based site which aims to promote interaction between its users.
+
+  <table style="width:100%">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Role</th>
+      <th>Link</th>
+    </tr>
+    <tr>
+      <td>Allen</td>
+      <td>Sun</td>
+      <td>Backend Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">Allen Sun</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Jeff</td>
+      <td>Cheng</td>
+      <td>Frontend Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Jeff C Cheng</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Kevin</td>
+      <td>Ortiz</td>
+      <td>Design Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Kevin Ortiz</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Kevin</td>
+      <td>Wei</td>
+      <td>Maintenance Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Kevin Wei</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Nicole</td>
+      <td>Pang</td>
+      <td>Team Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Nicole Pang</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td>Asu</td>
+      <td>Webmaster</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Paul Asu</a>                            
+      </td>
+    </tr>
+  </table> 
 {% endblock content %}
