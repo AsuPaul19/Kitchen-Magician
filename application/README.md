@@ -449,7 +449,7 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
                 Require all granted
             </Files>
         </Directory>
-        WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician python-home=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
+        WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician python-home=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
         WSGIProcessGroup kitchen_magician
         WSGIScriptAlias / /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/wsgi.py
 
