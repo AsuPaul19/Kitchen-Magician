@@ -1,0 +1,79 @@
+/* SHOWCASE */
+#showcase .container {
+    background-image: url("../images/board.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    height: 700px;
+    min-width: 30px; /*min- make the font responsive*/
+    margin-bottom: 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#showcase #search-box {
+    background-color: #fef9f6;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height:40px;
+    border-radius: 50px;
+    /* display: flex;
+    justify-content: space-between; */
+    padding: 0px 10px;
+} 
+
+#showcase #search-box .search-text {
+    background-color: #fef9f6;
+    border: none;
+    outline: none;
+    border-radius: 50px 0 0 50px;
+    padding: 0px 10px;
+    width: 450px;
+    color: black;
+    font-size: 15px;
+    float:left;
+    line-height: 40px;
+}
+
+/* Method 1 */
+#showcase #search-box .search-btn {
+    color: #fef9f6;
+    float: right;
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */      
+}
+
+#showcase #search-box .search-btn i {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+/* Method 2 */
+/* #showcase #search-box .search-btn {
+    color: #fef9f6;
+    float: right;
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+} */
+
+
+#showcase a {
+    position: center;
+}
+

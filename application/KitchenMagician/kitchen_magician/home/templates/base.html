@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}" />
+        {% block css %}{% endblock css %}
+
+        {% if title %}
+        <title>Kitchen Magician - {{ title }}</title>
+        {% else %}
+        <title>Kitchen Magician</title>
+        {% endif %}
+    </head>
+
+
+    <body>
+        <header id="header">
+            <div class="container">
+                <a href="{% url 'home' %}" class="KitchenMagician">Kitchen Magician</a>
+                <ul id="ul-nav-link">
+                    <li class="nar-link"><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li class="nar-link"><a href="{% url 'groups' %}">GROUPS</a></li>
+                    <!-- TO-DO Remove the profile  -->
+                    <li class="nar-link"><a href="#">PROFILE</a></li>
+
+                    <!-- Jeff's Search -->
+
+                    <form method="POST" action="{% url 'search' %}">
+                        {% csrf_token %}
+                        <select name="filter" id="filter" class="form-control form-control-sm">
+                            <option value="none"> -- select an option -- </option>
+                            <option value="title">Title</option>
+                            <option value="author">Author</option>
+                            <option value="content">Content</option>
+                        </select>
+                        <input type="text" placeholder="Enter Keywords" name = "keyword">
+                        <input type="submit" value="Submit">
+                    </form>   
+
+                    <!-- Allen's search -->
+                    <!-- <li id="search">
+                        <form action="{% url 'search' %}" method="POST" id="search-form"> -->
+                            <!-- Authentication Token -->
+                            <!-- {% csrf_token %}
+                            <div id="search-box" class="search-box-block">
+                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Find Recipes For You">
+                                <div class="search-btn" type="submit">
+                                    <button type="submit"  class="fas fa-search"></button>
+                                </div>
+                            </div> 
+
+
+                        </form>
+                    </li> -->
+                    
+                    <li class="nar-link"><a href="#">LOG IN/SIGN UP</a></li>
+                </ul>
+            </div>
+        </header>
+        
+
+        {% block content %}{% endblock content %}
+
+        <footer id="main-footer">
+            <p>&copy; 2020 Kitchen Magician Inc.</p>
+        </footer>
+    
+    </body>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    {% block script %}{% endblock script %}
+
+</html>
