@@ -14,6 +14,7 @@ class Recipe(models.Model):
   author = models.ForeignKey(User, on_delete=models.CASCADE)
   date_created = models.DateTimeField(default=timezone.now)
   content = models.TextField()
+  cover = models.ImageField(upload_to='images/')
 
   # to make output more descriptive in Python shell
   def __str__(self):

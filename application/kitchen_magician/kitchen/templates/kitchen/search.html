@@ -1,10 +1,13 @@
 <!-- kitchen/template/search.html -->
-<!-- Programmers: Jeff C Cheng, Allen Sun -->
+<!-- Programmers: Jeff C Cheng, Allen Sun. Kevin Wei -->
 <!-- Last Modified: 11/1/2020 -->
 <!-- use Django template in base.html -->
 <!-- get results from kitchen/views.py through context, which includes user's search query -->
+<!-- added image display and changed display size -->
 
 {% extends "kitchen/base.html" %}
+{% load static %}
+
 from django.contrib.auth.models import User
 from .models import Recipe
 from django.db.models import Q
@@ -30,6 +33,8 @@ from django.db.models import Q
             </div>
             <h3><a class="article-title" href="#">Title: {{ recipe.title }}</a></h3>
             <p class="article-content">{{ recipe.content }}</p>
+            <img src="{{ recipe.cover.url }}" width="45" height="45">
+            <!-- <img src="{{ post.cover.url}}" alt="{{ post.title }}"> -->
             </div>
         </article>    
     {% endfor %}
