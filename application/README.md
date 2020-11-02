@@ -316,7 +316,7 @@ DATABASES = {
         'USER': 'team1',
         'PASSWORD': 'team1',
         #Database Name
-        'NAME': 'fridge',
+        'NAME': 'kitchen_magician',
         # character 
         'CHARSET': 'utf8',
         # Timezone
