@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block css %}    
+        <link rel="stylesheet" href="{% static 'search/css/search.css' %}">
+        {% endblock css %}    
+
+
+        {% block content %}
+        <section id="search">
+            <div class="container">
+                <h2 class="search-result-title">
+                    All results for: {{ keywords }}
+                </h2>
+                <form action="" method="POST" class="search-keywords">
+                    <div class="search-block-from">
+                        <!-- Authentication Token -->
+                        {% csrf_token %}
+                        <input type="text" name="keywords" maxlength="150" autofocus="" class="textinput textInput form-control">
+                        <button class="search-btn" type="submit">Search</button>
+                    </div>
+                </form>
+                {% for recipe in recipes %}
+                <p>{{ recipe }}</p>
+                {% endfor %}
+            </div>
+        </section>
+        {% endblock content %}

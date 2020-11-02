@@ -52,5 +52,41 @@ Input password: `team1`
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
 
+## Django Admin
 
+**Application Administration**: https://www.allensun623.com/admin
+
+```
+user: team1
+password: team1
+```
+
+
+
+## Issues
+
+- **UNPROTECTED PRIVATE KEY FILE!**
+  - ERROR
+
+  ```
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  Permissions 0555 for '/Users/allen/Desktop/team1.pub' are too open.
+  It is required that your private key files are NOT accessible by others.
+  This private key will be ignored.
+  Load key "/Users/allen/Desktop/team1.pub": bad permissions
+  ```
+
+  - Solution
+
+  What happened is the key you're trying to use (key.pem in the example above) is too accessible to users on the system.
+
+  This is a bad thing because then you're not the only one able to use the key, which defeats the purpose. Private keys should only be accessible to one user.
+
+  For example, if an attacker somehow gains access to any of the accounts on your system, then they'd be able access the key, as opposed to having to get access to your account specifically. This gives them too many opportunities to get to the private key.
+
+  ```
+  sudo ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
+  ```
 

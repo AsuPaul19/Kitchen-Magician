@@ -7,14 +7,32 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
-**Implement APP to GCP**
+# High-level System Architecture and Technologies
 
-- [Ubuntu](##Ubuntu)
-- [MySQL-on-GCP-VM-Engine](##MySQL-on-GCP-VM-Engine)
-- [Apache-Server](##Apache-Server)
-- [Domain](##Domain)
-- [Create-SSL-Certificate](##Create-SSL-Certificate)
-- [Issues](##Issues)
+| System Architecture and Technologies | Tootls/Version |
+|    :--    |     :--     |
+| Server Host | Google Compute Engine 2vCPU 4 GB RAM |
+| Operating System | Ubuntu 20.04 LTS |
+| Database | MySQL 8.0.21 |
+| Web Server | Apache 2.4 |
+| Server-Side Language | Python 3.7+ |
+| Front-Side Language | HTML5, CSS3, JavaScript |
+| Supported Browsers | Chrome 85.0.4183.121+, Firefox 81.0.1+|
+| Web Framework | Django 3.1.2+ |
+| IDE | VS Code |
+| Web Analytics | GTmetrix |
+| SSL Cert | Certbot |
+
+
+
+# **Implementation to GCP**
+
+- [Ubuntu](#Ubuntu)
+- [MySQL-on-GCP-VM-Engine](#MySQL-on-GCP-VM-Engine)
+- [Apache-Server](#Apache-Server)
+- [Domain](#Domain)
+- [Create-SSL-Certificate](#Create-SSL-Certificate)
+- [Issues](#Issues)
 
 
 ## Ubuntu 
@@ -161,6 +179,11 @@ cat /etc/os-release
 
   - **[Tutorial - Remote access to mysql on google compute engine](https://www.youtube.com/watch?v=8oF4ku_7vxM)**
 
+  - **[MySQL Crash Course | Learn SQL](https://www.youtube.com/watch?v=9ylj9NR0Lcg)**
+
+  - **[MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3)**
+
+  - **[Handy MySQL Commands](http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm)**
 
 1. **Install MySQL on VM Instance**
 
@@ -293,7 +316,7 @@ DATABASES = {
         'USER': 'team1',
         'PASSWORD': 'team1',
         #Database Name
-        'NAME': 'fridge',
+        'NAME': 'kitchen_magician',
         # character 
         'CHARSET': 'utf8',
         # Timezone
@@ -311,6 +334,8 @@ DATABASES = {
 
   - **[27 | Host django application using apache and wsgi | by Hardik Patel](https://www.youtube.com/watch?v=s0RX_YU9eJM&t=948s)**
 
+  - **[Using Apache Bench for Simple Load Testing](https://www.petefreitag.com/item/689.cfm)**
+
 1. **Install Apache**
 
   ```
@@ -322,8 +347,14 @@ DATABASES = {
   ```
   sudo apachectl start
   ```
+  
+  or use the heigher authority, system control
 
-  open External Ip or localhost to see a "It works" page.
+  ```
+  sudo systemctl start apache2.service
+  ```
+
+  open External Ip or localhost to see a "It works" or "Ubuntu" page.
 
 
 3. **Install WSGI**
@@ -373,8 +404,8 @@ DATABASES = {
     ```
         DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static>
+        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static
+        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static>
             Require all granted
         </Directory>
         
@@ -416,22 +447,22 @@ DATABASES = {
     <VirtualHost *:80>
         . . .
 
-        DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
+        DocumentRoot /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/magician/static>
+        Alias /static /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static>
             Require all granted
         </Directory>
 
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge>
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician>
             <Files wsgi.py>
                 Require all granted
             </Files>
         </Directory>
         
-        WSGIDaemonProcess fridge python-path=/home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge python-home=/home/allen/csc-648-848-04-jose-fall-2020-01/application/env
-        WSGIProcessGroup fridge
-        WSGIScriptAlias / /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/wsgi.py
+        WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
+        WSGIProcessGroup kitchen_magician
+        WSGIScriptAlias / /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/wsgi.py
 
     </VirtualHost>
     ```
@@ -559,3 +590,29 @@ sudo ufw allow https
     Consider using the `--user` option or check the permissions.
     ```
   - Solution: don't use `remote shh key` and `GCP SSH` to access the same user and make installation.
+
+- **Django Admin Page No CSS**
+  *Reference*
+    - **[Django admin site not showing CSS style](https://stackoverflow.com/questions/28728912/django-admin-site-not-showing-css-style/28728935)**
+
+    - **[why my django admin site does not have the css style](https://stackoverflow.com/questions/4420378/why-my-django-admin-site-does-not-have-the-css-style)**
+
+  - ERROR
+  ```
+  Django admin website (it's completely default, not customized) is not showing the expected CSS.
+  ```
+
+  - Solution: collect static, and change Apache Configurations static to project path
+
+  ```
+  python manage.py collectstatic
+  python3 manage.py collectstatic
+  ```
+  
+  In `settings.py`
+  ```
+  import os.path  import sys
+  PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+  STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+  STATIC_URL = '/static/'
+  ```

@@ -1,0 +1,222 @@
+$textColor: #f56a58;
+$backgroundColor: #fef9f6;
+
+/*showcase-carousel*/
+section#showcase-carousel {
+    width: 100%;
+    .container {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        #myCarousel{
+            margin: 0;
+            ul.carousel-indicators {
+                li {
+                    width: 15px;
+                    height: 15px;
+                    margin: 0.3rem;
+                    border: 2.5px solid #f56a58;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    &.active {
+                        background-color: #f56a58;
+                    }
+                } 
+            }
+            .carousel-inner {
+                width: 100%;
+                margin: 0;
+                img {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+            .btn-carousel {
+                span {
+                    background-image: none;
+                    transform: translateY(-50%);
+                    padding: 1.2rem 1rem;
+                    border-radius: 5px;
+                    background-color: #fef9f6;
+                    border: 2.5px solid #f56a58;
+                    outline: none;
+                    cursor: pointer;
+                    opacity: 0.5;
+                    -webkit-transition: 0.3s;
+                    transition: 0.3s;
+                    width: auto;
+                    height: auto; 
+                }
+                &:hover {
+                    opacity: 0.8;
+                }
+                &.active {
+                    opacity: 0.8;
+                    background-color: #fef9f6;
+                }
+            }
+            .carousel-control-prev {
+            }
+            .carousel-control-next {
+            }
+        }
+    }
+}
+
+
+/*banner*/
+#banner {
+    .container {
+        background-image: url("../images/banner/wall.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-attachment: fixed;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 400px;
+        min-width: 40px; /*min- make the font responsive*/
+        margin-bottom: 0px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: 1rem;
+        #showcase-title-block {
+            color: #fef9f6;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* background: rgba(174, 115, 38, 0); */
+            /* background: rgba(0, 0, 0, 0.2); */
+            h1 {
+                color: #f56a58;
+                margin: 0;
+                font-size: 45px;
+                position: center;
+                word-spacing: 0.5em;
+                line-height: 2em;
+                padding-top: 100px;
+            }
+            #title-line {
+                background-color: #f56a58;
+                height: 0.1rem;
+                width: 13rem;
+            }
+            h2 {
+                color: #f56a58;
+                font-size: 1.6em;
+                line-height: 2em;
+                word-spacing: 2em;
+                padding-bottom: 100px;
+            }
+        }
+    }
+}
+
+
+/*groups-carousel*/
+// #groups-carousel {
+//     .container {
+//         overflow-x: hidden;
+//         background-image: url("../images/banner/wall.jpg");
+//         max-width: 100%;
+//         padding: 0;
+//         .hi-side {
+//             position: relative;
+//             width: 754px;
+//             height: 400px;
+//             margin: 115px auto 0;
+//             .btn {
+//                 position: absolute;
+//                 top: 50%;
+//                 width: 40px;
+//                 height: 40px;
+//                 margin-top: -20px;
+//                 border-radius: 50px;
+//                 line-height: 40px;
+//                 text-align: center;
+//                 cursor: pointer;
+//                 background-color: $textColor;
+//                 color: $backgroundColor;
+//                 transition: all 0.7s;
+//                 font-size: 20px;
+//                 font-weight: bold;;
+//                 &:hover {
+//                     opacity: 1;
+//                     background-color: #e67c6f;
+//                 }
+//             }
+//             #hi-prev {
+//                 left: -70px;
+//                 &::before {
+//                     content: '<';   
+//                 }  
+//             }
+//             #hi-next {
+//                 right: -70px;
+//                 &::before {
+//                     content: '>'; 
+//                 }   
+//             }
+//             ul {
+//                 list-style: none;
+//                 // position: relative;
+//                 width: 754px;
+//                 height: 292px;
+//                 margin: 0;
+//                 padding: 0;
+//                 li {
+//                     overflow: hidden;
+//                     position: absolute;
+//                     z-index: 0;
+//                     left: 377px;
+//                     top: 147px;
+//                     width: 0;
+//                     height: 0;
+//                     margin: 0;
+//                     padding: 0;
+//                     border: 3px solid $textColor;
+//                     background-color: black;
+//                     cursor: pointer;
+//                 }
+//                     .img {
+//                         width: 100%;
+//                         height:100%;
+//                         background-position: center;
+//                     }
+//             }
+//         }
+//     }
+// }
+
+
+
+/* IMAGES GALLERY */
+#images {
+    .container {
+    max-width: 100%;
+    display: grid;
+    height: auto;
+    margin: 2rem auto;
+    // margin-top: 100px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-content: space-around;
+        img {
+            width: 100%;
+            position: right;
+        }
+        .images-img {
+            height: 600px;
+            object-fit: cover;
+        }
+    }
+}
