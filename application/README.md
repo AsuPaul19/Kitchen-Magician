@@ -447,22 +447,22 @@ DATABASES = {
     <VirtualHost *:80>
         . . .
 
-        DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
+        DocumentRoot /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static>
+        Alias /static /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static>
             Require all granted
         </Directory>
 
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge>
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician>
             <Files wsgi.py>
                 Require all granted
             </Files>
         </Directory>
         
-        WSGIDaemonProcess fridge python-path=/home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge python-home=/home/allen/csc-648-848-04-jose-fall-2020-01/application/env
-        WSGIProcessGroup fridge
-        WSGIScriptAlias / /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/wsgi.py
+        WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
+        WSGIProcessGroup kitchen_magician
+        WSGIScriptAlias / /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/wsgi.py
 
     </VirtualHost>
     ```
