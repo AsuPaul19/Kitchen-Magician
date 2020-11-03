@@ -9,13 +9,13 @@
 
 1. Server URL or IP: 34.66.161.176
 2. SSH username: allen
-3. SSH password or key. files: `team1` and `team1.pub`
+3. SSH password or key. files: `kitchen_magician` and `kitchen_magician.pub`
     <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used. 34.123.110.159
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username: team1
-6. Database password: team1
-7. Database name (basically the name that contains all your tables): fridge
+5. Database username: kitchen_magician
+6. Database password: kitchen_magician
+7. Database name (basically the name that contains all your tables): kitchen_magician
 8. Instructions on how to use the above information.
 
 
@@ -27,13 +27,13 @@ Enter command:
 ssh -i <key path> allen@34.66.161.176
 ```
 
-`<key path>` is the place where you store the downloaded keys `team1` and `team1.pub`, i.g.:
+`<key path>` is the place where you store the downloaded keys `kitchen_magician` and `kitchen_magician.pub`, i.g.:
 
 ```
-ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
+ssh -i ~/Desktop/SFSU/ssh/kitchen_magician kitchen_magician@34.66.161.176
 ```
 
-Input password: `team1`
+Input password: `kitchen_magician`
 
 
 
@@ -72,10 +72,10 @@ password: team1
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  Permissions 0555 for '/Users/allen/Desktop/team1.pub' are too open.
+  Permissions 0555 for '/Users/allen/Desktop/kitchen_magician.pub' are too open.
   It is required that your private key files are NOT accessible by others.
   This private key will be ignored.
-  Load key "/Users/allen/Desktop/team1.pub": bad permissions
+  Load key "/Users/allen/Desktop/kitchen_magician.pub": bad permissions
   ```
 
   - Solution
@@ -87,6 +87,6 @@ password: team1
   For example, if an attacker somehow gains access to any of the accounts on your system, then they'd be able access the key, as opposed to having to get access to your account specifically. This gives them too many opportunities to get to the private key.
 
   ```
-  sudo ssh -i ~/Desktop/SFSU/ssh/team1 allen@34.66.161.176
+  sudo ssh -i ~/Desktop/SFSU/ssh/kitchen_magician kitchen_magician@34.66.161.176
   ```
 
