@@ -210,7 +210,7 @@ sqlparse==0.4.1
         # python3
         pip3 list
         ```
-        
+
         - Compare with the list of required packaged. Install missed package individually. 
         ```
         # python
@@ -218,4 +218,15 @@ sqlparse==0.4.1
 
         # python3 
         python3 -m pip install package-name
+        ```
+
+        **All required packages**
+        ```
+        asgiref==3.2.10
+        Django==3.1.1
+        django-crispy-forms==1.9.2
+        mysqlclient==2.0.1
+        Pillow==8.0.1
+        pytz==2020.1
+        sqlparse==0.4.1
         ```
