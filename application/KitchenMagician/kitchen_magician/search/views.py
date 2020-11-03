@@ -1,9 +1,9 @@
 from typing import Counter
 from django.shortcuts import render
-from .models import Recipe
-from .models import RecipeInformation
+from recipe.models import Recipe
+from recipe.models import RecipeInformation
 from django.contrib.auth.models import User
-from .models import RecipeTest
+from recipe.models import RecipeTest
 from django.db.models import Q
 
 

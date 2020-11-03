@@ -4,15 +4,15 @@
 # import django
 # django.setup()
 
-from ..models import Recipe
-from ..models import RecipeType
-from ..models import RecipeTypeItem
-from ..models import RecipeIngredient
-from ..models import RecipeIngredientItem
-from ..models import RecipeInformation
-from ..models import RecipeInstruction
-from ..models import RecipeImage
-from ..models import RecipeVideo
+from recipe.models import Recipe
+from recipe.models import RecipeType
+from recipe.models import RecipeTypeItem
+from recipe.models import RecipeIngredient
+from recipe.models import RecipeIngredientItem
+from recipe.models import RecipeInformation
+from recipe.models import RecipeInstruction
+from recipe.models import RecipeImage
+from recipe.models import RecipeVideo
 from django.contrib.auth.models import User
 
 # Example for Testing 
