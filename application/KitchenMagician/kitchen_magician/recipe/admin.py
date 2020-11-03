@@ -13,6 +13,7 @@ from .models import RecipeImage
 from .models import RecipeVideo
 from .models import RecipeFavorite
 from .models import RecipeUpvote
+from .models import RecipeComment
 
 admin.site.register(RecipeTest)
 
@@ -26,3 +27,4 @@ admin.site.register(RecipeInstruction)
 admin.site.register(RecipeImage)
 admin.site.register(RecipeFavorite)
 admin.site.register(RecipeUpvote)
+admin.site.register(RecipeComment)
