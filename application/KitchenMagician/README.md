@@ -27,16 +27,16 @@ Folder Tree
     |-- README.md
     |-- env
     |-- kitchen_magician
-    |-- about
-    |-- home 
-    |-- media
-    |-- users
-    |-- db.sqlite3       
-    |-- kitchen_magician 
-    |-- recipe
-    |-- groups           
-    |-- manage.py        
-    |-- search
+    |   |-- about
+    |   |-- home 
+    |   |-- media
+    |   |-- users
+    |   |-- db.sqlite3       
+    |   |-- kitchen_magician 
+    |   |-- recipe
+    |   |-- groups           
+    |   |-- manage.py        
+    |   |-- search
     |-- requirements.txt
 ```
 
