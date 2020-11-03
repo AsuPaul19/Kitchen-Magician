@@ -1,6 +1,6 @@
 # **Implementation**
 -   [Tutorial](#Tutorial)
--   [Setup(MacOS)](#Setup(MacOS&Ubuntu))
+-   [Setup (MacOS)](#Setup(MacOS&Ubuntu))
 
 ## Tutorial
 
@@ -74,7 +74,7 @@ sudo apt-get upgrade python
         sudo apt-get install python3-venv
         ```
 
-    2. Create env and activate (If this no `env` in the folder, create one; otherwise, skip this step)
+    2. Create virtual environment `env` and activate (If this no `env` in the folder, create one; otherwise, skip this step)
 
         - create env 
 
@@ -82,7 +82,7 @@ sudo apt-get upgrade python
             python3 -m venv env
             ```
 
-        - activate env
+        - activate `env`
 
             ```shell
             source env/bin/activate
