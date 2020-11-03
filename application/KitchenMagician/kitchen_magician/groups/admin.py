@@ -1,3 +1,11 @@
 from django.contrib import admin
+from .models import Group
+from .models import GroupComment
+from .models import GroupType
+from .models import GroupUser
 
-# Register your models here.
+
+admin.site.register(Group)
+admin.site.register(GroupComment)
+admin.site.register(GroupType)
+admin.site.register(GroupUser)
