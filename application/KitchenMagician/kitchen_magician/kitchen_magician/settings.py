@@ -25,12 +25,14 @@ SECRET_KEY = '9**72xnyzkov1ll6bc^!wiaed6b$b=g=#^+4(f)ti5qm3_u*nk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-	'34.66.161.176', # Apache-server IP
-	'allensun623.com', # Public domain
-	'www.allensun623.com', # Public domain
-]
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+# 	'34.66.161.176', # Apache-server IP
+# 	'allensun623.com', # Public domain
+# 	'www.allensun623.com', # Public domain
+# ]
+
+ALLOWED_HOSTS = ['*']  # Allow all hosts
 
 
 # Application definition
