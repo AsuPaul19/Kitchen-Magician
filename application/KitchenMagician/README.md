@@ -67,6 +67,7 @@ sudo apt-get upgrade python
 
 
 
+
 3. **Setup env**
 
     1. Install `python3-venv` for Ubuntu only.
@@ -81,6 +82,11 @@ sudo apt-get upgrade python
 
             ```shell
             python3 -m venv env
+            ```
+
+            - Window
+            ```shell
+            py -m venv env
             ```
 
         - activate `env`
@@ -190,6 +196,18 @@ sqlparse==0.4.1
 
     -   Solution: Try to call the python binary at your virtualenv explicitly:
 
+        - Local
+
+        ```
+        # python
+        python manage.py runserver
+
+        # python 3
+        python3 manage.py runserver
+        ```
+
+
+        - Cloud
         ```
         sudo $(which python) manage.py runserver 0.0.0.0:80
         ```
@@ -218,6 +236,11 @@ sqlparse==0.4.1
 
         # python3 
         python3 -m pip install package-name
+        ```
+
+        - windows 
+        ```
+        py -m pip install package-name
         ```
 
         **All required packages**
