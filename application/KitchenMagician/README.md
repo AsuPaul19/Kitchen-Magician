@@ -202,8 +202,6 @@ sqlparse==0.4.1
         ```
 
     - Solution: 
-        - try 
-
         - View all packages you have installed in the environment.
         ```
         # python
