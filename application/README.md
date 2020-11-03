@@ -42,7 +42,7 @@ version -- 20.04.1 LTS (Focal Fossa)
 cat /etc/os-release
 ```
 
-1. Upgrade python
+1. **Upgrade python**
 
 ```
 sudo apt-get upgrade
@@ -391,10 +391,10 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
     We will use an alias to tell Apache to map any requests starting with /static to the “static” directory within our project folder. Change the DocumentRoot.
 
     ```
-        DocumentRoot /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend
+        DocumentRoot /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician
 
-        Alias /static /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/static>
+        Alias /static /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static>
             Require all granted
         </Directory>
 
@@ -405,7 +405,7 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
     Next, we’ll grant access to the wsgi.py file within the second level project directory where the Django code is stored. To do this, we’ll use a directory section with a file section inside. We will grant access to the file inside of this nested construct:
 
     ```
-        <Directory /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge>
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician>
             <Files wsgi.py>
                 Require all granted
             </Files>
@@ -417,9 +417,9 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
     Afterwards, we need to specify the process group. This should point to the same name we selected for the WSGIDaemonProcess directive (myproject in our case). Finally, we need to set the script alias so that Apache will pass requests for the root domain to the wsgi.py file:
 
     ```
-        WSGIDaemonProcess fridge python-path=/home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge python-home=/home/allen/csc-648-848-04-jose-fall-2020-01/application/env
-        WSGIProcessGroup fridge
-        WSGIScriptAlias / /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/wsgi.py
+        WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician python-home=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
+        WSGIProcessGroup kitchen_magician
+        WSGIScriptAlias / /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/wsgi.py
     ```
     
 
@@ -455,16 +455,14 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
 
     </VirtualHost>
     ```
-        WSGIDaemonProcess fridge python-path=/home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge python-home=/home/allen/csc-648-848-04-jose-fall-2020-01/application/env
-        WSGIProcessGroup fridge
-        WSGIScriptAlias / /home/allen/csc-648-848-04-jose-fall-2020-01/application/backend/fridge/fridge/wsgi.py
+
 4. **Restart Apache**
 
 ```
-sudo apachctl restart
+sudo apachectl restart
 
 # or
-sudo serveice apache2 restart
+sudo service apache2 restart
 ```
 
 ## Domain
