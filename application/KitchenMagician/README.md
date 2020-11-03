@@ -1,6 +1,7 @@
 # **Implementation**
 -   [Tutorial](#Tutorial)
 -   [Setup (MacOS)](#Setup(MacOS&Ubuntu))
+-   [Issues](#Issues)
 
 ## Tutorial
 
@@ -153,4 +154,70 @@ sqlparse==0.4.1
     - Open the link `http://127.0.0.1:8000/`
 
 
-<!-- -   [Issues](#Issues) -->
+
+## Issues:
+
+-   **Virtual Environment**
+
+    -   ERROR
+
+        ```
+        Traceback (most recent call last):
+          File "manage.py", line 21, in <module>
+            main()
+          File "manage.py", line 12, in main
+            raise ImportError(
+        ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+        ```
+
+    -   Solution:
+        Run env:
+
+        ```
+        source env/bin/activate
+        ```
+
+-   **Port Permission**
+
+    -   ERROR
+
+        ```
+        Django version 3.1, using settings 'mid_pipe.settings'
+        Starting development server at http://0.0.0.0:80/
+        Quit the server with CONTROL-C.
+        Error: You don't have permission to access that port.
+        ```
+
+    -   Solution: Try to call the python binary at your virtualenv explicitly:
+
+        ```
+        sudo $(which python) manage.py runserver 0.0.0.0:80
+        ```
+
+-   **Consider using the `--user` option or check the permissions.**    
+    - ERROR
+        ```
+        ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: 'c:\\python38\\Scripts\\django-admin.py'
+        Consider using the `--user` option or check the permissions.
+        ```
+
+    - Solution: 
+        - try 
+
+        - View all packages you have installed in the environment.
+        ```
+        # python
+        pip
+
+        # python3
+        pip3 list
+        ```
+        
+        - Compare with the list of required packaged. Install missed package individually. 
+        ```
+        # python
+        python -m pip install package-name
+
+        # python3 
+        python3 -m pip install package-name
+        ```
