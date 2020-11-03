@@ -1,6 +1,6 @@
 # **Implementation**
 -   [Tutorial](#Tutorial)
--   [Setup (MacOS)](#Setup(MacOS&Ubuntu))
+-   [Setup(MacOS&Ubuntu)](#Setup(MacOS&Ubuntu))
 -   [Issues](#Issues)
 
 ## Tutorial
@@ -17,7 +17,7 @@
 
 
 
-## Setup (MacOS)
+## Setup(MacOS&Ubuntu)
 
 
 
