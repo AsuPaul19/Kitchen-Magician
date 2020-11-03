@@ -1,6 +1,25 @@
 # **Implementation**
+-   [Setup(MacOS)](#Setup(MacOS))
+-   [Tutorial](#Tutorial)
+-   [Create-SSL-Certificate](#Create-SSL-Certificate)
+-   [Issues](#Issues)
 
--   [Setup(MacOS)](#Setup)
+## Tutorial
+
+**Django**
+- [Python Django Tutorial: Full-Featured Web App Part 1 - Getting Started](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
+- [Python Django Tutorial: Full-Featured Web App Part 2 - Applications and Routes](https://www.youtube.com/watch?v=a48xeeo5Vnk&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=2)
+- [Python Django Tutorial: Full-Featured Web App Part 3 - Templates](https://www.youtube.com/watch?v=qDwdMDQ8oX4&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=3)
+- [Python Django Tutorial: Full-Featured Web App Part 5 - Database and Migrations](https://www.youtube.com/watch?v=aHC3uTkT9r8&list=PLoOI5nqM9nMkx6LK81fcAcO9CUkZN5v52&index=13&t=1932s)
+
+**Python**
+- [Python Tutorial: VENV (Mac & Linux) - How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=Kg1Yvry_Ydk)
+
+
+
+
+## Setup (MacOS)
+
 
 
 Folder Tree
@@ -32,20 +51,30 @@ sudo apt-get upgrade python
 
 2. **Install PIP**
 
-```shell
-# python 2
-sudo apt-get install python-pip
-# python 3
-sudo apt-get install python3-pip
-```
+
+-  Ubuntu
+
+    ```shell
+    # python 2
+    sudo apt-get install python-pip
+    # python 3
+    sudo apt-get install python3-pip
+    ```
+
+- Mac
+    ```shell
+    sudo easy_install pip
+    ```
+
+
 
 3. **Setup env**
 
-    1. Install `python3-venv`
-
-    ```shell
-    sudo apt-get install python3-venv
-    ```
+    1. Install `python3-venv` for Ubuntu only.
+    - Ubuntu
+        ```shell
+        sudo apt-get install python3-venv
+        ```
 
     2. Create env and activate (If this no `env` in the folder, create one; otherwise, skip this step)
 
@@ -86,7 +115,7 @@ sqlparse==0.4.1
 
 
 5. **Run the development server**
-    - Go to the folder `kitchen_magician`
+    1. Go to the folder `kitchen_magician`
 
     ```bash
     -- kitchen_magician
@@ -102,7 +131,7 @@ sqlparse==0.4.1
         |-- search
     ```
 
-    - Run the application:
+    2. Run the application:
     ```shell
     # python2
     python manage.py runserver
@@ -111,9 +140,9 @@ sqlparse==0.4.1
     python3 manage.py runserver
     ```
 
-    - If everything works, you see the following output on the command line:
+    3. If everything works, you see the following output on the command line:
 
-    ```shell
+    ``` 
     Watching for file changes with StatReloader
     Performing system checks...
 
@@ -126,4 +155,4 @@ sqlparse==0.4.1
     - Open the link `http://127.0.0.1:8000/`
 
 
--   [Issues](#Issues)
+<!-- -   [Issues](#Issues) -->
