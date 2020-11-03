@@ -1,8 +1,6 @@
 # **Implementation**
--   [Setup(MacOS)](#Setup(MacOS))
 -   [Tutorial](#Tutorial)
--   [Create-SSL-Certificate](#Create-SSL-Certificate)
--   [Issues](#Issues)
+-   [Setup(MacOS)](#Setup(MacOS&Ubuntu))
 
 ## Tutorial
 
