@@ -23,18 +23,20 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 0 auto;
+        margin: 1rem auto;
     }
 }
 
 /* HEADER */
 #header {
+    padding: 0;
     .container {
         display: flex;
         margin: 2rem auto;
         padding: 0;
-        // justify-content: space-around;
-        // overflow: hidden;
+        width: 100%;
+        justify-content: space-between;
+        overflow: hidden;
         .KitchenMagician {
             display: flex;
             flex: left;
@@ -192,4 +194,48 @@ body {
         max-width: 1140px;
     }
 
+}
+
+@media (min-width: 1366px) {  
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1440px) {  
+    .container {
+        max-width: 1366px;
+    }
+}
+
+@media (min-width: 1600px) {  
+    .container {
+        max-width: 1536px;
+    }
+}
+
+@media (min-width: 1680px) {  
+    .container {
+        max-width: 1600px;
+    }
+}
+
+
+@media (min-width: 1920px) {  
+    .container {
+        max-width: 1600px;
+    }
+}
+
+
+@media (min-width: 2048px) {  
+    .container {
+        max-width: 1920px;
+    }
+}
+
+@media (min-width: 2160px) {  
+    .container {
+        max-width: 2048px;
+    }
 }
