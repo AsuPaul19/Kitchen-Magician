@@ -29,6 +29,7 @@ body .container {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
+  padding: 0;
 }
 
 /* HEADER */

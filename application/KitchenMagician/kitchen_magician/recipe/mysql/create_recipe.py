@@ -17,11 +17,16 @@ from django.contrib.auth.models import User
 
 # Example for Testing 
 def test_recipe():
+    # Add more items:
+    # Change type to course
+    # preperation time
+    # quantity serve
+
     recipe = {
         "user_id": 1,
         "name": "Grilled Marinated Shrimp",
         "preparation_time": 20,
-        "types": ["lunch", "dinner"],
+        "types": ["Main Dishes", "Breakfast/Brunch"],
         "information": "This makes the best shrimp! Remove from skewers and serve on a bed of pasta with sauce for a great meal.",
         "ingredients": ["shrimp", "garlic", "lemon", "butter"],
         "instructions": [

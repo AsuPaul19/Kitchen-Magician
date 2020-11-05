@@ -6,3 +6,4 @@ def login(request):
         'title': 'LOGIN'
     }
     return render(request, 'login.html', context)
+

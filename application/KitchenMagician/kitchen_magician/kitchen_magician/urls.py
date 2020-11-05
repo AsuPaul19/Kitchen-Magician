@@ -11,7 +11,7 @@ from users import views as users_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_views.search, name='search'),
-    path('recipe/', recipe_views.recipe, name='recipe'),
+    path('recipe/', include('recipe.urls')),
     path('groups/', groups_views.groups, name='groups'),
     path('login/', users_views.login, name='login'),
     path('', include('home.urls')),

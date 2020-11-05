@@ -20,12 +20,12 @@ class RecipeTest(models.Model):
         return self.title
 
 
+# Allen's
 class Recipe(models.Model):
     # CASCADE, once the user is deleted, the recipe will be deleted automatically
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, verbose_name='Name')
-    # we store time as minutes. convert it to hours : minutes when we use it
-    preparation_time = models.IntegerField(default=0)
+    quantity_serve = models.IntegerField()
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(default=timezone.now)
 
@@ -36,26 +36,58 @@ class Recipe(models.Model):
         return f'{self.name} by {self.user.username}'
 
 
-class RecipeType(models.Model):
-    type = models.CharField(max_length=50)
-
+class RecipePreparationTime(models.Model):
+    preparation_time = models.CharField(max_length=20)
+    preparation_time_max = models.IntegerField()
+    preparation_time_min = models.IntegerField()
     class Meta():
-        db_table = 'recipe_type'
+        db_table = 'recipe_preparation_time'
 
     def __str__(self):
-        return self.type
+        return self.preparation_time
 
-
-class RecipeTypeItem(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
+class RecipePreparationTimeItem(models.Model):
+        # CASCADE, once the user is deleted, this item will be deleted automatically
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    recipe_type = models.ForeignKey(RecipeType, on_delete=models.CASCADE)
+    preparation_time = models.ForeignKey(RecipePreparationTime, on_delete=models.CASCADE)
 
     class Meta():
-        db_table = 'recipe_type_item'
+        db_table = 'recipe_preparation_time_item'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.recipe_type.type}'
+        return f'{self.preparation_time.preparation_time} - {self.recipe.name}'
+
+class RecipeQuantityServe(models.Model):
+    quantity_serve = models.CharField(max_length=8)
+    quantity_serve_num = models.IntegerField()
+
+    class Meta():
+        db_table = 'recipe_quantity_serve'
+
+    def __str__(self):
+        return self.quantity_serve
+
+
+class RecipeCourse(models.Model):
+    course = models.CharField(default='Others', max_length=50)
+
+    class Meta():
+        db_table = 'recipe_course'
+
+    def __str__(self):
+        return self.course
+
+
+class RecipeCourseItem(models.Model):
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe_course = models.ForeignKey(RecipeCourse, on_delete=models.CASCADE)
+
+    class Meta():
+        db_table = 'recipe_course_item'
+
+    def __str__(self):
+        return f'{self.recipe.name} - {self.recipe_course.course}'
 
 
 class RecipeIngredient(models.Model):
@@ -177,3 +209,46 @@ class RecipeComment(models.Model):
 
     def __str__(self):
         return f'Recipe - {self.recipe.name}, User - {self.user.username}, Comment - {self.comment}'
+
+
+class RecipeOccasion(models.Model):
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    name = models.CharField(max_length=50)
+
+    class Meta():
+        db_table = 'recipe_occasion'
+
+    def __str__(self):
+        return self.name
+
+class RecipeOccasionItem(models.Model):
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    occasion = models.ForeignKey(RecipeOccasion, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    class Meta():
+        db_table = 'recipe_occasion_item'
+
+    def __str__(self):
+        return f'{self.occasion.name} - {self.recipe.name}'
+
+class RecipeDiet(models.Model):
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    name = models.CharField(max_length=50)
+
+    class Meta():
+        db_table = 'recipe_diet'
+
+    def __str__(self):
+        return self.name
+
+class RecipeDietItem(models.Model):
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    diet = models.ForeignKey(RecipeDiet, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    class Meta():
+        db_table = 'recipe_diet_item'
+
+    def __str__(self):
+        return f'{self.diet.name} - {self.recipe.name}'

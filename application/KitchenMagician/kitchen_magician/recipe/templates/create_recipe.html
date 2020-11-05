@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'recipe/css/create_recipe.css' %}">
+{% endblock css %}
+
+
+
+{% block content %}
+<section id="create-recipe">
+    <div class="container">
+        <h1>Create A Recipe</h1>
+        <form action="{% url 'submit_recipe' %}" method="POST" id="recipe-form">
+        <!-- <form action="submit_recipe" method="POST" id="recipe-form"> -->
+            {% csrf_token %}
+            <!-- Name, information, ingredient, instruction, image -->
+            <div class="recipe-add">
+                <label for="recipe-title" class="recipe-add-label required">RECIPE TITLE</label>
+                <input name="recipe-name" class="recipe-input input-text-border" type="text" placeholder="Give your recipe a name">
+                </input>
+            </div>
+            <div class="recipe-add">
+                <label for="recipe-information" class="recipe-add-label required">TELL US ABOUT YOUR RECIPE</label>
+                <textarea rows="4" name="recipe-information" class="recipe-input input-text-border" placeholder="What do you love about this recipe? Why is special for you? Give us all the details!"></textarea>
+            </div>
+            <div class="recipe-add">
+                <label for="recipe-ingredient" class="recipe-add-label required">INGREDIENTS</label>
+                <textarea rows="4" name="recipe-ingredient" class="recipe-input input-text-border" placeholder="Please add each ingredient on its own line with an enter or return"></textarea>
+            </div>
+            <div class="recipe-add">
+                <label for="recipe-instruction" class="recipe-add-label required">INSTRUCTION</label>
+                <textarea rows="6" name="recipe-instruction" class="recipe-input input-text-border" placeholder="Please add each step on its own paragraph with an enter or return. E.g. &#10;Place squash in a Dutch oven or large saucepan; cover with water. &#10;Bring to a boil; cover and cook until tender, 25-30 minutes. Drain and place in a large bowl; beat just until smooth. &#10;Beat in the milk, butter, eggs and vanilla. Combine the dry ingredients; gradually add to squash mixture and mix well."></textarea>
+            </div>
+            <!-- Image Video -->
+            <div class="recipe-add">
+                <label for="recipe-image" class="recipe-add-label">SHARE A PHOTO OF YOUR RECIPE</label>
+                <!-- This function needs to be modified -->
+                <input type="file" id="recipe-image-upload" name="recipe-image" placeholder="Choose an image">
+            </div>
+            <div class="recipe-add">
+                <label for="recipe-title" class="recipe-add-label">SHARE A VIDEO OF YOUR RECIPE</label>
+                <input name="recipe-video-link" class="recipe-input input-text-border" type="text" placeholder="Please add the video link here if you have one.">
+                </input>
+            </div>
+            <!-- Quantity-serve, Preparation-time -->
+            <div class="recipe-add-select">
+                <div class="recipe-quantity-serve recipe-add-select-block">
+                    <label for="recipe-quantity-serve-label" class="recipe-add-label">QUANTITY SERVED</label>
+                    <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-quantity-serve">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="recipe-preparation-time recipe-add-select-block">
+                    <label for="recipe-preparation-time-label" class="recipe-add-label">PREPARATION TIME</label>
+                    <select id="recipe-preparation-time-select" class="recipe-selector input-text-border" name="recipe-preparation-time">
+                        <option selected>0-10min</option>
+                        <option value="15-30min">15-30min</option>
+                        <option value="30-60min">30-60min</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Course -->
+            <div class="recipe-add-select">
+                <div class="recipe-preparation-time recipe-add-select-block">
+                    <label for="recipe-quantity-serve-label" class="recipe-add-label required">CHOOSE YOUR RECIPE'S COURSE</label>
+                    <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-course">
+                        <option selected>Select Course</option>
+                        <option value="Brunch">Brunch</option>
+                        <option value="Thanksgiving">Thanksgiving</option>
+                    </select>
+                </div>
+                <!-- Empty on the right -->
+                <div class="recipe-preparation-time recipe-add-select-block">
+                </div>
+            </div>
+            <!-- Group checkbox: Occasion -->
+            <div class="recipe-add">
+                <label for="recipe-occasion" class="recipe-add-label recipe-add-select-all required">CHOOSE A HOLIDAY FOR YOUR RECIPE<br></label>
+                <div class="group-checkbox">
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option1" name="recipe-occasion">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-1">1</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option2" name="recipe-occasion">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-2">2</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option3" name="recipe-occasion">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-3">3</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option4" name="recipe-occasion">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-4">4</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Group checkbox: Diet -->
+            <div class="recipe-add">
+                <label for="recipe-diet" class="recipe-add-label recipe-add-select-all required">CHOOSE A DIET FOR YOUR RECIPE<br></label>
+                <div class="group-checkbox">
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option1" name="recipe-diet">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-1">1</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option2" name="recipe-diet">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-2">2</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option3" name="recipe-diet">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-3">3</label>
+                    </div>
+                    <div class="group-checkbox-block">
+                        <input class="group-checkbox-block-input" type="checkbox" value="option4" name="recipe-diet">
+                        <label class="group-checkbox-block-label" for="group-checkbox-block-4">4</label>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-add" id="note-p">
+                <div></div>
+                <p id="note">
+                    NOTE: Photos may be used in print publications or on the website. Please submit a high resolution jpg image at 300dpi. Uploaded files are limited to a max file size of 15 mb.<br>
+                    <br>
+                    By submitting material for publication, you grant Kitchen magician, LLC, its parent company, subsidiaries, affiliates, partners and licensees unrestricted use of the material, including your name, hometown and state. We reserve the right to modify, reproduce and distribute the material in any medium and in any manner. We may contact you via phone, email or mail regarding your submission.
+                </p>
+            </div>
+            <div id="submit-button-block">
+                <button type="submit" id="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}
