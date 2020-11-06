@@ -16,4 +16,7 @@ drop table recipe_diet_item;
 drop table recipe_diet;
 drop table recipe_occasion_item;
 drop table recipe_occasion;
+drop table recipe_preparation_time_item;
+drop table recipe_preparation_time;
+drop table recipe_quantity_serve;
 drop table recipe;

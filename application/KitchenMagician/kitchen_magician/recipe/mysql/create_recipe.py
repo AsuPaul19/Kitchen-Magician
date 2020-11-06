@@ -5,14 +5,20 @@
 # django.setup()
 
 from recipe.models import Recipe
-from recipe.models import RecipeType
-from recipe.models import RecipeTypeItem
 from recipe.models import RecipeIngredient
 from recipe.models import RecipeIngredientItem
 from recipe.models import RecipeInformation
 from recipe.models import RecipeInstruction
 from recipe.models import RecipeImage
 from recipe.models import RecipeVideo
+from recipe.models import RecipePreparationTime
+from recipe.models import RecipePreparationTimeItem
+from recipe.models import RecipeCourse
+from recipe.models import RecipeCourseItem
+from recipe.models import RecipeOccasion
+from recipe.models import RecipeOccasionItem
+from recipe.models import RecipeDiet
+from recipe.models import RecipeDietItem
 from django.contrib.auth.models import User
 
 # Example for Testing 
@@ -21,6 +27,7 @@ def test_recipe():
     # Change type to course
     # preperation time
     # quantity serve
+    # change information, instruction to name
 
     recipe = {
         "user_id": 1,
@@ -54,94 +61,164 @@ class CreateRecipe():
     1. name
 
     recipes tables:
-        1. recipe_type
+        1. recipe_information
         2. recipe_ingredient
-        3. recipe_information
-        4. recipe_instruction
-        5. recipe_image
-        6. recipe_video
+            recipe_ingredient_item
+        3. recipe_instruction
+        4. recipe_image
+        5. recipe_video
+        6. recipe_quantity_serve
+        7. recipe_paraperation_time
+            recipe_paraperation_time_item
+        8. recipe_course
+            recipe_course_item
+        9. recipe_occasion
+            recipe_occasion_item
+        10. recipe_diet
+            recipe_occasion_item
+
+
+        recipe = {
+            "user_id": request.user,
+            "name": data['recipe-name'],
+            "information": data['recipe-information'],
+            "ingredients": data['recipe-ingredient'],
+            "instructions": data['recipe-instruction'],
+            "images": [uploaded_file],
+            "video_link": data['recipe-video-link'],
+            "quantity_serve": data['recipe-quantity-serve'],
+            "preparation_time": data['recipe-preparation-time'],
+            "courses": data['recipe-course'],
+            "occasions": data['recipe-occasion'],
+            "diets": data['recipe-diet'],
+        }
     
     """
     def __init__(self, recipe):
-        self.user_id = recipe['user_id']
+        self.user = recipe['user']
         self.name = recipe['name']
-        self.preparation_time = recipe['preparation_time']
-        self.types = recipe['types']
         self.information = recipe['information']
         self.ingredients = recipe['ingredients']
         self.instructions = recipe['instructions']
         self.images = recipe['images']
         self.video_link = recipe['video_link']
-        self.recipe_object = None
-
-    # create recipe types
-    def create_recipe_type(self):
-        for type in self.types:
-            recipe_type = RecipeType.objects.filter(type=type).first()
-            # If the type is not in the database, add it to the db_table: recipe_type
-            if not recipe_type:
-                recipe_type = RecipeType(type=type)
-                recipe_type.save()
-            # create the recipe type item simultaneously
-            self.create_recipe_type_item(recipe_type)
-
-        # create recipe types items
-    def create_recipe_type_item(self, recipe_type):
-        recipes_types_item_object = RecipeTypeItem(recipe_type=recipe_type, recipe=self.recipe)
-        recipes_types_item_object.save()
-
-    # create recipe information
-    def create_recipe_information(self):
-        recipe_information = RecipeInformation(information=self.information, recipe=self.recipe)
-        recipe_information.save()
-
-            # create recipe ingredients
-    def create_recipe_ingredient(self):
-        for ingredient in self.ingredients:
-            recipe_ingredient = RecipeIngredient.objects.filter(ingredient=ingredient).first()
-            # If the ingredient is not in the database, add it to the db_table: recipe_ingredient
-            if not recipe_ingredient:
-                recipe_ingredient = RecipeIngredient(ingredient=ingredient)
-                recipe_ingredient.save()
-            # create the recipe ingredient item simultaneously
-            self.create_recipe_ingredient_item(recipe_ingredient)
-
-    # create recipe ingredients
-    def create_recipe_ingredient_item(self, recipe_ingredient):
-        recipe_ingredient_item = RecipeIngredientItem(recipe_ingredient=recipe_ingredient, recipe=self.recipe)
-        recipe_ingredient_item.save()
-
-        # create recipe ingredients
-    def create_recipe_instruction(self):
-        for instruction in self.instructions: 
-            recipe_instruction = RecipeInstruction(instruction=instruction, recipe=self.recipe)
-            recipe_instruction.save()
-
-    # create recipe images
-    def create_recipe_image(self):
-        for image in self.images:
-            recipe_image = RecipeImage(image=image, recipe=self.recipe)
-            recipe_image.save()
-
-    # create recipe images
-    def create_recipe_video(self):
-        recipe_video = RecipeVideo(video_link=self.video_link, recipe=self.recipe)
-        recipe_video.save()
+        self.quantity_serve = recipe['quantity_serve']  # id
+        self.preparation_time = recipe['preparation_time'] # id
+        self.courses = recipe['courses'] # id
+        self.occasions = recipe['occasions'] # id
+        self.diets = recipe['diets'] # id
+        self.recipe = recipe
 
     # create recipes
     def create_recipe(self):
         self.recipe = Recipe(
-                # TO-DO
-                # Change it to User
-                user_id=self.user_id,
+                user=self.user,
                 name=self.name,
-                preparation_time=self.preparation_time,
+                quantity_serve=self.quantity_serve[0], # store quantity_serve_num as quantity_serve
             )
         self.recipe.save()
-        self.create_recipe_type()
+        print("Created recipe!!")
         self.create_recipe_information()
         self.create_recipe_ingredient()
         self.create_recipe_instruction()
         self.create_recipe_image()
         self.create_recipe_video()
+        self.create_preparation_time_item()
+        self.create_recipe_course_item()
+        self.create_recipe_occasion_item()
+        self.create_recipe_diet_item()
+
+    # create recipe information
+    def create_recipe_information(self):
+        recipe_information = RecipeInformation(name=self.information, recipe=self.recipe)
+        recipe_information.save()
+        print("create_recipe_information CREATED!")
+
+
+    # create recipe ingredients
+    def create_recipe_ingredient(self):
+        if self.ingredients:
+            for ingredient in self.ingredients:
+                recipe_ingredient = RecipeIngredient.objects.filter(name=ingredient).first()
+                # If the ingredient is not in the database, add it to the db_table: recipe_ingredient
+                if not recipe_ingredient:
+                    recipe_ingredient = RecipeIngredient(name=ingredient)
+                    recipe_ingredient.save()
+                    print("create_recipe_ingredient CREATED!")
+                    
+                # create the recipe ingredient item simultaneously
+                self.create_recipe_ingredient_item(recipe_ingredient)
+
+    # create recipe ingredients items
+    def create_recipe_ingredient_item(self, recipe_ingredient):
+        recipe_ingredient_item = RecipeIngredientItem(recipe_ingredient=recipe_ingredient, recipe=self.recipe)
+        recipe_ingredient_item.save()
+        print("create_recipe_ingredient_item CREATED!")
+
+
+        # create recipe instruction
+    def create_recipe_instruction(self):
+        if self.instructions: 
+            for instruction in self.instructions: 
+                recipe_instruction = RecipeInstruction(name=instruction, recipe=self.recipe)
+                recipe_instruction.save()
+                print("create_recipe_instruction CREATED!")
+
+    # create recipe images
+    def create_recipe_image(self):
+        if self.images: 
+            for image in self.images:
+                recipe_image = RecipeImage(image=image, recipe=self.recipe)
+                recipe_image.save()
+                print("create_recipe_image CREATED!")
+
+    # create recipe images
+    def create_recipe_video(self):
+        if self.video_link: 
+            recipe_video = RecipeVideo(video_link=self.video_link, recipe=self.recipe)
+            recipe_video.save()
+            print("create_recipe_video CREATED!")
+
+
+    # create recipe quantity_serve
+    # store in the table of recipe  
+    
+    # create recipe preparation_time_item
+    def create_preparation_time_item(self):
+        preparation_time_id = self.preparation_time[0]
+        if preparation_time_id:
+            recipe_preparation_time = RecipePreparationTimeItem(preparation_time=RecipePreparationTime.objects.filter(id=preparation_time_id).first(), recipe=self.recipe)
+            recipe_preparation_time.save()    
+            print("create_preparation_time_item CREATED!")
+
+
+    # create recipe course item
+    def create_recipe_course_item(self):
+        if self.courses:
+            for course_id in self.courses:
+                recipe_course_item_object = RecipeCourseItem(recipe_course=RecipeCourse.objects.filter(id=course_id).first(), recipe=self.recipe)
+                recipe_course_item_object.save()
+                print("create_recipe_course_item CREATED!")
+
+
+    # create recipe course item
+    def create_recipe_occasion_item(self):
+        if self.occasions:
+            for occasion_id in self.occasions:
+                recipe_occasion_item_object = RecipeOccasionItem(recipe_occasion=RecipeOccasion.objects.filter(id=occasion_id).first(), recipe=self.recipe)
+                recipe_occasion_item_object.save()
+                print("create_recipe_occasion_item CREATED!")
+
+
+        # create recipe diet item
+    def create_recipe_diet_item(self):
+        if self.diets:
+            for diet_id in self.diets:
+                recipe_diet_item_object = RecipeDietItem(recipe_diet=RecipeDiet.objects.filter(id=diet_id).first(), recipe=self.recipe)
+                recipe_diet_item_object.save()
+                print("create_recipe_diet_item CREATED!")
+
+
+
+
 

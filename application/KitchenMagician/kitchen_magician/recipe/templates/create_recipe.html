@@ -11,7 +11,7 @@
 <section id="create-recipe">
     <div class="container">
         <h1>Create A Recipe</h1>
-        <form action="{% url 'submit_recipe' %}" method="POST" id="recipe-form">
+        <form action="{% url 'submit_recipe' %}" method="POST" id="recipe-form" enctype="multipart/form-data">
         <!-- <form action="submit_recipe" method="POST" id="recipe-form"> -->
             {% csrf_token %}
             <!-- Name, information, ingredient, instruction, image -->
@@ -34,9 +34,15 @@
             </div>
             <!-- Image Video -->
             <div class="recipe-add">
-                <label for="recipe-image" class="recipe-add-label">SHARE A PHOTO OF YOUR RECIPE</label>
+                <label for="recipe-image-label" class="recipe-add-label">SHARE A PHOTO OF YOUR RECIPE</label>
                 <!-- This function needs to be modified -->
-                <input type="file" id="recipe-image-upload" name="recipe-image" placeholder="Choose an image">
+                <div id="recipe-image-center">
+                    <label for="recipe-image">Upload Image</label>
+                    <input type="file" id="recipe-image" name="recipe-image" accept="image/*" onchange="showPreview(event);">
+                    <div id="preview-block">
+                        <img src="" alt="" id="image-preview">
+                    </div>
+                </div>      
             </div>
             <div class="recipe-add">
                 <label for="recipe-title" class="recipe-add-label">SHARE A VIDEO OF YOUR RECIPE</label>
@@ -48,17 +54,25 @@
                 <div class="recipe-quantity-serve recipe-add-select-block">
                     <label for="recipe-quantity-serve-label" class="recipe-add-label">QUANTITY SERVED</label>
                     <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-quantity-serve">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        {% for qs in quantity_serve %}
+                            {% if qs == quantity_serve.first %}
+                            <option selected value="{{ qs.quantity_serve_num }}"> {{ qs.quantity_serve }}</option>
+                            {% else %}
+                            <option value="{{ qs.quantity_serve_num }}">{{ qs.quantity_serve }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="recipe-preparation-time recipe-add-select-block">
                     <label for="recipe-preparation-time-label" class="recipe-add-label">PREPARATION TIME</label>
                     <select id="recipe-preparation-time-select" class="recipe-selector input-text-border" name="recipe-preparation-time">
-                        <option selected>0-10min</option>
-                        <option value="15-30min">15-30min</option>
-                        <option value="30-60min">30-60min</option>
+                        {% for pt in preparation_time %}
+                            {% if pt == preparation_time.first %}
+                            <option selected value="{{ pt.id }}"> {{ pt.preparation_time }}</option>
+                            {% else %}
+                            <option value="{{ pt.id }}"> {{ pt.preparation_time }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -67,9 +81,13 @@
                 <div class="recipe-preparation-time recipe-add-select-block">
                     <label for="recipe-quantity-serve-label" class="recipe-add-label required">CHOOSE YOUR RECIPE'S COURSE</label>
                     <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-course">
-                        <option selected>Select Course</option>
-                        <option value="Brunch">Brunch</option>
-                        <option value="Thanksgiving">Thanksgiving</option>
+                        {% for course in courses %}
+                            {% if course == courses.first %}
+                            <option selected value="{{ course.id }}"> {{ course.name }}</option>
+                            {% else %}
+                            <option value="{{ course.id }}"> {{ course.name }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
                 <!-- Empty on the right -->
@@ -80,44 +98,26 @@
             <div class="recipe-add">
                 <label for="recipe-occasion" class="recipe-add-label recipe-add-select-all required">CHOOSE A HOLIDAY FOR YOUR RECIPE<br></label>
                 <div class="group-checkbox">
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option1" name="recipe-occasion">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-1">1</label>
+                    {% for occasion in occasions %}
+                    <!-- BootStraps checkbox -->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="recipe-occasion-{{ occasion.name }}" value="{{ occasion.id }}" name="recipe-occasion">
+                        <label class="form-check-label" for="recipe-occasion-{{ occasion.name }}">{{ occasion.name }}</label>
                     </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option2" name="recipe-occasion">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-2">2</label>
-                    </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option3" name="recipe-occasion">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-3">3</label>
-                    </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option4" name="recipe-occasion">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-4">4</label>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <!-- Group checkbox: Diet -->
             <div class="recipe-add">
                 <label for="recipe-diet" class="recipe-add-label recipe-add-select-all required">CHOOSE A DIET FOR YOUR RECIPE<br></label>
                 <div class="group-checkbox">
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option1" name="recipe-diet">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-1">1</label>
+                    {% for diet in diets %}
+                    <!-- BootStraps checkbox -->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="recipe-diet-{{ diet.name }}" value="{{ diet.id }}" name="recipe-diet">
+                        <label class="form-check-label" for="recipe-diet-{{ diet.name }}">{{ diet.name }}</label>
                     </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option2" name="recipe-diet">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-2">2</label>
-                    </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option3" name="recipe-diet">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-3">3</label>
-                    </div>
-                    <div class="group-checkbox-block">
-                        <input class="group-checkbox-block-input" type="checkbox" value="option4" name="recipe-diet">
-                        <label class="group-checkbox-block-label" for="group-checkbox-block-4">4</label>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="recipe-add" id="note-p">
@@ -135,3 +135,7 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'recipe/js/upload.js' %}"></script>
+{% endblock script %}

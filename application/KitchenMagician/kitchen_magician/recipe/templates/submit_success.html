@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'recipe/css/submit_success.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="created">
+        <div class="container" style="display: block;">
+            <h2 style="color: black;">Success!</h2>
+            <br>
+            <a href="{% url 'create_recipe' %}" style="font-size: 2rem;">Click here to create one more recipe, thanks!</a>
+            <div id="recipe">
+                <p>Title: {{ name }}</p>
+                <p>Information: {{ information }}</p>
+                <p>Ingredient: {{ ingredients }}</p>
+                <p>Instruction: {{ instructions }}</p>
+                <p>Image: </p>
+                <img src="{{ images.url }}" alt="">
+                <p>Video Link: {{ video_link }}</p>
+                <p>Preparation Time: {{ preparation_time }}</p>
+                <p>Quantity Serve: {{ quantity_serve }}</p>
+                <p>Course: {{ courses }}</p>
+                <p>Occasion: {{ occasions }}</p>
+                <p>Diet: {{ diets }}</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

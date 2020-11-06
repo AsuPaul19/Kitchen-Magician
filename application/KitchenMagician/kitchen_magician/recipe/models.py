@@ -20,6 +20,17 @@ class RecipeTest(models.Model):
         return self.title
 
 
+
+class RecipeUploadImageTest(models.Model):
+    image_folder = 'recipe_pics/'
+    image = models.ImageField(upload_to=image_folder)
+
+    class Meta():
+        db_table = 'recipe_upload_image_test'
+
+    def __str__(self):
+        return self.image
+
 # Allen's
 class Recipe(models.Model):
     # CASCADE, once the user is deleted, the recipe will be deleted automatically
@@ -69,19 +80,19 @@ class RecipeQuantityServe(models.Model):
 
 
 class RecipeCourse(models.Model):
-    course = models.CharField(default='Others', max_length=50)
+    name = models.CharField(default='Others', max_length=50)
 
     class Meta():
         db_table = 'recipe_course'
 
     def __str__(self):
-        return self.course
+        return self.name
 
 
 class RecipeCourseItem(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     recipe_course = models.ForeignKey(RecipeCourse, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():
         db_table = 'recipe_course_item'
@@ -91,20 +102,19 @@ class RecipeCourseItem(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    ingredient = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
     class Meta():
         db_table = 'recipe_ingredient'
 
     def __str__(self):
-        return self.ingredient
+        return self.name
 
 
 class RecipeIngredientItem(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    recipe_ingredient = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    recipe_ingredient = models.ForeignKey(
-        RecipeIngredient, on_delete=models.CASCADE)
 
     class Meta():
         db_table = 'recipe_ingredient_item'
@@ -114,8 +124,8 @@ class RecipeIngredientItem(models.Model):
 
 
 class RecipeInformation(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
-    information = models.CharField(max_length=500)
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    name = models.CharField(max_length=500)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():
@@ -126,8 +136,8 @@ class RecipeInformation(models.Model):
 
 
 class RecipeInstruction(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
-    instruction = models.CharField(max_length=500)
+    # CASCADE, once the user is deleted, this item will be deleted automatically
+    name = models.CharField(max_length=500)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():
@@ -137,20 +147,9 @@ class RecipeInstruction(models.Model):
         return f'{self.recipe.name} - {self.instruction}'
 
 
-class RecipeVideo(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
-    video_link = models.CharField(max_length=1000)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-
-    class Meta():
-        db_table = 'recipe_video'
-
-    def __str__(self):
-        return self.recipe.name
-
 
 class RecipeImage(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
+    # CASCADE, once the user is deleted, this item will be deleted automatically
     image_folder = 'recipe_pics/'
     image = models.ImageField(
         default=image_folder + 'default_recipe_image.jpg', upload_to=image_folder)
@@ -163,7 +162,7 @@ class RecipeImage(models.Model):
         return f'{self.recipe.name} - {self.image}'
 
 class RecipeVideo(models.Model):
-    # CASCADE, once the user is deleted, the profile will be deleted automatically
+    # CASCADE, once the user is deleted, this item will be deleted automatically
     video_link = models.CharField(max_length=1000)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
@@ -223,7 +222,7 @@ class RecipeOccasion(models.Model):
 
 class RecipeOccasionItem(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
-    occasion = models.ForeignKey(RecipeOccasion, on_delete=models.CASCADE)
+    recipe_occasion = models.ForeignKey(RecipeOccasion, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():
@@ -244,7 +243,7 @@ class RecipeDiet(models.Model):
 
 class RecipeDietItem(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
-    diet = models.ForeignKey(RecipeDiet, on_delete=models.CASCADE)
+    recipe_diet = models.ForeignKey(RecipeDiet, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():

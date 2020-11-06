@@ -14,9 +14,9 @@ occasion = [
     "New Year's",  
     'Patriotic',  
     "St. Patrick's",  
+    'Super Bowl',
     'Thanksgiving',  
     "Valentine's Day",  
-    'Super Bowl',
     "none"
 ]
 
