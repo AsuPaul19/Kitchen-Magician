@@ -1,7 +1,8 @@
 <!-- kitchen/template/base.html -->
 <!-- Programmers: Jeff C Cheng, Kevin Wei -->
-<!-- Last Modified: 11/1/2020 -->
+<!-- Last Modified: 11/5/2020 -->
 <!-- use bootstrap 4.5.2 for general styling, supplemented by Google fonts and main.css -->
+<!-- added flash messages -->
 <!-- based on Corey Shafer's Python Django tutorials -->
 <!-- https://coreyms.com/development/python/python-django-tutorials-full-series -->
 
@@ -40,6 +41,7 @@
 </head>
 
 <body style="background-color:white;">
+    <center><h1>Add Mission Statement, etc. later</h1></center>
     <!-- navigation bar at the top of the page -->
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
@@ -91,7 +93,16 @@
     <main role="main" class="container">
         <div>
             <br>
-            {% block content %}{% endblock %}
+                <!-- flash message set up -->
+                {% if messages %}
+
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor%}
+
+                {% endif %}
+
+        {% block content %}{% endblock %}
         </div>
     </main>
 
