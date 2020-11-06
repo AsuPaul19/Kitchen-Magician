@@ -1,6 +1,6 @@
 <!-- kitchen/template/search.html -->
 <!-- Programmers: Jeff C Cheng, Allen Sun. Kevin Wei -->
-<!-- Last Modified: 11/1/2020 -->
+<!-- Last Modified: 11/6/2020 -->
 <!-- use Django template in base.html -->
 <!-- get results from kitchen/views.py through context, which includes user's search query -->
 <!-- added image display and changed display size -->
@@ -10,31 +10,36 @@
 
 from django.contrib.auth.models import User
 from .models import Recipe
+<!-- OR querying enabled -->
 from django.db.models import Q
 
 {% block content %}   
     <div>
         <form method="POST" action="{% url 'kitchen_search' %}">
             {% csrf_token %}
-            <input type="text" placeholder="title..." name="title">
-            <input type="text" placeholder="author..." name="author">
-            <input type="text" placeholder="content..." name="content">
-            <input type="submit" value="Submit">
+            <input type="text" placeholder="recipe title..." name="title">
+            <input type="text" placeholder="recipe author..." name="author">
+            <input type="text" placeholder="recipe content..." name="content">
+            <input type="submit" value="Search">
         </form>   
     </div>
     <br>
+    <!-- show search results -->
     {% for recipe in recipes %}
         <article class="media content-section">
             <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-2" href="#">By {{ recipe.author }}</a>
-                <!-- no need to show the seconds so only show month, day and year -->
+
+                <!-- changed time format -->
                 <small class="text-muted">On {{ recipe.date_created|date:"F d, Y" }}</small>
             </div>
             <h3><a class="article-title" href="#">Title: {{ recipe.title }}</a></h3>
             <p class="article-content">{{ recipe.content }}</p>
+
+            <!-- show thumbnail -->
             <img src="{{ recipe.cover.url }}" width="45" height="45">
-            <!-- <img src="{{ post.cover.url}}" alt="{{ post.title }}"> -->
+
             </div>
         </article>    
     {% endfor %}

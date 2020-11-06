@@ -1,10 +1,12 @@
 <!-- kitchen/template/home.html -->
 <!-- Programmers: Jeff C Cheng, Allen Sun, Kevin Wei -->
-<!-- Last Modified: 11/6/2020 -->
+<!-- Last Modified: 11/1/2020 -->
 <!-- use Django template in base.html -->
 
 {% extends "kitchen/base.html" %}
 
+
+{% load static %}
 {% block content %}
 
 <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
@@ -41,5 +43,45 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+
+<!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+<!-- <div class="w3-content w3-display-container">
+  <img class="mySlides" src="{% static 'kitchen/image/1.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/2.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/3.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/4.jpg' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'kitchen/image/5.jpg' %}" style="width:100%">
+
+</div>
+
+<script>
+  let slideIndex = 0;
+  carousel();
+
+  function carousel() {
+    let i;
+
+    // get the slides
+    let x = document.getElementsByClassName("mySlides");
+
+    // display them one by one
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+
+    slideIndex++;
+
+    // reset counter
+    if (slideIndex > x.length) {slideIndex = 1}
+
+    x[slideIndex-1].style.display = "block";
+
+    // Change image every 2 seconds
+    setTimeout(carousel, 2000); 
+  }  
+</script> -->
+  
+<!-- <script src="{% static 'kitchen/js/home.js' %}"></script> -->
 
 {% endblock content %}
