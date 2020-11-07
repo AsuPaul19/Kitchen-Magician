@@ -1,7 +1,8 @@
 # kitchen/views.py
 # Programmers: Jeff C Cheng, Allen Sun, Kevin Wei, and Kevin Ortiz
-# Last Modified: 11/1/2020
+# Last Modified: 11/6/2020
 # pass titles and request through context
+# simplified search logic
 
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -16,32 +17,20 @@ def home(request):
 
 def search(request):
   # set defaults
-  # title = "NONE"
-  # author = "NONE"
-  # content = "NONE"
-
-  # if request.method == 'POST':
-  #   if request.POST['title']:
-  #     title = request.POST['title']
-
-  #   if request.POST['author']:
-  #     author = request.POST['author']
-
-  #   if request.POST['content']:
-  #     content = request.POST['content']
-
-
-
-  # recipes = Recipe.objects.filter(Q(title__icontains=title)|Q(author__username=author)|Q(content__icontains=content))
   select = "NONE"
   keyword = "NONE"
+
+  # searching through the navigation bar
   if request.method == 'POST':
-    #This is the search when it's done through the navbar
+    # if user entered form data
     if 'filter' in request.POST:
       select = request.POST['filter']
       keyword = request.POST['keyword']
+
+      # if nothing has been chosen, search all
       if select == 'none':
         recipes = Recipe.objects.filter(Q(title__icontains=keyword)|Q(author__username=keyword)|Q(content__icontains=keyword))
+      # otherwise search by the requested criterion
       elif select == 'title':
         recipes = Recipe.objects.filter(Q(title__icontains=keyword))
       elif select == 'author':
@@ -49,7 +38,8 @@ def search(request):
       elif select == 'content':
         recipes = Recipe.objects.filter(Q(content__icontains=keyword))
     else:
-      #This is the search when it's done through the search page
+      # or searchign through the search page
+      # set defaults
       title = "NONE"
       author = "NONE"
       content = "NONE"
@@ -59,12 +49,10 @@ def search(request):
         author = request.POST['author']
       if request.POST['content']:
         content = request.POST['content']
+      # search all but non-user form data will fetch no results
       recipes = Recipe.objects.filter(Q(title__icontains=title)|Q(author__username=author)|Q(content__icontains=content))
 
-
-      
-
-
+  # pass results on
   context = {
     'title': 'Search',
     'recipes': recipes
@@ -130,9 +118,3 @@ def log_in(request):
     'title': 'Log In'
   }
   return render(request, 'kitchen/log_in.html', context)
-
-def sign_up(request):
-  context = {
-    'title': 'Sign Up'
-  }
-  return render(request, 'kitchen/sign_up.html', context)

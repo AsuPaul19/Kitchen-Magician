@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 class Recipe(models.Model):
   title = models.CharField(max_length=100)
-  # if a user is deleted, we will the post, but the reverse doesn't hold:  one-way street
+  # if user is deleted, so are their recipes; reverse doesn't hold
   author = models.ForeignKey(User, on_delete=models.CASCADE)
   date_created = models.DateTimeField(default=timezone.now)
   content = models.TextField()
