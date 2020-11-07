@@ -1,10 +1,9 @@
 # kitchen_magician/settings.py
 # Programmer: Jeff C Cheng
-# Last Modified: 11/1/2020
+# Last Modified: 11/6/2020
 # added allowed hosts to accommodate Jeff C Cheng's GCP, Allen Sun's GCP, localhost
 # added kitchen app
 # added media url & root
-# added os import
 
 import os
 from pathlib import Path
@@ -31,6 +30,7 @@ ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176', '127.0.0.1', 'localhost']
 INSTALLED_APPS = [
     'kitchen.apps.KitchenConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,3 +120,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# bootstrap for crispy form
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
