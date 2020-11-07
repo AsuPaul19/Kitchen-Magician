@@ -1,0 +1,29 @@
+<!-- kitchen/template/allen_sun.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- added Allen's bio and avatar -->
+<!-- use Django template in base.html -->
+
+{% extends "kitchen/base.html" %}
+{% load static %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+  <div>
+    <br />
+    <center>
+      <img src="{% static 'kitchen/image/allen_sun.jpg' %}" alt="this is Allen Sun's avatar" />
+    </center>
+
+    <h1>About Allen</h1>
+    Allen Sun is in the second year of the master’s program in Computer
+    Science at San Francisco State University.
+    <br />
+    <br />
+    His skill set includes AI, ML, Python, NumPy, Pandas, AWS, GCP, Tableau,
+    Matplotlib, Seaborn, Scikit-Learn, TensorFlow, PySpark, MySQL, Linux,
+    Django, HTML, CSS, JS, and Apache.
+  </div>
+{% endblock content %}

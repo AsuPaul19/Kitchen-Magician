@@ -1,0 +1,104 @@
+<!-- kitchen/template/base.html -->
+<!-- Programmers: Jeff C Cheng, Kevin Wei -->
+<!-- Last Modified: 11/6/2020 -->
+<!-- use bootstrap 4.5.2 for general styling, supplemented by Google fonts and main.css -->
+<!-- added flash messages -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Google Fonts -->        
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+    <!-- CSS style sheet with customized Google font -->
+    <link rel="stylesheet" type="text/css" href="{% static 'kitchen/css/main.css' %}">
+
+    <!-- selective page title -->
+    {% if title %}
+    <title>Kitchen Magician - {{ title }}</title>
+    {% else %}
+    <title>Kitchen Magician</title>
+    {% endif %}
+</head>
+
+<body style="background-color:white;">
+    <!-- navigation bar at the top of the page -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{% url 'kitchen_home' %}">Kitchen Magician</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarToggle">
+
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">About</a>
+                        <a class="nav-item nav-link" href="{% url 'kitchen_groups' %}">Groups</a>                            
+                        <a class="nav-item nav-link" href="{% url 'kitchen_profile' %}">Profile</a>                                  
+                    </div>    
+
+                    <!-- bisectting the navigation bar for neeatness -->
+
+                    <div class="navbar-nav ">
+                        <form method="POST" action="{% url 'kitchen_search' %}">
+                            {% csrf_token %}
+                            <select name="filter" id="filter" class="form-control form-control-sm">
+                                <option value="none"> -- select an option -- </option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="content">Content</option>
+                            </select>
+                            <input type="text" placeholder="Enter Keywords" name = "keyword">
+                            <input type="submit" value="Submit">
+                        </form>               
+                        <a class="nav-item nav-link" href="{% url 'kitchen_log_in' %}">Log In</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        <div>
+            <br>
+                <!-- flash message set up -->
+                {% if messages %}
+
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor%}
+
+                {% endif %}
+
+        {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

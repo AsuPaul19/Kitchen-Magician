@@ -1,0 +1,35 @@
+<!-- kitchen/template/jeff_cheng.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- added Jeff Cheng's bio and avatar -->
+<!-- use Django template in base.html -->
+
+{% extends "kitchen/base.html" %}
+{% load static %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+  <div>
+    <br />
+    <div>
+      <center>
+        <img src="{% static 'kitchen/image/jeff_cheng.jpg' %}" alt="this is Jeff C Cheng's avatar" />
+      </center>
+
+      <h1>About Jeff</h1>
+      Jeff is a second-year graduate student in Computer Science at San
+      Francisco State University.
+      <br />
+      He graduated with a Bachelor of Arts in Economics, with a certified minor
+      in Computer Science, from the University of California, Davis.
+      <br />
+      <br />
+      He is interested in enhancing user-experience, preferrably for those with
+      special needs.
+      <br />
+      <br />
+      Jeff enjoys drawing, reading, and hiking in his spare time.
+    </div>
+{% endblock content %}

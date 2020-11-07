@@ -1,0 +1,34 @@
+<!-- kitchen/template/kevin_wei.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- added Kevin Wei's bio and avatar -->
+<!-- use Django template in base.html -->
+
+{% extends "kitchen/base.html" %}
+{% load static %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+  <div>
+    <br />
+    <div>
+      <br />
+      <center>
+        <img src="{% static 'kitchen/image/kevin_wei.jpg' %}" alt="this is Kevin Wei's avatar" />
+      </center>
+
+      <br />
+      <h1>About Kevin</h1>
+      Kevin is a fourth year undergraduate student at San Francisco State
+      University
+      <br />
+      He is studying Computer Science
+      <br />
+      <br />
+      He really likes playing Video Games and has a special attachment to
+      Pokemon since childhood :D
+      <br />
+    </div>
+{% endblock content %}

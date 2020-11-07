@@ -1,0 +1,23 @@
+<!-- kitchen/template/log_in.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- use Django template in base.html -->
+<!-- needs to access User database except from admin -->
+
+{% extends "kitchen/base.html" %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+  Log In
+  <hr />
+
+  <!-- needs to update url later -->
+  <form method="POST" action="{% url 'kitchen_search' %}">
+    {% csrf_token %}
+    <input type="text" placeholder="username..." name="username">
+    <input type="text" placeholder="password..." name="password">
+    <input type="submit" value="Submit">
+  </form>
+{% endblock content %}

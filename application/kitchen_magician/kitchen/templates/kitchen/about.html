@@ -1,0 +1,72 @@
+<!-- kitchen/template/about.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- use Django template in base.html -->
+<!-- added pages for everyone, and linked to their individual pages -->
+
+{% extends "kitchen/base.html" %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+
+    Kitchen Magician is a community-based site which aims to promote interaction between its users.
+
+  <table style="width:100%">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Role</th>
+      <th>Link</th>
+    </tr>
+    <tr>
+      <td>Allen</td>
+      <td>Sun</td>
+      <td>Backend Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_allen_sun' %}">Allen Sun</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Jeff</td>
+      <td>Cheng</td>
+      <td>Frontend Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_jeff_cheng' %}">Jeff C Cheng</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Kevin</td>
+      <td>Ortiz</td>
+      <td>Design Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_kevin_ortiz' %}">Kevin Ortiz</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Kevin</td>
+      <td>Wei</td>
+      <td>Maintenance Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_kevin_wei' %}">Kevin Wei</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Nicole</td>
+      <td>Pang</td>
+      <td>Team Lead</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_nicole_pang' %}">Nicole Pang</a>                            
+      </td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td>Asu</td>
+      <td>Webmaster</td>
+      <td>
+        <a class="nav-item nav-link" href="{% url 'kitchen_paul_asu' %}">Paul Asu</a>                            
+      </td>
+    </tr>
+  </table> 
+{% endblock content %}

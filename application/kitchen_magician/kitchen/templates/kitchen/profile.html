@@ -1,0 +1,24 @@
+<!-- kitchen/template/profile.html -->
+<!-- Programmers: Jeff C Cheng -->
+<!-- Last Modified: 11/1/2020 -->
+<!-- use Django template in base.html -->
+<!-- needs to access User database except from admin -->
+
+{% extends "kitchen/base.html" %}
+
+{% block content %}
+  <br />
+  <br />
+  <br />
+  Note:  No user database accessible yet (except through admin) and all current table data hardcoded
+  Username:
+  <br />
+  Avatar:
+  <hr />
+  <br />
+  Groups:
+  <hr />
+  <br />
+  Recipes:
+  <hr />
+{% endblock content %}
