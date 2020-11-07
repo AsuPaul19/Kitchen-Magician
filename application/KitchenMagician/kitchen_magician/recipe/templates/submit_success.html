@@ -12,6 +12,7 @@
             <br>
             <a href="{% url 'create_recipe' %}" style="font-size: 2rem;">Click here to create one more recipe, thanks!</a>
             <div id="recipe">
+                <p>User: {{ user }} </p>
                 <p>Title: {{ name }}</p>
                 <p>Information: {{ information }}</p>
                 <p>Ingredient: {{ ingredients }}</p>

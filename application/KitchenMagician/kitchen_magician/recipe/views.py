@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from .models import RecipeCourseItem, RecipeImage, RecipeInformation, RecipeIngredient, RecipePreparationTimeItem, RecipeUploadImageTest, RecipeVideo
@@ -21,6 +22,7 @@ def recipe(request):
 
 
 # Create recipe 
+@login_required
 def create_recipe(request):
     if request.user.is_authenticated: # authenticated user can create recipe
         print(request.user)
@@ -45,6 +47,7 @@ def submit_recipe(request):
         recipe = create_recipe_data(request)
     # Testing when creating recipe
     context = {
+        'user': recipe.user.username,
         'title': 'SUBMIT RECIPES',
         'name': recipe.name,
         'information': RecipeInformation.objects.filter(recipe=recipe).first().name,

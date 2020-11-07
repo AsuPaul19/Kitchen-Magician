@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'search',
     'groups',
     'recipe',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,8 +153,10 @@ STATIC_URL = '/static/'
 # bootstrap library
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = 'home'
+# Change to login
+LOGIN_URL = 'login' 
+# LOGIN_URL = 'login_signup' 
 
 
 # Media file for images and videos
