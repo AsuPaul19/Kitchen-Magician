@@ -21,9 +21,15 @@ SECRET_KEY = 'lsm4(-7cilb%24xfvlj@(&m_=*b(5g+$m*cal29q0471=$vt8%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# Jeff's GCP and Allen's GCP static ip addresses
-ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176', '127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+	'104.154.144.87', #nicole external ip
+    '34.94.169.203', #frontend external ip
+	'34.66.161.176', # Apache-server IP
+	'allensun623.com', # Public domain
+	'www.allensun623.com', # Public domain
+    'localhost', # Kevin mentioned it
+]
 
 # Application definition
 
