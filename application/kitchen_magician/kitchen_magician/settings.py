@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['34.94.169.203', '34.66.161.176', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'kitchen.apps.KitchenConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
