@@ -439,8 +439,14 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
 
         DocumentRoot /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician
 
-        Alias /static /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static
+        Alias /static/ /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static/
+        Alias /media/ /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/media/
+
         <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/static>
+            Require all granted
+        </Directory>
+
+        <Directory /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/media>
             Require all granted
         </Directory>
 
@@ -449,6 +455,7 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
                 Require all granted
             </Files>
         </Directory>
+
         WSGIDaemonProcess kitchen_magician python-path=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician python-home=/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/env
         WSGIProcessGroup kitchen_magician
         WSGIScriptAlias / /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/kitchen_magician/wsgi.py
@@ -624,10 +631,22 @@ sudo ufw allow https
         -   **[Django [Errno 13] Permission denied: '/var/www/media/animals/user_uploads'](https://stackoverflow.com/questions/21797372/django-errno-13-permission-denied-var-www-media-animals-user-uploads)**
 
         -   **[File Permissions for Django Media Uploads](https://www.adamerispaha.com/2016/12/14/file-permissions-for-django-media-uploads/)**
+        -   **[“Forbidden – You don’t have permission to access / on this server” Error](https://www.tecmint.com/forbidden-you-dont-have-permission-to-access-on-this-server-error/)**
+        -   **[chmod](https://en.wikipedia.org/wiki/Chmod)**
+
+
+
+        Adjust file permissions & ownership of the webroot directory
+        ```
+        sudo chmod -R 775 /path/to/webroot/directory
+        sudo chmod -R 775 /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/media
+        ```
+
+        Additionally, adjust the directory ownership as shown:
+        ```
+        sudo chown -R user:group /path/to/webroot/directory
+        sudo chown -R kitchen_magician:www-data /home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/media
 
         ```
-        sudo groupadd varwwwusers
-        sudo adduser www-data varwwwusers
-        sudo chgrp -R varwwwusers /var/www/
-        sudo chmod -R 760 /var/www/
-        ```
+        Where the user is the regular logged-in user and the group is `www-data` or `apache`.
+
