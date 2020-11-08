@@ -609,3 +609,25 @@ sudo ufw allow https
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
     STATIC_URL = '/static/'
     ```
+
+-   **PermissionError for /media/**
+
+    -   ERROR
+
+    ```
+    PermissionError at /recipe/submit-recipe/
+    [Errno 13] Permission denied: '/home/kitchen_magician/csc-648-848-04-jose-fall-2020-01/application/KitchenMagician/kitchen_magician/media/recipe_pics'
+    ```
+
+    -   Solution: Install HomeBrew first
+
+        -   **[Django [Errno 13] Permission denied: '/var/www/media/animals/user_uploads'](https://stackoverflow.com/questions/21797372/django-errno-13-permission-denied-var-www-media-animals-user-uploads)**
+
+        -   **[File Permissions for Django Media Uploads](https://www.adamerispaha.com/2016/12/14/file-permissions-for-django-media-uploads/)**
+
+        ```
+        sudo groupadd varwwwusers
+        sudo adduser www-data varwwwusers
+        sudo chgrp -R varwwwusers /var/www/
+        sudo chmod -R 760 /var/www/
+        ```
