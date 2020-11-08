@@ -189,7 +189,7 @@
   background-image: -webkit-gradient(linear, left top, right top, from(#df6355), color-stop(#f56a58), to(#df6355));
   background-image: linear-gradient(to right, #df6355, #f56a58, #df6355);
   cursor: pointer;
-  color: #fef9f6;
+  color: white;
   text-transform: uppercase;
   background-size: 200%;
   -webkit-transition: .5s;
@@ -217,7 +217,7 @@
   -webkit-transition: .3s;
   transition: .3s;
   border: none;
-  background-color: #fef9f6;
+  background-color: white;
 }
 
 #login-block .container .login form #password-signup a:hover, #login-block .container .login form #password-signup button:hover {

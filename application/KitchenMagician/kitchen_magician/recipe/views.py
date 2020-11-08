@@ -13,6 +13,7 @@ from .models import RecipeDietItem
 from .models import RecipeInstruction
 from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
+from .recipe_data_fetch import RecipeDataFetch
 
 def recipe(request):
     context = {
@@ -21,10 +22,10 @@ def recipe(request):
     return render(request, 'recipe.html', context)
 
 
-# Create recipe 
+# Create recipe page
 @login_required
 def create_recipe(request):
-    if request.user.is_authenticated: # authenticated user can create recipe
+    if request.user.is_authenticated: # Only authenticated user can create recipe
         print(request.user)
     context = {
         'title': 'CREATE RECIPES',
@@ -39,63 +40,70 @@ def create_recipe(request):
 
 
 # handle recipe submission
-def submit_recipe(request):
-    recipe = None
-    if request.method == 'POST':
-        data_dict = request.POST.getlist('recipe-occasion')
-        print(data_dict)
-        recipe = create_recipe_data(request)
-    # Testing when creating recipe
+def submit_recipe(request, recipe=None, recipe_id=None):
     context = {
-        'user': recipe.user.username,
-        'title': 'SUBMIT RECIPES',
-        'name': recipe.name,
-        'information': RecipeInformation.objects.filter(recipe=recipe).first().name,
-        'ingredients': [r_object.recipe_ingredient.name for r_object in RecipeIngredientItem.objects.filter(recipe=recipe)],
-        'instructions': [r_object.name for r_object in RecipeInstruction.objects.filter(recipe=recipe)],
-        "images": RecipeImage.objects.filter(recipe=recipe).first().image,
-        "video_link": RecipeVideo.objects.filter(recipe=recipe).first().video_link,
-        "quantity_serve": recipe.quantity_serve,
-        "preparation_time": RecipePreparationTimeItem.objects.filter(recipe=recipe).first().preparation_time.preparation_time,
-        "courses": [r_object.recipe_course.name for r_object in RecipeCourseItem.objects.filter(recipe=recipe)],
-        "occasions": [r_object.recipe_occasion.name for r_object in RecipeOccasionItem.objects.filter(recipe=recipe)],
-        "diets": [r_object.recipe_diet.name for r_object in RecipeDietItem.objects.filter(recipe=recipe)],
-    }
+            'title': 'SUBMIT RECIPES',
+            'recipe': None,
+        }
+    
+    # add recipe to table Recipe
+    if request.method == 'POST':
+        recipe = create_recipe_data(request)
+
+    # fetch recipe with either recipe instance or recipe id recipe_id
+    recipe_data_fetch = None
+    if recipe:
+        recipe_data_fetch = RecipeDataFetch(recipe=recipe)
+    elif recipe_id:
+        recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+
+    # if we fetch the data successfully, update context and send to client
+    if recipe_data_fetch:
+        recipe_data = recipe_data_fetch.get_recipe()
+        context['recipe'] = recipe_data
+
     return render(request, 'submit_success.html', context)
 
 def create_recipe_data(request):
     data = request.POST
-    print(data)
     recipe = {}
-    # parse data and send to models
+    # Upload Image
     try:
         uploaded_file = request.FILES['recipe-image']
+        # get the size and name of the image
         # print(uploaded_file.size)
         # print(uploaded_file.name)
+
+        # Directly store image to table
         # recipe_image = RecipeUploadImageTest(image=uploaded_file)
         # recipe_image.save()
-        recipe = {
-            "user": request.user,
-            "name": data.getlist('recipe-name')[0],
-            "information": data.getlist('recipe-information')[0],
-            "ingredients": data.getlist('recipe-ingredient')[0].splitlines(),
-            "instructions": data.getlist('recipe-instruction')[0].splitlines(),
-            "images": [uploaded_file],
-            "video_link": data.getlist('recipe-video-link')[0],
-            "quantity_serve": data.getlist('recipe-quantity-serve'),
-            "preparation_time": data.getlist('recipe-preparation-time'),
-            "courses": data.getlist('recipe-course'),
-            "occasions": data.getlist('recipe-occasion'),
-            "diets": data.getlist('recipe-diet'),
-        }
-        for k,v in recipe.items():
-            print(f'{k}: {v}')
 
     except Exception as e: 
         print(e)
+        uploaded_file = None
+
+    # parse data and send to models
+    recipe = {
+        "user": request.user,
+        "name": data.getlist('recipe-name')[0],
+        "information": data.getlist('recipe-information')[0],
+        "ingredients": data.getlist('recipe-ingredient')[0].splitlines(),
+        "instructions": data.getlist('recipe-instruction')[0].splitlines(),
+        "images": [uploaded_file],
+        "video_link": data.getlist('recipe-video-link')[0],
+        "quantity_serve": data.getlist('recipe-quantity-serve'),
+        "preparation_time": data.getlist('recipe-preparation-time'),
+        "courses": data.getlist('recipe-course'),
+        "occasions": data.getlist('recipe-occasion'),
+        "diets": data.getlist('recipe-diet'),
+    }
+    # Print input data
+    for k,v in recipe.items():
+        print(f'{k}: {v}')
 
     if recipe:
         # try:
+        # CreateRecipe class
         create_recipe = CreateRecipe(recipe)
         create_recipe.create_recipe()
         # except Exception as e: 

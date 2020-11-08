@@ -12,6 +12,12 @@ section#create-recipe .container {
   width: 100%;
 }
 
+section#create-recipe .container #create-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 section#create-recipe .container #recipe-form {
   width: 100%;
 }
@@ -150,11 +156,21 @@ section#create-recipe .container #recipe-form .input-text-border {
   padding: 10px;
 }
 
-section#create-recipe .container #recipe-form #note-p {
+section#create-recipe .container #recipe-form #recipe-notice {
   margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-section#create-recipe .container #recipe-form #note-p #note {
+section#create-recipe .container #recipe-form #recipe-notice #note {
+  max-width: 1200px;
   color: gray;
 }
 
@@ -174,5 +190,11 @@ section#create-recipe .container #recipe-form #submit-button-block #submit-butto
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+@media (max-width: 1200px) {
+  section#create-recipe .container #recipe-form div#recipe-notice.recipe-notice-block {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=create_recipe.css.map */

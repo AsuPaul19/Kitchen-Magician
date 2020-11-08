@@ -7,6 +7,11 @@ section#create-recipe {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
+        #create-title {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
         //  Name, information, ingredient, instruction, image
         #recipe-form {
             width: 100%;
@@ -122,10 +127,17 @@ section#create-recipe {
                 border-color: #999;
                 padding: 10px;
             }
-            #note-p {
+
+            // Notice
+            #recipe-notice {
                 margin-bottom: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 #note {
+                    max-width: 1200px;
                     color: gray;
+
                 }
             }
             
@@ -139,5 +151,12 @@ section#create-recipe {
                 }
             }
         }
+    }
+}
+
+
+@media (max-width: 1200px) {  
+    section#create-recipe .container #recipe-form div#recipe-notice.recipe-notice-block {
+        padding: 0;
     }
 }

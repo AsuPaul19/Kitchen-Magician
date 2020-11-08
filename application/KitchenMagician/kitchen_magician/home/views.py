@@ -78,7 +78,8 @@ def home(request):
         "trending_recipes_carousel": trending_recipes_carousel,
         "groups": groups,
     }
-    return render(request, 'home.html', context)
+    # replace home2.html with any home.html
+    return render(request, 'home2.html', context)
 
 def test(request):
     return render(request, 'notes/test.html', {'title': 'Test'})

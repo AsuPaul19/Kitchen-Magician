@@ -23,24 +23,8 @@
             <div class="container">
                 <a href="{% url 'home' %}" class="KitchenMagician">Kitchen Magician</a>
                 <ul id="ul-nav-link">
-                    <li class="nar-link"><a href="{% url 'about' %}">ABOUT</a></li>
-                    <li class="nar-link"><a href="{% url 'groups' %}">GROUPS</a></li>
-
-                    <!-- Jeff's Search -->
-
-                    <!-- <form method="POST" action="{% url 'search' %}">
-                        {% csrf_token %}
-                        <select name="filter" id="filter" class="form-control form-control-sm">
-                            <option value="none"> -- select an option -- </option>
-                            <option value="title">Title</option>
-                            <option value="author">Author</option>
-                            <option value="content">Content</option>
-                        </select>
-                        <input type="text" placeholder="Enter Keywords" name = "keyword">
-                        <input type="submit" value="Submit">
-                    </form>    -->
-
-                    <!-- Allen's search -->
+                    <li class="nav-link"><a href="{% url 'about' %}">About</a></li>
+                    <li class="nav-link"><a href="{% url 'groups' %}">Groups</a></li>
                     <li id="search">
                         <form action="{% url 'search' %}" method="POST" id="search-form">
                             <!-- Authentication Token -->
@@ -53,16 +37,22 @@
                             </div> 
                         </form>
                     </li>
+
                     {% if user.is_authenticated %}
-                    <li class="nav-item btn-group">
+                    <li id="account" class="nav-item btn-group">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ user.get_username }}
+                            Hi, {{ user.get_username }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <!-- 
+                                TODO 
+                                Change to items in dropdown
+                            -->
+                            <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
                             <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                            <a class="dropdown-item" href="#">Groups</a>
-                            <a class="dropdown-item" href="#">Recipes</a>
-                            <a class="dropdown-item" href="#">Favorites</a>
+                            <!-- <a class="dropdown-item" href="#">Groups</a> -->
+                            <!-- <a class="dropdown-item" href="#">Recipes</a> -->
+                            <!-- <a class="dropdown-item" href="#">Favorites</a> -->
                             <!-- redirect to home page after logout -->
                             <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a>
                         </div>
@@ -70,12 +60,8 @@
                         <!-- <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a> -->
 
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
-                        </li>
+                    <li class="nav-link"><a href="{% url 'login' %}">Log in</a></li>
+                    <li class="nav-link"><a href="{% url 'signup' %}">Sign up</a></li>
                     {% endif %}
                 </ul>
             </div>
