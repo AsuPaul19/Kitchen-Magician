@@ -180,10 +180,11 @@
 #login-block .container .login form .btn {
   display: block;
   width: 100%;
-  height: 50px;
-  border-radius: 25px;
+  height: auto;
+  border-radius: 1.5rem;
   margin: 1rem 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-align: center;
   outline: none;
   border: none;
   background-image: -webkit-gradient(linear, left top, right top, from(#df6355), color-stop(#f56a58), to(#df6355));
