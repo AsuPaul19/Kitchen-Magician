@@ -4,8 +4,8 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib import messages
-from .forms import UserRegisterForm
+# from django.contrib import messages
+# from .forms import UserRegisterForm
 from django.contrib.auth.models import User
 
 
@@ -28,7 +28,7 @@ def signup(request):
         # TODO - Check Email address
         else:
             # create a user
-            user = User.objects.create_user(username=username, password=password1)
+            user = User.objects.create_user(username=username, password=password1, email=email)
             user.save()
             return redirect('login')
 
@@ -78,16 +78,17 @@ def login_signup(request):
     return render(request, 'login_signup.html')
 
 @login_required
-def profile(request):
+def user_profile(request, username=None):
     # handle user names and unmatched links
     if request.user.is_authenticated:
         context = {
             'title': 'Profile'
         }
-        return render(request, 'profile.html', context)
+        return render(request, 'user_profile.html', context)
 
     else:
         return login(request)
+
 
 @login_required
 def account(request):

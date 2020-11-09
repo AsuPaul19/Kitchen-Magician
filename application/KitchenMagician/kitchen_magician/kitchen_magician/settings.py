@@ -32,7 +32,7 @@ DEBUG = True
 # 	'www.allensun623.com', # Public domain
 # ]
 
-ALLOWED_HOSTS = ['*']  # Allow all hosts
+ALLOWED_HOSTS = ['*']  # Allow all hosts, testing & development only
 
 
 # Application definition
