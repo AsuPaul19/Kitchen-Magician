@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'search',
     'groups',
     'recipe',
+    'testing',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -10,6 +10,7 @@ from recipe import views as recipe_views
 from groups import views as groups_views
 from users import views as users_views
 from about import views as about_views
+from testing import views as testing_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('<str:username>/profile/', users_views.user_profile, name='user_profile'), # /account/profile
     path('signup/', users_views.signup, name='signup'),
+    path('testing/', testing_views.testing, name='testing'),
     path('', include('home.urls')),
     path('about/', include('about.urls')),
 ]

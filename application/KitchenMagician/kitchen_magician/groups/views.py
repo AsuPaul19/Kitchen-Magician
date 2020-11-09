@@ -5,4 +5,4 @@ def groups(request):
     context = {
         'title': 'GROUPS'
     }
-    return render(request, 'groups.html', context)
+    return render(request, 'groups/groups.html', context)
