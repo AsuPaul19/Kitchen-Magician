@@ -79,7 +79,7 @@ def home(request):
         "groups": groups,
     }
     # replace home2.html with any home.html
-    return render(request, 'home2.html', context)
+    return render(request, 'home.html', context)
 
 def test(request):
     return render(request, 'notes/test.html', {'title': 'Test'})
