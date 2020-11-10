@@ -463,6 +463,12 @@ open External Ip or localhost to see a "It works" or "Ubuntu" page.
     </VirtualHost>
     ```
 
+    5. **How to View Apache Error Logs**
+    ```
+    sudo tail -100 /var/log/apache2/error.log
+    ```
+
+
 4. **Restart Apache**
 
 ```
