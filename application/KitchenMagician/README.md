@@ -2,6 +2,7 @@
 -   [Tutorial](#Tutorial)
 -   [Setup-MacOS_Ubuntu](#Setup-MacOS_Ubuntu)
 -   [Issues](#Issues)
+-   [Github-Cheat-Sheet](#Github-Cheat-Sheet)
 
 ## Tutorial
 
@@ -253,3 +254,108 @@ sqlparse==0.4.1
         pytz==2020.1
         sqlparse==0.4.1
         ```
+
+
+## Github-Cheat-Sheet
+*Reference*
+- **[github-git-cheat-sheet](https://training.github.com/downloads/github-git-cheat-sheet/)**
+### Branches
+Branches are an important part of working with Git. Any commits you make will be made on the branch you’re currently “checked out” to. Use git status to see which branch that is.
+
+- Creates a new branch
+
+```shell
+git branch [branch-name]
+```
+
+- Switches to the specified branch and updates the working directory
+```shell
+git checkout [branch-name]
+```
+
+- Creates a new branch based on current working branch and switches to it
+```shell
+git checkout -b [branch-name]
+```
+
+- Combines the specified branch’s history into the current branch. This is usually done in pull requests, but is an important Git operation.
+```shell
+merge [branch]
+```
+
+- Deletes the specified branch
+```shell
+git branch -d [branch-name]
+```
+
+### Synchronize changes
+Synchronize your local repository with the remote repository on GitHub.com
+
+- Downloads all history from the remote tracking branches
+```shell
+git fetch
+```
+
+- Combines remote tracking branches into current local branch
+```shell
+git merge
+```
+
+- Uploads all local branch commits to GitHub
+```shell
+git push
+```
+
+- Upload a new branch to Github
+```shell
+git push --set-upstream origin [branch-name]
+```
+
+- Updates your current local working branch with all new commits from the corresponding remote branch on GitHub. git pull is a combination of git fetch and git merge
+```shell
+git pull
+```
+
+
+### Make changes
+Browse and inspect the evolution of project files
+
+- Lists version history for the current branch
+```shell
+git log
+```
+
+- Lists version history for a file, including renames
+```shell
+git log --follow [file]
+```
+
+- Shows content differences between two branches
+```shell
+git diff [first-branch]...[second-branch]
+```
+
+- Outputs metadata and content changes of the specified commit
+```shell
+git show [commit]
+```
+
+- Snapshots the file in preparation for versioning
+```shell
+git add [file]
+```
+
+- Records file snapshots permanently in version history
+```shell
+git commit -m "[descriptive message]"
+```
+- Amend the commit 
+```shell
+git commit --amend
+```
+
+
+
+
+
+
