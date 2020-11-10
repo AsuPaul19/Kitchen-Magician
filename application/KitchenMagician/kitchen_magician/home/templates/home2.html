@@ -2,7 +2,7 @@
 {% load static %}
 
         {% block css %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}"/>
         {% endblock css %}
 
         {% block content %}
@@ -10,4 +10,9 @@
             <h2>Home Page</h2>
         </div>
         {% endblock %}
+
+        {% block script %}
+        <script></script>
+        {% endblock script %}
+
 

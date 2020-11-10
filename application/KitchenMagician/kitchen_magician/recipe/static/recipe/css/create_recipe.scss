@@ -87,13 +87,14 @@ section#create-recipe {
             
                 #preview-block {
                     width: 100%;
-                    height: 200px;
+                    flex: 1;  // take up the remaining space
+                    overflow: auto;
                     justify-content: center;
                     align-items: center;
                     display: flex;
                     img#image-preview {
-                        width: auto;
-                        height: 100%;
+                        max-width: 100%;
+                        max-height: 100%;
                     }
                 }
             

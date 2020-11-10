@@ -81,6 +81,10 @@ class RecipeQuantityServe(models.Model):
 
 class RecipeCourse(models.Model):
     name = models.CharField(default='Others', max_length=50)
+    image_folder = 'recipe_course_pics/'
+    default_images_folder = 'default_images/'
+    image = models.ImageField(
+        default=default_images_folder + 'default_recipe_course_image.jpg', upload_to=image_folder)
 
     class Meta():
         db_table = 'recipe_course'
@@ -151,8 +155,9 @@ class RecipeInstruction(models.Model):
 class RecipeImage(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
     image_folder = 'recipe_pics/'
+    default_images_folder = 'default_images/'
     image = models.ImageField(
-        default=image_folder + 'default_recipe_image.jpg', upload_to=image_folder)
+        default=default_images_folder + 'default_recipe_image.jpg', upload_to=image_folder)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta():
@@ -213,6 +218,10 @@ class RecipeComment(models.Model):
 class RecipeOccasion(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
     name = models.CharField(max_length=50)
+    image_folder = 'recipe_occasion_pics/'
+    default_images_folder = 'default_images/'
+    image = models.ImageField(
+        default=default_images_folder + 'default_recipe_occasion_image.jpg', upload_to=image_folder)
 
     class Meta():
         db_table = 'recipe_occasion'
@@ -234,7 +243,10 @@ class RecipeOccasionItem(models.Model):
 class RecipeDiet(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
     name = models.CharField(max_length=50)
-
+    image_folder = 'recipe_diet_pics/'
+    default_images_folder = 'default_images/'
+    image = models.ImageField(
+        default=default_images_folder + 'default_recipe_diet_image.jpg', upload_to=image_folder)
     class Meta():
         db_table = 'recipe_diet'
 
