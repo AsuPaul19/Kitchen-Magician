@@ -38,6 +38,7 @@ Folder Tree
     |   |-- groups           
     |   |-- manage.py        
     |   |-- search
+    |   |-- testing
     |-- requirements.txt
 ```
 
@@ -135,6 +136,8 @@ sqlparse==0.4.1
         |-- groups           
         |-- manage.py        
         |-- search
+        |-- testing
+
     ```
 
     2. Run the application:
@@ -260,6 +263,7 @@ sqlparse==0.4.1
 *Reference*
 - **[github-git-cheat-sheet](https://training.github.com/downloads/github-git-cheat-sheet/)**
 ### Branches
+- **[git-cheat-sheet-education](https://education.github.com/git-cheat-sheet-education.pdf)**
 Branches are an important part of working with Git. Any commits you make will be made on the branch you’re currently “checked out” to. Use git status to see which branch that is.
 
 - Creates a new branch
@@ -354,7 +358,7 @@ git commit -m "[descriptive message]"
 git commit --amend
 ```
 
-### git-cheat-sheet-education
+### REWRITE HISTORY
 Rewriting branches, updating commits and clearing history
 - apply any commits of current branch ahead of specified one
 ```shell
