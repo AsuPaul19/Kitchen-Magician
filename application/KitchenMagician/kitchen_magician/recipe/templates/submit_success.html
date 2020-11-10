@@ -19,7 +19,11 @@
                     <p>Title: {{ recipe.name }}</p>
                     <p>Information: {{ recipe.information }}</p>
                     <p>Ingredient: {{ recipe.ingredients }}</p>
-                    <p>Instruction: {{ recipe.instructions }}</p>
+                    <p>Instruction: </p>
+                    {% for instruction in recipe.instructions %}
+                    <h4>   - Step {{ forloop.counter }}</h4>
+                    <p>    {{instruction}}</p>
+                    {% endfor %}
                     <p>Image: </p>
                     {% if recipe.images %}
                         <img src="{{ recipe.images.url }}" alt="">

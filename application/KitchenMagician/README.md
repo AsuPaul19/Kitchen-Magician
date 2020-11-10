@@ -354,6 +354,16 @@ git commit -m "[descriptive message]"
 git commit --amend
 ```
 
+### git-cheat-sheet-education
+Rewriting branches, updating commits and clearing history
+- apply any commits of current branch ahead of specified one
+```shell
+git rebase [branch]
+```
+- clear staging area, rewrite working tree from specified commit
+```shell
+git reset --hard [commit]
+```
 
 
 
