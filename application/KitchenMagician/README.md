@@ -420,25 +420,23 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     ```
 2. How do we call certain data
     If the instance recipe or recipe_id is valid, we will get the `recipe_data` as a dictionary.
-    ```
-    | Key                   | Value(Description)    | Type                  |
-    | :-------------------- | :-------------------- | :-------------------- |
-    | user                  | user name             | String                |
-    | name | recipe name | String |
-    | information | recipe information | String |
-    | ingredients | recipe ingredients | List |
-    | instructions | recipe instruction | String |
-    | images | recipe image path | String |
-    | video_link | recipe video link | String |
-    | quantity_serve | recipe quantity serve | Int |
-    | preparation_time | recipe preparation time | String |
-    | courses | recipe courses | List |
-    | occasions | recipe occasions | List |
-    | diets | recipe diets | List |
+    | Key                   | Value(Description)    | Type                  |get value in Python   | Get value in HTML|
+    | :-------------------- | :-------------------- | :-------------------- |:-------------------- |:-------------------- |
+    | user                  | user name             | String                | recipe_data['user'] | recipe_data.user |
+    | name | recipe name | String | recipe_data['name'] | recipe_data.name |
+    | information | recipe information | String | recipe_data['information'] | recipe_data.information |
+    | ingredients | recipe ingredients | List | recipe_data['ingredients'] | recipe_data.ingredients |
+    | instructions | recipe instruction | String | recipe_data['instruction'] | recipe_data.instruction |
+    | images | recipe image path | String path for Python; Image file for HTML | recipe_data['image'] | recipe_data.image.url |
+    | video_link | recipe video link | String | recipe_data['video_link'] | recipe_data.video_link |
+    | quantity_serve | recipe quantity serve | Int | recipe_data['quantity_serve'] | recipe_data.quantity_serve |
+    | preparation_time | recipe preparation time | String | recipe_data['preparation_time'] | recipe_data.preparation_time |
+    | courses | recipe courses | List | recipe_data['courses'] | recipe_data.courses |
+    | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
+    | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
 
-
-    ```
+    e.g. get recipe title
     ```python
     if recipe_data: # if recipe_data is not None
-
+       title = recipe_data['name']
     ```
