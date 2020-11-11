@@ -378,8 +378,7 @@ There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a
 Recipe Info
 
 Return a recipe data as a dictionary {key, value}
-    
-    ```python
+```python
     recipe_data_json = {
             'user': self.recipe_user(recipe),
             'name': self.recipe_name(recipe),
@@ -394,7 +393,7 @@ Return a recipe data as a dictionary {key, value}
             "occasions": self.recipe_occasions(recipe),
             "diets": self.recipe_diets(recipe),
         }
-    ```
+```
 
 Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py`
 
