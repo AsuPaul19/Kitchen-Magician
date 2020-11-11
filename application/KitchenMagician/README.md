@@ -375,6 +375,7 @@ git reset --hard [commit]
 
 
 ## **Data Models Instruction**
+### Instruction for Recipe
 There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a recipe.
 
 Recipe Info: return a recipe data as a dictionary {key, value}
@@ -389,7 +390,7 @@ Recipe Info: return a recipe data as a dictionary {key, value}
             "video_link": self.recipe_video_link(recipe),
             "quantity_serve": self.recipe_quantity_serve(recipe),
             "preparation_time": self.recipe_preparation_time(recipe), 
-            "courses": self.recipe_courses(recipe),
+            "course": self.recipe_course(recipe),
             "occasions": self.recipe_occasions(recipe),
             "diets": self.recipe_diets(recipe),
         }
@@ -430,7 +431,7 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     | video_link | recipe video link | String | recipe_data['video_link'] | recipe_data.video_link |
     | quantity_serve | recipe quantity serve | Int | recipe_data['quantity_serve'] | recipe_data.quantity_serve |
     | preparation_time | recipe preparation time | String | recipe_data['preparation_time'] | recipe_data.preparation_time |
-    | courses | recipe courses | List | recipe_data['courses'] | recipe_data.courses |
+    | course | recipe course | String | recipe_data['course'] | recipe_data.course |
     | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
     | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
 
@@ -487,7 +488,7 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
                 <p>Video Link: {{ recipe.video_link }}</p>
                 <p>Preparation Time: {{ recipe.preparation_time }}</p>
                 <p>Quantity Serve: {{ recipe.quantity_serve }}</p>
-                <p>Course: {{ recipe.courses }}</p>
+                <p>Course: {{ recipe.course }}</p>
                 <p>Occasion: {{ recipe.occasions }}</p>
                 <p>Diet: {{ recipe.diets }}</p>
             {% else %}  

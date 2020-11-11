@@ -76,7 +76,7 @@ class RecipeDataFetch():
                     "video_link": self.recipe_video_link(recipe),
                     "quantity_serve": self.recipe_quantity_serve(recipe),
                     "preparation_time": self.recipe_preparation_time(recipe), 
-                    "courses": self.recipe_courses(recipe),
+                    "course": self.recipe_course(recipe),
                     "occasions": self.recipe_occasions(recipe),
                     "diets": self.recipe_diets(recipe),
                 }
@@ -142,12 +142,19 @@ class RecipeDataFetch():
         else:
             return None
 
-    def recipe_courses(self, recipe):
-        courses = RecipeCourseItem.objects.filter(recipe=recipe)
-        if courses:
-            return [r_object.recipe_course.name for r_object in courses]
-        else:
+    def recipe_course(self, recipe):
+        course = RecipeCourseItem.objects.filter(recipe=recipe).first()
+        if course:
+            return course.recipe_course.name
+        else: 
             return None
+        # Return as a list
+        # courses = RecipeCourseItem.objects.filter(recipe=recipe).first()
+        # if courses:
+        #     return 
+        #     return [r_object.recipe_course.name for r_object in courses]
+        # else:
+        #     return None
 
     def recipe_occasions(self, recipe):
         occasions = RecipeOccasionItem.objects.filter(recipe=recipe)

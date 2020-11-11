@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
-        {% block content %}
-        <div class="container">
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'home/css/404.css' %}">
+        {% endblock css %}
 
-            <h3>Oh Dear, it looks like the page you were looking for is missing from our cookbook!</h3>
+        {% block content %}
+        <div id="not-found" class="container">
+            <img src="{% static 'home/images/recipe_404.png' %}" alt="recipe_404">
+            <h1>Oops!</h1>
+            <h2 id="second-line">Something definitely went wrong.</h2>
+            <h4 id="third-line">It looks like the page you were looking for is missing from our cookbook.</h4>
         </div>
         {% endblock content %}

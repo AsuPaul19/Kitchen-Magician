@@ -81,7 +81,7 @@ def submit_recipe(request, recipe=None, recipe_id=None):
         recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
 
     # if we fetch the data successfully, update context and send to client
-    if recipe_data_fetch.is_valid():
+    if recipe_data_fetch.is_valid:
         recipe_data = recipe_data_fetch.get_recipe()
         context['recipe'] = recipe_data
 
