@@ -377,23 +377,23 @@ git reset --hard [commit]
 There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a center recipe.
 Recipe Info
 
-Return a recipe data as a dictionary
-    ```
+Return a recipe data as a dictionary {key, value}
+    
+    ```python
     recipe_data_json = {
-        # Key - name:   Value   Type (name)
-        'user':  String, self.username
-        'name': String, self.recipe name),
-        'information': String, self.recipe_information(recipe),
-        'ingredients': List, self.recipe_ingredients(recipe),
-        'instructions': List, self.recipe_instruction(recipe),
-        "images": String for image path, self.recipe_image(recipe)
-        "video_link": RecipeVideo.objects.filter(recipe=recipe).first().video_link,
-        "quantity_serve": recipe.quantity_serve,
-        "preparation_time": RecipePreparationTimeItem.objects.filter(recipe=recipe).first().preparation_time.preparation_time,
-        "courses": [r_object.recipe_course.name for r_object in RecipeCourseItem.objects.filter(recipe=recipe)],
-        "occasions": [r_object.recipe_occasion.name for r_object in RecipeOccasionItem.objects.filter(recipe=recipe)],
-        "diets": [r_object.recipe_diet.name for r_object in RecipeDietItem.objects.filter(recipe=recipe)],
-    }
+            'user': self.recipe_user(recipe),
+            'name': self.recipe_name(recipe),
+            'information': self.recipe_information(recipe),
+            'ingredients': self.recipe_ingredients(recipe),
+            'instructions': self.recipe_instruction(recipe),
+            "images": self.recipe_image(recipe),
+            "video_link": self.recipe_video_link(recipe),
+            "quantity_serve": self.recipe_quantity_serve(recipe),
+            "preparation_time": self.recipe_preparation_time(recipe), 
+            "courses": self.recipe_courses(recipe),
+            "occasions": self.recipe_occasions(recipe),
+            "diets": self.recipe_diets(recipe),
+        }
     ```
 
 Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py`
