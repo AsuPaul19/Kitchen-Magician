@@ -40,6 +40,11 @@ class RecipeDataFetch():
         self.recipe = recipe
         self.recipe_id = recipe_id
 
+    def is_valid(self):
+        # if we can fetch the recipe with its instance or id, return true
+        # else return false
+        return self.recipe or Recipe.objects.filter(id=self.recipe_id).first()
+
     def get_recipe(self):
         recipe = None
         # get data with recipe instance
@@ -47,11 +52,9 @@ class RecipeDataFetch():
             recipe = self.recipe
         # get data with recipe id
         elif self.recipe_id:
-            recipe = Recipe.objects.filter(id=self.recipe_id)
+            recipe = Recipe.objects.filter(id=self.recipe_id).first()
         
         return self.recipe_data(recipe)
-
-
 
     def recipe_data(self, recipe):
         recipe_data_json = None
@@ -76,8 +79,12 @@ class RecipeDataFetch():
         return recipe_data_json
 
     def recipe_user(self, recipe):
-        if recipe.user:
-            return recipe.user.username
+        print(recipe)
+        print(recipe.name)
+        print(recipe.created)
+        user = User.objects.filter(id=recipe.user_id).first()
+        if user:
+            return user.username
         else:
             return None
 

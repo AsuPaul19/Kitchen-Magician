@@ -455,7 +455,7 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
             recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
 
         # if we fetch the data successfully, update context and send to client
-        if recipe_data_fetch:
+        if recipe_data_fetch.is_valid():
             recipe_data = recipe_data_fetch.get_recipe()
             context['recipe'] = recipe_data
         return render(request, 'recipe.html', context)

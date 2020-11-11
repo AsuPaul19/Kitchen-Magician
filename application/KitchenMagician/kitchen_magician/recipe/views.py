@@ -15,7 +15,7 @@ from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
 from .recipe_data_fetch import RecipeDataFetch
 
-def recipe(request, recipe=None, recipe_id=None):
+def recipe_view(request, recipe=None, recipe_id=None):
     context = {
             'title': 'RECIPES',
             'recipe': None,
@@ -27,12 +27,14 @@ def recipe(request, recipe=None, recipe_id=None):
         recipe_data_fetch = RecipeDataFetch(recipe=recipe)
     elif recipe_id:
         recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
-
+    print("recipe_data_fetch: ", recipe_data_fetch)
     # if we fetch the data successfully, update context and send to client
-    if recipe_data_fetch:
+    if recipe_data_fetch.is_valid():
         recipe_data = recipe_data_fetch.get_recipe()
         context['recipe'] = recipe_data
-    return render(request, 'recipe.html', context)
+        return render(request, 'recipe.html', context)
+    else: #return 404 Page if the recipe doesn't match in the database
+        return not_found(request)
 
 
 # Create recipe page
@@ -72,12 +74,12 @@ def submit_recipe(request, recipe=None, recipe_id=None):
         recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
 
     # if we fetch the data successfully, update context and send to client
-    if recipe_data_fetch:
+    if recipe_data_fetch.is_valid():
         recipe_data = recipe_data_fetch.get_recipe()
         context['recipe'] = recipe_data
 
-    recipe(recipe, recipe_id)
-    # return render(request, 'submit_success.html', context)
+    # recipe_view(request, recipe, recipe_id)
+    return render(request, 'submit_success.html', context)
 
 
 def create_recipe_data(request):
