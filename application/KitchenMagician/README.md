@@ -1,10 +1,11 @@
 # **Implementation**
--   [Tutorial](#Tutorial)
--   [Setup-MacOS_Ubuntu](#Setup-MacOS_Ubuntu)
+-   [Tutorials](#Tutorials)
+-   [Setup MacOS&Ubuntu](#Setup-MacOS_Ubuntu)
 -   [Issues](#Issues)
--   [Github-Cheat-Sheet](#Github-Cheat-Sheet)
+-   [Github Cheat Sheet](#Github-Cheat-Sheet)
+-   [Data Models Instruction](#Data-Models-Instruction)
 
-## Tutorial
+## Tutorials
 
 **Django**
 - [Python Django Tutorial: Full-Featured Web App Part 1 - Getting Started](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
@@ -18,7 +19,7 @@
 
 
 
-## Setup-MacOS_Ubuntu
+## Setup MacOS&Ubuntu
 
 
 
@@ -373,7 +374,7 @@ git reset --hard [commit]
 
 
 
-# **Database Instruction**
+## **Data Models Instruction**
 There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a recipe.
 
 Recipe Info: return a recipe data as a dictionary {key, value}
@@ -445,7 +446,7 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
        title = recipe_data['name']
     ```
     2. e.g. get recipe title in html
-        - If we pass recipe data in views, it could write a method. e.g.
+        - If we pass recipe data in views, it could writing a method to get data. e.g.
         ```python
         def recipe_view(request, recipe=None, recipe_id=None):
             context = {
