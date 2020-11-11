@@ -1,6 +1,6 @@
 # **Implementation**
 -   [Tutorials](#Tutorials)
--   [Setup MacOS&Ubuntu](#Setup-MacOS_Ubuntu)
+-   [Setup MacOS&Ubuntu](#Setup-MacOS&Ubuntu)
 -   [Issues](#Issues)
 -   [Github Cheat Sheet](#Github-Cheat-Sheet)
 -   [Data Models Instruction](#Data-Models-Instruction)
@@ -19,7 +19,7 @@
 
 
 
-## Setup MacOS&Ubuntu
+## Setup-MacOS&Ubuntu
 
 
 
