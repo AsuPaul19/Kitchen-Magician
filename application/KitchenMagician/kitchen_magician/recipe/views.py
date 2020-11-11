@@ -17,7 +17,7 @@ from .recipe_data_fetch import RecipeDataFetch
 
 def recipe(request, recipe=None, recipe_id=None):
     context = {
-            'title': 'SUBMIT RECIPES',
+            'title': 'RECIPES',
             'recipe': None,
         }
 

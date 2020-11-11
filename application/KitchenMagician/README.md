@@ -435,8 +435,38 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
     | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
 
-    e.g. get recipe title
+    - e.g. get recipe title in python
     ```python
     if recipe_data: # if recipe_data is not None
        title = recipe_data['name']
     ```
+    - e.g. get recipe title in html
+        - If we pass recipe data in views, it could write a method. e.g.
+        ```python
+        def recipe(request, recipe=None, recipe_id=None):
+        context = {
+                'title': 'RECIPES',
+                'recipe': None,
+            }
+
+        # fetch recipe with either recipe instance or recipe id recipe_id
+        recipe_data_fetch = None
+        if recipe:
+            recipe_data_fetch = RecipeDataFetch(recipe=recipe)
+        elif recipe_id:
+            recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+
+        # if we fetch the data successfully, update context and send to client
+        if recipe_data_fetch:
+            recipe_data = recipe_data_fetch.get_recipe()
+            context['recipe'] = recipe_data
+        return render(request, 'recipe.html', context)
+        ```
+        - In the corresponding `recipe.html` file, get the values. e.g.
+        ``` html
+        <p> {{ recipe.title }} </p>
+        {% for ingredient in recipe.ingredients %}
+        <p> {{ ingredient }}</p>
+        {% endfor %}
+        ```
+
