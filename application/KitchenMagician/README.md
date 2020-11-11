@@ -441,30 +441,51 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     - e.g. get recipe title in html
         - If we pass recipe data in views, it could write a method. e.g.
         ```python
-        def recipe(request, recipe=None, recipe_id=None):
-        context = {
-                'title': 'RECIPES',
-                'recipe': None,
+        def recipe_view(request, recipe=None, recipe_id=None):
+            context = {
+                    'title': 'RECIPES',
+                    'recipe': None,
+                }
+            recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
+            # if we fetch the data successfully, send to clients
+            if recipe_instance.is_valid:  
+                context['recipe'] = recipe_instance.recipe_date
+                return render(request, 'recipe.html', context)
+            else: #return 404 Page if the recipe doesn't match in the database
+                return not_found(request) 
+
+        def not_found(request):
+            context = {
+                'title': '404 NOT FOUND'
             }
-
-        # fetch recipe with either recipe instance or recipe id recipe_id
-        recipe_data_fetch = None
-        if recipe:
-            recipe_data_fetch = RecipeDataFetch(recipe=recipe)
-        elif recipe_id:
-            recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
-
-        # if we fetch the data successfully, update context and send to client
-        if recipe_data_fetch.is_valid():
-            recipe_data = recipe_data_fetch.get_recipe()
-            context['recipe'] = recipe_data
-        return render(request, 'recipe.html', context)
+            return render(request, '404.html', context)
         ```
         - In the corresponding `recipe.html` file, get the values. e.g.
         ``` html
-        <p> {{ recipe.title }} </p>
-        {% for ingredient in recipe.ingredients %}
-        <p> {{ ingredient }}</p>
-        {% endfor %}
+        <div id="recipe">
+            {% if recipe %}
+                <p>User: {{ recipe.user }} </p>
+                <p>Title: {{ recipe.name }}</p>
+                <p>Information: {{ recipe.information }}</p>
+                <p>Ingredient: {{ recipe.ingredients }}</p>
+                <p>Instruction: </p>
+                {% for instruction in recipe.instructions %}
+                <h4>   - Step {{ forloop.counter }}</h4>
+                <p>    {{instruction}}</p>
+                {% endfor %}
+                <p>Image: </p>
+                {% if recipe.images %}
+                    <img src="{{ recipe.images.url }}" alt="">
+                {% endif %}
+                <p>Video Link: {{ recipe.video_link }}</p>
+                <p>Preparation Time: {{ recipe.preparation_time }}</p>
+                <p>Quantity Serve: {{ recipe.quantity_serve }}</p>
+                <p>Course: {{ recipe.courses }}</p>
+                <p>Occasion: {{ recipe.occasions }}</p>
+                <p>Diet: {{ recipe.diets }}</p>
+            {% else %}  
+                <p>Sorry, we can't find the recipe.</p>
+            {% endif %}
+        </div>
         ```
 

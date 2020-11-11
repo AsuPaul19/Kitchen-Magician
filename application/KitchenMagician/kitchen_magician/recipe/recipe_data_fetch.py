@@ -37,22 +37,28 @@ Return a recipe data as a dictionary
 
 class RecipeDataFetch():
     def __init__(self, recipe=None, recipe_id=None):
-        self.recipe = recipe
-        self.recipe_id = recipe_id
+        self.recipe = recipe  # recipe instance
+        self.recipe_id = recipe_id  # recipe id
+        self.is_valid = False # valid recipe instance or id 
+        self.recipe_date = self.get_recipe() # recipe data
 
     def is_valid(self):
         # if we can fetch the recipe with its instance or id, return true
         # else return false
-        return self.recipe or Recipe.objects.filter(id=self.recipe_id).first()
+        # type(self.recipe==Recipe) Check the type
+        return isinstance(self.recipe, Recipe) or Recipe.objects.filter(id=self.recipe_id).first()
 
     def get_recipe(self):
         recipe = None
         # get data with recipe instance
-        if self.recipe:
+        if isinstance(self.recipe, Recipe): # if the instance is a <class 'Recipe'>
             recipe = self.recipe
+            self.is_valid = True
         # get data with recipe id
         elif self.recipe_id:
             recipe = Recipe.objects.filter(id=self.recipe_id).first()
+            if recipe:
+                self.is_valid = True
         
         return self.recipe_data(recipe)
 

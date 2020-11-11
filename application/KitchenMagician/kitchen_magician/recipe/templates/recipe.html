@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
         {% block content %}
-        <div class="h1">Recipe Page</div>
+        <section id="recipe">
+            
+        </section>
+        <div class="container">
+            <div class="h1">Recipe Page</div>
+            <p>Recipe: {{ recipe.name }}</p>
+            <p>User: {{ recipe.user }}</p>
+        </div>
         {% endblock content %}

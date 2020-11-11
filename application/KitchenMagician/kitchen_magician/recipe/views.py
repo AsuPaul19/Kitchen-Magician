@@ -20,21 +20,28 @@ def recipe_view(request, recipe=None, recipe_id=None):
             'title': 'RECIPES',
             'recipe': None,
         }
-
-    # fetch recipe with either recipe instance or recipe id recipe_id
-    recipe_data_fetch = None
-    if recipe:
-        recipe_data_fetch = RecipeDataFetch(recipe=recipe)
-    elif recipe_id:
-        recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
-    print("recipe_data_fetch: ", recipe_data_fetch)
-    # if we fetch the data successfully, update context and send to client
-    if recipe_data_fetch.is_valid():
-        recipe_data = recipe_data_fetch.get_recipe()
-        context['recipe'] = recipe_data
+    recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
+    # if we fetch the data successfully, send to clients
+    if recipe_instance.is_valid:  
+        context['recipe'] = recipe_instance.recipe_date
         return render(request, 'recipe.html', context)
     else: #return 404 Page if the recipe doesn't match in the database
-        return not_found(request)
+        return not_found(request)  
+
+    # # fetch recipe with either recipe instance or recipe id recipe_id
+    # recipe_data_fetch = None
+    # if recipe:
+    #     recipe_data_fetch = RecipeDataFetch(recipe=recipe)
+    # elif recipe_id:
+    #     recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+    # print("recipe_data_fetch: ", recipe_data_fetch)
+    # # if we fetch the data successfully, update context and send to client
+    # if recipe_data_fetch.is_valid():
+    #     recipe_data = recipe_data_fetch.get_recipe()
+    #     context['recipe'] = recipe_data
+    #     return render(request, 'recipe.html', context)
+    # else: #return 404 Page if the recipe doesn't match in the database
+    #     return not_found(request)
 
 
 # Create recipe page
