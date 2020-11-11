@@ -433,11 +433,11 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
     | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
 
-    - `Key: the key of a dictionary pair`
-    - `Value(Description): the value of a dictionary pair, and its description`
-    - `String: Type of value in database`
-    - `Get value in Python: The way to use it and get value in Python`
-    - `Get value in HTML: The way to use it and get value in HTML`
+    - **Key**: the key of a dictionary pair
+    - **Value(Description)**: the value of a dictionary pair, and its description
+    - **String**: Type of value in database
+    - **Get value in Python**: The way to use it and get value in Python
+    - **Get value in HTML**: The way to use it and get value in HTML
 
     - e.g. get recipe title in python
     ```python
