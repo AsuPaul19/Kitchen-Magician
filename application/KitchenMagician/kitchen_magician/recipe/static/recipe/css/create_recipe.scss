@@ -144,14 +144,35 @@ section#create-recipe {
                 }
             }
             
-
-            #submit-button-block {
+            #recipe-buttons {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                #submit-button {
-                    align-self: center;
+                flex-direction: row;
+                margin-bottom: 2rem;
+                .recipe-button-block {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    #submit-button {
+                        align-self: center;
+                        width: 12rem;
+                        margin-right: 0.5rem;
+                    }
+                    #cancel-button {
+                        align-self: center;
+                        width: 6rem;
+                        margin-left: 0.5rem;
+                        border-color: #999;
+                        color: #999;
+                        &:hover {
+                            color: white;
+                            background-color: #999;
+                            text-decoration: none;
+                        }
+                    }
                 }
+
             }
         }
     }

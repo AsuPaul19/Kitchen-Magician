@@ -27,7 +27,7 @@ body {
     }
 }
 
-button.btn-type1 {
+.btn-type1 {
     border-radius: 5px;
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
@@ -35,6 +35,9 @@ button.btn-type1 {
     background-color: $backgroundColor;
     border: 1px solid $textColor;
     box-shadow: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
 
 button.btn-type1:hover {

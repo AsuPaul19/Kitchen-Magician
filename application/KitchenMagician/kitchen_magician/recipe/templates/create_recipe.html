@@ -127,8 +127,13 @@
                     By submitting material for publication, you grant Kitchen magician, LLC, its parent company, subsidiaries, affiliates, partners and licensees unrestricted use of the material, including your name, hometown and state. We reserve the right to modify, reproduce and distribute the material in any medium and in any manner. We may contact you via phone, email or mail regarding your submission.
                 </p>
             </div>
-            <div id="submit-button-block">
-                <button type="submit" id="submit-button" class="btn-type1 recipe-submit-btn" >Submit</button>
+            <div id="recipe-buttons">
+                <div id="submit-button-block" class="recipe-button-block">
+                    <button type="submit" id="submit-button" class="btn-type1 recipe-submit-btn" >Submit</button>
+                </div>
+                <div id="cancel-button-block" class="recipe-button-block">
+                    <a href="{% url 'user_profile' username=user.username %}" id="cancel-button" class="btn-type1 recipe-cancel-btn" >Cancel</a>
+                </div>
             </div>
         </form>
     </div>

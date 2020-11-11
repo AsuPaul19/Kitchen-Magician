@@ -31,7 +31,7 @@ body .container {
   margin: 1rem auto;
 }
 
-button.btn-type1 {
+.btn-type1 {
   border-radius: 5px;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
@@ -40,6 +40,9 @@ button.btn-type1 {
   border: 1px solid #f56a58;
   -webkit-box-shadow: none;
           box-shadow: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
 
 button.btn-type1:hover {

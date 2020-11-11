@@ -373,3 +373,72 @@ git reset --hard [commit]
 
 
 
+# **Database Instruction**
+There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a center recipe.
+Recipe Info
+
+Return a recipe data as a dictionary
+    ```
+    recipe_data_json = {
+        # Key - name:   Value   Type (name)
+        'user':  String, self.username
+        'name': String, self.recipe name),
+        'information': String, self.recipe_information(recipe),
+        'ingredients': List, self.recipe_ingredients(recipe),
+        'instructions': List, self.recipe_instruction(recipe),
+        "images": String for image path, self.recipe_image(recipe)
+        "video_link": RecipeVideo.objects.filter(recipe=recipe).first().video_link,
+        "quantity_serve": recipe.quantity_serve,
+        "preparation_time": RecipePreparationTimeItem.objects.filter(recipe=recipe).first().preparation_time.preparation_time,
+        "courses": [r_object.recipe_course.name for r_object in RecipeCourseItem.objects.filter(recipe=recipe)],
+        "occasions": [r_object.recipe_occasion.name for r_object in RecipeOccasionItem.objects.filter(recipe=recipe)],
+        "diets": [r_object.recipe_diet.name for r_object in RecipeDietItem.objects.filter(recipe=recipe)],
+    }
+    ```
+
+Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py`
+
+1. fetching recipe data with instance recipe
+    - fetching recipe data with instance recipe
+    ```python
+        from recipe.recipe_data_fetch import RecipeDataFetch
+        # Either fetching data with instance recipe
+        recipe_data_fetch = RecipeDataFetch(recipe=recipe)
+
+        if recipe_data_fetch: # if recipe_data_fetch is not None
+            recipe_data = recipe_data_fetch.get_recipe()
+    ```
+    - fetching recipe data with id recipe_id
+    ```python
+        from recipe.recipe_data_fetch import RecipeDataFetch
+        # Or fetching data with id recipe_id
+        recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+        recipe_data = None
+
+        if recipe_data_fetch: # if recipe_data_fetch is not None
+            recipe_data = recipe_data_fetch.get_recipe()
+    ```
+2. How do we call certain data
+    If the instance recipe or recipe_id is valid, we will get the `recipe_data` as a dictionary.
+    ```
+    | Key                   | Value(Description)    | Type                  |
+    | :-------------------- | :-------------------- | :-------------------- |
+    | user                  | user name             | String                |
+    | name | recipe name | String |
+    | information | recipe information | String |
+    | ingredients | recipe ingredients | List |
+    | instructions | recipe instruction | String |
+    | images | recipe image path | String |
+    | video_link | recipe video link | String |
+    | quantity_serve | recipe quantity serve | Int |
+    | preparation_time | recipe preparation time | String |
+    | courses | recipe courses | List |
+    | occasions | recipe occasions | List |
+    | diets | recipe diets | List |
+
+
+    ```
+    ```python
+    if recipe_data: # if recipe_data is not None
+
+    ```

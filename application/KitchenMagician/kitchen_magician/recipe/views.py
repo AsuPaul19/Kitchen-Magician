@@ -15,10 +15,23 @@ from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
 from .recipe_data_fetch import RecipeDataFetch
 
-def recipe(request):
+def recipe(request, recipe=None, recipe_id=None):
     context = {
-        'title': 'RECIPE'
-    }
+            'title': 'SUBMIT RECIPES',
+            'recipe': None,
+        }
+
+    # fetch recipe with either recipe instance or recipe id recipe_id
+    recipe_data_fetch = None
+    if recipe:
+        recipe_data_fetch = RecipeDataFetch(recipe=recipe)
+    elif recipe_id:
+        recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+
+    # if we fetch the data successfully, update context and send to client
+    if recipe_data_fetch:
+        recipe_data = recipe_data_fetch.get_recipe()
+        context['recipe'] = recipe_data
     return render(request, 'recipe.html', context)
 
 
@@ -40,6 +53,7 @@ def create_recipe(request):
 
 
 # handle recipe submission
+@login_required
 def submit_recipe(request, recipe=None, recipe_id=None):
     context = {
             'title': 'SUBMIT RECIPES',
@@ -62,7 +76,9 @@ def submit_recipe(request, recipe=None, recipe_id=None):
         recipe_data = recipe_data_fetch.get_recipe()
         context['recipe'] = recipe_data
 
-    return render(request, 'submit_success.html', context)
+    recipe(recipe, recipe_id)
+    # return render(request, 'submit_success.html', context)
+
 
 def create_recipe_data(request):
     data = request.POST
@@ -115,10 +131,18 @@ def create_recipe_data(request):
     
 	
 
+def not_found(request):
+    context = {
+        'title': '404 NOT FOUND'
+    }
+    return render(request, '404.html', context)
 
 
 
 
+
+
+# Testing only 
 def submit_success(request):
     context = {
         'title': 'SUCCESS'

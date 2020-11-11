@@ -17,13 +17,13 @@ from django.contrib.auth.models import User
 Return a recipe data as a dictionary
         
     recipe_data_json = {
-        # Key - name:   Value -  Type (name)
-        'user':  String (username)
-        'name': String (recipe name),
-        'information': String (),
-        'ingredients': self.recipe_ingredients(recipe),
-        'instructions': self.recipe_instruction(recipe),
-        "images": self.recipe_image(recipe)
+        # Key - name:   Value   Type (name)
+        'user':  String, self.username
+        'name': String, self.recipe name),
+        'information': String, self.recipe_information(recipe),
+        'ingredients': List, self.recipe_ingredients(recipe),
+        'instructions': List, self.recipe_instruction(recipe),
+        "images": String for image path, self.recipe_image(recipe)
         "video_link": RecipeVideo.objects.filter(recipe=recipe).first().video_link,
         "quantity_serve": recipe.quantity_serve,
         "preparation_time": RecipePreparationTimeItem.objects.filter(recipe=recipe).first().preparation_time.preparation_time,
@@ -54,21 +54,24 @@ class RecipeDataFetch():
 
 
     def recipe_data(self, recipe):
-        # Collect recipe data
-        recipe_data_json = {
-                'user': self.recipe_user(recipe),
-                'name': self.recipe_name(recipe),
-                'information': self.recipe_information(recipe),
-                'ingredients': self.recipe_ingredients(recipe),
-                'instructions': self.recipe_instruction(recipe),
-                "images": self.recipe_image(recipe),
-                "video_link": self.recipe_video_link(recipe),
-                "quantity_serve": self.recipe_quantity_serve(recipe),
-                "preparation_time": self.recipe_preparation_time(recipe), 
-                "courses": self.recipe_courses(recipe),
-                "occasions": self.recipe_occasions(recipe),
-                "diets": self.recipe_diets(recipe),
-            }
+        recipe_data_json = None
+        if recipe: 
+            # Collect recipe data
+            recipe_data_json = {
+                    'user': self.recipe_user(recipe),
+                    'name': self.recipe_name(recipe),
+                    'information': self.recipe_information(recipe),
+                    'ingredients': self.recipe_ingredients(recipe),
+                    'instructions': self.recipe_instruction(recipe),
+                    "images": self.recipe_image(recipe),
+                    "video_link": self.recipe_video_link(recipe),
+                    "quantity_serve": self.recipe_quantity_serve(recipe),
+                    "preparation_time": self.recipe_preparation_time(recipe), 
+                    "courses": self.recipe_courses(recipe),
+                    "occasions": self.recipe_occasions(recipe),
+                    "diets": self.recipe_diets(recipe),
+                }
+                
         print(recipe_data_json)
         return recipe_data_json
 
