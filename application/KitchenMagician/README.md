@@ -396,29 +396,29 @@ Recipe Info: return a recipe data as a dictionary {key, value}
 
 Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py`
 
-1. fetching recipe data with instance recipe
-    - fetching recipe data with instance recipe
+1. fetching recipe data with instance recipe or id recipe_id
+    - fetching recipe data with `instance recipe`
     ```python
         from recipe.recipe_data_fetch import RecipeDataFetch
         # Either fetching data with instance recipe
-        recipe_data_fetch = RecipeDataFetch(recipe=recipe)
-
-        if recipe_data_fetch: # if recipe_data_fetch is not None
-            recipe_data = recipe_data_fetch.get_recipe()
+        recipe_instance = RecipeDataFetch(recipe=recipe)
+        recipe_data = None
+        if recipe_instance.is_valid: # if recipe_instance is valid
+            recipe_data = recipe_instance.recipe_data
     ```
-    - fetching recipe data with id recipe_id
+    - fetching recipe data with `id recipe_id`
     ```python
         from recipe.recipe_data_fetch import RecipeDataFetch
         # Or fetching data with id recipe_id
-        recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
+        recipe_instance = RecipeDataFetch(recipe_id=recipe_id)
         recipe_data = None
-
-        if recipe_data_fetch: # if recipe_data_fetch is not None
-            recipe_data = recipe_data_fetch.get_recipe()
+        if recipe_instance.is_valid(): # if recipe_instance is not valid
+            recipe_data = recipe_instance.recipe_data
     ```
-2. How do we call certain data
+2. How do we get certain data?
+
     If the instance recipe or recipe_id is valid, we will get the `recipe_data` as a dictionary.
-    | Key                   | Value(Description)    | Type                  |get value in Python   | Get value in HTML|
+    | Key                   | Value(Description)    | Type                  |Get value in Python   | Get value in HTML|
     | :-------------------- | :-------------------- | :-------------------- |:-------------------- |:-------------------- |
     | user                  | user name             | String                | recipe_data['user'] | recipe_data.user |
     | name | recipe name | String | recipe_data['name'] | recipe_data.name |
@@ -432,6 +432,12 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     | courses | recipe courses | List | recipe_data['courses'] | recipe_data.courses |
     | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
     | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
+
+    - `Key: the key of a dictionary pair`
+    - `Value(Description): the value of a dictionary pair, and its description`
+    - `String: Type of value in database`
+    - `Get value in Python: The way to use it and get value in Python`
+    - `Get value in HTML: The way to use it and get value in HTML`
 
     - e.g. get recipe title in python
     ```python
