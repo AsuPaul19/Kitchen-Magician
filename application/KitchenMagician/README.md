@@ -374,10 +374,9 @@ git reset --hard [commit]
 
 
 # **Database Instruction**
-There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a center recipe.
-Recipe Info
+There is a python file `recipe/recipe_data_fetch.py` for fetching all data for a recipe.
 
-Return a recipe data as a dictionary {key, value}
+Recipe Info: return a recipe data as a dictionary {key, value}
 ```python
     recipe_data_json = {
             'user': self.recipe_user(recipe),
