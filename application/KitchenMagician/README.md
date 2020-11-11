@@ -439,12 +439,12 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     - **Get value in Python**: The way to use it and get value in Python
     - **Get value in HTML**: The way to use it and get value in HTML
 
-    - e.g. get recipe title in python
+    1. e.g. get recipe title in python
     ```python
     if recipe_data: # if recipe_data is not None
        title = recipe_data['name']
     ```
-    - e.g. get recipe title in html
+    2. e.g. get recipe title in html
         - If we pass recipe data in views, it could write a method. e.g.
         ```python
         def recipe_view(request, recipe=None, recipe_id=None):
