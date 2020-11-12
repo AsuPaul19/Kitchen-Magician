@@ -382,6 +382,7 @@ Recipe Info: return a recipe data as a dictionary {key, value}
 ```python
     recipe_data_json = {
             'user': self.recipe_user(recipe),
+            'user_avatar': user_avatar,
             'name': self.recipe_name(recipe),
             'information': self.recipe_information(recipe),
             'ingredients': self.recipe_ingredients(recipe),
@@ -390,6 +391,7 @@ Recipe Info: return a recipe data as a dictionary {key, value}
             "video_link": self.recipe_video_link(recipe),
             "quantity_serve": self.recipe_quantity_serve(recipe),
             "preparation_time": self.recipe_preparation_time(recipe), 
+            "cooking_time": self.recipe_cooking_time(recipe), 
             "course": self.recipe_course(recipe),
             "occasions": self.recipe_occasions(recipe),
             "diets": self.recipe_diets(recipe),
@@ -422,7 +424,8 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     If the instance recipe or recipe_id is valid, we will get the `recipe_data` as a dictionary.
     | Key                   | Value(Description)    | Type                  |Get value in Python   | Get value in HTML|
     | :-------------------- | :-------------------- | :-------------------- |:-------------------- |:-------------------- |
-    | user                  | user name             | String                | recipe_data['user'] | recipe_data.user |
+    | user | user name | String path for Python; Image file for HTML | recipe_data['user_avatar'] | recipe_data.user_avatar.url |
+    | user_avatar | user avatar path | String | recipe_data['user'] | recipe.user |
     | name | recipe name | String | recipe_data['name'] | recipe_data.name |
     | information | recipe information | String | recipe_data['information'] | recipe_data.information |
     | ingredients | recipe ingredients | List | recipe_data['ingredients'] | recipe_data.ingredients |
@@ -431,6 +434,7 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
     | video_link | recipe video link | String | recipe_data['video_link'] | recipe_data.video_link |
     | quantity_serve | recipe quantity serve | Int | recipe_data['quantity_serve'] | recipe_data.quantity_serve |
     | preparation_time | recipe preparation time | String | recipe_data['preparation_time'] | recipe_data.preparation_time |
+    | cooking_time | recipe cooking time | String | recipe_data['cooking_time'] | recipe_data.cooking_time |
     | course | recipe course | String | recipe_data['course'] | recipe_data.course |
     | occasions | recipe occasions | List | recipe_data['occasions'] | recipe_data.occasions |
     | diets | recipe diets | List | recipe_data['diets'] | recipe_data.diets |
@@ -452,12 +456,13 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
         def recipe_view(request, recipe=None, recipe_id=None):
             context = {
                     'title': 'RECIPES',
-                    'recipe': None,
+                    'recipe_date': None,
                 }
             recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
             # if we fetch the data successfully, send to clients
             if recipe_instance.is_valid:  
-                context['recipe'] = recipe_instance.recipe_date
+                recipe_date = recipe_instance.recipe_date
+                context['recipe_date'] = recipe_date
                 return render(request, 'recipe.html', context)
             else: #return 404 Page if the recipe doesn't match in the database
                 return not_found(request) 
@@ -472,27 +477,28 @@ Instruction of using the class `RecipeDataFetch` in `recipe/recipe_data_fetch.py
         ``` html
         <div id="recipe">
             {% if recipe %}
-                <p>User: {{ recipe.user }} </p>
-                <p>Title: {{ recipe.name }}</p>
-                <p>Information: {{ recipe.information }}</p>
-                <p>Ingredient: {{ recipe.ingredients }}</p>
+                <p>User: {{ recipe_data.user }} </p>
+                <p>Title: {{ recipe_data.name }}</p>
+                <p>Information: {{ recipe_data.information }}</p>
+                <p>Ingredient: {{ recipe_data.ingredients }}</p>
                 <p>Instruction: </p>
-                {% for instruction in recipe.instructions %}
+                {% for instruction in recipe_data.instructions %}
                 <h4>   - Step {{ forloop.counter }}</h4>
                 <p>    {{instruction}}</p>
                 {% endfor %}
                 <p>Image: </p>
-                {% if recipe.images %}
-                    <img src="{{ recipe.images.url }}" alt="">
+                {% if recipe_data.images %}
+                    <img src="{{ recipe_data.images.url }}" alt="">
                 {% endif %}
-                <p>Video Link: {{ recipe.video_link }}</p>
-                <p>Preparation Time: {{ recipe.preparation_time }}</p>
-                <p>Quantity Serve: {{ recipe.quantity_serve }}</p>
-                <p>Course: {{ recipe.course }}</p>
-                <p>Occasion: {{ recipe.occasions }}</p>
-                <p>Diet: {{ recipe.diets }}</p>
+                <p>Video Link: {{ recipe_data.video_link }}</p>
+                <p>Preparation Time: {{ recipe_data.preparation_time }}</p>
+                <p>Cooking Time: {{ recipe_data.cooking_time }}</p>
+                <p>Quantity Serve: {{ recipe_data.quantity_serve }}</p>
+                <p>Course: {{ recipe_data.course }}</p>
+                <p>Occasion: {{ recipe_data.occasions }}</p>
+                <p>Diet: {{ recipe_data.diets }}</p>
             {% else %}  
-                <p>Sorry, we can't find the recipe.</p>
+                <p>Sorry, we can't find the recipe_data.</p>
             {% endif %}
         </div>
         ```

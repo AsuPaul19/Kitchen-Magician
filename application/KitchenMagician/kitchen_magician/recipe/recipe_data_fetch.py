@@ -3,6 +3,7 @@ from .models import RecipeCourseItem
 from .models import RecipeImage
 from .models import RecipeInformation
 from .models import RecipePreparationTimeItem
+from .models import RecipeCookingTimeItem
 from .models import RecipeVideo
 from .models import RecipeIngredientItem
 from .models import RecipeOccasionItem
@@ -66,8 +67,10 @@ class RecipeDataFetch():
         recipe_data_json = None
         if recipe: 
             # Collect recipe data
+            user_name, user_avatar = self.recipe_user(recipe)
             recipe_data_json = {
-                    'user': self.recipe_user(recipe),
+                    'user': user_name,
+                    'user_avatar': user_avatar,
                     'name': self.recipe_name(recipe),
                     'information': self.recipe_information(recipe),
                     'ingredients': self.recipe_ingredients(recipe),
@@ -76,6 +79,7 @@ class RecipeDataFetch():
                     "video_link": self.recipe_video_link(recipe),
                     "quantity_serve": self.recipe_quantity_serve(recipe),
                     "preparation_time": self.recipe_preparation_time(recipe), 
+                    "cooking_time": self.recipe_cooking_time(recipe), 
                     "course": self.recipe_course(recipe),
                     "occasions": self.recipe_occasions(recipe),
                     "diets": self.recipe_diets(recipe),
@@ -85,12 +89,15 @@ class RecipeDataFetch():
         return recipe_data_json
 
     def recipe_user(self, recipe):
-        print(recipe)
-        print(recipe.name)
-        print(recipe.created)
         user = User.objects.filter(id=recipe.user_id).first()
         if user:
-            return user.username
+            user_name = user.username
+            user_avatar = None
+            try:
+                user_avatar = user.profile.image
+            except:
+                pass
+            return [user_name, user_avatar]
         else:
             return None
 
@@ -139,6 +146,13 @@ class RecipeDataFetch():
         preparation_time = RecipePreparationTimeItem.objects.filter(recipe=recipe).first()
         if preparation_time:
             return preparation_time.preparation_time.preparation_time
+        else:
+            return None
+    
+    def recipe_cooking_time(self, recipe):
+        cooking_time = RecipeCookingTimeItem.objects.filter(recipe=recipe).first()
+        if cooking_time:
+            return cooking_time.cooking_time.cooking_time
         else:
             return None
 

@@ -1,5 +1,9 @@
 section#recipe {
     #recipe-container {
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: center;
+
     }
 }

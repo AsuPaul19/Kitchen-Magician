@@ -72,6 +72,51 @@ def update_preparation_time():
     
     print("Successful on RecipePreparationTime!")
 
+# Recipe Cooking Time
+def update_cooking_time():
+    from recipe.models import RecipeCookingTime
+    cooking_time = [
+        {
+            'cooking_time': '00-15 min',
+            'cooking_time_max': 15,
+            'cooking_time_min': 10
+        },
+        {
+            'cooking_time': '15-30 min',
+            'cooking_time_max': 30,
+            'cooking_time_min': 15
+        },
+        {
+            'cooking_time': '30-60 min',
+            'cooking_time_max': 60,
+            'cooking_time_min': 30
+        },
+        {
+            'cooking_time': '1-2 hours',
+            'cooking_time_max': 120,
+            'cooking_time_min': 60
+        },
+        {
+            'cooking_time': '2-4 hours',
+            'cooking_time_max': 240,
+            'cooking_time_min': 120
+        },
+        {
+            'cooking_time': '4+ hours',
+            'cooking_time_max': 86400, # One day
+            'cooking_time_min': 240
+        },
+    ]
+    for c in cooking_time:
+        rct = RecipeCookingTime(
+            cooking_time=c['cooking_time'], 
+            cooking_time_max=c['cooking_time_max'],
+            cooking_time_min=c['cooking_time_min']
+            )
+        rct.save()
+    
+    print("Successful on RecipeCookingTime!")
+
 # recipe course
 def update_course():
     from recipe.models import RecipeCourse

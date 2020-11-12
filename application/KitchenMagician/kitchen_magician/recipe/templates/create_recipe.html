@@ -49,20 +49,8 @@
                 <input name="recipe-video-link" class="recipe-input input-text-border" type="text" placeholder="Please add the video link here if you have one.">
                 </input>
             </div>
-            <!-- Quantity-serve, Preparation-time -->
+            <!-- Preparation-time, Cooking-time -->
             <div class="recipe-add-select">
-                <div class="recipe-quantity-serve recipe-add-select-block">
-                    <label for="recipe-quantity-serve-label" class="recipe-add-label">QUANTITY SERVED</label>
-                    <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-quantity-serve">
-                        {% for qs in quantity_serve %}
-                            {% if qs == quantity_serve.first %}
-                            <option selected value="{{ qs.quantity_serve_num }}"> {{ qs.quantity_serve }}</option>
-                            {% else %}
-                            <option value="{{ qs.quantity_serve_num }}">{{ qs.quantity_serve }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
                 <div class="recipe-preparation-time recipe-add-select-block">
                     <label for="recipe-preparation-time-label" class="recipe-add-label">PREPARATION TIME</label>
                     <select id="recipe-preparation-time-select" class="recipe-selector input-text-border" name="recipe-preparation-time">
@@ -75,8 +63,20 @@
                         {% endfor %}
                     </select>
                 </div>
+                <div class="recipe-cooking-time recipe-add-select-block">
+                    <label for="recipe-cooking-time-label" class="recipe-add-label">COOKING TIME</label>
+                    <select id="recipe-cooking-time-select" class="recipe-selector input-text-border" name="recipe-cooking-time">
+                        {% for ct in cooking_time %}
+                            {% if ct == cooking_time.first %}
+                            <option selected value="{{ ct.id }}"> {{ ct.cooking_time }}</option>
+                            {% else %}
+                            <option value="{{ ct.id }}"> {{ ct.cooking_time }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
-            <!-- Course -->
+            <!-- Course, Quantity-serve -->
             <div class="recipe-add-select">
                 <div class="recipe-preparation-time recipe-add-select-block">
                     <label for="recipe-quantity-serve-label" class="recipe-add-label required">CHOOSE YOUR RECIPE'S COURSE</label>
@@ -91,7 +91,17 @@
                     </select>
                 </div>
                 <!-- Empty on the right -->
-                <div class="recipe-preparation-time recipe-add-select-block">
+                <div class="recipe-quantity-serve recipe-add-select-block">
+                    <label for="recipe-quantity-serve-label" class="recipe-add-label">QUANTITY SERVED</label>
+                    <select id="recipe-quantity-serve-select" class="recipe-selector input-text-border" name="recipe-quantity-serve">
+                        {% for qs in quantity_serve %}
+                            {% if qs == quantity_serve.first %}
+                            <option selected value="{{ qs.quantity_serve_num }}"> {{ qs.quantity_serve }}</option>
+                            {% else %}
+                            <option value="{{ qs.quantity_serve_num }}">{{ qs.quantity_serve }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
             <!-- Group checkbox: Occasion -->

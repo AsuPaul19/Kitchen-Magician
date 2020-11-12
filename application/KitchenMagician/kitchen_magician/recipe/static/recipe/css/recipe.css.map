@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AACI,OADG,AAAA,OAAO,CACV,iBAAiB,CAAC;EACd,cAAc,EAAE,GAAG;CACtB",
+    "mappings": "AAAA,AACI,OADG,AAAA,OAAO,CACV,iBAAiB,CAAC;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,QAAQ,EAAE,MAAM;EAChB,WAAW,EAAE,MAAM;CAEtB",
     "sources": [
         "recipe.scss"
     ],

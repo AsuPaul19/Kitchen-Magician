@@ -1,29 +1,27 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
-from .models import RecipeCourseItem, RecipeImage, RecipeInformation, RecipeIngredient, RecipePreparationTimeItem, RecipeUploadImageTest, RecipeVideo
+from .models import RecipeUploadImageTest
 from .models import RecipeDiet
 from .models import RecipeOccasion
 from .models import RecipeCourse
 from .models import RecipeQuantityServe
 from .models import RecipePreparationTime
-from .models import RecipeIngredientItem
-from .models import RecipeOccasionItem
-from .models import RecipeDietItem
-from .models import RecipeInstruction
-from django.conf import settings
+from .models import RecipeCookingTime
+# from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
 from .recipe_data_fetch import RecipeDataFetch
 
 def recipe_view(request, recipe=None, recipe_id=None):
     context = {
             'title': 'RECIPES',
-            'recipe': None,
+            'recipe_data': None,
         }
     recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
     # if we fetch the data successfully, send to clients
     if recipe_instance.is_valid:  
-        context['recipe'] = recipe_instance.recipe_date
+        recipe_data = recipe_instance.recipe_date
+        context['recipe_data'] = recipe_data
         return render(request, 'recipe.html', context)
     else: #return 404 Page if the recipe doesn't match in the database
         return not_found(request)  
@@ -55,6 +53,7 @@ def create_recipe(request):
         'courses': RecipeCourse.objects.all(),
         'occasions': RecipeOccasion.objects.all(),
         'preparation_time': RecipePreparationTime.objects.all(),
+        'cooking_time': RecipeCookingTime.objects.all(),
         'quantity_serve': RecipeQuantityServe.objects.all(),
     }
 
@@ -118,6 +117,7 @@ def create_recipe_data(request):
         "video_link": data.getlist('recipe-video-link')[0],
         "quantity_serve": data.getlist('recipe-quantity-serve'),
         "preparation_time": data.getlist('recipe-preparation-time'),
+        "cooking_time": data.getlist('recipe-cooking-time'),
         "courses": data.getlist('recipe-course'),
         "occasions": data.getlist('recipe-occasion'),
         "diets": data.getlist('recipe-diet'),

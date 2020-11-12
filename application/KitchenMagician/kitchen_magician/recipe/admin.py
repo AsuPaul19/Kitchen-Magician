@@ -23,6 +23,8 @@ from .models import RecipeDiet
 from .models import RecipeDietItem
 from .models import RecipePreparationTime
 from .models import RecipePreparationTimeItem
+from .models import RecipeCookingTime
+from .models import RecipeCookingTimeItem
 from .models import RecipeQuantityServe
 
 
@@ -45,3 +47,5 @@ admin.site.register(RecipeDietItem)
 admin.site.register(RecipeQuantityServe)
 admin.site.register(RecipePreparationTime)
 admin.site.register(RecipePreparationTimeItem)
+admin.site.register(RecipeCookingTime)
+admin.site.register(RecipeCookingTimeItem)
