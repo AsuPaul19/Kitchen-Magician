@@ -158,6 +158,8 @@ section#create-recipe {
                         align-self: center;
                         width: 12rem;
                         margin-right: 0.5rem;
+                        box-shadow: none;
+                        outline: none;
                     }
                     #cancel-button {
                         align-self: center;
@@ -165,6 +167,8 @@ section#create-recipe {
                         margin-left: 0.5rem;
                         border-color: #999;
                         color: #999;
+                        box-shadow: none;
+                        outline: none;
                         &:hover {
                             color: white;
                             background-color: #999;

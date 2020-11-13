@@ -13,6 +13,8 @@ from recipe.models import RecipeImage
 from recipe.models import RecipeVideo
 from recipe.models import RecipePreparationTime
 from recipe.models import RecipePreparationTimeItem
+from recipe.models import RecipeCookingTime
+from recipe.models import RecipeCookingTimeItem
 from recipe.models import RecipeCourse
 from recipe.models import RecipeCourseItem
 from recipe.models import RecipeOccasion
@@ -104,6 +106,7 @@ class CreateRecipe():
         self.video_link = recipe['video_link']
         self.quantity_serve = recipe['quantity_serve']  # id
         self.preparation_time = recipe['preparation_time'] # id
+        self.cooking_time = recipe['cooking_time'] # id
         self.courses = recipe['courses'] # id
         self.occasions = recipe['occasions'] # id
         self.diets = recipe['diets'] # id
@@ -124,6 +127,7 @@ class CreateRecipe():
         self.create_recipe_image()
         self.create_recipe_video()
         self.create_preparation_time_item()
+        self.create_cooking_time_item()
         self.create_recipe_course_item()
         self.create_recipe_occasion_item()
         self.create_recipe_diet_item()
@@ -133,7 +137,6 @@ class CreateRecipe():
         recipe_information = RecipeInformation(name=self.information, recipe=self.recipe)
         recipe_information.save()
         print("create_recipe_information CREATED!")
-
 
     # create recipe ingredients
     def create_recipe_ingredient(self):
@@ -190,6 +193,14 @@ class CreateRecipe():
             recipe_preparation_time = RecipePreparationTimeItem(preparation_time=RecipePreparationTime.objects.filter(id=preparation_time_id).first(), recipe=self.recipe)
             recipe_preparation_time.save()    
             print("create_preparation_time_item CREATED!")
+    
+    # create recipe cooking_time_item
+    def create_cooking_time_item(self):
+        cooking_time_id = self.cooking_time[0]
+        if cooking_time_id:
+            recipe_cooking_time = RecipeCookingTimeItem(cooking_time=RecipeCookingTime.objects.filter(id=cooking_time_id).first(), recipe=self.recipe)
+            recipe_cooking_time.save()    
+            print("create_cooking_time_item CREATED!")
 
 
     # create recipe course item

@@ -68,6 +68,29 @@ class RecipePreparationTimeItem(models.Model):
     def __str__(self):
         return f'{self.preparation_time.preparation_time} - {self.recipe.name}'
 
+class RecipeCookingTime(models.Model):
+    cooking_time = models.CharField(max_length=20)
+    cooking_time_max = models.IntegerField()
+    cooking_time_min = models.IntegerField()
+    class Meta():
+        db_table = 'recipe_cooking_time'
+
+    def __str__(self):
+        return self.cooking_time
+        
+class RecipeCookingTimeItem(models.Model):
+        # CASCADE, once the user is deleted, this item will be deleted automatically
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    cooking_time = models.ForeignKey(RecipeCookingTime, on_delete=models.CASCADE)
+
+    class Meta():
+        db_table = 'recipe_cooking_time_item'
+
+    def __str__(self):
+        return f'{self.cooking_time.cooking_time} - {self.recipe.name}'
+
+
+
 class RecipeQuantityServe(models.Model):
     quantity_serve = models.CharField(max_length=8)
     quantity_serve_num = models.IntegerField()
