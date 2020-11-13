@@ -138,7 +138,6 @@ class CreateRecipe():
         recipe_information.save()
         print("create_recipe_information CREATED!")
 
-
     # create recipe ingredients
     def create_recipe_ingredient(self):
         if self.ingredients:

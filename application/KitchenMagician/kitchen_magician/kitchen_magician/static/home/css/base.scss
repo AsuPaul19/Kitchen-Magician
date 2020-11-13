@@ -6,7 +6,7 @@ $backgroundColor: white;
     padding: 0;
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
-    color: $textColor;
+    color: black;
     /* avenir-lt-w01_35-light1475496, sans-serif; */
 }
 
@@ -21,13 +21,12 @@ body {
     // overflow: hidden;
     .container {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin: 1rem auto;
+        padding: 0;
     }
 }
 
-button.btn-type1 {
+.btn-type1 {
     border-radius: 5px;
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
@@ -35,6 +34,10 @@ button.btn-type1 {
     background-color: $backgroundColor;
     border: 1px solid $textColor;
     box-shadow: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: $textColor;
 }
 
 button.btn-type1:hover {
@@ -47,13 +50,14 @@ button.btn-type1:hover {
 /* HEADER */
 #header {
     padding: 0;
-
+    color: $textColor;
     .container {
         display: flex;
         margin: 2rem auto;
         padding: 0;
         width: 100%;
         justify-content: space-between;
+        align-items: center;
         // overflow: hidden;
         .KitchenMagician {
             display: flex;
@@ -131,6 +135,7 @@ button.btn-type1:hover {
                         align-items: center; */
                         button {
                             position: absolute;
+                            color: $textColor;
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
@@ -221,7 +226,7 @@ button.btn-type1:hover {
 
 }
 
-@media (min-width: 1100px) {  
+@media (min-width: 1200px) {  
     .container {
         max-width: 1080px;
     }
@@ -229,34 +234,15 @@ button.btn-type1:hover {
 }
 
 
-@media (min-width: 1200px) {  
-    .container {
-        max-width: 1140px;
-    }
-
-}
-
-@media (min-width: 1366px) {  
-    .container {
-        max-width: 1280px;
-    }
-}
-
 @media (min-width: 1440px) {  
     .container {
-        max-width: 1366px;
+        max-width: 1200px;
     }
 }
 
 @media (min-width: 1600px) {  
     .container {
-        max-width: 1536px;
-    }
-}
-
-@media (min-width: 1680px) {  
-    .container {
-        max-width: 1600px;
+        max-width: 1440px;
     }
 }
 
@@ -268,14 +254,102 @@ button.btn-type1:hover {
 }
 
 
-@media (min-width: 2048px) {  
+@media (min-width: 2160px) {  
     .container {
         max-width: 1920px;
     }
 }
 
-@media (min-width: 2160px) {  
-    .container {
-        max-width: 2048px;
-    }
-}
+
+// narrower
+// @media (min-width: 854px) {  
+//     .container {
+//         max-width: 828px;
+//     }
+
+// }
+
+// @media (min-width: 940px) {  
+//     .container {
+//         max-width: 920px;
+//     }
+// }
+
+// @media (min-width: 970px) {  
+//     .container {
+//         max-width: 950px;
+//     }
+// }
+
+// @media (min-width: 992px) {  
+//     .container {
+//         max-width: 960px;
+//     }
+
+// }
+
+// @media (min-width: 1080px) {  
+//     .container {
+//         max-width: 1024px;
+//     }
+
+// }
+
+// @media (min-width: 1100px) {  
+//     .container {
+//         max-width: 1080px;
+//     }
+
+// }
+
+
+// @media (min-width: 1200px) {  
+//     .container {
+//         max-width: 1140px;
+//     }
+
+// }
+
+// @media (min-width: 1366px) {  
+//     .container {
+//         max-width: 1280px;
+//     }
+// }
+
+// @media (min-width: 1440px) {  
+//     .container {
+//         max-width: 1366px;
+//     }
+// }
+
+// @media (min-width: 1600px) {  
+//     .container {
+//         max-width: 1536px;
+//     }
+// }
+
+// @media (min-width: 1680px) {  
+//     .container {
+//         max-width: 1600px;
+//     }
+// }
+
+
+// @media (min-width: 1920px) {  
+//     .container {
+//         max-width: 1600px;
+//     }
+// }
+
+
+// @media (min-width: 2048px) {  
+//     .container {
+//         max-width: 1920px;
+//     }
+// }
+
+// @media (min-width: 2160px) {  
+//     .container {
+//         max-width: 2048px;
+//     }
+// }

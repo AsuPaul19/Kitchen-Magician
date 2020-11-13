@@ -113,7 +113,10 @@ section#create-recipe .container #recipe-form #recipe-image-center label {
 
 section#create-recipe .container #recipe-form #recipe-image-center #preview-block {
   width: 100%;
-  height: 200px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: auto;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -126,8 +129,8 @@ section#create-recipe .container #recipe-form #recipe-image-center #preview-bloc
 }
 
 section#create-recipe .container #recipe-form #recipe-image-center #preview-block img#image-preview {
-  width: auto;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 section#create-recipe .container #recipe-form select {
@@ -174,7 +177,24 @@ section#create-recipe .container #recipe-form #recipe-notice #note {
   color: gray;
 }
 
-section#create-recipe .container #recipe-form #submit-button-block {
+section#create-recipe .container #recipe-form #recipe-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 2rem;
+}
+
+section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,10 +206,34 @@ section#create-recipe .container #recipe-form #submit-button-block {
           align-items: center;
 }
 
-section#create-recipe .container #recipe-form #submit-button-block #submit-button {
+section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block #submit-button {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  width: 12rem;
+  margin-right: 0.5rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block #cancel-button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 6rem;
+  margin-left: 0.5rem;
+  border-color: #999;
+  color: #999;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block #cancel-button:hover {
+  color: white;
+  background-color: #999;
+  text-decoration: none;
 }
 
 @media (max-width: 1200px) {

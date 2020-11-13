@@ -1,0 +1,13 @@
+#not-found.container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #second-line {
+        color: black;
+    }
+    #third-line {
+        color: black;
+    }
+}

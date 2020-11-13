@@ -4,7 +4,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Lato", sans-serif;
-  color: #f56a58;
+  color: black;
   /* avenir-lt-w01_35-light1475496, sans-serif; */
 }
 
@@ -38,6 +38,7 @@ body .container {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  color: #f56a58;
 }
 
 button.btn-type1:hover {
@@ -49,6 +50,7 @@ button.btn-type1:hover {
 /* HEADER */
 #header {
   padding: 0;
+  color: #f56a58;
 }
 
 #header .container {
@@ -61,6 +63,9 @@ button.btn-type1:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #header .container .KitchenMagician {
@@ -167,6 +172,7 @@ button.btn-type1:hover {
 
 #header .container ul#ul-nav-link li#search #search-box .search-btn button {
   position: absolute;
+  color: #f56a58;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -241,39 +247,21 @@ button.btn-type1:hover {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1080px;
   }
 }
 
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-@media (min-width: 1366px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
 @media (min-width: 1440px) {
   .container {
-    max-width: 1366px;
+    max-width: 1200px;
   }
 }
 
 @media (min-width: 1600px) {
   .container {
-    max-width: 1536px;
-  }
-}
-
-@media (min-width: 1680px) {
-  .container {
-    max-width: 1600px;
+    max-width: 1440px;
   }
 }
 
@@ -283,15 +271,9 @@ button.btn-type1:hover {
   }
 }
 
-@media (min-width: 2048px) {
-  .container {
-    max-width: 1920px;
-  }
-}
-
 @media (min-width: 2160px) {
   .container {
-    max-width: 2048px;
+    max-width: 1920px;
   }
 }
 /*# sourceMappingURL=base.css.map */

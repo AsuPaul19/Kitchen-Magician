@@ -212,6 +212,9 @@ section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-blo
       align-self: center;
   width: 12rem;
   margin-right: 0.5rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
 }
 
 section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block #cancel-button {
@@ -222,6 +225,9 @@ section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-blo
   margin-left: 0.5rem;
   border-color: #999;
   color: #999;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
 }
 
 section#create-recipe .container #recipe-form #recipe-buttons .recipe-button-block #cancel-button:hover {

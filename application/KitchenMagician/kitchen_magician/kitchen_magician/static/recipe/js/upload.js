@@ -7,3 +7,14 @@ function showPreview(event) {
 
     }
 }
+
+const btnSubmit = document.querySelector(".recipe-submit-btn");
+btnSubmit.addEventListener("click", imageAlert);
+function imageAlert() {
+    var preview = document.querySelector("#image-preview");
+    var uploaded = preview.style.display;
+    if(!uploaded) {
+        alert("Please upload an image for your recipe, thank you!")
+
+    }
+}

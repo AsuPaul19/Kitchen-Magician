@@ -3,47 +3,117 @@
         {% block css %}
         <link rel="stylesheet" href="{% static 'recipe/css/recipe.css' %}">
         {% endblock css %}
+        
         {% block content %}
+        {% if recipe_data %}
         <section id="recipe">
             <div id="recipe-container" class="container">
-                {% if recipe_data %}
                 <div id="diet-title-favorite-block">
-                    <img src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                    <p>{{ recipe_data.name }}</p>
-                    <button id="favorite-block"></button>
+                    <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                    <h1 id="recipe-title">{{ recipe_data.name }}</h1>
+                    <input id="favorite-block" type="image" value="unsaved" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
                 </div>
                 <div id="user-information-block">
-                    <img src="{{ recipe_data.user_avatar.url }}" alt="user_avatar">
-                    <legend>{{ recipe_data.user }}</legend>
-                    <h4>{{ recipe_data.information }}</h4>
+                    <div id="user-block">
+                        <img id="user-avatar-block" src="{{ recipe_data.user_avatar.url }}" alt="user_avatar">
+                        <p id="user-name-block">{{ recipe_data.user }}</p>
+                    </div>
+                    <h4 id=information-block>{{ recipe_data.information }}</h4>
                 </div>
-                <div id="image-prep-serve">
+                <div id="image-prep-serve-course-occasion-block">
                     {% if recipe_data.images %}
                     <img src="{{ recipe_data.images.url }}" alt="">
                     {% endif %}
-                    <p>Preparation Time: {{ recipe_data.preparation_time }}</p>
-                    <p>Quantity Serve: {{ recipe_data.quantity_serve }}</p>
-
+                    <ul id="ul-recipe-info-block">
+                        <li id="recipe-time-block" class="recipe-info-block">
+                            <h class="recipe-info-block-header">Total Time</h>
+                            <div class="recipe-info-block-items">
+                                <p class="recipe-info-block-item">Prep: {{ recipe_data.preparation_time }}</p>
+                                <p class="recipe-info-block-item">Cook: {{ recipe_data.cooking_time }}</p>
+                            </div>
+                        </li>
+                        <li id="recipe-serving-block" class="recipe-info-block">
+                            <h class="recipe-info-block-header">Makes</h>
+                            <div class="recipe-info-block-items">
+                                <p class="recipe-info-block-item">Servings: {{ recipe_data.quantity_serve }}</p>
+                            </div>
+                        </li>
+                        <li id="recipe-course-block" class="recipe-info-block">
+                            <h class="recipe-info-block-header">Course</h>
+                            <div class="recipe-info-block-items">
+                                <p class="recipe-info-block-item">{{ recipe_data.course }}</p>
+                            </div>
+                        </li>
+                        <li id="recipe-occasion-block" class="recipe-info-block">
+                            <h class="recipe-info-block-header">Holiday</h>
+                            <div class="recipe-info-block-items">
+                                {% for occasion in recipe_data.occasions %}
+                                <p class="recipe-info-block-item">{{ occasion }}</p>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div id="recipe">
-                        <p>Ingredient: {{ recipe_data.ingredients }}</p>
-                        <p>Instruction: </p>
-                        {% for instruction in recipe_data.instructions %}
-                        <h4>   - Step {{ forloop.counter }}</h4>
-                        <p>    {{instruction}}</p>
-                        {% endfor %}
-                        <p>Image: </p>
-
+                <div id="ingredients-instructions-block">
+                    <div id="ingredients-block">
+                        <div class="block-line">
+                            <div id="block-line-ingredients" class="block-line-line"></div>
+                            <img src="{% static 'recipe/images/recipe_ingredients.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                        </div>
+                        <h3 class="recipe-headers">Ingredients</h3>
+                        <div id="ingredients-block-checkboxes">
+                            {% for ingredient in recipe_data.ingredients %}
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="ingredient-{{ingredient}}">
+                                <label class="custom-control-label" for="ingredient-{{ingredient}}">{{ ingredient }}</label>
+                            </div>
+                            <!-- <p class="recipe-ingredient-p">{{ ingredient }}</p> -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div id="instructions-block">
+                        <div class="block-line">
+                            <div id="block-line-instructions" class="block-line-line"></div>
+                            <img src="{% static 'recipe/images/recipe_instructions.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                        </div>
+                        <h3 class="recipe-headers">Instructions</h3>
+                        <ul id="ul-instruction-block">
+                            {% for instruction in recipe_data.instructions %}
+                            <li>
+                                <label>Step {{ forloop.counter }}</label>
+                                <p class="recipe-instruction-p">{{ instruction }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                <!-- </div>
                         <p>Video Link: {{ recipe_data.video_link }}</p>
-                        <p>Preparation Time: {{ recipe_data.preparation_time }}</p>
-                        <p>Quantity Serve: {{ recipe_data.quantity_serve }}</p>
-                        <p>Course: {{ recipe_data.course }}</p>
-                        <p>Occasion: {{ recipe_data.occasions }}</p>
-                        <p>Diet: {{ recipe_data.diets }}</p>
-                </div>
-                {% else %}  
-                <p>Sorry, we can't find the recipe.</p>
-                {% endif %}
+                </div> -->
             </div>
         </section>
+        <section id="recipe-comments">
+            <div class="container">
+                <div class="block-line">
+                    <div id="block-line-ingredients" class="block-line-line"></div>
+                    <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                </div>
+                <h3 class="recipe-headers">Reviews</h3>
+                <form action="" id="submit-comment" method="POST">
+                    <fieldset>
+                        <textarea name="comment" required id="add-comment" rows="5" placeholder="Please provide a review on what you thought it of the recipe and how you adjusted it."></textarea>
+                        <div id="submit-button-block" class="recipe-button-block">
+                            <button type="submit" id="submit-button" class="review-submit-btn" >SUBMIT REVIEW</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        {% else %}  
+        <p>Sorry, we can't find the recipe.</p>
+        {% endif %}
         {% endblock content %}
+
+        {% block script %}
+        <script src="{% static 'recipe/js/recipe.js' %}"></script>
+        {% endblock script %}
