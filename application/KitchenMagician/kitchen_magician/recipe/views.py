@@ -27,17 +27,15 @@ def recipe_view(request, recipe=None, recipe_id=None):
     # Submit new comment
     if request.method == 'POST':
         if request.user.is_authenticated:
-            # Add comment
+            # POST for Add comment
             comment = request.POST.get('comment', False)
             if comment:
                 new_comment = RecipeComment(user=request.user, 
                                             recipe=Recipe.objects.filter(id=recipe_id).first(), 
                                             comment=comment)
                 new_comment.save()
-            # Change favorite
-            favorite_value = request.POST.get('favoriteValue', False)
-            print(favorite_value)
-            if favorite_value:
+            # POST for Change favorite
+            if request.POST.get('favoriteValue', False):
                 return change_favorite(user=request.user, recipe=Recipe.objects.filter(id=recipe_id).first())
 
     recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
@@ -46,7 +44,8 @@ def recipe_view(request, recipe=None, recipe_id=None):
         recipe_data = recipe_instance.recipe_date
         context['recipe_data'] = recipe_data # all info for this recipe
         context['comments'] =  GetRecipeComments(recipe=recipe, recipe_id=recipe_id).comments# all info for this recipe
-        context['favorite'] = RecipeFavorite.objects.filter(user=request.user, recipe=Recipe.objects.filter(id=recipe_id).first()).first()
+        if request.user.is_authenticated:
+            context['favorite'] = RecipeFavorite.objects.filter(user=request.user, recipe=Recipe.objects.filter(id=recipe_id).first()).first() 
         return render(request, 'recipe.html', context)
     else: #return 404 Page if the recipe doesn't match in the database
         return not_found(request)  

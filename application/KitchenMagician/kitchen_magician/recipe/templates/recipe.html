@@ -9,7 +9,13 @@
         <section id="recipe">
             <div id="recipe-container" class="container">
                 <div id="diet-title-favorite-block">
-                    <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                    <div id="diet-block">
+                        <!-- Add a diet link here -->
+                        <a href="">
+                            <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                        </a>
+                        <p>{{ recipe_data.diets.0 }}</p>
+                    </div>
                     <h1 id="recipe-title">{{ recipe_data.name }}</h1>
                     {% if user.is_authenticated %}
                         {% if favorite %}
@@ -148,6 +154,18 @@
         <script src="{% static 'recipe/js/recipe.js' %}"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>
+            // Hover change image
+            var favoriteBtn = $("#input-favorite-block");
+            favoriteBtn.on('mouseenter', function(){
+                hoverPath = `../../static/recipe/images/favorite_heart_${favoriteBtn.attr('value')}_hover.png`;
+                favoriteBtn.attr("src", hoverPath);
+            })
+            favoriteBtn.on('mouseleave', function(){
+                hoverPath = `../../static/recipe/images/favorite_heart_${favoriteBtn.attr('value')}.png`;
+                favoriteBtn.attr("src", hoverPath);
+            })
+
+            // update favorite to database
             function changeFavorite() {
                 var favoriteBtn = $("#input-favorite-block");
                 var favoriteValue = favoriteBtn.attr("value");
@@ -158,7 +176,7 @@
                     favoriteBtn.attr("src", "../../static/recipe/images/favorite_heart_unsaved.png");
                     favoriteBtn.attr("value", "unsaved");
                 }
-                console.log(`Before: ${favoriteValue}`);
+                console.log(`Before - ${favoriteValue}`);
                 console.log(`After - ${favoriteBtn.attr("value")}`);
 
                 $.ajax({
@@ -169,7 +187,7 @@
                         "favoriteValue": favoriteValue,
                     },
                     success: function() {
-                    console.log('Success');
+                    console.log('Updated favorite');
                     },
                 });
             }
