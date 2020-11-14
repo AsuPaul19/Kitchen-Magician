@@ -44,66 +44,50 @@
     <body>
 
 <!-- header section -->
-        <header id="header">
-            <div class="container">
-                <a href="{% url 'home' %}" class="KitchenMagician">Kitchen Magician</a>
-                <ul id="ul-nav-link">
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'kitchen_home' %}">Kitchen Magician</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <!-- about function -->
-                    <li class="nav-link"><a href="{% url 'about' %}">About</a></li>
-                    
-                    <!-- group function -->
-                    <li class="nav-link"><a href="{% url 'groups' %}">Groups</a></li>
-                    
-                    <!-- search box -->
-                    <li id="search">
-                        <form action="{% url 'search' %}" method="POST" id="search-form">
-                            <!-- Authentication Token -->
-                            {% csrf_token %}
-                            <div id="search-box" class="search-box-block">
-                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Recipes for any ingredient, occasion, type or diet">
-                                <div class="search-btn" type="submit">
-                                    <button type="submit"  class="fas fa-search"></button>
-                                </div>
-                            </div> 
-                        </form>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarToggle">
 
-<!-- if user is logged in -->                        
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">About</a>
+                    <a class="nav-item nav-link" href="#">Groups</a>                            
+                    <a class="nav-item nav-link" href="#">Profile</a>                                  
+                </div>    
+
+<!-- navigator bar bisector, for readability -->
+
+                <div class="navbar-nav ">
+                    <form method="POST" action="{% url 'kitchen_search' %}">
+                        {% csrf_token %}
+                        <select name="filter" id="filter" class="form-control form-control-sm">
+                            <option value="none"> -- select an option -- </option>
+                            <option value="title">Title</option>
+                            <option value="author">Author</option>
+                            <option value="content">Content</option>
+                        </select>
+                        <input type="text" placeholder="Enter Keywords" name = "keyword">
+                        <input type="submit" value="Submit">
+                    </form>                  
+                    
                     {% if user.is_authenticated %}
-                    <li class="nav-link"><a href="{% url 'login' %}">Log in</a></li>
-
-                    <li class="nav-link"><a href="{% url 'signup' %}">Sign up</a></li>
-
-                        <li id="account" class="nav-item btn-group">
-
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hi, {{ user.get_username }}
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-
-                                <!-- create recipe function -->
-                                <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
-                                
-                                <a class="dropdown-item" href="{% url 'user_profile' username=user.username %}">Profile</a>
-                                                                                
-                                <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a>
-                            </div>
-                        </li>
-<!-- if user is logged in -->                        
-
+                        <a class="nav-item nav-link" href="{% url 'user_profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'user_logout' %}">Logout</a>
                     {% else %}
-<!-- if user is unregistered/logged out -->                                            
-                        <li class="nav-link"><a href="{% url 'login' %}">Log in</a></li>
-
-                        <li class="nav-link"><a href="{% url 'signup' %}">Sign up</a></li>
+                        <a class="nav-item nav-link" href="{% url 'user_login' %}">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'user_register' %}">Register</a>
                     {% endif %}
-<!-- if user is unregistered/logged out -->
-
-                </ul>
+                </div>
             </div>
-        </header>
+        </div>
+    </nav>
+</header>
 <!-- header section -->        
 
 <!-- content section -->
