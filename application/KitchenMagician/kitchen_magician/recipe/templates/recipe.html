@@ -12,8 +12,11 @@
                     <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
                     <h1 id="recipe-title">{{ recipe_data.name }}</h1>
                     {% if user.is_authenticated %}
-                        {% csrf_token %}
-                        <input id="input-favorite-block" class="favorite-block" type="image" value="unsaved" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                        {% if favorite %}
+                        <input id="input-favorite-block" class="favorite-block" type="image" value="saved" onclick="changeFavorite()" src="{% static 'recipe/images/favorite_heart_saved.png' %}"/>
+                        {% else %}
+                        <input id="input-favorite-block" class="favorite-block" type="image" value="unsaved" onclick="changeFavorite()" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                        {% endif %}
                     {% else %}
                         <!-- Login request -->
                         <a href="/login/?next={{request.path}}" id="a-favorite-block"></a>
@@ -143,21 +146,27 @@
 
         {% block script %}
         <script src="{% static 'recipe/js/recipe.js' %}"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>
-            function setGetParameter(){
-                var favorite = $("#input-favorite-block").val();
-                var user = request.user.username
-                console.log(favorite)
+            function changeFavorite() {
+                var favoriteBtn = $("#input-favorite-block");
+                var favoriteValue = favoriteBtn.attr("value");
+                if(favoriteValue == "unsaved") {
+                    favoriteBtn.attr("src", "../../static/recipe/images/favorite_heart_saved.png");
+                    favoriteBtn.attr("value", "saved");
+                } else {
+                    favoriteBtn.attr("src", "../../static/recipe/images/favorite_heart_unsaved.png");
+                    favoriteBtn.attr("value", "unsaved");
+                }
+                console.log(`Before: ${favoriteValue}`);
+                console.log(`After - ${favoriteBtn.attr("value")}`);
+
                 $.ajax({
-                    type: "GET",
-                    url: "{% url 'test_function' %}",
+                    type: "POST",
+                    url: "",
                     data: { 
                         "csrfmiddlewaretoken": "{{ csrf_token }}",
-                        "favorite": favorite,
-                        "user":user,
-                        "recipe_id": recipe_id,
-                        "phone": phone,
-                        "message": message,
+                        "favoriteValue": favoriteValue,
                     },
                     success: function() {
                     console.log('Success');

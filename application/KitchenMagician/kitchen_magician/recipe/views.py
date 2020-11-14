@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.core.files.storage import FileSystemStorage
 from .models import RecipeUploadImageTest
@@ -10,24 +11,34 @@ from .models import RecipePreparationTime
 from .models import RecipeCookingTime
 from .models import RecipeComment
 from .models import Recipe
+from .models import RecipeFavorite
 # from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
 from .recipe_data_fetch import RecipeDataFetch
 from recipe.comments import GetRecipeComments
 
+
 def recipe_view(request, recipe=None, recipe_id=None):
     context = {
             'title': 'RECIPES',
             'recipe_data': None,
+            'favorite': None,
         }
     # Submit new comment
     if request.method == 'POST':
         if request.user.is_authenticated:
-            comment = request.POST.get('comment')
-            new_comment = RecipeComment(user=request.user, 
-                                        recipe=Recipe.objects.filter(id=recipe_id).first(), 
-                                        comment=comment)
-            new_comment.save()
+            # Add comment
+            comment = request.POST.get('comment', False)
+            if comment:
+                new_comment = RecipeComment(user=request.user, 
+                                            recipe=Recipe.objects.filter(id=recipe_id).first(), 
+                                            comment=comment)
+                new_comment.save()
+            # Change favorite
+            favorite_value = request.POST.get('favoriteValue', False)
+            print(favorite_value)
+            if favorite_value:
+                return change_favorite(user=request.user, recipe=Recipe.objects.filter(id=recipe_id).first())
 
     recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
     # if we fetch the data successfully, send to clients
@@ -35,10 +46,20 @@ def recipe_view(request, recipe=None, recipe_id=None):
         recipe_data = recipe_instance.recipe_date
         context['recipe_data'] = recipe_data # all info for this recipe
         context['comments'] =  GetRecipeComments(recipe=recipe, recipe_id=recipe_id).comments# all info for this recipe
-
+        context['favorite'] = RecipeFavorite.objects.filter(user=request.user, recipe=Recipe.objects.filter(id=recipe_id).first()).first()
         return render(request, 'recipe.html', context)
     else: #return 404 Page if the recipe doesn't match in the database
         return not_found(request)  
+
+def change_favorite(user=None, recipe=None):
+    favorite = RecipeFavorite.objects.filter(user=user, recipe=recipe).first()
+    if favorite:
+        favorite.delete()
+    else:
+        favorite = RecipeFavorite(user=user, recipe=recipe)
+        favorite.save()
+    return HttpResponse("Changed favorite!")
+
 
 # Create recipe page
 @login_required
