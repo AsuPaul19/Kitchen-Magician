@@ -11,7 +11,13 @@
                 <div id="diet-title-favorite-block">
                     <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
                     <h1 id="recipe-title">{{ recipe_data.name }}</h1>
-                    <input id="favorite-block" type="image" value="unsaved" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                    {% if user.is_authenticated %}
+                        {% csrf_token %}
+                        <input id="input-favorite-block" class="favorite-block" type="image" value="unsaved" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                    {% else %}
+                        <!-- Login request -->
+                        <a href="/login/?next={{request.path}}" id="a-favorite-block"></a>
+                    {% endif %}
                 </div>
                 <div id="user-information-block">
                     <div id="user-block">
@@ -94,12 +100,15 @@
         </section>
         <section id="recipe-comments">
             <div class="container">
+                <!-- Submit comment -->
                 <div class="block-line">
                     <div id="block-line-ingredients" class="block-line-line"></div>
                     <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
                 </div>
                 <h3 class="recipe-headers">Reviews</h3>
+                {% if user.is_authenticated %}
                 <form action="" id="submit-comment" method="POST">
+                    {% csrf_token %}
                     <fieldset>
                         <textarea name="comment" required id="add-comment" rows="5" placeholder="Please provide a review on what you thought it of the recipe and how you adjusted it."></textarea>
                         <div id="submit-button-block" class="recipe-button-block">
@@ -107,6 +116,24 @@
                         </div>
                     </fieldset>
                 </form>
+                {% else %}
+                <!-- Login request -->
+                <a id="login-review" href="/login/?next={{request.path}}" >Log In To Add Review</a>
+                {% endif %}
+                <!-- User comments -->
+                <div id="recipe-all-comments">
+                    {% for comment in comments %}
+                    <div class="recipe-comment-line"></div>
+                    <div class="recipe-comment">
+                        <div class="comment-user-info">
+                            <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
+                            <p class="comment-user-info-user">{{ comment.user }}</p>
+                            <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}</p>
+                        </div>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </section>
         {% else %}  
@@ -116,4 +143,26 @@
 
         {% block script %}
         <script src="{% static 'recipe/js/recipe.js' %}"></script>
+        <script>
+            function setGetParameter(){
+                var favorite = $("#input-favorite-block").val();
+                var user = request.user.username
+                console.log(favorite)
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'test_function' %}",
+                    data: { 
+                        "csrfmiddlewaretoken": "{{ csrf_token }}",
+                        "favorite": favorite,
+                        "user":user,
+                        "recipe_id": recipe_id,
+                        "phone": phone,
+                        "message": message,
+                    },
+                    success: function() {
+                    console.log('Success');
+                    },
+                });
+            }
+        </script>
         {% endblock script %}

@@ -18,7 +18,7 @@ $textColor: #f56a58;
         flex: 1;
         height: 1px;
         width: auto;
-        background-color: #999;
+        background-color: lightgray;
         padding: 0;
         margin: 0;
     }
@@ -50,13 +50,20 @@ section#recipe {
             #recipe-title {
                 margin: 0 1rem;
             }
-            input#favorite-block {
+            .favorite-block {
                 max-height: 1.5rem;
                 max-width: 1.5rem;
                 box-shadow: none;
                 outline: none;
             }
+            #a-favorite-block {
+                background: url("../images/favorite_heart_unsaved.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 1.5rem;
+                width: 1.5rem;
 
+            }
         }
         // 2. Block user-information-block
         #user-information-block {
@@ -162,6 +169,7 @@ section#recipe {
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     grid-gap: 1rem;
+                    padding: 4px;
                 }
             }
 
@@ -209,6 +217,52 @@ section#recipe-comments {
                 box-shadow: none;
                 outline: none;
             }
+        }
+        #login-review {
+            color: white;
+            background-color: $textColor;
+            padding: 1rem 2rem;
+            border-color: $textColor;
+            font-size: 1.2rem;
+            font-weight: bolder;
+            box-shadow: none;
+            outline: none;
+            width: fit-content;
+            text-decoration: none;
+        }
+
+        // comments section
+        #recipe-all-comments {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+            margin-top: 1rem;
+            .recipe-comment-line {
+                height: 1px;
+                width: 100%;
+                background-color: lightgray;
+
+            }
+            .comment-user-info {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .comment-user-info-user_avatar {
+                    max-width: 2rem;
+                    max-height: 2rem;
+                    border-radius: 50%;
+                }
+                .comment-user-info-user {
+                    font-size: 0.8rem;
+                    margin: 0 1rem;
+                }
+                .comment-user-info-created {
+                    color: gray;
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+            }
+            
         }
     }
 }

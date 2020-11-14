@@ -1,4 +1,3 @@
-from django.core.files.storage import FileSystemStorage
 from .models import RecipeCourseItem
 from .models import RecipeImage
 from .models import RecipeInformation

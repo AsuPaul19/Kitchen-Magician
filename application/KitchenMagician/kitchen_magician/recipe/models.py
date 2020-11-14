@@ -39,12 +39,14 @@ class Recipe(models.Model):
     quantity_serve = models.IntegerField()
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(default=timezone.now)
+    id = models.AutoField(primary_key=True)
+
 
     class Meta():
         db_table = 'recipe'
 
     def __str__(self):
-        return f'{self.name} by {self.user.username}'
+        return f'{self.id} - {self.name} by {self.user.username}'
 
 
 class RecipePreparationTime(models.Model):

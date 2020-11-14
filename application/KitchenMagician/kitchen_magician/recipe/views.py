@@ -8,20 +8,34 @@ from .models import RecipeCourse
 from .models import RecipeQuantityServe
 from .models import RecipePreparationTime
 from .models import RecipeCookingTime
+from .models import RecipeComment
+from .models import Recipe
 # from django.conf import settings
 from .mysql.create_recipe import CreateRecipe
 from .recipe_data_fetch import RecipeDataFetch
+from recipe.comments import GetRecipeComments
 
 def recipe_view(request, recipe=None, recipe_id=None):
     context = {
             'title': 'RECIPES',
             'recipe_data': None,
         }
+    # Submit new comment
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            comment = request.POST.get('comment')
+            new_comment = RecipeComment(user=request.user, 
+                                        recipe=Recipe.objects.filter(id=recipe_id).first(), 
+                                        comment=comment)
+            new_comment.save()
+
     recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
     # if we fetch the data successfully, send to clients
     if recipe_instance.is_valid:  
         recipe_data = recipe_instance.recipe_date
-        context['recipe_data'] = recipe_data
+        context['recipe_data'] = recipe_data # all info for this recipe
+        context['comments'] =  GetRecipeComments(recipe=recipe, recipe_id=recipe_id).comments# all info for this recipe
+
         return render(request, 'recipe.html', context)
     else: #return 404 Page if the recipe doesn't match in the database
         return not_found(request)  
