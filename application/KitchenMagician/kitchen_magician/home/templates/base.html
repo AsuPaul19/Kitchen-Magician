@@ -47,7 +47,11 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'kitchen_home' %}">Kitchen Magician</a>
+
+<!-- home -->            
+            <a class="navbar-brand mr-4" href="{% url 'home' %}">Kitchen Magician</a>
+<!-- home -->            
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                 aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -56,13 +60,15 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
 
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'kitchen_about' %}">About</a>
-                    <a class="nav-item nav-link" href="#">Groups</a>                            
-                    <a class="nav-item nav-link" href="#">Profile</a>                                  
+<!-- about and groups -->                                                
+                    <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+                    <a class="nav-item nav-link" href="{% url 'groups' %}">Groups</a>                            
+<!-- about and groups -->                                                
                 </div>    
 
 <!-- navigator bar bisector, for readability -->
 
+<!-- Kevin's search function, based on Jeff's original search page -->
                 <div class="navbar-nav ">
                     <form method="POST" action="{% url 'kitchen_search' %}">
                         {% csrf_token %}
@@ -75,6 +81,7 @@
                         <input type="text" placeholder="Enter Keywords" name = "keyword">
                         <input type="submit" value="Submit">
                     </form>                  
+<!-- Kevin's search function, based on Jeff's original search page -->
                     
                     {% if user.is_authenticated %}
                         <a class="nav-item nav-link" href="{% url 'user_profile' %}">Profile</a>
