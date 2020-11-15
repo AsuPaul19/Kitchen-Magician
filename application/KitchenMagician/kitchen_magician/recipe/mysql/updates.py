@@ -7,6 +7,7 @@ updates.update_quantity_serve()
 updates.update_preparation_time()
 updates.update_cooking_time()
 updates.update_occasion()
+updates.update_course()
 updates.update_diet()
 
 """

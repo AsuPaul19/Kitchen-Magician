@@ -127,7 +127,7 @@ class RecipeCourseItem(models.Model):
         db_table = 'recipe_course_item'
 
     def __str__(self):
-        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_course.course}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_course.name}'
 
 
 class RecipeIngredient(models.Model):
@@ -149,7 +149,7 @@ class RecipeIngredientItem(models.Model):
         db_table = 'recipe_ingredient_item'
 
     def __str__(self):
-        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_ingredient.ingredient}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_ingredient.name}'
 
 
 class RecipeInformation(models.Model):
@@ -161,7 +161,7 @@ class RecipeInformation(models.Model):
         db_table = 'recipe_information'
 
     def __str__(self):
-        return f'{self.recipe.id}. {self.recipe.name} - {self.information}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.name}'
 
 
 class RecipeInstruction(models.Model):
@@ -173,7 +173,7 @@ class RecipeInstruction(models.Model):
         db_table = 'recipe_instruction'
 
     def __str__(self):
-        return f'{self.recipe.id}. {self.recipe.name} - {self.instruction}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.name}'
 
 
 
