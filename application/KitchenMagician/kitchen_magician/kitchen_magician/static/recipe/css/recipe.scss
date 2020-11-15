@@ -138,7 +138,7 @@ section#recipe {
         // 3. image-prep-serve-block
         #image-prep-serve-course-occasion-block {
             display: grid;
-            grid-template-columns: 3fr 2fr;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 2rem;
             margin: 1rem 0;
             // image left
@@ -241,28 +241,23 @@ section#recipe-comments {
                 }
                 margin-bottom: 0.5rem;
             }
-            .review-submit-btn {
-                color: white;
-                background-color: $textColor;
-                padding: 1rem 2rem;
-                border-color: $textColor;
-                font-size: 1.2rem;
-                font-weight: bolder;
-                box-shadow: none;
-                outline: none;
-            }
+
         }
-        #login-review {
+        .review-btn {
             color: white;
             background-color: $textColor;
-            padding: 1rem 2rem;
+            padding: 0.5rem 1.5rem;
             border-color: $textColor;
-            font-size: 1.2rem;
+            border-radius: 5px;
+            font-size: 1rem;
             font-weight: bolder;
             box-shadow: none;
             outline: none;
-            width: fit-content;
             text-decoration: none;
+        }
+
+        #login-review {
+            width: fit-content;
         }
 
         // comments section

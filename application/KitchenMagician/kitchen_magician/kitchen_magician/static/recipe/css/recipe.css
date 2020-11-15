@@ -173,8 +173,8 @@ section#recipe .container #user-information-block #information-block {
 section#recipe .container #image-prep-serve-course-occasion-block {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 2fr;
-      grid-template-columns: 3fr 2fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   margin: 1rem 0;
 }
@@ -283,32 +283,24 @@ section#recipe-comments .container form textarea#add-comment:placeholder-shown {
   font-style: italic;
 }
 
-section#recipe-comments .container form .review-submit-btn {
+section#recipe-comments .container .review-btn {
   color: white;
   background-color: #f56a58;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-color: #f56a58;
-  font-size: 1.2rem;
+  border-radius: 5px;
+  font-size: 1rem;
   font-weight: bolder;
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
+  text-decoration: none;
 }
 
 section#recipe-comments .container #login-review {
-  color: white;
-  background-color: #f56a58;
-  padding: 1rem 2rem;
-  border-color: #f56a58;
-  font-size: 1.2rem;
-  font-weight: bolder;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  text-decoration: none;
 }
 
 section#recipe-comments .container #recipe-all-comments {
