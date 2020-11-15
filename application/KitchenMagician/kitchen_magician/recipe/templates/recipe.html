@@ -121,13 +121,13 @@
                     <fieldset>
                         <textarea name="comment" required id="add-comment" rows="5" placeholder="Please provide a review on what you thought it of the recipe and how you adjusted it."></textarea>
                         <div id="submit-button-block" class="recipe-button-block">
-                            <button type="submit" id="submit-button" class="review-submit-btn" >SUBMIT REVIEW</button>
+                            <button type="submit" id="submit-button" class="review-btn" >SUBMIT REVIEW</button>
                         </div>
                     </fieldset>
                 </form>
                 {% else %}
                 <!-- Login request -->
-                <a id="login-review" href="/login/?next={{request.path}}" >Log In To Add Review</a>
+                <a id="login-review" href="/login/?next={{request.path}}" class="review-btn" >Log In To Add Review</a>
                 {% endif %}
                 <!-- User comments -->
                 <div id="recipe-all-comments">
