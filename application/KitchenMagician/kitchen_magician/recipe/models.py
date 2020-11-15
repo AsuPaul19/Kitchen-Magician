@@ -21,15 +21,15 @@ class RecipeTest(models.Model):
 
 
 
-class RecipeUploadImageTest(models.Model):
-    image_folder = 'recipe_pics/'
-    image = models.ImageField(upload_to=image_folder)
+# class RecipeUploadImageTest(models.Model):
+#     image_folder = 'recipe_pics/'
+#     image = models.ImageField(upload_to=image_folder)
 
-    class Meta():
-        db_table = 'recipe_upload_image_test'
+#     class Meta():
+#         db_table = 'recipe_upload_image_test'
 
-    def __str__(self):
-        return self.image
+#     def __str__(self):
+#         return self.image
 
 # Allen's
 class Recipe(models.Model):
@@ -46,7 +46,7 @@ class Recipe(models.Model):
         db_table = 'recipe'
 
     def __str__(self):
-        return f'{self.id} - {self.name} by {self.user.username}'
+        return f'{self.id}. {self.name} by {self.user.username}'
 
 
 class RecipePreparationTime(models.Model):
@@ -68,7 +68,7 @@ class RecipePreparationTimeItem(models.Model):
         db_table = 'recipe_preparation_time_item'
 
     def __str__(self):
-        return f'{self.preparation_time.preparation_time} - {self.recipe.name}'
+        return f'{self.preparation_time.preparation_time} - {self.recipe.id}. {self.recipe.name}'
 
 class RecipeCookingTime(models.Model):
     cooking_time = models.CharField(max_length=20)
@@ -89,7 +89,7 @@ class RecipeCookingTimeItem(models.Model):
         db_table = 'recipe_cooking_time_item'
 
     def __str__(self):
-        return f'{self.cooking_time.cooking_time} - {self.recipe.name}'
+        return f'{self.cooking_time.cooking_time} - {self.recipe.id}. {self.recipe.name}'
 
 
 
@@ -115,7 +115,7 @@ class RecipeCourse(models.Model):
         db_table = 'recipe_course'
 
     def __str__(self):
-        return self.name
+        return f'{self.id}. {self.name}'
 
 
 class RecipeCourseItem(models.Model):
@@ -127,7 +127,7 @@ class RecipeCourseItem(models.Model):
         db_table = 'recipe_course_item'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.recipe_course.course}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_course.course}'
 
 
 class RecipeIngredient(models.Model):
@@ -149,7 +149,7 @@ class RecipeIngredientItem(models.Model):
         db_table = 'recipe_ingredient_item'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.recipe_ingredient.ingredient}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.recipe_ingredient.ingredient}'
 
 
 class RecipeInformation(models.Model):
@@ -161,7 +161,7 @@ class RecipeInformation(models.Model):
         db_table = 'recipe_information'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.information}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.information}'
 
 
 class RecipeInstruction(models.Model):
@@ -173,7 +173,7 @@ class RecipeInstruction(models.Model):
         db_table = 'recipe_instruction'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.instruction}'
+        return f'{self.recipe.id}. {self.recipe.name} - {self.instruction}'
 
 
 
@@ -189,7 +189,7 @@ class RecipeImage(models.Model):
         db_table = 'recipe_image'
 
     def __str__(self):
-        return f'{self.recipe.name} - {self.image}'
+        return f'{self.recipe.id}.{self.recipe.name} - {self.image}'
 
 class RecipeVideo(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
@@ -200,7 +200,7 @@ class RecipeVideo(models.Model):
         db_table = 'recipe_video'
 
     def __str__(self):
-        return self.recipe.name
+        return {self.recipe.id}. self.recipe.name
 
 
 class RecipeFavorite(models.Model):
@@ -212,7 +212,7 @@ class RecipeFavorite(models.Model):
         db_table = 'recipe_favorite'
 
     def __str__(self):
-        return f'{self.recipe.name} by {self.user.username}'
+        return f'{self.recipe.id}. {self.recipe.name} by {self.user.username}'
 
 class RecipeUpvote(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
@@ -223,7 +223,7 @@ class RecipeUpvote(models.Model):
         db_table = 'recipe_upvote'
 
     def __str__(self):
-        return f'{self.recipe.name} by {self.user.username}'
+        return f'{self.recipe.id}. {self.recipe.name} by {self.user.username}'
 
 
 class RecipeComment(models.Model):
@@ -237,7 +237,7 @@ class RecipeComment(models.Model):
         db_table = 'recipe_comment'
 
     def __str__(self):
-        return f'Recipe - {self.recipe.name}, User - {self.user.username}, Comment - {self.comment}'
+        return f'{self.recipe.id}. {self.recipe.name}, User - {self.user.username}, Comment - {self.comment}'
 
 
 class RecipeOccasion(models.Model):
@@ -263,7 +263,7 @@ class RecipeOccasionItem(models.Model):
         db_table = 'recipe_occasion_item'
 
     def __str__(self):
-        return f'{self.occasion.name} - {self.recipe.name}'
+        return f'{self.occasion.name} - {self.recipe.id}. {self.recipe.name}'
 
 class RecipeDiet(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
@@ -287,4 +287,4 @@ class RecipeDietItem(models.Model):
         db_table = 'recipe_diet_item'
 
     def __str__(self):
-        return f'{self.diet.name} - {self.recipe.name}'
+        return f'{self.diet.name} - {self.recipe.id}. {self.recipe.name}'

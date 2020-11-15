@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.core.files.storage import FileSystemStorage
-from .models import RecipeUploadImageTest
+# from .models import RecipeUploadImageTest
 from .models import RecipeDiet
 from .models import RecipeOccasion
 from .models import RecipeCourse
@@ -180,20 +180,20 @@ def submit_success(request):
     return render(request, 'submit_success.html', context)
 
 
-def upload_test(request):
-    context = {
-        'title': 'UPLOAD TEST'
-    }
-    if request.method == 'POST':
-        data = request.POST
-        print(data)
-        print(request.FILES)
-        uploaded_file = request.FILES['recipe-image']
-        fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file)
-        image = RecipeUploadImageTest(image=uploaded_file)
-        image.save()
-        print(uploaded_file.size)
-        print(uploaded_file.name)
-    return render(request, 'upload_test.html', context)
+# def upload_test(request):
+#     context = {
+#         'title': 'UPLOAD TEST'
+#     }
+#     if request.method == 'POST':
+#         data = request.POST
+#         print(data)
+#         print(request.FILES)
+#         uploaded_file = request.FILES['recipe-image']
+#         fs = FileSystemStorage()
+#         fs.save(uploaded_file.name, uploaded_file)
+#         image = RecipeUploadImageTest(image=uploaded_file)
+#         image.save()
+#         print(uploaded_file.size)
+#         print(uploaded_file.name)
+#     return render(request, 'upload_test.html', context)
 

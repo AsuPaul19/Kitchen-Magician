@@ -1,8 +1,6 @@
 drop table search_recipetest;
 drop table recipe_video;
 drop table recipe_upvote;
-drop table recipe_type_item;
-drop table recipe_type;
 drop table recipe_instruction;
 drop table recipe_ingredient_item;
 drop table recipe_ingredient;
@@ -18,5 +16,7 @@ drop table recipe_occasion_item;
 drop table recipe_occasion;
 drop table recipe_preparation_time_item;
 drop table recipe_preparation_time;
+drop table recipe_cooking_time_item;
+drop table recipe_cooking_time;
 drop table recipe_quantity_serve;
 drop table recipe;
