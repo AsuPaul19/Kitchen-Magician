@@ -1,3 +1,10 @@
+
+
+# home/views.py
+# Programmers: Jeff C Cheng, Allen Sun
+# Last Modified: 11/14/2020
+# added custom title
+
 from django.shortcuts import render
 
 # Create your views here.

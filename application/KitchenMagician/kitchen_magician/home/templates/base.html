@@ -1,6 +1,7 @@
 <!-- home/templates/base.html -->
 <!-- Programmers: Jeff C Cheng, Allen Sun -->
 <!-- Last Modified: 11/14/2020 -->
+<!-- changed Google font, bootstrap CSS, reconnected routes -->
 
 {% load static %}
 <!DOCTYPE html>
@@ -61,12 +62,12 @@
                             {% csrf_token %}
                             <select name="filter" id="filter" class="form-control form-control-sm">
                                 <option value="none"> -- select an option -- </option>
-                                <option value="title">Title</option>
-                                <option value="author">Author</option>
-                                <option value="content">Content</option>
+                                <option value="title">by recipe title</option>
+                                <option value="author">by recipe author</option>
+                                <option value="content">by recipe content</option>
                             </select>
-                            <input type="text" placeholder="Enter Keywords" name = "keyword">
-                            <input type="submit" value="Submit">
+                            <input type="text" placeholder="Type    anything!" name = "keyword">
+                            <input type="submit" value="Search">
                         </form>                  
                         
                         {% if user.is_authenticated %}
