@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 # from .forms import UserRegisterForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-
+from .models import Profile
 
 
 def signup(request):
@@ -34,6 +34,9 @@ def signup(request):
             # create a user
             user = User.objects.create_user(username=username, password=password1, email=email)
             user.save()
+            # create the profile
+            user_profile = Profile(user=user)
+            user_profile.save()
             return redirect('login')
 
     return render(request, "signup.html", context)
