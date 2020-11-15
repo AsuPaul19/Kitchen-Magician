@@ -24,12 +24,10 @@ def signup(request):
         password2 = request.POST.get('password2')
         if User.objects.filter(username=username).exists(): # user already exists
             context['error'] = f'The user {username} already exists.'
-        elif User.objects.filter(email=email).exists():
+        elif User.objects.filter(email=email).exists(): #unique email
             context['error'] = f'The email {email} already used.'
         elif password1 != password2:
             context['error'] = 'The two password fields didn’t match.'
-        
-        # TODO - Check unique Email address
         else:
             # create a user
             user = User.objects.create_user(username=username, password=password1, email=email)
