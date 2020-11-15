@@ -77,6 +77,7 @@ def home(request):
         "trending_recipes": trending_recipes,
         "trending_recipes_carousel": trending_recipes_carousel,
         "groups": groups,
+        "title": 'Home',
     }
     # replace home2.html with any home.html
     return render(request, 'home.html', context)
