@@ -142,15 +142,16 @@ class CreateRecipe():
     def create_recipe_ingredient(self):
         if self.ingredients:
             for ingredient in self.ingredients:
-                recipe_ingredient = RecipeIngredient.objects.filter(name=ingredient).first()
-                # If the ingredient is not in the database, add it to the db_table: recipe_ingredient
-                if not recipe_ingredient:
-                    recipe_ingredient = RecipeIngredient(name=ingredient)
-                    recipe_ingredient.save()
-                    print("create_recipe_ingredient CREATED!")
-                    
-                # create the recipe ingredient item simultaneously
-                self.create_recipe_ingredient_item(recipe_ingredient)
+                if ingredient: # not none 
+                    recipe_ingredient = RecipeIngredient.objects.filter(name=ingredient).first()
+                    # If the ingredient is not in the database, add it to the db_table: recipe_ingredient
+                    if not recipe_ingredient:
+                        recipe_ingredient = RecipeIngredient(name=ingredient)
+                        recipe_ingredient.save()
+                        print("create_recipe_ingredient CREATED!")
+                        
+                    # create the recipe ingredient item simultaneously
+                    self.create_recipe_ingredient_item(recipe_ingredient)
 
     # create recipe ingredients items
     def create_recipe_ingredient_item(self, recipe_ingredient):
@@ -163,17 +164,19 @@ class CreateRecipe():
     def create_recipe_instruction(self):
         if self.instructions: 
             for instruction in self.instructions: 
-                recipe_instruction = RecipeInstruction(name=instruction, recipe=self.recipe)
-                recipe_instruction.save()
-                print("create_recipe_instruction CREATED!")
+                if instruction: # not none
+                    recipe_instruction = RecipeInstruction(name=instruction, recipe=self.recipe)
+                    recipe_instruction.save()
+                    print("create_recipe_instruction CREATED!")
 
     # create recipe images
     def create_recipe_image(self):
         if self.images: 
             for image in self.images:
-                recipe_image = RecipeImage(image=image, recipe=self.recipe)
-                recipe_image.save()
-                print("create_recipe_image CREATED!")
+                if image: # not none
+                    recipe_image = RecipeImage(image=image, recipe=self.recipe)
+                    recipe_image.save()
+                    print("create_recipe_image CREATED!")
 
     # create recipe images
     def create_recipe_video(self):
