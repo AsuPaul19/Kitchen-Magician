@@ -1,4 +1,10 @@
 
+
+.grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
 /* every direct div element has one color */
 .grid > div {
   background: #eee;
