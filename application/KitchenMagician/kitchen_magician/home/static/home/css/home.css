@@ -42,7 +42,8 @@
 }
 
 .box1 {
-  /* align-self: start; */
+  align-self: center;
+  justify-self: center;
   /* from 1 to 2 */
   grid-column: 1/6;
   /* from 1 to 2 */
