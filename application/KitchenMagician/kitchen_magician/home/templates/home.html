@@ -12,6 +12,7 @@
 <div class="grid">
   <div class="box1">
     <!-- Box1 -->
+    <h1>Search Me!</h1>
     <form method="POST" action="{% url 'search' %}">
       {% csrf_token %}
       <input type="text" placeholder="recipe title..." name="title">
@@ -25,6 +26,7 @@
     <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
   </div>
   <div class="box3">
+    <h1>Click A Recipe Below!</h1>
     <!-- Box 3 -->
     <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
       <ol class="carousel-indicators">
