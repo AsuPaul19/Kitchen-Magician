@@ -9,9 +9,24 @@
         <section id="recipe">
             <div id="recipe-container" class="container">
                 <div id="diet-title-favorite-block">
-                    <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                    <div id="diet-block">
+                        <!-- Add a diet link here -->
+                        <a href="">
+                            <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                        </a>
+                        <p>{{ recipe_data.diets.0 }}</p>
+                    </div>
                     <h1 id="recipe-title">{{ recipe_data.name }}</h1>
-                    <input id="favorite-block" type="image" value="unsaved" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                    {% if user.is_authenticated %}
+                        {% if favorite %}
+                        <input id="input-favorite-block" class="favorite-block" type="image" value="saved" onclick="changeFavorite()" src="{% static 'recipe/images/favorite_heart_saved.png' %}"/>
+                        {% else %}
+                        <input id="input-favorite-block" class="favorite-block" type="image" value="unsaved" onclick="changeFavorite()" src="{% static 'recipe/images/favorite_heart_unsaved.png' %}"/>
+                        {% endif %}
+                    {% else %}
+                        <!-- Login request -->
+                        <a href="/login/?next={{request.path}}" id="a-favorite-block"></a>
+                    {% endif %}
                 </div>
                 <div id="user-information-block">
                     <div id="user-block">
@@ -94,19 +109,40 @@
         </section>
         <section id="recipe-comments">
             <div class="container">
+                <!-- Submit comment -->
                 <div class="block-line">
                     <div id="block-line-ingredients" class="block-line-line"></div>
                     <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
                 </div>
                 <h3 class="recipe-headers">Reviews</h3>
+                {% if user.is_authenticated %}
                 <form action="" id="submit-comment" method="POST">
+                    {% csrf_token %}
                     <fieldset>
                         <textarea name="comment" required id="add-comment" rows="5" placeholder="Please provide a review on what you thought it of the recipe and how you adjusted it."></textarea>
                         <div id="submit-button-block" class="recipe-button-block">
-                            <button type="submit" id="submit-button" class="review-submit-btn" >SUBMIT REVIEW</button>
+                            <button type="submit" id="submit-button" class="review-btn" >SUBMIT REVIEW</button>
                         </div>
                     </fieldset>
                 </form>
+                {% else %}
+                <!-- Login request -->
+                <a id="login-review" href="/login/?next={{request.path}}" class="review-btn" >Log In To Add Review</a>
+                {% endif %}
+                <!-- User comments -->
+                <div id="recipe-all-comments">
+                    {% for comment in comments %}
+                    <div class="recipe-comment-line"></div>
+                    <div class="recipe-comment">
+                        <div class="comment-user-info">
+                            <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
+                            <p class="comment-user-info-user">{{ comment.user }}</p>
+                            <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}</p>
+                        </div>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </section>
         {% else %}  
@@ -116,4 +152,45 @@
 
         {% block script %}
         <script src="{% static 'recipe/js/recipe.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script >
+            // Hover change image
+            var favoriteBtn = $("#input-favorite-block");
+            favoriteBtn.on('mouseenter', function(){
+                hoverPath = `../../static/recipe/images/favorite_heart_${favoriteBtn.attr('value')}_hover.png`;
+                favoriteBtn.attr("src", hoverPath);
+            })
+            favoriteBtn.on('mouseleave', function(){
+                hoverPath = `../../static/recipe/images/favorite_heart_${favoriteBtn.attr('value')}.png`;
+                favoriteBtn.attr("src", hoverPath);
+            })
+
+            // update favorite to database
+            function changeFavorite() {
+                var favoriteBtn = $("#input-favorite-block");
+                var favoriteValue = favoriteBtn.attr("value");
+                if(favoriteValue == "unsaved") {
+                    favoriteBtn.attr("src", "../../static/recipe/images/favorite_heart_saved.png");
+                    favoriteBtn.attr("value", "saved");
+                } else {
+                    favoriteBtn.attr("src", "../../static/recipe/images/favorite_heart_unsaved.png");
+                    favoriteBtn.attr("value", "unsaved");
+                }
+                console.log(`Before - ${favoriteValue}`);
+                console.log(`After - ${favoriteBtn.attr("value")}`);
+
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    data: { 
+                        "csrfmiddlewaretoken": "{{ csrf_token }}",
+                        "favoriteValue": favoriteValue,
+                    },
+                    success: function() {
+                    console.log('Updated favorite');
+                    },
+                });
+            }
+        </script>
         {% endblock script %}

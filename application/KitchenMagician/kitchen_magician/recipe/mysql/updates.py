@@ -1,7 +1,16 @@
+"""
 # python3 manage.py shell
+# update in mysql
 
+from recipe.mysql import updates
+updates.update_quantity_serve()
+updates.update_preparation_time()
+updates.update_cooking_time()
+updates.update_occasion()
+updates.update_course()
+updates.update_diet()
 
-
+"""
 
 # Quantity Serve
 def update_quantity_serve():
@@ -131,11 +140,11 @@ def update_course():
         'Salads',
         'Sandwiches',
         'Side Dishes',
-        'Other'
+        'Others'
     ]
 
     for c in course:
-        rc = RecipeCourse(course=c)
+        rc = RecipeCourse(name=c)
         rc.save()
     print("Successful on RecipeCourse!")
 
@@ -161,7 +170,7 @@ def update_occasion():
         'Super Bowl',
         'Thanksgiving',  
         "Valentine's Day",  
-        "none"
+        "Others"
     ]
 
     for o in occasion:
@@ -182,6 +191,7 @@ def update_diet():
         'Paleo',
         'Low Carb',
         'Raw'
+        'Others'
     ]
 
     for d in diet:

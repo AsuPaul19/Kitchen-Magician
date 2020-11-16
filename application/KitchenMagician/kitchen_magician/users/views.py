@@ -7,7 +7,8 @@ from django.shortcuts import redirect
 # from django.contrib import messages
 # from .forms import UserRegisterForm
 from django.contrib.auth.models import User
-
+from django.http import HttpResponseRedirect
+from .models import Profile
 
 
 def signup(request):
@@ -23,51 +24,48 @@ def signup(request):
         password2 = request.POST.get('password2')
         if User.objects.filter(username=username).exists(): # user already exists
             context['error'] = f'The user {username} already exists.'
+        elif User.objects.filter(email=email).exists(): #unique email
+            context['error'] = f'The email {email} already used.'
         elif password1 != password2:
             context['error'] = 'The two password fields didn’t match.'
-        # TODO - Check Email address
         else:
             # create a user
             user = User.objects.create_user(username=username, password=password1, email=email)
             user.save()
+            # create the profile
+            user_profile = Profile(user=user)
+            user_profile.save()
             return redirect('login')
-
-
-
-
-    # if request.method == 'POST':
-    #     form = UserRegisterForm(request.POST)
-    #     print(request.POST)
-    #     print("==========")
-    #     print(form)
-    #     if form.is_valid():
-    #         form.save()
-    #         username = form.cleaned_data.get('username')
-    #         messages.success(request, f'{username}, welcome to join us!')
-    #         return redirect('login')
-    # else:
-    #     context['account'] = 'Hmmm, not a valid user name or password' # send message is it is wrong
-
 
     return render(request, "signup.html", context)
 
 
 def login(request):
+    # redirect to home page if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('home')
+
     context = {
         'title': 'Login',
     }
-
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(f'{username} : {password}')
         # user authentication check
         user = authenticate(request, username=username, password=password)
         if user:
             auth_login(request, user)
-            return redirect('home')
+            # if 'next' in request.GET:
+            next_page = request.GET.get('next', False)
+            # redirect to precious page once log in
+            if next_page: 
+                return HttpResponseRedirect(next_page)
+            # redirect to home page if now page requested 
+            else:
+                return redirect('home')
         else:
-            context['account'] = 'Hmmm, not a valid user name or password' # send message is it is wrong
+            context['account'] = 'Hmmm, not a valid user name or password' # send message if it is wrong
             return render(request, 'login.html', context)
 
     return render(request, 'login.html', context)
@@ -90,6 +88,6 @@ def user_profile(request, username=None):
         return login(request)
 
 
-@login_required
-def account(request):
-    return profile(request)
+# @login_required
+# def account(request):
+#     return profile(request)

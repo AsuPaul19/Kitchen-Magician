@@ -15,6 +15,10 @@
           align-items: center;
 }
 
+#not-found.container h1 {
+  color: textColor;
+}
+
 #not-found.container #second-line {
   color: black;
 }

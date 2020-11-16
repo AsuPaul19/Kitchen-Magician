@@ -23,7 +23,7 @@
           flex: 1;
   height: 1px;
   width: auto;
-  background-color: #999;
+  background-color: lightgray;
   padding: 0;
   margin: 0;
 }
@@ -63,21 +63,67 @@ section#recipe .container #diet-title-favorite-block {
           justify-content: center;
 }
 
-section#recipe .container #diet-title-favorite-block img#diet-image {
+section#recipe .container #diet-title-favorite-block #diet-block {
+  position: relative;
+  height: auto;
+}
+
+section#recipe .container #diet-title-favorite-block #diet-block:hover {
+  cursor: pointer;
+}
+
+section#recipe .container #diet-title-favorite-block #diet-block:hover p {
+  background-color: black;
+  opacity: 0.6;
+  color: white;
+  visibility: visible;
+}
+
+section#recipe .container #diet-title-favorite-block #diet-block #diet-image {
   max-height: 4rem;
   max-width: 4rem;
+}
+
+section#recipe .container #diet-title-favorite-block #diet-block p {
+  position: absolute;
+  bottom: -1.8rem;
+  margin: 0;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  visibility: hidden;
+  z-index: 2;
 }
 
 section#recipe .container #diet-title-favorite-block #recipe-title {
   margin: 0 1rem;
 }
 
-section#recipe .container #diet-title-favorite-block input#favorite-block {
-  max-height: 1.5rem;
-  max-width: 1.5rem;
+section#recipe .container #diet-title-favorite-block .favorite-block {
+  max-height: 2rem;
+  max-width: 2rem;
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
+}
+
+section#recipe .container #diet-title-favorite-block #a-favorite-block {
+  background: url("../images/favorite_heart_unsaved.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 2rem;
+  width: 2rem;
+}
+
+section#recipe .container #diet-title-favorite-block #a-favorite-block:hover {
+  background: url("../images/favorite_heart_unsaved_hover.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 2rem;
+  width: 2rem;
 }
 
 section#recipe .container #user-information-block {
@@ -127,8 +173,8 @@ section#recipe .container #user-information-block #information-block {
 section#recipe .container #image-prep-serve-course-occasion-block {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 2fr;
-      grid-template-columns: 3fr 2fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   margin: 1rem 0;
 }
@@ -199,6 +245,7 @@ section#recipe .container #ingredients-instructions-block #ingredients-block #in
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
+  padding: 4px;
 }
 
 section#recipe .container #ingredients-instructions-block #instructions-block ul {
@@ -236,15 +283,68 @@ section#recipe-comments .container form textarea#add-comment:placeholder-shown {
   font-style: italic;
 }
 
-section#recipe-comments .container form .review-submit-btn {
+section#recipe-comments .container .review-btn {
   color: white;
   background-color: #f56a58;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-color: #f56a58;
-  font-size: 1.2rem;
+  border-radius: 5px;
+  font-size: 1rem;
   font-weight: bolder;
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
+  text-decoration: none;
+}
+
+section#recipe-comments .container #login-review {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+section#recipe-comments .container #recipe-all-comments {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+
+section#recipe-comments .container #recipe-all-comments .recipe-comment-line {
+  height: 1px;
+  width: 100%;
+  background-color: lightgray;
+}
+
+section#recipe-comments .container #recipe-all-comments .comment-user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section#recipe-comments .container #recipe-all-comments .comment-user-info .comment-user-info-user_avatar {
+  max-width: 2rem;
+  max-height: 2rem;
+  border-radius: 50%;
+}
+
+section#recipe-comments .container #recipe-all-comments .comment-user-info .comment-user-info-user {
+  font-size: 0.8rem;
+  margin: 0 1rem;
+}
+
+section#recipe-comments .container #recipe-all-comments .comment-user-info .comment-user-info-created {
+  color: gray;
+  font-size: 0.8rem;
+  margin: 0;
 }
 /*# sourceMappingURL=recipe.css.map */
