@@ -1,10 +1,5 @@
 from django.contrib import admin
 
-# Jeff's
-from .models import RecipeTest
-admin.site.register(RecipeTest)
-
-
 from .models import Recipe
 from .models import RecipeCourse
 from .models import RecipeCourseItem

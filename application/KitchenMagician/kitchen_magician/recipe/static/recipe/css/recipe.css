@@ -283,7 +283,20 @@ section#recipe-comments .container form textarea#add-comment:placeholder-shown {
   font-style: italic;
 }
 
-section#recipe-comments .container .review-btn {
+section#recipe-comments .container .recipe-button-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section#recipe-comments .container .recipe-button-block .review-btn {
   color: white;
   background-color: #f56a58;
   padding: 0.5rem 1.5rem;

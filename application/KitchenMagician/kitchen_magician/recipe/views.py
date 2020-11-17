@@ -41,7 +41,7 @@ def recipe_view(request, recipe=None, recipe_id=None):
     recipe_instance = RecipeDataFetch(recipe=recipe, recipe_id=recipe_id)
     # if we fetch the data successfully, send to clients
     if recipe_instance.is_valid:  
-        recipe_data = recipe_instance.recipe_date
+        recipe_data = recipe_instance.recipe_data
         context['recipe_data'] = recipe_data # all info for this recipe
         context['comments'] =  GetRecipeComments(recipe=recipe, recipe_id=recipe_id).comments# all info for this recipe
         if request.user.is_authenticated:

@@ -243,17 +243,23 @@ section#recipe-comments {
             }
 
         }
-        .review-btn {
-            color: white;
-            background-color: $textColor;
-            padding: 0.5rem 1.5rem;
-            border-color: $textColor;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bolder;
-            box-shadow: none;
-            outline: none;
-            text-decoration: none;
+        .recipe-button-block {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            .review-btn {
+                color: white;
+                background-color: $textColor;
+                padding: 0.5rem 1.5rem;
+                border-color: $textColor;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bolder;
+                box-shadow: none;
+                outline: none;
+                text-decoration: none;
+            }
         }
 
         #login-review {

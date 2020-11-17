@@ -9,6 +9,7 @@ from .models import RecipeOccasionItem
 from .models import RecipeDietItem
 from .models import RecipeInstruction
 from .models import Recipe
+from .models import RecipeFavorite
 from django.contrib.auth.models import User
 
 
@@ -17,9 +18,10 @@ from django.contrib.auth.models import User
 Return a recipe data as a dictionary
         
     recipe_data_json = {
-        # Key - name:   Value   Type (name)
-        'user':  String, self.username
+        # Key - name:   Value   Type (name),
+        'user':  String, self.username,
         'name': String, self.recipe name),
+        'recipe_id': int
         'information': String, self.recipe_information(recipe),
         'ingredients': List, self.recipe_ingredients(recipe),
         'instructions': List, self.recipe_instruction(recipe),
@@ -40,7 +42,7 @@ class RecipeDataFetch():
         self.recipe = recipe  # recipe instance
         self.recipe_id = recipe_id  # recipe id
         self.is_valid = False # valid recipe instance or id 
-        self.recipe_date = self.get_recipe() # recipe data
+        self.recipe_data = self.get_recipe() # recipe data
 
     def is_valid(self):
         # if we can fetch the recipe with its instance or id, return true
@@ -56,7 +58,7 @@ class RecipeDataFetch():
             self.is_valid = True
         # get data with recipe id
         elif self.recipe_id:
-            recipe = Recipe.objects.filter(id=self.recipe_id).first()
+            self.recipe = recipe = Recipe.objects.filter(id=self.recipe_id).first()
             if recipe:
                 self.is_valid = True
         
@@ -71,6 +73,7 @@ class RecipeDataFetch():
                     'user': user_name,
                     'user_avatar': user_avatar,
                     'name': self.recipe_name(recipe),
+                    'recipe_id': self.recipe.id,
                     'information': self.recipe_information(recipe),
                     'ingredients': self.recipe_ingredients(recipe),
                     'instructions': self.recipe_instruction(recipe),
@@ -183,3 +186,7 @@ class RecipeDataFetch():
         else:
             return None
         
+    def recipe_favorite(self, recipe):
+        # return favorite counts
+        favorites = RecipeFavorite.objects.filter(recipe=recipe)
+        return len(favorites)

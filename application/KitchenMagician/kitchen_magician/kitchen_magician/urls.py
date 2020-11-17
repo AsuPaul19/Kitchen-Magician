@@ -14,7 +14,6 @@ from testing import views as testing_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', search_views.search, name='search'),
     path('recipe/', include('recipe.urls')),
     path('team-profile/', about_views.profile, name='profile'), 
     path('groups/', groups_views.groups, name='groups'),
@@ -27,6 +26,7 @@ urlpatterns = [
     path('signup/', users_views.signup, name='signup'),
     path('testing/', testing_views.testing, name='testing'),
     path('', include('home.urls')),
+    path('search/', include('search.urls')),
     path('about/', include('about.urls')),
 ]
 

@@ -2,24 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-# Jeff's Recipe Testing
-class RecipeTest(models.Model):
-    title = models.CharField(max_length=100)
-    # if a user is deleted, we will the post, but the reverse doesn't hold:  one-way street
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(default=timezone.now)
-    content = models.TextField()
-    cover = models.ImageField(upload_to='images/')
-
-
-    class Meta():
-        db_table = 'search_recipetest'
-
-    # to make output more descriptive in Python shell
-    def __str__(self):
-        return self.title
-
-
 
 # class RecipeUploadImageTest(models.Model):
 #     image_folder = 'recipe_pics/'
@@ -263,7 +245,7 @@ class RecipeOccasionItem(models.Model):
         db_table = 'recipe_occasion_item'
 
     def __str__(self):
-        return f'{self.occasion.name} - {self.recipe.id}. {self.recipe.name}'
+        return f'{self.recipe_occasion.name} - {self.recipe.id}. {self.recipe.name}'
 
 class RecipeDiet(models.Model):
     # CASCADE, once the user is deleted, this item will be deleted automatically
@@ -287,4 +269,4 @@ class RecipeDietItem(models.Model):
         db_table = 'recipe_diet_item'
 
     def __str__(self):
-        return f'{self.diet.name} - {self.recipe.id}. {self.recipe.name}'
+        return f'{self.recipe_diet.name} - {self.recipe.id}. {self.recipe.name}'
