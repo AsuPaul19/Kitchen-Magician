@@ -42,7 +42,7 @@ def search(request, keywords=None):
         for (k, v), i in zip(categories.items(), range(len(context['categories']))):
             context['categories'][i]['items'] = v
         
-        print(context['categories'])
+        # print(context['categories'])
 
 
     return render(request, 'search.html', context)
