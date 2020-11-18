@@ -1,17 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'about/css/about.css' %}">
+    {% endblock css %}
 
-        {% block css %}
-        <!-- CSS files Links here -->
-        <!-- <link rel="stylesheet" href="{% static 'groups/css/groups.css' %}"> -->
-        {% endblock css%}
+    {% block content %}
+    <section id="ABOUT">
+        <div class="container">
+            <div id="ABOUT-title">
+                <h1>Available Groups</h1>
+                <div id="about-line"></div>
+            </div>
+        </div>
+    </section>
 
-        {% block content %}
-        <!-- Main Body Here -->
-        <div class="h1">Group Page</div>
-        {% endblock content %}
+    <section id="people-images">
+        <div class="container">
+            {% for k, v in team.items %}
+            <div class="image-block">
+                <a class="image-block-wrapper" href="{% url 'about-profile' name=v.name id=v.id %}">
+                    <img src="{% static v.img %}" alt="" id="NP" class="images-img"/>
+                </a>
+                <div class="image-title">
+                    <h1>{{ v.name }}</h1>
+                    <h2>{{ v.title }}</h2>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endblock content%}
 
-        {% block script %}
-        <!-- Script files Links here -->
-        <!-- <script type="text/javascript" src="{% static 'groups/js/groups.js' %}></script> -->
-        {% endblock script %}
+{% block active-nav-link %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% endblock active-nav-link %}
