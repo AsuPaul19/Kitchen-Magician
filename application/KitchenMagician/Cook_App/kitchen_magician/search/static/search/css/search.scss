@@ -1,0 +1,200 @@
+$backgroundColor: white;
+$backgroundColorText: #fef9f6;
+$textColor: #f56a58;
+
+// Search Bar
+#search-bar {
+    .container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: $backgroundColorText;
+        padding: 1rem;
+        #search-input-block {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            #search-input-text-icon {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: black;
+                height: 100%;
+                top: 0;
+                left: 0;
+                i.fas {
+                    padding: auto;
+                    margin: auto;
+                    line-height: 0;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 0.5rem;
+                }
+            }
+        }
+        // Inputs - Text & Button
+        .search-input {
+            border-radius: 5px;
+            margin-right: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            box-shadow: none;
+            outline: none;
+            text-decoration: none;
+        }
+        #search-input-text {
+            border: lightgray 1px solid;
+            padding-left: 2rem;
+            width: 100%;
+        }
+        #search-input-submit {
+            background-color: $textColor;
+            border: 1px solid $textColor;
+            color: white;
+            &:hover {
+                filter: brightness(95%);
+            }
+        }
+    }
+}
+
+// Search Filter & Result
+#search-filter-results {
+    .container {
+        display: flex;
+        flex-direction: row;
+        min-height: 90vh;
+        // Filter
+        #search-filter-category {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            img {
+                max-width: 2rem;
+                max-height: 2rem;
+            }
+        }
+        #search-filter-categories {
+            display: flex;
+            flex-direction: column;
+            margin-right: 1rem;
+            .filter-category-block-line {
+                height: 1px;
+                background-color: lightgray;
+                width: 100%;
+                margin: 0.8rem 0;
+            }
+            .filter-title-icon {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                img {
+                    max-width: 1rem;
+                    max-height: 1rem;
+                    margin-right: 0.5rem;
+                }
+                .filter-title {
+                    font-size: 1rem;
+                    font-weight: bolder;
+                    margin: 0;
+                }   
+            }
+            .filter-category {
+                padding-right: 2rem;
+                ul.filter-category-items {
+                    margin: 0;
+                    list-style: none;
+                    li.filter-category-item {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        margin: 0.5rem 0;
+                        text-decoration: none;
+                        input {
+                            width: 1rem;
+                            height: 1rem;
+                            margin-right: 0.5rem;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        label {
+                            font-size: 1rem;
+                            margin: 0;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }   
+                    }
+                }
+            }
+        }
+        // Results
+        #search-results-block {
+            flex-grow: 1;
+            #search-results-block-info {
+                .search-result-title {
+                    font-size: 1rem;
+                }
+            }
+            #search-results-block-recipes {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 1rem;
+                // each single recipe block
+                .recipe-block {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    max-height: 12rem;
+                    .recipe-image {
+                        img {
+                            max-height: 10rem;
+                            max-width: 10rem;
+                            border-radius: 5px;
+                        }
+                    }
+                    // recipe info
+                    .recipe-info-block {
+                        margin-left: 1rem;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        .recipe-info-item {
+                            margin: 0.2rem 0;
+                            padding: 0;
+                        }
+                        a.recipe-title {
+                            font-size: 1.2rem;
+                            font-weight: bolder;
+                            color: $textColor;
+                        }
+                        .recipe-favorite {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            img {
+                                max-width: 1.5rem;
+                                max-height: 1.5rem;
+                            }
+                            p {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+                .recipe-block-line {
+                    height: 1px;
+                    background-color: lightgray;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+    }
+}

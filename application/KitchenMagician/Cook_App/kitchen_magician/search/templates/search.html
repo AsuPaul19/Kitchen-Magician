@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block css %}    
+        <link rel="stylesheet" href="{% static 'search/css/search.css' %}">
+        {% endblock css %}    
+
+
+        {% block content %}
+        <section id="search-bar">
+            <form action="" method="POST" class="search-keywords">
+                <fieldset>
+                    <div class="container">
+                        <!-- Authentication Token -->
+                        {% csrf_token %}
+                        <div id="search-input-block">
+                            <input type="text" id="search-input-text" placeholder="Recipes for any ingredient, occasion, course, or diet" name="keywords" maxlength="150" class="search-input">
+                            <div id="search-input-text-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <input class="search-input" id="search-input-submit" value="Find a Recipe" type="submit"></input>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="search-filter-results">
+            <div class="container">
+                <!-- Search Filter -->
+                <div class="search-filter-block">
+
+                    <div id="search-filter-category">
+                        <img src="{% static 'recipe/images/recipe_category.png' %}" alt="">
+                    </div>
+                    <form action="" method="POST">
+                        <fieldset>
+                            {% csrf_token %}
+                            <div id="search-filter-categories">
+                                <!-- category-->
+                                {% for category in categories %}
+                                <div class="filter-category-block-line"></div>
+                                <div class="filter-{{ category.name_lower }} filter-category">
+                                    <div class="filter-title-icon">
+                                        <img src="{% static category.image %}" alt="">
+                                        <p class="filter-title">{{ category.name_upper }}</p>
+                                    </div>
+                                    <ul class="filter-{{ category.name_lower }}-items filter-category-items">
+                                        {% for item in category.items %}
+                                        <li class="filter-category-item">
+                                            <input type="checkbox" id="category-item-{{ item }}">
+                                            <label class="filter-category-item" for="category-item-{{ item }}">{{ item }}</label>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                    <!-- Search-Results -->
+                <div id="search-results-block">
+                    <div id="search-results-block-info">
+                        {% if recipes %}
+                        <h1 class="search-result-title">
+                            {{counts}} recipes match "{{ keywords }}"
+                        </h1>
+                        {% else %}
+                        <h1 class="search-result-title">
+                            Sorry we couldn't find any recipes match "{{ keywords }}"
+                            <br>
+                            Please try something else.
+                        </h1> 
+                        {% endif %}
+                    </div>
+                    <div id="search-results-block-recipes">
+                        {% if recipes %}
+                        <div class="recipe-block-line"></div>
+                        {% for recipe in recipes %}
+                        <div class="recipe-block">
+                            <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-image">
+                                <img src="{{ recipe.images.url }}" alt="">
+                            </a>
+                            <div class="recipe-info-block">
+                                <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-title recipe-info-item">{{ recipe.name }}</a>
+                                <div class="recipe-favorite  recipe-info-item">
+                                    {% for i in recipe.max_favorites %}
+                                    <img src="{% static 'recipe/images/favorite_heart_saved.png' %}" alt="">
+                                    {% endfor %}
+                                    <!-- <p class="recipe-info-item"><strong>{{ recipe.favorites }}</strong> favorites</p> -->
+                                </div>
+                                <p class="recipe-time recipe-info-item"><strong>TIME:</strong> Prep: {{ recipe.preparation_time }}; Cook: {{ recipe.cooking_time }}</p>
+                                <p class="recipe-servings recipe-info-item"><strong>MAKES:</strong> {{ recipe.quantity_serve }} servings</p>
+                                <p class="recipe-diets recipe-info-item"><strong>DIET:</strong> {{ recipe.diets.0 }}</p>
+                            </div>
+                        </div>
+                        <div class="recipe-block-line"></div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock content %}

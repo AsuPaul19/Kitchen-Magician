@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'recipe/css/submit_success.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="created">
+        <div class="container" style="display: block;">
+            <h2 style="color: black;">This is a temporary recipe page.</h2>
+            <h2 style="color: black;">Success! Appreciate your help!</h2>
+            <h2 style="color: black;">We are on the way to make our site!</h2>
+            <br>
+            <a href="{% url 'create_recipe' %}" style="font-size: 2rem;">Click here to create one more recipe, thanks!</a>
+            <div id="recipe">
+                {% if recipe %}
+                    <p>User: {{ recipe.user }} </p>
+                    <p>Title: {{ recipe.name }}</p>
+                    <p>Information: {{ recipe.information }}</p>
+                    <p>Ingredient: {{ recipe.ingredients }}</p>
+                    <p>Instruction: </p>
+                    {% for instruction in recipe.instructions %}
+                    <h4>   - Step {{ forloop.counter }}</h4>
+                    <p>    {{instruction}}</p>
+                    {% endfor %}
+                    <p>Image: </p>
+                    {% if recipe.images %}
+                        <img src="{{ recipe.images.url }}" alt="">
+                    {% endif %}
+                    <p>Video Link: {{ recipe.video_link }}</p>
+                    <p>Preparation Time: {{ recipe.preparation_time }}</p>
+                    <p>Cooking Time: {{ recipe.cooking_time }}</p>
+                    <p>Quantity Serve: {{ recipe.quantity_serve }}</p>
+                    <p>Course: {{ recipe.course }}</p>
+                    <p>Occasion: {{ recipe.occasions }}</p>
+                    <p>Diet: {{ recipe.diets }}</p>
+                {% else %}  
+                    <p>Sorry, we can't find the recipe.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

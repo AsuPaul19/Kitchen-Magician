@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+    <div class="container">
+        <div class="content-section">
+            <form action="" method="POST">
+                <!-- Authentication Token -->
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Log In</legend>
+                    <!-- Bootstrap Form -->
+                    
+
+                    <div id="div_id_username" class="form-group"> 
+                        <label for="id_username" class=" requiredField">
+                            Username
+                            <span class="asteriskField">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" class="textinput textInput form-control" required id="id_username"> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_password" class="form-group"> 
+                        <label for="id_password" class=" requiredField">
+                            Password
+                            <span class="asteriskField">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="password" name="password" autocomplete="current-password" class="textinput textInput form-control" required id="id_password"> 
+                        </div> 
+                    </div>
+
+                </fieldset>
+                
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Log In</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Need an account?
+                        <a href="{% url 'signup' %}" class="ml-2">Sign up!</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endblock content %}

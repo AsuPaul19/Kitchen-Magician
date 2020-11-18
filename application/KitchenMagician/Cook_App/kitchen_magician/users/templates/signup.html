@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/signup.css' %}" />
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+{% endblock css %} 
+
+
+{% block content %}
+<section id="signup-block">
+    <img class="background" src="{% static 'users/images/backgroundSignup.png' %}">
+    <div class="container" id="signup-container">
+        <div class="signup">
+            <!-- sign up  -->
+            <form action="" class="sign-up-form" method="POST">
+
+                {% csrf_token %}
+                <div id="sign-up">
+                    <img class="avatar" src="{% static 'users/images/avatar.svg' %}">
+                    <h2>Sign up</h2>
+                </div>
+                <p id="signup-error">
+                    {{ error }}
+                </p>
+                <!-- username  -->
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input-text">
+                        <h5>Username</h5>
+                        <input name="username" maxlength="150" class="input" type="text" required id="id_username">
+                    </div>
+                </div>
+                <!-- email  -->
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="input-text">
+                        <h5>E-mail</h5>
+                        <input  class="input" type="email" name="email" required id="id_email">
+                    </div>
+                </div>
+                <!-- password  -->
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="input-text">
+                        <h5>Password</h5>
+                        <input class="input" type="password" name="password1" autocomplete="new-password" required id="id_password1">
+                    </div>
+                </div>
+                <!-- password confirmation-->
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="input-text">
+                        <h5>Password Confirmation</h5>
+                        <input class="input" type="password" name="password2" autocomplete="new-password" required id="id_password2">
+                    </div>
+                </div>
+                <!-- sign up  -->
+                <input type="submit" class="btn" value="Sign up">
+                <div id="signup-page-login">
+                    <p class="social-text">Already have an account?</p>
+                    <a id="login-button" href="{% url 'login' %}">Login</a>
+                </div>
+                <p class="social-text">Or Sign up with</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="img">
+            <img class="signup" src="{% static 'users/images/signup.svg' %}">
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
+{% endblock content %}
+
