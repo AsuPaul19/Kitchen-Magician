@@ -29,7 +29,12 @@ class SearchRecipe():
         and "[,.](?!\d)" means to only split by , 
         or . if it is not followed by a digit.
         """
+        print("=" * 50)
+        print(f'Before: {keywords}')
         keywords = re.split("\s|(?<!\d)[,.](?!\d)", keywords.lower())
+        print(f'after: {keywords}')
+        keywords = [k for k in keywords if k]
+        print(f'Remove Space: {keywords}')
         search_models = self.recipe_search_models()
         recipes = defaultdict(int)
         if keywords:

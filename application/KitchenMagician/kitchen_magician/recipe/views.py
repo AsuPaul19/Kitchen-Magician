@@ -89,23 +89,9 @@ def submit_recipe(request, recipe=None, recipe_id=None):
     # add recipe to table Recipe
     if request.method == 'POST':
         recipe = create_recipe_data(request)
-
+        # TODO redirect to recipe page
+        # redirect('recipe', recipe_id=recipe.id)
     return recipe_view(request, recipe=recipe)
-
-    # # fetch recipe with either recipe instance or recipe id recipe_id
-    # recipe_data_fetch = None
-    # if recipe:
-    #     recipe_data_fetch = RecipeDataFetch(recipe=recipe)
-    # elif recipe_id:
-    #     recipe_data_fetch = RecipeDataFetch(recipe_id=recipe_id)
-
-    # # if we fetch the data successfully, update context and send to client
-    # if recipe_data_fetch.is_valid:
-    #     recipe_data = recipe_data_fetch.get_recipe()
-    #     context['recipe'] = recipe_data
-
-    # # recipe_view(request, recipe, recipe_id)
-    # return render(request, 'submit_success.html', context)
 
 
 def create_recipe_data(request):
@@ -122,7 +108,7 @@ def create_recipe_data(request):
         # recipe_image = RecipeUploadImageTest(image=uploaded_file)
         # recipe_image.save()
             # parse data and send to models
-        recipe = {
+        submit_recipe = {
             "user": request.user,
             "name": data.getlist('recipe-name')[0],
             "information": data.getlist('recipe-information')[0],
