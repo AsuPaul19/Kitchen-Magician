@@ -40,7 +40,7 @@ team = {
         "title": "Github Master",
         "intro": [
             "I am Asu Paul a senior in the Computer Science department at the San Francisco State University.",
-            "I love traveling and spending time with my family.",
+            "When I'm in school, I love traveling and spending time with my family.",
             "Originally I'm from Nigeria-the most populous black nation, in West Africa."
         ]
     },
