@@ -1,3 +1,2 @@
 
-alert('hi');
-console.log('hi');
+// alert('Welcome!');
