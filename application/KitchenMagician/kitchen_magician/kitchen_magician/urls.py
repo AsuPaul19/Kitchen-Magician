@@ -17,6 +17,7 @@ urlpatterns = [
     path('recipe/', include('recipe.urls')),
     path('team-profile/', about_views.profile, name='profile'), 
     path('groups/', groups_views.groups, name='groups'),
+    path('groupforum/', groups_views.group_forum, name='group_forum'),
     path('login-signup/', users_views.login_signup, name='login_signup'),
     path('login/', users_views.login, name='login'),
     path('forgot-password/', users_views.forgot_password, name='forgot_password'),
