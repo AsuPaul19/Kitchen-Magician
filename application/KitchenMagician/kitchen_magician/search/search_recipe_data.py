@@ -48,5 +48,5 @@ class SearchRecipeData(RecipeDataFetch):
                     "max_favorites": range(min(self.recipe_favorite(recipe), 5))  # max hearts is 5
                 }
                 
-        print(recipe_data_json)
+        # print(recipe_data_json)
         return recipe_data_json

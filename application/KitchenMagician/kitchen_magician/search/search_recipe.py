@@ -33,8 +33,8 @@ class SearchRecipe():
         search_models = self.recipe_search_models()
         recipes = defaultdict(int)
         if keywords:
-            print("=" * 80)
-            print(f'keywords: {keywords}')
+            # print("=" * 80)
+            # print(f'keywords: {keywords}')
             # The case insensitive search in Django
             # SELECT ... WHERE string LIKE '%keyword%';
             for model, fk in search_models.items():
@@ -49,14 +49,14 @@ class SearchRecipe():
                         model_instances = [instance.recipe for instances in model_instances for instance in instances]
                     else:
                         model_instances = [instance.recipe for instance in model_instances]
-                print(model_instances)
+                # print(model_instances)
                 # accumulate the appearances of recipe instances
                 for instance in model_instances:
                     recipes[instance] += 1
-            print(recipes)
+            # print(recipes)
             # sorted by values, return keys only
             recipes = [k for k, _ in sorted(recipes.items(), key=lambda kv:kv[1], reverse=True)]
-            print(recipes)
+            # print(recipes)
 
         # Return all results if keywords is None
         else: 

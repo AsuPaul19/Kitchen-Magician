@@ -122,7 +122,7 @@ $textColor: #f56a58;
                             }
                         }
                         label {
-                            font-size: 1rem;
+                            font-size: 0.8rem;
                             margin: 0;
                             &:hover {
                                 cursor: pointer;
@@ -150,11 +150,15 @@ $textColor: #f56a58;
                     flex-direction: row;
                     width: 100%;
                     max-height: 12rem;
+                    // recipe image fits the div 
                     .recipe-image {
+                        height: 10rem;
+                        width: 10rem;
+                        overflow: hidden;
+                        border-radius: 5px;
                         img {
-                            max-height: 10rem;
-                            max-width: 10rem;
-                            border-radius: 5px;
+                            max-height: 100%;
+                            object-fit: contain;
                         }
                     }
                     // recipe info

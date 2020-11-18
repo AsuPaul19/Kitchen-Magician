@@ -184,7 +184,7 @@
 }
 
 #search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item label {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 0;
 }
 
@@ -222,10 +222,17 @@
   max-height: 12rem;
 }
 
-#search-filter-results .container #search-results-block #search-results-block-recipes .recipe-block .recipe-image img {
-  max-height: 10rem;
-  max-width: 10rem;
+#search-filter-results .container #search-results-block #search-results-block-recipes .recipe-block .recipe-image {
+  height: 10rem;
+  width: 10rem;
+  overflow: hidden;
   border-radius: 5px;
+}
+
+#search-filter-results .container #search-results-block #search-results-block-recipes .recipe-block .recipe-image img {
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #search-filter-results .container #search-results-block #search-results-block-recipes .recipe-block .recipe-info-block {

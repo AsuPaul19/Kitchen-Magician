@@ -12,12 +12,12 @@
 <div class="grid">
   <div class="box1">
     <!-- Box1 -->
-    <h1>Unsure?  Maybe a Search Can Help?</h1>
+    <h1>Search Me!</h1>
     <form method="POST" action="{% url 'search' %}">
       {% csrf_token %}
-      <input type="text" placeholder="by Title?" name="title">
-      <input type="text" placeholder="by Author?" name="author">
-      <input type="text" placeholder="by Content?" name="content">
+      <input type="text" placeholder="recipe title..." name="title">
+      <input type="text" placeholder="recipe author..." name="author">
+      <input type="text" placeholder="recipe content..." name="content">
       <input type="submit" value="Search">
   </form>      
   </div>
@@ -26,7 +26,7 @@
     <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
   </div>
   <div class="box3">
-    <h1>Check Out Our Trending Recipes Below!</h1>
+    <h1>Click A Recipe Below!</h1>
     <!-- Box 3 -->
     <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
       <ol class="carousel-indicators">

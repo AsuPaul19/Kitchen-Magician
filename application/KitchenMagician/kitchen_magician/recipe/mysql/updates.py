@@ -190,7 +190,7 @@ def update_diet():
         'Pescatarian',
         'Paleo',
         'Low Carb',
-        'Raw'
+        'Raw',
         'Others'
     ]
 

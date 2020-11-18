@@ -7,6 +7,7 @@
 
 
         {% block content %}
+        <!-- Search Bar -->
         <section id="search-bar">
             <form action="" method="POST" class="search-keywords">
                 <fieldset>
@@ -29,7 +30,6 @@
             <div class="container">
                 <!-- Search Filter -->
                 <div class="search-filter-block">
-
                     <div id="search-filter-category">
                         <img src="{% static 'recipe/images/recipe_category.png' %}" alt="">
                     </div>
@@ -59,7 +59,7 @@
                         </fieldset>
                     </form>
                 </div>
-                    <!-- Search-Results -->
+                <!-- Search Results -->
                 <div id="search-results-block">
                     <div id="search-results-block-info">
                         {% if recipes %}
@@ -78,24 +78,26 @@
                         {% if recipes %}
                         <div class="recipe-block-line"></div>
                         {% for recipe in recipes %}
-                        <div class="recipe-block">
-                            <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-image">
-                                <img src="{{ recipe.images.url }}" alt="">
-                            </a>
-                            <div class="recipe-info-block">
-                                <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-title recipe-info-item">{{ recipe.name }}</a>
-                                <div class="recipe-favorite  recipe-info-item">
-                                    {% for i in recipe.max_favorites %}
-                                    <img src="{% static 'recipe/images/favorite_heart_saved.png' %}" alt="">
-                                    {% endfor %}
-                                    <!-- <p class="recipe-info-item"><strong>{{ recipe.favorites }}</strong> favorites</p> -->
+                        <div class="recipe-wrapper" name="{{ recipe.name }}">
+                            <div class="recipe-block">
+                                <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-image">
+                                    <img src="{{ recipe.images.url }}" alt="">
+                                </a>
+                                <div class="recipe-info-block">
+                                    <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-title recipe-info-item">{{ recipe.name }}</a>
+                                    <div class="recipe-favorite  recipe-info-item">
+                                        {% for i in recipe.max_favorites %}
+                                        <img src="{% static 'recipe/images/favorite_heart_saved.png' %}" alt="">
+                                        {% endfor %}
+                                        <!-- <p class="recipe-info-item"><strong>{{ recipe.favorites }}</strong> favorites</p> -->
+                                    </div>
+                                    <p class="recipe-time recipe-info-item"><strong>TIME:</strong> Prep: {{ recipe.preparation_time }}; Cook: {{ recipe.cooking_time }}</p>
+                                    <p class="recipe-servings recipe-info-item"><strong>MAKES:</strong> {{ recipe.quantity_serve }} servings</p>
+                                    <p class="recipe-diets recipe-info-item"><strong>DIET:</strong> {{ recipe.diets.0 }}</p>
                                 </div>
-                                <p class="recipe-time recipe-info-item"><strong>TIME:</strong> Prep: {{ recipe.preparation_time }}; Cook: {{ recipe.cooking_time }}</p>
-                                <p class="recipe-servings recipe-info-item"><strong>MAKES:</strong> {{ recipe.quantity_serve }} servings</p>
-                                <p class="recipe-diets recipe-info-item"><strong>DIET:</strong> {{ recipe.diets.0 }}</p>
                             </div>
+                            <div class="recipe-block-line"></div>
                         </div>
-                        <div class="recipe-block-line"></div>
                         {% endfor %}
                         {% endif %}
                     </div>
@@ -103,3 +105,15 @@
             </div>
         </section>
         {% endblock content %}
+
+        {% block script %}
+        <script src="{% static 'search/js/search.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script >
+            var recipeBlocks = $('.recipe-wrapper');
+            for (i=0; i < recipeBlocks.length; i++) {
+                    console.log(recipeBlocks[i].attr('name'));
+                }
+
+        </script> -->
+        {% endblock script %}

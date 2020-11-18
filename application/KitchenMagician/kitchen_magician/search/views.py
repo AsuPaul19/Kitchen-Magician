@@ -2,10 +2,10 @@ from django.shortcuts import render
 from .search_recipe import SearchRecipe
 from .search_recipe_data import SearchRecipeData
 
-def search(request, keywords=None):
+def search(request, keywords=''):
     context = {
         'title': 'Search',
-        'recipes': None,
+        'recipes': '',
         'keywords': keywords,
         'counts': 0,
         'categories': [
@@ -42,7 +42,7 @@ def search(request, keywords=None):
         for (k, v), i in zip(categories.items(), range(len(context['categories']))):
             context['categories'][i]['items'] = v
         
-        print(context['categories'])
+        # print(context['categories'])
 
 
     return render(request, 'search.html', context)
