@@ -1,0 +1,7 @@
+.recipes-section {
+    width: 150px;
+    padding: 50px;
+    margin: 5px;
+    border: 20px solid #0088dd;
+    float: left;
+}

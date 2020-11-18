@@ -93,7 +93,146 @@ def user_profile(request, username=None):
     else:
         return login(request)
 
+# below is for the images
+recipes_section = {
+    "1001": {
+        "id": "1001",
+        "img": "about/images/team/1NP.jpg",
+        "name": "Recipe",
+        "title": "Recipe 1",
 
+    },
+    "1002": {
+        "id": "1002",
+        "img": "about/images/team/2JC.jpg",
+        "name": "Recipe",
+        "title": "Recipe 2",
+
+    },
+    "1003": {
+        "id": "1003",
+        "img": "about/images/team/3AS.jpg",
+        "name": "Recipe",
+        "title": "Recipe 3",
+    },
+    "1004": {
+        "id": "1004",
+        "img": "about/images/team/4PA.jpg",
+         "name": "Recipe",
+        "title": "Recipe 4",
+    },
+    "1005": {
+        "id": "1005",
+        "img": "about/images/team/5KO.jpg",
+        "name": "Recipe",
+        "title": "Recipe 5",
+    },
+
+    "1006": {
+        "id": "1006",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 6",
+    },
+
+    "1007": {
+        "id": "1007",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 7",
+    },
+
+    "1008": {
+        "id": "1008",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 8",
+    },
+
+    "1009": {
+        "id": "1006",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 9",
+    },
+
+    "1010": {
+        "id": "1006",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 10",
+    }
+}
+
+favorites_section = {
+    "1001": {
+        "id": "1001",
+        "img": "about/images/team/1NP.jpg",
+        "name": "Favorite",
+        "title": "Favorite 1",
+
+    },
+    "1002": {
+        "id": "1002",
+        "img": "about/images/team/2JC.jpg",
+        "name": "Favorite",
+        "title": "Favorite 2",
+
+    },
+    "1003": {
+        "id": "1003",
+        "img": "about/images/team/3AS.jpg",
+        "name": "Favorite",
+        "title": "Favorite 3",
+    },
+    "1004": {
+        "id": "1004",
+        "img": "about/images/team/4PA.jpg",
+         "name": "Favorite",
+        "title": "Favorite 4",
+    },
+    "1005": {
+        "id": "1005",
+        "img": "about/images/team/5KO.jpg",
+        "name": "Favorite",
+        "title": "Favorite 5",
+    },
+
+    "1006": {
+        "id": "1006",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Favorite",
+        "title": "Favorite 6",
+    },
+
+    "1007": {
+        "id": "1007",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Recipe",
+        "title": "Recipe 7",
+    },
+
+    "1008": {
+        "id": "1008",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Favorite",
+        "title": "Favorite 8",
+    },
+
+    "1009": {
+        "id": "1009",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Favorite",
+        "title": "Favorite 9",
+    },
+
+    "1010": {
+        "id": "1010",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Favorite",
+        "title": "Favorite 10",
+    }
+}
 # @login_required
 # def account(request):
 #     return profile(request)
