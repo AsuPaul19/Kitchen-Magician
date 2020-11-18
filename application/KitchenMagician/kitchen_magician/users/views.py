@@ -75,6 +75,12 @@ def login_signup(request):
 
     return render(request, 'login_signup.html')
 
+def forgot_password(request):
+    context = {
+        'title': 'Profile'
+    }
+    return render(request, 'forgot_password.html', context)
+
 @login_required
 def user_profile(request, username=None):
     # handle user names and unmatched links

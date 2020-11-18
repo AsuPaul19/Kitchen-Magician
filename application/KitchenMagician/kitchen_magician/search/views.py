@@ -2,10 +2,10 @@ from django.shortcuts import render
 from .search_recipe import SearchRecipe
 from .search_recipe_data import SearchRecipeData
 
-def search(request, keywords=None):
+def search(request, keywords=''):
     context = {
         'title': 'Search',
-        'recipes': None,
+        'recipes': '',
         'keywords': keywords,
         'counts': 0,
         'categories': [
