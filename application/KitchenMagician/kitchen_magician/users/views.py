@@ -9,14 +9,12 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile
-
-
+from django.contrib.auth.models import User
 def signup(request):
     context = {
         'title': 'Login',
         'error' : '',
     }
-
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -36,19 +34,14 @@ def signup(request):
             user_profile = Profile(user=user)
             user_profile.save()
             return redirect('login')
-
     return render(request, "signup.html", context)
-
-
 def login(request):
     # redirect to home page if user is already logged in
     if request.user.is_authenticated:
         return redirect('home')
-
     context = {
         'title': 'Login',
     }
-    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -59,28 +52,22 @@ def login(request):
             # if 'next' in request.GET:
             next_page = request.GET.get('next', False)
             # redirect to precious page once log in
-            if next_page: 
+            if next_page:
                 return HttpResponseRedirect(next_page)
-            # redirect to home page if now page requested 
+            # redirect to home page if now page requested
             else:
                 return redirect('home')
         else:
             context['account'] = 'Hmmm, not a valid user name or password' # send message if it is wrong
             return render(request, 'login.html', context)
-
     return render(request, 'login.html', context)
-
-
 def login_signup(request):
-
     return render(request, 'login_signup.html')
-
 def forgot_password(request):
     context = {
         'title': 'Profile'
     }
     return render(request, 'forgot_password.html', context)
-
 @login_required
 def user_profile(request, username=None):
     # handle user names and unmatched links
@@ -88,12 +75,28 @@ def user_profile(request, username=None):
         context = {
             'title': 'Profile'
         }
+        # print(request.user)
+        # user = User.objects.filter(username=request.user).first()
+        user_recipes = profile_recipes(request.user.recipe_set.all())
+        context['user_recipes'] = user_recipes
+        context['user_favorites'] = user_recipes
         return render(request, 'user_profile.html', context)
-
     else:
         return login(request)
-
-
+def profile_recipes(recipes=None):
+    recipes_data = []
+    for recipe in recipes:
+        recipe_name= recipe.name
+        recipe_id = recipe.id
+        recipe_image = recipe.recipeimage_set.all()[0].image
+        recipes_data.append(
+            {
+                'recipe_name': recipe_name,
+                'recipe_id': recipe_id,
+                'recipe_image': recipe_image,
+            }
+        )
+    return recipes_data
 # @login_required
 # def account(request):
 #     return profile(request)
