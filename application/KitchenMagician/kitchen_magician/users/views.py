@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile
+from django.contrib.auth.models import User
 
 
 def signup(request):
@@ -88,11 +89,31 @@ def user_profile(request, username=None):
         context = {
             'title': 'Profile'
         }
+        # print(request.user)
+        # user = User.objects.filter(username=request.user).first()
+        user_recipes = profile_recipes(request.user.recipe_set.all())
+        context['user_recipes'] = user_recipes
+
         return render(request, 'user_profile.html', context)
 
     else:
         return login(request)
 
+
+def profile_recipes(recipes=None):
+    recipes_data = []
+    for recipe in recipes:
+        recipe_name= recipe.name
+        recipe_id = recipe.id
+        recipe_image = recipe.recipeimage_set.all()[0].image
+        recipes_data.append(
+            {
+                'recipe_name': recipe_name,
+                'recipe_id': recipe_id,
+                'recipe_image': recipe_image,
+            }
+        )
+    return recipes_data
 
 # @login_required
 # def account(request):
