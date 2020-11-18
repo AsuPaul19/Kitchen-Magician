@@ -77,7 +77,7 @@ def login_signup(request):
 
 def forgot_password(request):
     context = {
-        'title': 'Profile'
+        'title': 'Forgot Password'
     }
     return render(request, 'forgot_password.html', context)
 
