@@ -88,7 +88,11 @@
   min-height: 90vh;
 }
 
-#search-filter-results .container #search-filter-category {
+#search-filter-results .container #search-filter-block {
+  margin-right: 1rem;
+}
+
+#search-filter-results .container #search-filter-block #search-filter-category {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,12 +105,12 @@
   width: 100%;
 }
 
-#search-filter-results .container #search-filter-category img {
+#search-filter-results .container #search-filter-block #search-filter-category img {
   max-width: 2rem;
   max-height: 2rem;
 }
 
-#search-filter-results .container #search-filter-categories {
+#search-filter-results .container #search-filter-block #search-filter-categories {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,17 +118,16 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-right: 1rem;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category-block-line {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category-block-line {
   height: 1px;
   background-color: lightgray;
   width: 100%;
   margin: 0.8rem 0;
 }
 
-#search-filter-results .container #search-filter-categories .filter-title-icon {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-title-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,28 +140,28 @@
           align-items: center;
 }
 
-#search-filter-results .container #search-filter-categories .filter-title-icon img {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-title-icon img {
   max-width: 1rem;
   max-height: 1rem;
   margin-right: 0.5rem;
 }
 
-#search-filter-results .container #search-filter-categories .filter-title-icon .filter-title {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-title-icon .filter-title {
   font-size: 1rem;
   font-weight: bolder;
   margin: 0;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category {
   padding-right: 2rem;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items {
   margin: 0;
   list-style: none;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -173,22 +176,22 @@
   text-decoration: none;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item input {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item input {
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item input:hover {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item input:hover {
   cursor: pointer;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item label {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item label {
   font-size: 0.8rem;
   margin: 0;
 }
 
-#search-filter-results .container #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item label:hover {
+#search-filter-results .container #search-filter-block #search-filter-categories .filter-category ul.filter-category-items li.filter-category-item label:hover {
   cursor: pointer;
 }
 

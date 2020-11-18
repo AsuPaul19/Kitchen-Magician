@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .search_recipe import SearchRecipe
 from .search_recipe_data import SearchRecipeData
+from .values import cats_values
 
 def search(request, keywords=''):
     context = {
@@ -53,17 +54,19 @@ def recipes_category(recipes):
     Filter category
     """
     categories = {
-        'courses': set(),
-        'diets': set(),
-        'occasions': set()
+        'courses': {},
+        'diets': {},
+        'occasions': {},
     }
+
     for recipe in recipes:
         # Category Courses
-        categories['courses'].add(recipe['course'])
-        # Category Occasions
-        for occasion in recipe['occasions']:
-            categories['occasions'].add(occasion)
+        print(recipe)
+        categories['courses'][recipe['course']] = cats_values['courses'][recipe['course']]
         # Category Diets
         for diet in recipe['diets']:
-            categories['diets'].add(diet)
+            categories['diets'][diet] = cats_values['diets'][diet]
+        # Category Occasions
+        for occasion in recipe['occasions']:
+            categories['occasions'][occasion] = cats_values['occasions'][occasion]
     return categories
