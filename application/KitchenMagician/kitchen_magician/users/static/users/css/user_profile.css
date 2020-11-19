@@ -41,7 +41,9 @@ section#user-profile .container {
     display: grid;
     -ms-grid-columns: (1fr)[5];
         grid-template-columns: repeat(5, 1fr);
-    grid-gap: 0.5rem;
+    grid-gap: .5rem;
+    width: 100%;
+    justify-content: space-between;
   }
   section#user-recipe-favorite .user-recipe-wrapper .user-recipe-block {
     height: 10rem;

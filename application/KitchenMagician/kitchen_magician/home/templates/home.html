@@ -1,5 +1,7 @@
 
 
+<!-- JavaScript working from static -->
+<!-- most important css are grid, box1-4 -->
 {% extends "base.html" %} 
 {% load static %}
 
@@ -10,25 +12,58 @@
 {% block content %}
 
 <div class="grid">
-  <div class="box1">
+  <div class="box1">    
     <!-- Box1 -->
-    <h1>Unsure?  Maybe a Search Can Help?</h1>
-    <form method="POST" action="{% url 'search' %}">
-      {% csrf_token %}
-      <input type="text" placeholder="by Title?" name="title">
-      <input type="text" placeholder="by Author?" name="author">
-      <input type="text" placeholder="by Content?" name="content">
-      <input type="submit" value="Search">
-  </form>      
+
+      <div class="jumbotron">
+        <h1>Let's Start!</h1>
+        <form method="POST" action="{% url 'search' %}">
+          {% csrf_token %}
+          <div>
+            <input type="text" placeholder="by Title?" name="title">
+            <input type="text" placeholder="by Author?" name="author">
+            <input type="text" placeholder="by Calorie?" name="calorie">
+          </div>
+          <div>
+            <input type="text" placeholder="by Content?" name="content">
+            <input type="text" placeholder="by Diet?" name="diet">
+            <center>
+              <h1>
+                <span class="badge badge-secondary">
+                  <input type="submit" value="Search">
+                </span>
+              </h1>
+            </center>
+            <!-- <input type="submit" value="Search"> -->
+          </div>
+        </form>      
+      </div>
+
   </div>
+
   <div class="box2">
     <!-- Box 2 -->
-    <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
+
+    <div class="jumbotron">
+      <h1>
+        Want to try a healthier alternative?
+      </h1>
+
+      <!-- <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}"> -->
+      <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}">
+    </div>
+
+    <h1>
+      You have come to the perfect place!
+    </h1>
   </div>
+
   <div class="box3">
-    <h1>Check Out Our Trending Recipes Below!</h1>
+
+    <h2>Check Out Our Trending Recipes Below!</h2>
     <!-- Box 3 -->
     <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="jumbotron carousel slide border trending-border border-dark rounded" data-ride="carousel"> -->
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -65,19 +100,22 @@
   </div>
   <div class="box4">
     <!-- Box 4 -->
-    <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}">
+    <div class="jumbotron">
+      <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
+      <!-- <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}"> -->
+    </div>
+    
     <h1>
-      Need help cooking? We got you covered!
-      <hr />
-      Try a search or click on a recipe!
+      Sick of fatty, greasy food?
     </h1>
+
   </div>
 </div>
 
 {% endblock %}
 
 {% block script %}
-  <script>
-
-  </script>
+<!-- currently unused -->
+  <script type="text/javascript" src="{% static 'home/js/home.js' %}" ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock script %}

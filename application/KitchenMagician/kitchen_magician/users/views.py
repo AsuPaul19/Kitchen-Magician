@@ -84,7 +84,8 @@ def user_profile(request, username=None):
         # user = User.objects.filter(username=request.user).first()
         user_recipes = profile_recipes(request.user.recipe_set.all())
         context['user_recipes'] = user_recipes
-        context['user_favorites'] = user_recipes
+        user_favorite = profile_recipes([favorite.recipe for favorite in request.user.recipefavorite_set.all()])
+        context['user_favorites'] = user_favorite
         return render(request, 'user_profile.html', context)
     else:
         return login(request)
