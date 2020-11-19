@@ -86,6 +86,12 @@ def groups(request):
         "team": team,
     }
     return render(request, 'groups/groups.html', content)
+    
+def group_forum(request):
+    context = {
+        'title': 'GROUPS_FORUM'
+    }
+    return render(request, 'groups/group_forum.html', context)
 
 def profile(request, name, id):
     content = {
