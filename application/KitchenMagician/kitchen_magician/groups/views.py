@@ -17,14 +17,14 @@ from django.http import HttpResponse
 team = {
     "1001": {
         "id": "1001",
-        "img": "groups/images/veganclipart.jpg",
+        "img": "groups/images/vegan.png",
         "name": "Vegan Group",
        
        
     },
     "1002": {
         "id": "1002",
-        "img": "groups/images/ketoclipart.jpg",
+        "img": "groups/images/ketogenic-diet.png",
         "name": "Keto Group",
       
         
@@ -32,14 +32,14 @@ team = {
     },
     "1003": {
         "id": "1003",
-         "img": "groups/images/vegdiet.png",
+         "img": "groups/images/vegetables.png",
         "name": "Vegetarian Group",
 
        
     },
     "1004": {
         "id": "1004",
-          "img": "groups/images/glutenn.jpg",
+          "img": "groups/images/gluten-free.png",
         "name": "Gluten Free Group",
    
         
@@ -47,7 +47,7 @@ team = {
    
     "1005": {
         "id": "1005",
-          "img": "groups/images/rawdiet.png",
+          "img": "groups/images/sushi.png",
         "name": "Raw Diet", 
 
         
@@ -55,14 +55,14 @@ team = {
 
     "1006": {
         "id": "1006",
-          "img": "groups/images/fishdiet.png",
+          "img": "groups/images/sardine.png",
         "name": "Pescatarian Group",
      
     },
 
 "1007": {
         "id": "1007",
-          "img": "groups/images/paleodiet .png",
+          "img": "groups/images/fruits.png",
         "name": "Paleo Group",
     
         
@@ -70,11 +70,12 @@ team = {
 
     "1008": {
         "id": "1008",
-         "img": "groups/images/lowcarbdiet.jpg",
+         "img": "groups/images/low-carb-diet.png",
         "name": "Low Carb Group",
        
        
     },
+    
 
 
 
