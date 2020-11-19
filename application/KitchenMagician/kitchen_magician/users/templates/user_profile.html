@@ -25,7 +25,9 @@
                     {% for user_recipe in user_recipes %}
                     <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_recipe.recipe_id %}">
                         <img class="user-recipe-image" src="{{ user_recipe.recipe_image.url }}" alt="">
-                        <p class="user-recipe-title">{{ user_recipe.recipe_name }}</p>
+                        <div class="user-recipe-title">
+                            <p>{{ user_recipe.recipe_name }}</p>
+                        </div>
                     </a>
                     {% endfor %}
                 </div>
