@@ -1,0 +1,92 @@
+/* ABOUT */
+#GROUP .container {
+  margin: 0 auto;
+}
+
+#GROUP .container #GROUP-title {
+  height: auto;
+  width: 100%;
+  place-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#GROUP .container #GROUP-title h1 {
+  color: black;
+  font-size: 45px;
+  text-align: center;
+  line-height: 1em;
+  padding-top: 60px;
+}
+
+#GROUP .container #GROUP-title #group-line {
+  background-color: #f56a58;
+  height: 0.2rem;
+  width: 8rem;
+  margin: 1rem auto;
+}
+
+/* TEAM */
+#people-images .container {
+  display: -ms-grid;
+  display: grid;
+  height: auto;
+  width: 80%;
+  margin: 3% auto;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding-bottom: 20px;
+  padding-top: 40px;
+}
+
+#people-images .container .image-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* box-shadow: 0 0 10px lightgray; */
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /* border-radius: 0 0 20px 20px; */
+}
+
+#people-images .container .image-block .image-block-wrapper img {
+  width: 100%;
+  height: 345px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#people-images .container .image-block .image-block-wrapper:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 20px #e79a8f;
+          box-shadow: 0 0 20px #e79a8f;
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+}
+
+#people-images .container .image-block .image-title {
+  padding: 1rem;
+}
+
+#people-images .container .image-block .image-title h1 {
+  font-size: 25px;
+  text-align: center;
+  line-height: 1em;
+  color: black;
+}
+
+#people-images .container .image-block .image-title h2 {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1em;
+  padding-top: 10px;
+  color: black;
+}
+/*# sourceMappingURL=about.css.map */
