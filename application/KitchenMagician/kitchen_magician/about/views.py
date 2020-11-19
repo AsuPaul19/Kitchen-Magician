@@ -37,7 +37,7 @@ team = {
         "id": "1004",
         "img": "about/images/team/4PA.jpg",
         "name": "Paul Asu",
-        "title": "Github Master",
+        "title": "Github Master & Developer",
         "intro": [
             "I am Asu Paul a senior in the Computer Science department at the San Francisco State University.",
             "When I'm not in school, I love traveling and spending time with my family.",
