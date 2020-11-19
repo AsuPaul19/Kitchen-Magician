@@ -69,4 +69,7 @@ section#user-profile .container {
             filter: brightness(80%);
     text-align: center;
   }
+  section#user-create-recipe-button {
+    text-align: center;
+  }
   /*# sourceMappingURL=user_profile.css.map */
