@@ -10,11 +10,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile
 from django.contrib.auth.models import User
-<<<<<<< HEAD
-=======
 
 
->>>>>>> dev_backend
 def signup(request):
     context = {
         'title': 'Login',
@@ -40,6 +37,7 @@ def signup(request):
             user_profile.save()
             return redirect('login')
     return render(request, "signup.html", context)
+    
 def login(request):
     # redirect to home page if user is already logged in
     if request.user.is_authenticated:
@@ -66,13 +64,16 @@ def login(request):
             context['account'] = 'Hmmm, not a valid user name or password' # send message if it is wrong
             return render(request, 'login.html', context)
     return render(request, 'login.html', context)
+
 def login_signup(request):
     return render(request, 'login_signup.html')
+
 def forgot_password(request):
     context = {
         'title': 'Profile'
     }
     return render(request, 'forgot_password.html', context)
+
 @login_required
 def user_profile(request, username=None):
     # handle user names and unmatched links
@@ -89,6 +90,7 @@ def user_profile(request, username=None):
         return render(request, 'user_profile.html', context)
     else:
         return login(request)
+
 def profile_recipes(recipes=None):
     recipes_data = []
     for recipe in recipes:

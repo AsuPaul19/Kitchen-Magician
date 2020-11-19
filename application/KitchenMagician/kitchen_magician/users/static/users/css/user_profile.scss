@@ -1,4 +1,4 @@
-
+$textColor: #f56a58;
 
 section#user-profile {
     .container {
@@ -31,6 +31,9 @@ section#user-recipe-favorite {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         .user-recipe-block {
             height: 10rem;
             width: 10rem;
@@ -53,6 +56,26 @@ section#user-recipe-favorite {
                 min-height: 2.2rem;
                 filter: brightness(80%);
                 text-align: center;
+            }
+        }
+    }
+}
+
+section#user-create-recipe-button {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            border-radius: 5px;
+            background-color: $textColor;
+            border: 1px solid $textColor;
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            filter: brightness(80%);
+            &:hover {
+                filter: brightness(100%);
             }
         }
     }

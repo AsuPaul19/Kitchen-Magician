@@ -58,18 +58,23 @@ class SearchRecipeData(RecipeDataFetch):
         return recipe_data_json
 
     def course_dict(self, course):
-        return cats_values['courses'][course]
+        res = ''
+        if course:
+            res = cats_values['courses'][course]
+        return res
     
     def diet_dict(self, diets):
         # combine all diets as a string with spaces
         res = ''
-        for diet in diets:
-            res += cats_values['diets'][diet] + ' '
+        if diets:
+            for diet in diets:
+                res += cats_values['diets'][diet] + ' '
         return res
     
     def occasion_dict(self, occasions):
         # combine all occasions as a string with spaces
         res = ''
-        for occasion in occasions:
-            res += cats_values['occasions'][occasion] + ' '
+        if occasions:
+            for occasion in occasions:
+                res += cats_values['occasions'][occasion] + ' '
         return res

@@ -64,9 +64,11 @@ def recipes_category(recipes):
         print(recipe)
         categories['courses'][recipe['course']] = cats_values['courses'][recipe['course']]
         # Category Diets
-        for diet in recipe['diets']:
-            categories['diets'][diet] = cats_values['diets'][diet]
+        if recipe['diets']:
+            for diet in recipe['diets']:
+                categories['diets'][diet] = cats_values['diets'][diet]
         # Category Occasions
-        for occasion in recipe['occasions']:
-            categories['occasions'][occasion] = cats_values['occasions'][occasion]
+        if recipe['occasions']: 
+            for occasion in recipe['occasions']:
+                categories['occasions'][occasion] = cats_values['occasions'][occasion]
     return categories
