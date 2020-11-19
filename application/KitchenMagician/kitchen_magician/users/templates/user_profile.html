@@ -14,31 +14,6 @@
                 <p id="user-content-name">{{ user.username }}</p>
                 <p id="user-content-email">{{ user.email }}</p>
             </div>
-            <section id="recipes-images">
-                <div class="container">
-                    {% for k, v in recipes_section.items %}
-                    <div class="image-block">
-                        <a class="image-block-wrapper" href="{% url 'about-profile' name=v.name id=v.id %}">
-                            <img src="{% static v.img %}" alt="" id="NP" class="images-img" />
-                        </a>
-                        <div class="image-title">
-                            <h1>{{ v.name }}</h1>
-                            <h2>{{ v.title }}</h2>
-                        </div>
-                    </div>
-                    <div class="container">
-                        {% for k, v in favorites-section.items %}
-                        <div class="image-block">
-                            <a class="image-block-wrapper" href="{% url 'about-profile' name=v.name id=v.id %}">
-                                <img src="{% static v.img %}" alt="" id="NP" class="images-img" />
-                            </a>
-                            <div class="image-title">
-                                <h1>{{ v.name }}</h1>
-                                <h2>{{ v.title }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
         </div>
     </div>
 </section>
