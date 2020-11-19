@@ -43,9 +43,13 @@
     </div>
 </section>
 
+<section id="user-recipe-title">
+    <p style="text-align:center;">Recipes</p>
+</section>
+
 <section id="user-recipe-favorite">
     <div class="container">
-        <p>Recipes</p>
+        <!-- <p style="text-align:center;">Recipes</p> -->
         <div class="user-recipe-wrapper">
             {% for user_recipe in user_recipes %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_recipe.recipe_id %}">
@@ -58,10 +62,13 @@
 
 
 </section>
+<section id="user-favorite-title">
+    <p style="text-align:center;">Favorites</p>
+</section>
 
 <section id="user-recipe-favorite">
     <div class="container">
-        <p>Favorites</p>
+        <!-- <p style="text-align:center;">Favorites</p> -->
         <div class="user-recipe-wrapper">
             {% for user_favorite in user_favorites %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_favorite.recipe_id %}">
@@ -74,7 +81,7 @@
 
 
 </section>
-<div class="container">
-    <a href="{% url 'create_recipe' %}">Add Recipe</a>
-</div>
+<section id="user-create-recipe-button">
+    <a href="{% url 'create_recipe' %}" style="text-align:center;">Add Recipe</a>
+</section>
 {% endblock content %}
