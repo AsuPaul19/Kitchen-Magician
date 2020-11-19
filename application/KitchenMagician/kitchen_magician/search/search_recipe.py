@@ -30,6 +30,8 @@ class SearchRecipe():
         or . if it is not followed by a digit.
         """
         keywords = re.split("\s|(?<!\d)[,.](?!\d)", keywords.lower())
+        # Remove empty string in list
+        keywords = [k for k in keywords if k]
         search_models = self.recipe_search_models()
         recipes = defaultdict(int)
         if keywords:

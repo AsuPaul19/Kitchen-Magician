@@ -10,6 +10,11 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile
 from django.contrib.auth.models import User
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> dev_backend
 def signup(request):
     context = {
         'title': 'Login',

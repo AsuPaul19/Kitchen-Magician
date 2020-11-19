@@ -29,7 +29,7 @@
         <section id="search-filter-results">
             <div class="container">
                 <!-- Search Filter -->
-                <div class="search-filter-block">
+                <div id="search-filter-block">
                     <div id="search-filter-category">
                         <img src="{% static 'recipe/images/recipe_category.png' %}" alt="">
                     </div>
@@ -46,10 +46,10 @@
                                         <p class="filter-title">{{ category.name_upper }}</p>
                                     </div>
                                     <ul class="filter-{{ category.name_lower }}-items filter-category-items">
-                                        {% for item in category.items %}
+                                        {% for key, value in category.items.items %}
                                         <li class="filter-category-item">
-                                            <input type="checkbox" id="category-item-{{ item }}">
-                                            <label class="filter-category-item" for="category-item-{{ item }}">{{ item }}</label>
+                                            <input type="checkbox" id="category-item-{{ key }}" value="{{ value }}" onClick="checkboxFilter(this)">
+                                            <label class="filter-category-item" for="category-item-{{ key }}">{{ key }}</label>
                                         </li>
                                         {% endfor %}
                                     </ul>
@@ -78,7 +78,7 @@
                         {% if recipes %}
                         <div class="recipe-block-line"></div>
                         {% for recipe in recipes %}
-                        <div class="recipe-wrapper" name="{{ recipe.name }}">
+                        <div class="recipe-wrapper {{ recipe.course_value }} {{ recipe.diet_value }} {{ recipe.occasion_value }}">
                             <div class="recipe-block">
                                 <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-image">
                                     <img src="{{ recipe.images.url }}" alt="">
