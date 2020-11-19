@@ -21,9 +21,14 @@
     <!-- -----------------------------------box 1------------------------------------------------------- -->
     <!-- box 1 has main search bar -->
     <div class="box1">    
+      <h1>What's your preference for search?</h1>
 
+      <center>
+        <img width="170" height="170" center src="{% static 'home/images/search.svg' %}">
+      </center>
+      
         <div class="jumbotron">
-          <h1>Let's Start!</h1>
+          <h2>Prefer Words?</h2>
 
           <form method="POST" action="#">
             <!-- mandatory Django token for safety -->
@@ -40,7 +45,7 @@
               <center>
                 <h1>
                   <span class="badge badge-secondary">
-                    <input type="submit" value="Find a Recipe">
+                    <input type="submit" value="Find It!">
                   </span>
                 </h1>
               </center>
@@ -60,11 +65,11 @@
         <img width="170" height="170" center src="{% static 'home/images/breakfast.svg' %}">
         <img width="170" height="170" center src="{% static 'home/images/eating_together.svg' %}">
         <h1>
-          Want to try a healthier alternative?
+          Want a healthier alternative?
         </h1>
         <br>
         <h1>
-          Or just share you healthy recipes?
+          Or share ideas?
         </h1>
 
         <!-- <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}"> -->
@@ -75,8 +80,15 @@
       </div>
 
       <h1>
-        You have come to the perfect place!
+        You came to the perfect place!
       </h1>
+
+      <center>
+        <h1>
+          <a href="{% url 'about' %}">Our Mission Statement</a>
+        </h1>
+      </center>
+
     </div>
     <!-- -----------------------------------box 2------------------------------------------------------- -->
 
@@ -84,7 +96,7 @@
     <!-- box 3 trending recipe -->
     <div class="box3">
 
-      <h2>Check Out Our Trending Recipes Below!</h2>
+      <h2>Prefer Photos? (click one!)</h2>
       <!-- Box 3 -->
       <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
       <!-- <div id="carouselExampleControls" class="jumbotron carousel slide border trending-border border-dark rounded" data-ride="carousel"> -->
