@@ -16,7 +16,7 @@
     <!-- Box1 -->
 
       <div class="jumbotron">
-        <h1>Unsure?  Maybe a Search Can Help?</h1>
+        <h1>Let's Start!</h1>
         <form method="POST" action="{% url 'search' %}">
           {% csrf_token %}
           <div>
@@ -45,13 +45,22 @@
     <!-- Box 2 -->
 
     <div class="jumbotron">
-      <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
+      <h1>
+        Want to try a healthier alternative?
+      </h1>
+
+      <!-- <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}"> -->
+      <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}">
     </div>
+
+    <h1>
+      You have come to the perfect place!
+    </h1>
   </div>
 
   <div class="box3">
 
-    <h1>Check Out Our Trending Recipes Below!</h1>
+    <h2>Check Out Our Trending Recipes Below!</h2>
     <!-- Box 3 -->
     <div id="carouselExampleControls" class="carousel slide border trending-border border-dark rounded" data-ride="carousel">
     <!-- <div id="carouselExampleControls" class="jumbotron carousel slide border trending-border border-dark rounded" data-ride="carousel"> -->
@@ -92,14 +101,14 @@
   <div class="box4">
     <!-- Box 4 -->
     <div class="jumbotron">
-      <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}">
+      <img width="250" height="250" center src="{% static 'home/images/bbq.svg' %}">
+      <!-- <img width="250" height="250" center src="{% static 'home/images/breakfast.svg' %}"> -->
     </div>
     
     <h1>
-      Need help cooking? We got you covered!
-      <hr />
-      Try a search or click on a recipe!
+      Sick of fatty, greasy food?
     </h1>
+
   </div>
 </div>
 
