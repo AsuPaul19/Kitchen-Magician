@@ -41,6 +41,11 @@ section#user-profile .container #user-content #user-content-body p {
   margin: 0.5rem 0 0 0;
 }
 
+.recipe-title-p {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
 section#user-recipe-favorite .user-recipe-wrapper {
   display: -ms-grid;
   display: grid;
@@ -70,19 +75,30 @@ section#user-recipe-favorite .user-recipe-wrapper .user-recipe-block img {
      object-fit: contain;
 }
 
-section#user-recipe-favorite .user-recipe-wrapper .user-recipe-block p {
+section#user-recipe-favorite .user-recipe-wrapper .user-recipe-block .user-recipe-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   bottom: 0;
   left: 0;
   margin: 0;
-  padding: auto;
   background-color: black;
-  color: white;
   width: 100%;
-  min-height: 2.2rem;
-  -webkit-filter: brightness(80%);
-          filter: brightness(80%);
+  min-height: 2.5rem;
+  opacity: 0.8;
+}
+
+section#user-recipe-favorite .user-recipe-wrapper .user-recipe-block .user-recipe-title p {
+  color: white;
   text-align: center;
+  margin: 0;
 }
 
 section#user-create-recipe-button .container {

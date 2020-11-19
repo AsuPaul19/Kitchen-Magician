@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'users/css/user_profile.css' %}" />
-{% endblock css %}
+        {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'users/css/user_profile.css' %}" />
+        {% endblock css %}
 
-{% block content %}
-<section id="user-profile">
-    <div class="container">
-        <div id="user-content">
-            <img src="{{ user.profile.image.url }}" alt="" class="user-avatar rounded-circle account-img">
-            <div id="user-content-body">
-                <p id="user-content-name">{{ user.username }}</p>
-                <p id="user-content-email">{{ user.email }}</p>
+        {% block content %}
+        <section id="user-profile">
+            <div class="container">
+                <div id="user-content">
+                    <img src="{{ user.profile.image.url }}" alt="" class="user-avatar rounded-circle account-img">
+                    <div id="user-content-body">
+                        <p id="user-content-name">{{ user.username }}</p>
+                        <p id="user-content-email">{{ user.email }}</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 <section id="user-recipe-title">
-    <p style="text-align:center;">Recipes</p>
+    <p class="recipe-title-p" style="text-align:center;">Recipes</p>
 </section>
 
 <section id="user-recipe-favorite">
@@ -29,7 +29,9 @@
             {% for user_recipe in user_recipes %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_recipe.recipe_id %}">
                 <img class="user-recipe-image" src="{{ user_recipe.recipe_image.url }}" alt="">
-                <p class="user-recipe-title">{{ user_recipe.recipe_name }}</p>
+                <div class="user-recipe-title">
+                    <p>{{ user_recipe.recipe_name }}</p>
+                </div>
             </a>
             {% endfor %}
         </div>
@@ -38,7 +40,7 @@
 
 </section>
 <section id="user-favorite-title">
-    <p style="text-align:center;">Favorites</p>
+    <p class="recipe-title-p" style="text-align:center;">Favorites</p>
 </section>
 
 <section id="user-recipe-favorite">
@@ -48,7 +50,9 @@
             {% for user_favorite in user_favorites %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_favorite.recipe_id %}">
                 <img class="user-recipe-image" src="{{ user_favorite.recipe_image.url }}" alt="">
-                <p class="user-recipe-title">{{ user_favorite.recipe_name }}</p>
+                <div class="user-recipe-title">
+                    <p>{{ user_favorite.recipe_name }}</p>
+                </div>
             </a>
             {% endfor %}
         </div>

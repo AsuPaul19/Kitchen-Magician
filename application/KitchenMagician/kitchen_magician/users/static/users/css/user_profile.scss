@@ -25,7 +25,13 @@ section#user-profile {
     }
 }
 
+// Titles
+.recipe-title-p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
 
+// Recipes & Favorites 
 section#user-recipe-favorite {
     .user-recipe-wrapper {
         display: grid;
@@ -44,23 +50,29 @@ section#user-recipe-favorite {
                 max-height: 100%;
                 object-fit: contain;
             }
-            p {
+            .user-recipe-title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 margin: 0;
-                padding: auto;
                 background-color: black;
-                color: white;
                 width: 100%;
-                min-height: 2.2rem;
-                filter: brightness(80%);
-                text-align: center;
+                min-height: 2.5rem;
+                opacity: 0.8;
+                p {
+                    color: white;
+                    text-align: center;
+                    margin: 0;
+                }
             }
         }
     }
 }
 
+// Create Recipe Button
 section#user-create-recipe-button {
     .container {
         display: flex;
