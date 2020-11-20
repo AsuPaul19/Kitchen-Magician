@@ -91,6 +91,7 @@ def submit_recipe(request, recipe=None, recipe_id=None):
         recipe = create_recipe_data(request)
         # TODO redirect to recipe page
         # redirect('recipe', recipe_id=recipe.id)
+
     return recipe_view(request, recipe=recipe)
 
 
@@ -108,7 +109,7 @@ def create_recipe_data(request):
         # recipe_image = RecipeUploadImageTest(image=uploaded_file)
         # recipe_image.save()
             # parse data and send to models
-        submit_recipe = {
+        recipe = {
             "user": request.user,
             "name": data.getlist('recipe-name')[0],
             "information": data.getlist('recipe-information')[0],
