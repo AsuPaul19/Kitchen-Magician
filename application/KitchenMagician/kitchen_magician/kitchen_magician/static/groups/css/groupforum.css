@@ -1,0 +1,104 @@
+@charset "UTF-8";
+* {
+  font-size: 20px;
+}
+
+.block-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+.block-line .block-line-line {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 1px;
+  width: auto;
+  background-color: lightgray;
+  padding: 0;
+  margin: 0;
+}
+
+.block-line img.image-block-line {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.groupimage{
+  max-height:8rem;
+  max-width: 8rem;
+  border-radius: 25%;
+}
+
+.userimage{
+  max-height:2rem;
+  max-width: 2rem;
+  border-radius: 25%;
+}
+
+div.scroller {
+    background-color: white;
+    width: 1000px;
+    height: 115px;
+    overflow: auto;
+}
+
+.submit-btn {
+    color: white;
+    background-color: #f56a58;
+    padding: 0.5rem 1.5rem;
+    border-color: #f56a58;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bolder;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    outline: none;
+    text-decoration: none;
+  }
+
+.forum-comment-line {
+    height: 1px;
+    width: 100%;
+    background-color: lightgray;
+}
+  
+.comment-user-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+  
+.comment-user-info .comment-user-info-user_avatar {
+    max-width: 2rem;
+    max-height: 2rem;
+    border-radius: 50%;
+}
+  
+.comment-user-info .comment-user-info-user {
+    font-size: 0.8rem;
+    margin: 0 1rem;
+}
+  
+.comment-user-info .comment-user-info-created {
+    color: gray;
+    font-size: 0.8rem;
+    margin: 0;
+}

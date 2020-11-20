@@ -1,0 +1,94 @@
+$textColor: #f56a58;
+
+section#user-profile {
+    .container {
+        padding: 0;
+        #user-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            img {
+                max-width: 5rem;
+                max-height: 5rem;
+            }
+            #user-content-body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                p {
+                    margin: 0.5rem 0 0 0;
+                }
+            }
+        }
+    }
+}
+
+// Titles
+.recipe-title-p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+// Recipes & Favorites 
+section#user-recipe-favorite {
+    .user-recipe-wrapper {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .user-recipe-block {
+            height: 10rem;
+            width: 10rem;
+            overflow: hidden;
+            border-radius: 5px;
+            position: relative;
+            img {
+                max-height: 100%;
+                object-fit: contain;
+            }
+            .user-recipe-title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                background-color: black;
+                width: 100%;
+                min-height: 2.5rem;
+                opacity: 0.8;
+                p {
+                    color: white;
+                    text-align: center;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+// Create Recipe Button
+section#user-create-recipe-button {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            border-radius: 5px;
+            background-color: $textColor;
+            border: 1px solid $textColor;
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            filter: brightness(80%);
+            &:hover {
+                filter: brightness(100%);
+            }
+        }
+    }
+}
