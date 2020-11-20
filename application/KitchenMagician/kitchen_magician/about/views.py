@@ -81,4 +81,3 @@ def profile(request, name, id):
         "profile": team[id]
     }
     return render(request, 'profile.html', content)
-
