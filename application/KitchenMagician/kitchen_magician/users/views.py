@@ -108,3 +108,16 @@ def profile_recipes(recipes=None):
 # @login_required
 # def account(request):
 #     return profile(request)
+
+
+def term_of_use(request):
+    context = {
+        'title': 'Term of Use'
+    }
+    return render(request, 'term_of_use.html', context)
+
+def privacy_policy(request):
+    context = {
+        'title': 'Privacy Policy'
+    }
+    return render(request, 'privacy_policy.html', context)

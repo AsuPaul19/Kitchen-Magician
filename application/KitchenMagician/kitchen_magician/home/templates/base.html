@@ -21,7 +21,7 @@
     <body>
         <header id="header">
             <div class="container">
-                <a href="{% url 'home' %}" class="KitchenMagician">Kitchen Magician</a>
+                <a href="{% url 'home' %}" class="KitchenMagician">Kitchen <br>Magician</a>
                 <ul id="ul-nav-link">
                     <li class="nav-link"><a href="{% url 'about' %}">About</a></li>
                     <li class="nav-link"><a href="{% url 'groups' %}">Groups</a></li>
@@ -30,10 +30,8 @@
                             <!-- Authentication Token -->
                             {% csrf_token %}
                             <div id="search-box" class="search-box-block">
-                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Recipes for any ingredient, occasion, course or diet">
-                                <div class="search-btn" type="submit">
-                                    <button type="submit"  class="fas fa-search"></button>
-                                </div>
+                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Search for a recipe">
+                                <button type="submit"  class="search-btn fas fa-search"></button>
                             </div> 
                         </form>
                     </li>
@@ -44,10 +42,6 @@
                             Hi, {{ user.get_username }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <!-- 
-                                TODO 
-                                Change to items in dropdown
-                            -->
                             <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
                             <a class="dropdown-item" href="{% url 'user_profile' username=user.username %}">Profile</a>
                             <!-- <a class="dropdown-item" href="#">Groups</a> -->

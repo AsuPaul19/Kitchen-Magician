@@ -1,0 +1,23 @@
+
+section#term-policy {
+    .container {
+        font-size: 30px;
+        line-height: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        #term-policy-title {
+            text-align: center;
+            width: 100%;
+        }
+        .section-line {
+            width: 100%;
+            background-color: lightgray;
+            height: 1px;
+            margin: 1rem 0;
+        }
+        .term-policy-ul {
+            padding: 0 0 0 2rem;
+        }
+    }
+}

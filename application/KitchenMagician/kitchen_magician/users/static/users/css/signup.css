@@ -204,6 +204,11 @@
   background-position: right;
 }
 
+#signup-block .container .signup form #policy-service {
+  margin: 0.5rem 0;
+  color: #000;
+}
+
 #signup-block .container .signup form #signup-page-login {
   display: -webkit-box;
   display: -ms-flexbox;
