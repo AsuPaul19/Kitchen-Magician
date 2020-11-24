@@ -1,30 +1,20 @@
-
-
-@import url('base.css');
-
-/* global properties */
 * {
   padding: 0;
   margin: 0;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-
-  /* color Allen specified */
   color: #f56a58;
 }
 
-#home-block .background {
+#login-block .background {
   position: fixed;
   height: 100%;
-  /* left: 0; */
-  right: 0;
+  left: 0;
   bottom: 0;
   z-index: -1;
 }
 
-#home-block .container {
+#login-block .container {
   position: 100vw;
   height: 100vh;
   display: -ms-grid;
@@ -35,13 +25,10 @@
   padding: 0 2rem;
 }
 
-#home-block .container .img {
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+#login-block .container .img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -50,26 +37,20 @@
           align-items: center;
 }
 
-#home-block .container .img img {
+#login-block .container .img img {
   width: 500px;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */          
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-#home-block .container .home {
+#login-block .container .login {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -77,12 +58,11 @@
   z-index: 5;
 }
 
-#home-block .container .home form {
+#login-block .container .login form {
   width: 360px;
 }
 
-#home-block .container .home form #welcome {
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+#login-block .container .login form #welcome {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,21 +78,21 @@
           flex-direction: column;
 }
 
-#home-block .container .home form #welcome .avatar {
+#login-block .container .login form #welcome .avatar {
   width: 100px;
 }
 
-#home-block .container .home form #welcome h2 {
+#login-block .container .login form #welcome h2 {
   font-size: 2.9rem;
   text-transform: uppercase;
   margin: 15px 0;
 }
 
-#home-block .container .home form p#account-auth-error {
+#login-block .container .login form p#account-auth-error {
   text-align: center;
 }
 
-#home-block .container .home form .input-div {
+#login-block .container .login form .input-div {
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -123,41 +103,39 @@
   border-bottom: 2px solid #d9d9d9;
 }
 
-#home-block .container .home form .input-div::after, #home-block .container .home form .input-div::before {
+#login-block .container .login form .input-div::after, #login-block .container .login form .input-div::before {
   content: '';
   position: absolute;
   bottom: -2px;
   width: 0;
   height: 2px;
   background-color: #f56a58;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-transition: .3s;
   transition: .3s;
 }
 
-#home-block .container .home form .input-div::after {
+#login-block .container .login form .input-div::after {
   right: 50%;
 }
 
-#home-block .container .home form .input-div::before {
+#login-block .container .login form .input-div::before {
   left: 50%;
 }
 
-#home-block .container .home form .input-div.focus .i i {
+#login-block .container .login form .input-div.focus .i i {
   color: #f56a58;
 }
 
-#home-block .container .home form .input-div.focus .input-text h5 {
+#login-block .container .login form .input-div.focus .input-text h5 {
   top: -5px;
   font-size: 15px;
 }
 
-#home-block .container .home form .input-div.focus::after, #home-block .container .home form .input-div.focus::before {
+#login-block .container .login form .input-div.focus::after, #login-block .container .login form .input-div.focus::before {
   width: 50%;
 }
 
-#home-block .container .home form .input-div .i {
+#login-block .container .login form .input-div .i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,28 +147,24 @@
           align-items: center;
 }
 
-#home-block .container .home form .input-div div.input-text {
+#login-block .container .login form .input-div div.input-text {
   position: relative;
   height: 45px;
 }
 
-#home-block .container .home form .input-div div.input-text h5 {
+#login-block .container .login form .input-div div.input-text h5 {
   position: absolute;
   left: 10px;
   top: 50%;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   color: #999;
   font-size: 18px;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-#home-block .container .home form .input-div div.input-text .input {
+#login-block .container .login form .input-div div.input-text .input {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -204,7 +178,7 @@
   color: #555;
 }
 
-#home-block .container .home form .btn {
+#login-block .container .login form .btn {
   display: block;
   width: 100%;
   height: auto;
@@ -214,8 +188,6 @@
   text-align: center;
   outline: none;
   border: none;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   background-image: -webkit-gradient(linear, left top, right top, from(#df6355), color-stop(#f56a58), to(#df6355));
   background-image: linear-gradient(to right, #df6355, #f56a58, #df6355);
   cursor: pointer;
@@ -226,12 +198,11 @@
   transition: .5s;
 }
 
-#home-block .container .home form .btn:hover {
+#login-block .container .login form .btn:hover {
   background-position: right;
 }
 
-#home-block .container .home form #password-signup {
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+#login-block .container .login form #password-signup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,7 +211,7 @@
           justify-content: space-between;
 }
 
-#home-block .container .home form #password-signup a, #home-block .container .home form #password-signup button {
+#login-block .container .login form #password-signup a, #login-block .container .login form #password-signup button {
   display: block;
   text-decoration: none;
   color: #999;
@@ -251,30 +222,25 @@
   background-color: white;
 }
 
-#home-block .container .home form #password-signup a:hover, #home-block .container .home form #password-signup button:hover {
+#login-block .container .login form #password-signup a:hover, #login-block .container .login form #password-signup button:hover {
   color: #f56a58;
 }
 
-#home-block .container .home form .social-text {
+#login-block .container .login form .social-text {
   padding: .7rem 0;
   font-size: 1rem;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-#home-block .container .home form .social-media {
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+#login-block .container .login form .social-media {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,21 +249,17 @@
           justify-content: center;
 }
 
-#home-block .container .home form .social-media .social-icon {
+#login-block .container .login form .social-media .social-icon {
   height: 46px;
   width: 46px;
   border: 1px solid lightgrey;
   margin: 0 0.45rem;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */          
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -305,60 +267,55 @@
   color: #999;
   font-size: 1.1rem;
   border-radius: 50%;
-
-  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
   -webkit-transition: .3s;
   transition: .3s;
 }
 
-#home-block .container .home form .social-media .social-icon:hover {
+#login-block .container .login form .social-media .social-icon:hover {
   color: #df6355;
   border-color: #df6355;
 }
 
 @media screen and (max-width: 1050px) {
-  #home-block .container {
+  #login-block .container {
     grid-gap: 5rem;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  #home-block .container .img {
+  #login-block .container .img {
     width: 400px;
   }
-  #home-block .container .home-container form {
+  #login-block .container .login-container form {
     width: 290px;
   }
-  #home-block .container .home-container form h2 {
+  #login-block .container .login-container form h2 {
     font-size: 2.4rem;
     margin: 8px 0;
   }
 }
 
 @media screen and (max-width: 900px) {
-  #home-block .background {
+  #login-block .background {
     display: none;
   }
-  #home-block .container {
+  #login-block .container {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-  #home-block .container .img {
+  #login-block .container .img {
     display: none;
   }
-  #home-block .container .home-container {
-    /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+  #login-block .container .login-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-
-    /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
 }
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=login.css.map */
