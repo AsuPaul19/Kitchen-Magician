@@ -16,18 +16,21 @@
             <div class="img">
                 <img src="{% static 'home/images/home_share.svg' %}">
             </div>
-
+              
             <div class="home">
-                <form action="" class="sign-in-form" method="POST">
+                <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <div id="welcome">
                             <img class="avatar" src="{% static 'users/images/avatar.svg' %}">
-                            <h2>Welcome</h2>
+                            <h2>Welcome, Chef</h2>
                         </div>
                     </fieldset>
+
+                    <input type="text" placeholder="type anything" name="search_query">
                     <button class="btn btn-outline-info" type="submit">Search</button>
                 </form>
+  
             </div>         
         </div>
     </section>
