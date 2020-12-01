@@ -13,6 +13,7 @@
 
   /* color Allen specified */
   color: #f56a58;
+  /* color: black; */
 }
 
 #home-block .background {
@@ -146,6 +147,7 @@
 
 #home-block .container .home form .input-div.focus .i i {
   color: #f56a58;
+  /* color: black; */
 }
 
 #home-block .container .home form .input-div.focus .input-text h5 {
@@ -362,4 +364,3 @@
   }
 }
 /*# sourceMappingURL=home.css.map */
-
