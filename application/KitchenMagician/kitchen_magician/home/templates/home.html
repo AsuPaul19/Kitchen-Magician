@@ -1,3 +1,5 @@
+
+
 {% extends 'base.html' %}
 {% load static %} 
 
@@ -7,38 +9,35 @@
 {% endblock css %} 
 
 {% block content %}
-
     <section id="home-block">
-
-        <!-- <img class="background" src="{% static 'home/images/backgroundHome.png' %}"> -->
         <div class="container" id="home-container">
-
+<!-- image in the upper left under the nav bar -->
             <div class="img">
                 <img src="{% static 'home/images/home_share.svg' %}">
             </div>
-              
+<!-- image in the upper left under the nav bar -->
+
+<!-- search in the upper right under the nav bar -->
             <div class="home">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <div id="welcome">
-                            <img class="avatar" src="{% static 'users/images/avatar.svg' %}">
-                            <h2>Welcome, Chef</h2>
+                            <h2>Welcome, Apprentice of Magic</h2>
                         </div>
                     </fieldset>
-
                     <input type="text" placeholder="type anything" name="search_query">
-                    <button class="btn btn-outline-info" type="submit">Search</button>
+                    <button class="btn btn-outline-info" type="submit">Find Recipes</button>
                 </form> 
             </div>     
+<!-- search in the upper right under the nav bar -->
 
+<!-- trending recipes in the lower left -->
             <div class="home">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <div id="welcome">
-                            <!-- <img class="avatar" src="{% static 'users/images/avatar.svg' %}"> -->
-                            <!-- <h2>Trending Recipe Here?</h2> -->
                             <div id="carouselExampleControls" class="carousel slide trending-border border-dark rounded" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -73,39 +72,33 @@
                                   <span class="sr-only">Next</span>
                                 </a>
                               </div>    
-
                         </div>
                     </fieldset>
-                    <!-- <input type="text" placeholder="type anything" name="search_query"> -->
-                    <!-- <button class="btn btn-outline-info" type="submit">Search</button> -->
                 </form> 
             </div>         
+<!-- trending recipes in the lower left -->
 
+<!-- mission statement in the lower right -->
             <div class="home">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <div id="welcome">
-                            <!-- <img class="avatar" src="{% static 'users/images/avatar.svg' %}"> -->
-                            <!-- <h2>Mission Statement Here?</h2> -->
-                            <h1>MISSION STATEMENT</h1>
+                            <h1>WHY THE KITCHEN WAS CREATED</h1>
                             <div id="about-line">
                             </div>
                                 <h4>
-                                    The developers at Kitchen Magician have a dream:
-                                    that one day people will no longer think of Westerners as Couch Potatoes,
-                                    that one day people are no longer forced to eat greasy, unhealthy Fast Food,
-                                    due to lack of recipe ideas,
-                                    that one day anyone willing can and will find ideas to make a change.
-                                    Ask, and you shall find!
+                                    The Elder Magicians at Kitchen Magician have a dream:
+                                    that one day every layman will become a magician,
+                                    transforming any fresh ingredients into a magical dish
+                                    that is both healthy and delicious.
                                 </h4>                            
                         </div>
                     </fieldset>
-                    <!-- <input type="text" placeholder="type anything" name="search_query"> -->
-                    <!-- <button class="btn btn-outline-info" type="submit">Search</button> -->
                 </form> 
             </div>         
-            
+<!-- mission statement in the lower right -->
+
         </div>
     </section>
 {% endblock content %}
