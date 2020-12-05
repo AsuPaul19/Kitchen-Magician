@@ -31,22 +31,25 @@ def search(request, keywords=''):
         ]
     }
 
+
     if request.method == 'POST':
         keywords = request.POST.get('keywords')
-        context['keywords'] = keywords
-        search_recipe = SearchRecipe(keywords)
-        context['counts'] = search_recipe.counts
-        recipe_instances = search_recipe.recipes
-        context['recipes'] = [SearchRecipeData(recipe=instance).recipe_data for instance in recipe_instances]
-        categories = recipes_category(context['recipes'])
-        # Update the items sets to recipes categories
-        for (k, v), i in zip(categories.items(), range(len(context['categories']))):
-            context['categories'][i]['items'] = v
         
-        # print(context['categories'])
+    context['keywords'] = keywords
+    search_recipe = SearchRecipe(keywords)
+    context['counts'] = search_recipe.counts
+    recipe_instances = search_recipe.recipes
+    context['recipes'] = [SearchRecipeData(recipe=instance).recipe_data for instance in recipe_instances]
+    categories = recipes_category(context['recipes'])
+    # Update the items sets to recipes categories
+    for (k, v), i in zip(categories.items(), range(len(context['categories']))):
+        context['categories'][i]['items'] = v
+    
+    # print(context['categories'])
 
 
     return render(request, 'search.html', context)
+
 
 
 def recipes_category(recipes):
