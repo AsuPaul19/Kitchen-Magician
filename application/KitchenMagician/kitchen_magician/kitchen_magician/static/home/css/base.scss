@@ -1,6 +1,8 @@
 $textColor: #f56a58;
 $backgroundColor: white;
+$backgroundColorText: #fef9f6;
 $textFontSize: 1.5rem;
+$footerTextColor: white;
 
 * {
     margin: 0;
@@ -61,23 +63,29 @@ button.btn-type1:hover {
         align-items: center;
         // overflow: hidden;
         font-size: $textFontSize;
-        .KitchenMagician {
+        a.KitchenMagician {
             display: flex;
             flex: left;
-            // position: bold;
-            font-weight: 700;
-            font-size: 2em;
-            line-height: 2.5rem;
-            text-transform: uppercase;
-            // letter-spacing: 2px;
-            // transition: 0.6s;
-            text-decoration: none;
-            color: $textColor;
-            // margin-right: 1rem;
+            // // position: bold;
+            // font-weight: 700;
+            // font-size: 2em;
+            // line-height: 2.5rem;
+            // text-transform: uppercase;
+            // // letter-spacing: 2px;
+            // // transition: 0.6s;
+            // text-decoration: none;
+            // color: $textColor;
+            // // margin-right: 1rem;
+            height: 4rem;
+            width: auto;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
         }
         ul#ul-nav-link {
             display: flex;
-            flex: right;
+            float: right;
             margin-bottom: 0;
             flex-grow: 1; // takes the rest of spaces
             // position: bold;
@@ -92,7 +100,7 @@ button.btn-type1:hover {
                 display: inline;
                 a {
                     // position: bold;
-                    margin: 0 0.4rem;
+                    margin: 0 0.1rem;
                     text-decoration: none;
                     font-size: $textFontSize;
                     // padding-right: 1rem;
@@ -137,46 +145,165 @@ button.btn-type1:hover {
                     }
                 }
             }
-
-            li#account {
-                font-size: $textFontSize;
-                button {
-                    color: $textColor;
-                    background-color: $backgroundColor;
-                    border: none;
-                    outline:none;
+            #nav-link-user {
+                display: flex;
+                flex-direction: row;
+                min-width: 15rem;
+                float: right;
+                justify-content: end;
+                li#account {
+                    margin-left: auto;
                     font-size: $textFontSize;
-                    &.btn-secondary.focus, &.btn-secondary:focus {
-                        box-shadow: none;
-                }
-
-                }
-                .dropdown-menu {
-                    background-color: $backgroundColor;
-                    color: $textColor;
-                    a {
+                    button {
                         color: $textColor;
+                        background-color: $backgroundColor;
+                        border: none;
+                        outline:none;
                         font-size: $textFontSize;
-                        margin: 0.5rem 0;
+                        &.btn-secondary.focus, &.btn-secondary:focus {
+                            box-shadow: none;
+                    }
+    
+                    }
+                    .dropdown-menu {
+                        background-color: $backgroundColor;
+                        color: $textColor;
+                        a {
+                            color: $textColor;
+                            font-size: $textFontSize;
+                            margin: 0.5rem 0;
+                        }
                     }
                 }
             }
+
         }
     }
 }
 
 /* FOOTER */
 #main-footer {
-    background: $textColor;
-    text-align: center;
-    padding: 0.6rem 0;
-    margin-top: 1rem;
-    margin-bottom: 0;
-    height: auto;
-    p {
-        margin: auto;
-        color: $backgroundColor;
-        font-size: $textFontSize;
+    #footer-container {
+        background: $textColor;
+        text-align: center;
+        padding: 0.6rem 0;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        .container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            #footer-logo-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                #footer-logo {
+                    height: 3rem;
+                    width: auto;
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+                // FOOTER CONTENT
+                .footer-content-block {
+                    display: flex;
+                    flex-direction: row;
+                    .footer-content-title {
+                        font: bolder;
+                        font-size: 1rem;
+                        margin: 0;
+                    }
+                    .footer-content-block-line {
+                        height: 100%;
+                        width: 1px;
+                        // background: $footerTextColor;
+                        margin: 0 0.5rem;
+                    }
+                    .ul-footer-content-block {
+                        margin: 0;
+                        .footer-content-text {
+                            font-size: 0.8rem;
+                            margin: 0;
+                        }
+                        li.li-footer-content-item {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-decoration: none;
+                            list-style: none;
+                            margin: 0;
+                            color: $footerTextColor;
+                            a {
+                                color: $footerTextColor;
+                            }
+                            // Medias
+                            &#li-footer-content-medias {
+                                #footer-content-medias {
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin: 0 0 0 0.5rem;
+                                    a.social-icon {
+                                        margin: 0 0.2rem;
+                                        display: flex;
+                                        border-radius: 50%;
+                                        border: 1px solid $footerTextColor;
+                                        height: 1.25rem;
+                                        width: 1.25rem;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                        filter: brightness(100%);
+                                        &:hover {
+                                            filter: brightness(90%);
+                                        }
+                                        i {
+                                            color: $footerTextColor;
+                                            font-size: 0.8rem;
+                                        }
+                                    }
+                                }
+                            }
+                            // Join us
+                            &#li-footer-content-signup {
+                                p {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #footer-break-line {
+                width: 100%;
+                height: 1px;
+                background: $footerTextColor;
+                margin: 0.5rem 0;
+            }
+            ul#footer-policy {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin: 0;
+                li.footer-policy-item {
+                    list-style: none;
+                    color: $footerTextColor;
+                    a {
+                        color: $footerTextColor;
+                    }
+                    &.footer-policy-item-line {
+                        margin: 0 0.5rem;
+                    }
+                }
+            }
+            p {
+                margin: 0.5rem auto;
+                color: $backgroundColor;
+                font-size: 1rem;
+            }
+        }
     }
 }
 
