@@ -12,9 +12,9 @@
                     <div id="diet-block">
                         <!-- Add a diet link here -->
                         <a href="">
-                            <img id="diet-image" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                            <img id="diet-image" src="{{ recipe_data.diets.0.image.url }}" alt="">
                         </a>
-                        <p>{{ recipe_data.diets.0 }}</p>
+                        <p>{{ recipe_data.diets.0.name }}</p>
                     </div>
                     <h1 id="recipe-title">{{ recipe_data.name }}</h1>
                     {% if user.is_authenticated %}

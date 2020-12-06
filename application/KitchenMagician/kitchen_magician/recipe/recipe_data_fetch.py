@@ -182,7 +182,7 @@ class RecipeDataFetch():
     def recipe_diets(self, recipe):
         diets = RecipeDietItem.objects.filter(recipe=recipe)
         if diets:
-            return [r_object.recipe_diet.name for r_object in diets]
+            return [r_object.recipe_diet for r_object in diets]
         else:
             return None
         

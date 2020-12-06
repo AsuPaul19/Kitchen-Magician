@@ -1,103 +1,82 @@
-# from django.shortcuts import render
-
-# # Create your views here.
-# def groups(request):
-#     context = {
-#         'title': 'GROUPS'
-#     }
-#     return render(request, 'groups/groups.html', context)
-
-#above is original 
-#below is code that is attatched to groups.html
-
-
+from django.core.checks.messages import Error
 from django.shortcuts import render
-from django.http import HttpResponse
+from groups.db.group_forum_data_fetch import GroupDataFetch
+from groups.models import Group, GroupUser
+from groups.models import GroupComment
+from groups.db.groups_data_fetch import Groups
 
-team = {
-    "1001": {
-        "id": "1001",
-        "img": "groups/images/vegan.png",
-        "name": "Vegan Group",
-       
-       
-    },
-    "1002": {
-        "id": "1002",
-        "img": "groups/images/ketogenic-diet.png",
-        "name": "Keto Group",
-      
-        
-        
-    },
-    "1003": {
-        "id": "1003",
-         "img": "groups/images/vegetables.png",
-        "name": "Vegetarian Group",
-
-       
-    },
-    "1004": {
-        "id": "1004",
-          "img": "groups/images/gluten-free.png",
-        "name": "Gluten Free Group",
-   
-        
-    },
-   
-    "1005": {
-        "id": "1005",
-          "img": "groups/images/sushi.png",
-        "name": "Raw Diet", 
-
-        
-    },
-
-    "1006": {
-        "id": "1006",
-          "img": "groups/images/sardine.png",
-        "name": "Pescatarian Group",
-     
-    },
-
-"1007": {
-        "id": "1007",
-          "img": "groups/images/fruits.png",
-        "name": "Paleo Group",
-    
-        
-    }, 
-
-    "1008": {
-        "id": "1008",
-         "img": "groups/images/low-carb-diet.png",
-        "name": "Low Carb Group",
-       
-       
-    },
-    
-
-
-
-}
 
 def groups(request):
-    content = {
-        "title": "Groups",
-        "team": team,
-    }
-    return render(request, 'groups/groups.html', content)
-    
-def group_forum(request):
     context = {
-        'title': 'GROUPS_FORUM'
+        "title": "Groups",
     }
+    try:
+        user = request.user
+        groups = Groups(user)
+        context["joined_groups"] = groups.joined_groups
+        context["available_groups"] = groups.available_groups
+
+    except Exception as e:
+        print(e)
+        user = None
+        groups = Group.objects.all()
+        context["joined_groups"] = None
+        context["available_groups"] = groups
+
+    return render(request, 'groups/groups.html', context)
+    
+def group_forum(request, group_id=None):
+    context = {
+        "title": "GROUPS_FORUM",
+        "group_id": group_id,
+        "name": "",
+        "img_path": "",
+        "users": "",
+        "comments": ""
+    }
+
+    if request.method == "POST":
+        data = request.POST
+        group_id = data.get("group_id")
+        group = Group.objects.filter(id=group_id).first()
+        # update comment
+        comment = data.get("comment", False)
+        if comment:
+            group_comment = GroupComment(group=group, comment=comment, user=request.user)
+            group_comment.save()
+        
+        # POST for Change Member
+        join_group = data.get('join_group', False)
+        if join_group:
+            user = request.user
+            if join_group == "join":
+                group_user = GroupUser(group=group, user=user)
+                group_user.save()
+            elif join_group == "leave":
+                group_user = GroupUser.objects.filter(group=group, user=user).first()
+                group_user.delete()
+
+
+    # group-info
+    group = GroupDataFetch(group_id=group_id)
+    if group:
+        group_data = group.group_data
+        context["name"] = group_data["name"]
+        context["img_path"] = group_data["img_path"]
+        context["users"] = group_data["users"]
+        context["comments"] = group_data["comments"]
+    
+    # if the user joined the group
+    try:
+        user = request.user
+        group = Group.objects.filter(id=group_id).first()
+        context["is_joined"] = GroupUser.objects.filter(group=group, user=user).first()
+
+    except Exception as e:
+        print(e)
+        context["is_joined"] = False
+
     return render(request, 'groups/group_forum.html', context)
 
-def profile(request, name, id):
-    content = {
-        "title": team[id]["name"], 
-        "profile": team[id]
-    }
-    return render(request, 'profile.html', content)
+
 
