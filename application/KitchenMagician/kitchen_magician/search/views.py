@@ -69,7 +69,7 @@ def recipes_category(recipes):
         # Category Diets
         if recipe['diets']:
             for diet in recipe['diets']:
-                categories['diets'][diet] = cats_values['diets'][diet]
+                categories['diets'][diet.name] = cats_values['diets'][diet.name]
         # Category Occasions
         if recipe['occasions']: 
             for occasion in recipe['occasions']:
