@@ -4,26 +4,27 @@
 {% load static %} 
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/home_Kevin_Nicole.css' %}" />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 {% endblock css %} 
 
 {% block content %}
     <section id="home-block">
-        <div class="container" id="home-container">
+      <div class="container" id="home-container">
 <!-- image in the upper left under the nav bar -->
             <div class="img">
-                <img src="{% static 'home/images/home_share.svg' %}">
+                <!-- <img src="{% static 'home/images/home_share.svg' %}"> -->
             </div>
 <!-- image in the upper left under the nav bar -->
+        </div>
 
 <!-- search in the upper right under the nav bar -->
-            <div class="home">
+            <div class="home-first-block">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <div id="welcome">
-                            <h2>Welcome, Apprentice of Magic</h2>
+                        <div id="welcome-first-block">
+                            <h1>Browse through our community based website for recipes using our search bar below.</h1>
                         </div>
                     </fieldset>
                     <input type="text" placeholder="type anything" name="search_query">
@@ -33,11 +34,11 @@
 <!-- search in the upper right under the nav bar -->
 
 <!-- trending recipes in the lower left -->
-            <div class="home">
+            <div class="home-trending">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <div id="welcome">
+                        <div id="welcome-trending">
                             <div id="carouselExampleControls" class="carousel slide trending-border border-dark rounded" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -79,11 +80,11 @@
 <!-- trending recipes in the lower left -->
 
 <!-- mission statement in the lower right -->
-            <div class="home">
+            <!-- <div class="home-statement">
                 <form action="POST" method="POST" action="{% url 'search' %}">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <div id="welcome">
+                        <div id="welcome-statement">
                             <h1>WHY THE KITCHEN WAS CREATED</h1>
                             <div id="about-line">
                             </div>
@@ -96,10 +97,10 @@
                         </div>
                     </fieldset>
                 </form> 
-            </div>         
+            </div>          -->
 <!-- mission statement in the lower right -->
 
-        </div>
+        <!-- </div> -->
     </section>
 {% endblock content %}
 
