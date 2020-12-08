@@ -25,7 +25,7 @@
 }
 
 #home-block .container .img {
-  /* display: -webkit-box;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex; 
   -webkit-box-pack: end;
@@ -33,11 +33,11 @@
           justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; */
+          align-items: center;
 }
 
 #home-block .container .img img {
-  /* width: 900px;
+  width: 900px;
 
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,7 +48,7 @@
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; */
+          align-items: center;
 }
 
 #home-block .container .home {
