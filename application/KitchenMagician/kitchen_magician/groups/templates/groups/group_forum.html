@@ -9,6 +9,15 @@
 
         {% block content %}
         <!-- Main Body Here -->
+        <section id="group-nav">
+            <div class="container">
+                <a href="{% url 'home' %}" class="group-nav-name">Home</a>
+                <img class="group-nav-arrow" src="{% static 'groups/images/right-arrow.png' %}"></img>
+                <a href="{% url 'groups' %}" class="group-nav-name">Groups</a>
+                <img class="group-nav-arrow" src="{% static 'groups/images/right-arrow.png' %}"></img>
+                <p class="group-nav-name">{{ name }}</p>
+            </div>
+        </section>
         <section id="group">
             <div class="cointainer">
                 <div id="group-container" class="">
@@ -79,6 +88,7 @@
                 <form action="" id="submit-comment" method="POST">
                     {% csrf_token %}
                     <fieldset class="d-flex align-items-center flex-column">
+                        {% if is_joined %}
                         <input name="group_id" type="text" value={{ group_id }} hidden>
                         <div class="form-group" style ="width:80%">
                             <textarea name="comment" required id="add-comment" class="form-control" rows="3" placeholder="Add to the discussion"></textarea>
@@ -86,6 +96,12 @@
                         <div id="submit-button-block">
                             <button type="submit" id="submit-button" class="submit-btn" >Post</button>
                         </div>
+                        {% else %}
+                        <div class="container">
+                            <input name="group_id" type="text" value={{ group_id }} hidden>
+                            <button type="submit" id="forum-member-btn-join" class="forum-menber-btn submit-btn" name="join_group" value="join">Join Group to Post</button>
+                        </div>
+                        {% endif %}
                     </fieldset>
                 </form>
                 <!-- <div class="d-flex align-items-center flex-column">

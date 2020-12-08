@@ -11,16 +11,24 @@
         <section id="search-bar">
             <form action="" method="POST" class="search-keywords">
                 <fieldset>
+                    <!-- Authentication Token -->
+                    {% csrf_token %}
                     <div class="container">
-                        <!-- Authentication Token -->
-                        {% csrf_token %}
-                        <div id="search-input-block">
-                            <input type="text" id="search-input-text" placeholder="Recipes for any ingredient, occasion, course, or diet" name="keywords" maxlength="150" class="search-input">
-                            <div id="search-input-text-icon">
-                                <i class="fas fa-search"></i>
+                        <div id="search-input-container">
+                            <div id="search-input-block">
+                                <input type="text" id="search-input-text" placeholder="Recipes for any ingredient, occasion, course, or diet" name="keywords" maxlength="150" class="search-input">
+                                <div id="search-input-text-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
                             </div>
+                            <input class="search-input" id="search-input-submit" value="Find a Recipe" type="submit"></input>
                         </div>
-                        <input class="search-input" id="search-input-submit" value="Find a Recipe" type="submit"></input>
+                        <div id="search-keywords-block">
+                            <p id="popular-search-p">Popular search:  </p>
+                            {% for search_keyword in popular_search_keywords %}
+                            <a class="popular-search-keyword" href="{% url 'search_keywords' keywords=search_keyword %}">{{ search_keyword }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </fieldset>
             </form>

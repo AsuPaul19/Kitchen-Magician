@@ -68,7 +68,7 @@ class SearchRecipeData(RecipeDataFetch):
         res = ''
         if diets:
             for diet in diets:
-                print(diet.name)
+                # print(diet.name)
                 res += cats_values['diets'][diet.name] + ' '
         return res
     

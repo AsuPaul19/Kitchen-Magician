@@ -2,11 +2,13 @@ from django.shortcuts import render
 from .search_recipe import SearchRecipe
 from .search_recipe_data import SearchRecipeData
 from .values import cats_values
+from .popular_search import popular_search
 
 def search(request, keywords=''):
     context = {
         'title': 'Search',
         'recipes': '',
+        'popular_search_keywords': popular_search(5), # top5 search
         'keywords': keywords,
         'counts': 0,
         'categories': [
@@ -46,7 +48,6 @@ def search(request, keywords=''):
         context['categories'][i]['items'] = v
     
     # print(context['categories'])
-
 
     return render(request, 'search.html', context)
 

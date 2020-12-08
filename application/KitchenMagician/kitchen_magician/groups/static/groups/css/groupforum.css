@@ -48,6 +48,36 @@ a.forum-login-btn:hover {
     margin-left: 0.5rem;
 }
 
+
+/* Group Nav */
+#group-nav .container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+#group-nav .container .group-nav-name {
+    color: gray;
+    margin: 0;
+}
+
+#group-nav .container a.group-nav-name:hover {
+    color: black;
+}
+
+#group-nav .container p.group-nav-name {
+    color: black;
+}
+
+#group-nav .container img.group-nav-arrow {
+    margin: 0 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+
 /* Forum member */
 #group-members #forum-member-block h3 {
     margin-right: 1rem;
@@ -93,6 +123,13 @@ a.forum-login-btn:hover {
 #group-members #forum-member-block button#forum-member-btn-leave:hover::after {
     content: "Leave";
     filter: brightness(95%);
+}
+
+#forum-comments .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .groupimage {

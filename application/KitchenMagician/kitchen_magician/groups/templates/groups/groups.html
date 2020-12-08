@@ -61,6 +61,10 @@
 
     {% endblock content%}
 
-{% block active-nav-link %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{% endblock active-nav-link %}
+    {% block script %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        let element = document.getElementById("nav-groups");
+        element.classList.add("active-nav-link");
+    </script>
+    {% endblock script %}

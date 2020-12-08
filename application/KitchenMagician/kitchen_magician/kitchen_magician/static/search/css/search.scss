@@ -7,54 +7,77 @@ $textColor: #f56a58;
     .container {
         display: flex;
         align-items: center;
+        flex-direction: column;
         width: 100%;
         background-color: $backgroundColorText;
         padding: 1rem;
-        #search-input-block {
-            flex-grow: 1;
-            position: relative;
+        #search-input-container {
             display: flex;
             align-items: center;
-            #search-input-text-icon {
-                position: absolute;
+            flex-direction: row;
+            width: 100%;
+            #search-input-block {
+                flex-grow: 1;
+                position: relative;
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                color: black;
-                height: 100%;
-                top: 0;
-                left: 0;
-                i.fas {
-                    padding: auto;
-                    margin: auto;
-                    line-height: 0;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    padding: 0.5rem;
+                #search-input-text-icon {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: black;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    i.fas {
+                        padding: auto;
+                        margin: auto;
+                        line-height: 0;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        padding: 0.5rem;
+                    }
+                }
+            }
+            // Inputs - Text & Button
+            .search-input {
+                border-radius: 5px;
+                margin-right: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                box-shadow: none;
+                outline: none;
+                text-decoration: none;
+            }
+            #search-input-text {
+                border: lightgray 1px solid;
+                padding-left: 2rem;
+                width: 100%;
+            }
+            #search-input-submit {
+                background-color: $textColor;
+                border: 1px solid $textColor;
+                color: white;
+                &:hover {
+                    filter: brightness(95%);
                 }
             }
         }
-        // Inputs - Text & Button
-        .search-input {
-            border-radius: 5px;
-            margin-right: 1rem;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            box-shadow: none;
-            outline: none;
-            text-decoration: none;
-        }
-        #search-input-text {
-            border: lightgray 1px solid;
-            padding-left: 2rem;
+        #search-keywords-block {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
             width: 100%;
-        }
-        #search-input-submit {
-            background-color: $textColor;
-            border: 1px solid $textColor;
-            color: white;
-            &:hover {
-                filter: brightness(95%);
+            #popular-search-p {
+                margin: 0;
+            }
+            .popular-search-keyword {
+                margin-left: 0.5rem;
+                color: gray;
+                &:hover {
+                    color: black;
+                }
             }
         }
     }
