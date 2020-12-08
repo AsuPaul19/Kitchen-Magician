@@ -96,6 +96,12 @@
 
 
 
-<script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
 {% endblock content %}
 
+{% block script %}
+<script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
+<script>
+    let element = document.getElementById("nav-signup");
+    element.classList.add("active-nav-link");
+</script>
+{% endblock script %}
