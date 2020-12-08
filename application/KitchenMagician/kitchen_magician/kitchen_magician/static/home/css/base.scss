@@ -82,6 +82,7 @@ button.btn-type1:hover {
                 max-width: 100%;
                 max-height: 100%;
             }
+            margin: 0 4rem 0 0;
         }
         ul#ul-nav-link {
             display: flex;
@@ -103,9 +104,18 @@ button.btn-type1:hover {
                     margin: 0 0.1rem;
                     text-decoration: none;
                     font-size: $textFontSize;
-                    // padding-right: 1rem;
+                    padding: 0.5rem 0;
                     color: $textColor;
+                    border-bottom: $backgroundColor 2px solid;
+                    &.active-nav-link {
+                        border-bottom: $textColor 2px solid;
+                    }
                 }
+                &.nav-link-underline a:hover {
+                    border-bottom: $textColor 2px solid;
+                    transition: ease-in-out 0.5s;
+                }
+                
             }
             li#search {
                 flex-grow: 1; // takes the rest of spaces

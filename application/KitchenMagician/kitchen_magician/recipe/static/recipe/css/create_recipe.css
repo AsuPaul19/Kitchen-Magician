@@ -177,6 +177,33 @@ section#create-recipe .container #recipe-form #recipe-notice #note {
   color: gray;
 }
 
+section#create-recipe .container #recipe-form #recipe-agreement {
+  margin: 1rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+section#create-recipe .container #recipe-form #recipe-agreement input {
+  float: left;
+  margin: 0;
+}
+
+section#create-recipe .container #recipe-form #recipe-agreement label {
+  float: right;
+  margin: 0 1rem;
+}
+
 section#create-recipe .container #recipe-form #recipe-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
