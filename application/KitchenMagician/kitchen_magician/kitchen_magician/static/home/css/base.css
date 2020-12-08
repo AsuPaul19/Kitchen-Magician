@@ -78,6 +78,7 @@ button.btn-type1:hover {
           flex: left;
   height: 4rem;
   width: auto;
+  margin: 0 4rem 0 0;
 }
 
 #header .container a.KitchenMagician img {
@@ -114,7 +115,19 @@ button.btn-type1:hover {
   margin: 0 0.1rem;
   text-decoration: none;
   font-size: 1.5rem;
+  padding: 0.5rem 0;
   color: #f56a58;
+  border-bottom: white 2px solid;
+}
+
+#header .container ul#ul-nav-link li.nav-link a.active-nav-link {
+  border-bottom: #f56a58 2px solid;
+}
+
+#header .container ul#ul-nav-link li.nav-link.nav-link-underline a:hover {
+  border-bottom: #f56a58 2px solid;
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
 }
 
 #header .container ul#ul-nav-link li#search {

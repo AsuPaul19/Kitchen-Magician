@@ -3,6 +3,7 @@ from operator import or_
 from functools import reduce
 from django.db.models import Q
 from collections import defaultdict
+import threading
 
 # Packages for Search Bar Only
 from recipe.models import Recipe
@@ -12,6 +13,7 @@ from recipe.models import RecipeIngredient
 from recipe.models import RecipeOccasion
 from recipe.models import RecipeDiet
 from recipe.models import RecipeCourse
+from search.models import SearchKeyword 
 
 class SearchRecipe():
     def __init__(self, keywords=None):
@@ -32,6 +34,10 @@ class SearchRecipe():
         keywords = re.split("\s|(?<!\d)[,.](?!\d)", keywords.lower())
         # Remove empty string in list
         keywords = [k for k in keywords if k]
+        print(f'Search keywords: {keywords}')
+        # update keyword on database
+        threading.Thread(target=self.update_keywords_db(keywords)).start()
+        
         search_models = self.recipe_search_models()
         recipes = defaultdict(int)
         if keywords:
@@ -66,6 +72,15 @@ class SearchRecipe():
 
         return recipes
 
+    def update_keywords_db(self, keywords):
+        for keyword in keywords:
+            search_keyword = SearchKeyword.objects.filter(keyword=keyword).first()
+            if search_keyword:
+                search_keyword.count += 1
+            else:
+                search_keyword = SearchKeyword(keyword=keyword)
+            
+            search_keyword.save()
 
     def recipe_search_models(self):
         # All related tables will be looked up

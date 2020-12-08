@@ -80,5 +80,9 @@
 {% block script %}
 <script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
 <script type="text/javascript" src="{% static 'users/js/panelSwitch.js' %}"></script>
+<script>
+    let element = document.getElementById("nav-login");
+    element.classList.add("active-nav-link");
+</script>
 {% endblock script %}
 

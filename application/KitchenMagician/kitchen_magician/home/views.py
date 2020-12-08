@@ -81,5 +81,12 @@ def home(request):
     # replace home2.html with any home.html
     return render(request, 'home.html', context)
 
+def contact(request):
+    context = { 
+        "title": "CONTACT US"
+    }
+
+    return render(request, 'contact.html', context)
+
 def test(request):
     return render(request, 'notes/test.html', {'title': 'Test'})

@@ -143,6 +143,26 @@ section#create-recipe {
 
                 }
             }
+
+            // recipe agreement
+            #recipe-agreement {
+                margin: 1rem auto;
+                display: flex;
+                flex-direction: row;
+                // justify-content: space-around;
+                align-items: center;
+                width: fit-content;
+                input {
+                    float: left;
+                    margin: 0;
+                }
+                label {
+                    float: right;
+                    margin: 0 1rem;
+                }
+                
+
+            }
             
             #recipe-buttons {
                 display: flex;
