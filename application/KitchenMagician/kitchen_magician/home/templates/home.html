@@ -8,7 +8,8 @@
 
 {% block content %}
 <section id="home-block">
-  <!-- search in the upper right under the nav bar -->
+
+<!-- search right under the nav bar, centered -->  
   <div class="wrapper">
     <div class="home-first-block">
       <form action="POST" method="POST" action="{% url 'search' %}">
@@ -25,9 +26,9 @@
       </form>
     </div>
   </div>
-  <!-- search in the upper right under the nav bar -->
+<!-- search right under the nav bar, centered -->
 
-  <!-- mission statement in the middle -->
+<!-- mission statement in the middle, right beneath the search box -->
   <div class="wrapper">
     <div class="home-statement">
       <form action="POST" method="POST" action="{% url 'search' %}">
@@ -42,9 +43,9 @@
       </form>
     </div>
   </div>
-  <!-- mission statement in the middle -->
+<!-- mission statement in the middle, right beneath the search box -->
 
-  <!-- trending recipes on the very bottom -->
+<!-- trending recipes at the very bottom, under the mission statement  -->
   <div class="wrapper">
     <div class="home-trending">
       <form action="POST" method="POST" action="{% url 'search' %}">
@@ -96,12 +97,13 @@
       </form>
     </div>
   </div>
-  <!-- trending recipes on the very bottom -->
+<!-- trending recipes at the very bottom, under the mission statement  -->
 
 </section>
 {% endblock content %}
 
 {% block script %}
+<!-- to enable JavaScript -->
 <script type="text/javascript" src="{% static 'users/js/home.js' %}"></script>
 <script type="text/javascript" src="{% static 'users/js/panelSwitch.js' %}"></script>
 {% endblock script %}
