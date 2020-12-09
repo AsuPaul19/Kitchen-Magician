@@ -11,7 +11,7 @@
   <!-- search in the upper right under the nav bar -->
   <div class="wrapper">
     <div class="home-first-block">
-      <form action="POST" method="POST" action="{% url 'search' %}">
+      <form method="POST" action="{% url 'search' %}">
         {% csrf_token %}
         <fieldset class="form-group">
           <div id="welcome-first-block">
@@ -20,7 +20,7 @@
             </h1>
           </div>
         </fieldset>
-        <input type="text" placeholder="i.e. Breakfast Burrito" name="search_query">
+        <input type="text" placeholder="i.e. Breakfast Burrito" name="keywords">
         <button class="btn btn-outline-info" type="submit">Find Recipes</button>
       </form>
     </div>
