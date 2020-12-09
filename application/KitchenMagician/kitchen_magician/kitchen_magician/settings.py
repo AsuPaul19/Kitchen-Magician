@@ -87,34 +87,34 @@ WSGI_APPLICATION = 'kitchen_magician.wsgi.application'
 DJANGO_SETTINGS_MODULE = 'kitchen_magician.settings'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         # database IP（local: localhost or 127.0.0.1）
-#         'HOST': '34.123.110.159',
-#         # MySQL port
-#         'PORT': 3306,
-#         # database user and password
-#         'USER': 'team1',
-#         'PASSWORD': 'team1',
-#         #Database Name
-#         'NAME': 'kitchen_magician',
-#         # character 
-#         'CHARSET': 'utf8',
-#         # Timezone
-#         'TIME_ZONE': 'UTC',
-#     }
-# }
+Database
+https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        # database IP（local: localhost or 127.0.0.1）
+        'HOST': '34.123.110.159',
+        # MySQL port
+        'PORT': 3306,
+        # database user and password
+        'USER': 'team1',
+        'PASSWORD': 'team1',
+        #Database Name
+        'NAME': 'kitchen_magician',
+        # character 
+        'CHARSET': 'utf8',
+        # Timezone
+        'TIME_ZONE': 'UTC',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
