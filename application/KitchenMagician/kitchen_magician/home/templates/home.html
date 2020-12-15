@@ -3,6 +3,7 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/home_cats.css' %}" />
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 {% endblock css %}
 
@@ -20,9 +21,24 @@
               Browse through our community based website for recipes using the search bar below.
             </h1>
           </div>
+          <div id="search-input-container">
+            <div id="search-input-block">
+                <input type="text" id="search-input-text" placeholder="Find recipes for any ingredient, occasion, course, or diet" name="keywords" maxlength="150" class="search-input">
+                <div id="search-input-text-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <input class="search-input" id="search-input-submit" value="Find a Recipe" type="submit"></input>
+        </div>
+          <div class="welcome-popular-searches-block">
+            <h1 class="welcome-popular-searches-title">Popular Searches</h1>
+            <div class="welcome-popular-searches-items">
+              {% for search_keyword in popular_search_keywords %}
+                <a class="popular-search-keyword" href="{% url 'search_keywords' keywords=search_keyword %}">{{ search_keyword }}</a>
+              {% endfor %}
+            </div>
+          </div>
         </fieldset>
-        <input type="text" placeholder="i.e. Breakfast Burrito" name="keywords">
-        <button class="btn btn-outline-info" type="submit">Find Recipes</button>
       </form>
     </div>
   </div>
@@ -100,10 +116,76 @@
 <!-- trending recipes at the very bottom, under the mission statement  -->
 
 </section>
+
+  {% for cat in recipes_cats %}
+    <section id=cat.name class="cat-container" >
+      <div class="container title-container">
+        <!-- TITLE & SLOGAN -->
+        <div class="cat-title-slogan-block">
+          <div class="cat-title-block">
+            <hi class="cat-title">{{ cat.title }}</hi>
+            <div class="cat-title-underline"></div>
+          </div>
+          <p class="cat-slogan">{{ cat.slogan }}</p>
+        </div>
+        <!-- ITEMS -->
+        <div class="cat-items-block">
+          {% for item in cat.items %}
+            <a href="{% url 'search_keywords' keywords=item.keywords %}" class="cat-item-block">
+              <img src="{% static item.image_path %}" alt="">
+              <div class="title-view-recipes-block">
+                <p class="cat-item-title">{{ item.title }}</p>
+                <div class="view-recipes-block">
+                  <div class="view-recipes-slider">
+                    <p class="view-recipes-p">VIEW RECIPES</p>
+                  </div>
+                  <div class="view-recipes-arrow-block">
+                    <img src="{% static 'home/images/home-right-arrow.png' %}" alt="home-right-arrow" data-hover="" class="view-arrow view-arrow-right">
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+
+
+
+  <section class="groups">
+    <div class="container">
+      <!-- Title Slogan -->
+      <div class="groups-title-slogan-block">
+        <div class="groups-title-block">
+          <hi class="groups-title">Popular Groups</hi>
+          <div class="groups-title-underline"></div>
+        </div>
+        <p class="groups-slogan">Find the perfect diet group for sharing ideas and interests.</p>
+        <div class="view-all">
+          <a href="{% url 'groups' %}">View all groups</a>
+        </div>
+      </div>
+      <!-- Groups Item -->
+      <div class="groups-items-block">
+        {% for group in top_groups %}
+          <a href="{% url 'group_forum' group_id=group.id %}" class="group-item-block">
+            <div class="group-image-block">
+              <img src="{% static group.img_path %}" alt="" class="group-image">
+            </div>
+            <p class="group-title">{{ group.name }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+
 {% endblock content %}
 
 {% block script %}
 <!-- to enable JavaScript -->
-<script type="text/javascript" src="{% static 'users/js/home.js' %}"></script>
-<script type="text/javascript" src="{% static 'users/js/panelSwitch.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/js/home.js' %}"></script>
+<!-- <script type="text/javascript" src="{% static 'users/js/panelSwitch.js' %}"></script> -->
 {% endblock script %}

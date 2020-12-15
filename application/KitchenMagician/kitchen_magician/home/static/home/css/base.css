@@ -23,7 +23,6 @@ body .container {
   display: -ms-flexbox;
   display: flex;
   margin: 1rem auto;
-  padding: 0 0.5rem;
 }
 
 .btn-type1 {
