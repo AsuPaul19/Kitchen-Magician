@@ -16,6 +16,9 @@ from recipe.models import RecipeCourse
 from search.models import SearchKeyword 
 
 class SearchRecipe():
+    """
+    Handle search keywords, and return relevant recipes, and total numbers.
+    """
     def __init__(self, keywords=None):
         self.keywords = keywords
         self.recipes = self.filter(self.keywords)
@@ -35,14 +38,13 @@ class SearchRecipe():
         # Remove empty string in list
         keywords = [k for k in keywords if k]
         print(f'Search keywords: {keywords}')
-        # update keyword on database
+        
+        # update keyword to database with thread
         threading.Thread(target=self.update_keywords_db(keywords)).start()
         
         search_models = self.recipe_search_models()
         recipes = defaultdict(int)
         if keywords:
-            # print("=" * 80)
-            # print(f'keywords: {keywords}')
             # The case insensitive search in Django
             # SELECT ... WHERE string LIKE '%keyword%';
             for model, fk in search_models.items():
@@ -57,14 +59,11 @@ class SearchRecipe():
                         model_instances = [instance.recipe for instances in model_instances for instance in instances]
                     else:
                         model_instances = [instance.recipe for instance in model_instances]
-                # print(model_instances)
                 # accumulate the appearances of recipe instances
                 for instance in model_instances:
                     recipes[instance] += 1
-            # print(recipes)
             # sorted by values, return keys only
             recipes = [k for k, _ in sorted(recipes.items(), key=lambda kv:kv[1], reverse=True)]
-            # print(recipes)
 
         # Return all results if keywords is None
         else: 
@@ -73,6 +72,7 @@ class SearchRecipe():
         return recipes
 
     def update_keywords_db(self, keywords):
+        # Update keywords to database
         for keyword in keywords:
             search_keyword = SearchKeyword.objects.filter(keyword=keyword).first()
             if search_keyword:
@@ -107,7 +107,5 @@ class SearchRecipe():
                 'model_set': 'recipeingredientitem_set'
             },
         }
-        # instances_diet = instance.recipedietitem_set.all()
-        # for instance_diet in instances_diet:
-        #     print(instance_diet.recipe_diet.name)
+        
         return search_models
