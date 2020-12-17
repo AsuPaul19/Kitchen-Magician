@@ -47,15 +47,10 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
                                 <a class="dropdown-item" href="{% url 'user_profile' username=user.username %}">Profile</a>
-                                <!-- <a class="dropdown-item" href="#">Groups</a> -->
-                                <!-- <a class="dropdown-item" href="#">Recipes</a> -->
-                                <!-- <a class="dropdown-item" href="#">Favorites</a> -->
-                                <!-- redirect to home page after logout -->
+                                <a class="dropdown-item" href="{% url 'user_settings' username=user.username %}">Settings</a>
                                 <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a>
                             </div>
                         </li>
-                            <!-- <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a> -->
-    
                         {% else %}
                         <li class="nav-link nav-link-underline"><a href="{% url 'login' %}"  id="nav-login">Log in</a></li>
                         <li class="nav-link nav-link-underline"><a href="{% url 'signup' %}"  id="nav-signup">Sign up</a></li>
