@@ -1,3 +1,40 @@
+from recipe.models import Recipe
+from recipe.models import RecipeFavorite
+from recipe.models import RecipeImage
+
+
+numbers_letters = [
+    "first", "second", "third", "fourth", 
+    "fifth", "sixth", "seventh", "eighth", 
+    "ninth", "tenth", "eleventh", "twelfth"
+    ]
+
+# return top n most popular recipes
+def top_recipes(n=5):
+    # return recipe image and id
+    # Fetch all recipes
+    recipes_all = Recipe.objects.all()
+    # Store each recipe as pair of (recipe, number of users)
+    recipes_num = [(recipe, len(RecipeFavorite.objects.filter(recipe=recipe))) for recipe in recipes_all]
+    # sort by numbers and get top n recipes
+    recipes_top = sorted(recipes_num, key=lambda recipe: recipe[1], reverse=True)[:n]
+    # return recipes object only
+    # recipes_res = [recipe for recipe, _ in recipes_top]
+    recipes = []
+    for i, (recipe, _) in enumerate(recipes_top):
+        recipe_image = RecipeImage.objects.filter(recipe=recipe).first()
+        recipe_data = {
+            "name": recipe.name,
+            "image_path": recipe_image.image.url,
+            "id": recipe.id,
+            "alt": f'{numbers_letters[i]}-recipe'
+        }
+        recipes.append(recipe_data)
+    return recipes
+
+
+
+
 recipes_cats = [
 
     {

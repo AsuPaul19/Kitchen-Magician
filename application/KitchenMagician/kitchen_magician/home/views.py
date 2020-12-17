@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from home.db.recipes_data import recipes_cats
+from home.db.recipes_data import top_recipes
 from home.db.groups_data import top_groups
 from search.popular_search import popular_search
 
@@ -47,6 +48,7 @@ def home(request):
         "trending_recipes_carousel": trending_recipes_carousel,
         "recipes_cats": recipes_cats,
         "top_groups": top_groups(4), # Top 4 Most popular groups
+        "top_recipes": top_recipes(5), # Top 5 Most popular recipes
     }
 
     return render(request, 'home.html', context)
