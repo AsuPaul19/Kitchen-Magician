@@ -1,5 +1,8 @@
 # csc648 Repository
 
+Link to Application Home Page:
+https://www.allensun623.com/
+
 ## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.
 
 ## Please do the following steps before completing Milestone 0.
@@ -15,11 +18,11 @@
 
 |     Role     | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |     :---:       |
-|  Team Lead    | Nicole Pang  | npang@mail.sfsu.edu |  npng16     |
+|  Team Lead    | Kevin Wei  | kwei3@mail.sfsu.edu |  KevinWeiHadExtra     |
 | Frontend Lead | Jeff Cheng   |   jcheng13@mail.sfsu.edu   |  apisorder       |
 | Backend Lead & Database Master| Allen Sun    | lsun2@mail.sfsu.edu    |   allensun7     |
 | Github Master | Paul Asu     |   pasu@mail.sfsu.edu      |    AsuPaul19       |
-| Undefined Role | Kevin Ortiz  |  kortiz6@mail.sfsu.edu   |    Kebit01     |
-| Undefined Role | Kevin Wei    |  kwei3@mail.sfsu.edu  |    KevinWeiHadExtra   |
+| Developer | Kevin Ortiz  |  kortiz6@mail.sfsu.edu   |    Kebit01     |
+| Developer | Nicole Pang    |  npang@mail.sfsu.edu  |    npng16   |
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
