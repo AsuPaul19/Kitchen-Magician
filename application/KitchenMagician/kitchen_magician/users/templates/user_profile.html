@@ -18,13 +18,20 @@
             </div>
         </section>
 
-<section id="user-recipe-title">
-    <p class="recipe-title-p" style="text-align:center;">Recipes</p>
-</section>
+        <div class="container">
+            <div class="break-line"></div>
+        </div>
+
+        <!-- Title section -->
+        <section class="user-recipe-title-block">
+            <div class="container">
+                <p class="recipe-title-p">Recipes</p>
+                <p class="recipes-count">(total: {{ user_recipes|length }})</p>
+            </div>
+        </section>
 
 <section id="user-recipe-favorite">
     <div class="container">
-        <!-- <p style="text-align:center;">Recipes</p> -->
         <div class="user-recipe-wrapper">
             {% for user_recipe in user_recipes %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_recipe.recipe_id %}">
@@ -36,16 +43,18 @@
             {% endfor %}
         </div>
     </div>
-
-
 </section>
-<section id="user-favorite-title">
-    <p class="recipe-title-p" style="text-align:center;">Favorites</p>
-</section>
+
+        <!-- Title section -->
+        <section class="user-recipe-title-block">
+            <div class="container">
+                <p class="recipe-title-p">Favorites</p>
+                <p class="recipes-count">(total: {{ user_favorites|length }})</p>
+            </div>
+        </section>
 
 <section id="user-recipe-favorite">
     <div class="container">
-        <!-- <p style="text-align:center;">Favorites</p> -->
         <div class="user-recipe-wrapper">
             {% for user_favorite in user_favorites %}
             <a class="user-recipe-block" href="{% url 'recipe' recipe_id=user_favorite.recipe_id %}">
@@ -57,9 +66,8 @@
             {% endfor %}
         </div>
     </div>
-
-
 </section>
+
 <section id="user-create-recipe-button">
     <div class="container">
         <a href="{% url 'create_recipe' %}">Add Recipe</a>

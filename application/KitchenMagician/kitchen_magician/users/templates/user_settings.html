@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'users/css/user_profile.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'users/css/user_settings.css' %}" />
+        {% endblock css %}
+
+        {% block content %}
+        <!-- User profile -->
+        <section id="user-profile">
+            <div class="container">
+                <div id="user-content">
+                    <img src="{{ user.profile.image.url }}" alt="" class="user-avatar rounded-circle account-img">
+                    <div id="user-content-body">
+                        <p id="user-content-name">{{ user.username }}</p>
+                        <p id="user-content-email">{{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="break-line"></div>
+        </div>
+
+        <section id="account-settings">
+            <div class="container">
+                <div id="update-password-block">
+                    <h1 class="update-password-title">Update your password</h1>
+                    <p class="update-password-info">Please provide a password with at least 8 characters. Your password must include at least one digit, one uppercase letter, one lowercase letter, and one special character (@#$%^&*?!+-_=).</p>
+                    <!-- Display Error -->
+                    <div class="update-password-msg-block">
+                        {% if error_msg %}
+                        <p id="update-password-error" class="update-password-msg">{{ error_msg }}</p>
+                        {% endif %}
+                        {% if update_success %}
+                        <p id="update-password-success" class="update-password-msg">Your password has been updated successfully</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Update Password form -->
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div id="account-block">
+                            <input type="text" hidden name="username" value={{ user.username }}>
+                            <div id="account-passwords-block">
+                                <div id="account-current-password-block" class="account-password-block">
+                                    <div id="account-current-password" class="account-label">Current Password</div>
+                                    <input required type="password" id="account-current-password-input" placeholder="Current Password" class="account-input" name="current-password">
+                                </div>
+                                <div id="account-new-password-block" class="account-password-block">
+                                    <div id="account-new-password" class="account-label">New Password</div>
+                                    <input required type="password" id="account-new-password-input" placeholder="New Password" class="account-input" name="new-password">
+                                </div>
+                                <div id="account-confirm-password-block" class="account-password-block">
+                                    <div id="account-confirm-password" class="account-label">Confirm Password</div>
+                                    <input required type="password" id="account-confirm-password-input" placeholder="Confirm Password" class="account-input" name="confirm-password">
+                                </div>
+                            </div>
+
+                            <div id="account-button-block">
+                                    <input type="submit" value="Update Password" class="account-button" id="account-button-update">
+                                <a href="{% url 'user_profile' username=user.username %}" class="account-button" id="account-button-cancel">Cancel</a>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+        {% endblock content %}

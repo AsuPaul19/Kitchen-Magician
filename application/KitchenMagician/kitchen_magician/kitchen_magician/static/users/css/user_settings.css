@@ -1,0 +1,183 @@
+section#account-settings .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 10rem;
+}
+
+section#account-settings .container #update-password-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+section#account-settings .container #update-password-block .update-password-title {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+section#account-settings .container #update-password-block .update-password-info {
+  font-size: 1rem;
+  font-style: italic;
+  color: gray;
+}
+
+section#account-settings .container #update-password-block .update-password-msg-block {
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem 0;
+}
+
+section#account-settings .container #update-password-block .update-password-msg-block p.update-password-msg {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+section#account-settings .container #update-password-block .update-password-msg-block p.update-password-msg#update-password-success {
+  color: #155724;
+  border: 1px solid #155724;
+  background: #d4edda;
+}
+
+section#account-settings .container #update-password-block .update-password-msg-block p.update-password-msg#update-password-error {
+  color: #f56a58;
+  background: #fef9f6;
+  border: 1px solid #f56a58;
+}
+
+section#account-settings .container #account-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#account-settings .container #account-block #account-passwords-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section#account-settings .container #account-block #account-passwords-block .account-password-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+section#account-settings .container #account-block #account-passwords-block .account-password-block .account-label {
+  min-width: 10rem;
+}
+
+section#account-settings .container #account-block #account-passwords-block .account-password-block .account-input {
+  padding: 0.5rem;
+  min-width: 15rem;
+  border: gray 1px solid;
+  border-radius: 2px;
+}
+
+section#account-settings .container #account-block #account-passwords-block .account-password-block .account-input:focus {
+  outline: none;
+  border: #f56a58 1px solid;
+  border-radius: 2px;
+}
+
+section#account-settings .container #account-block #account-button-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+section#account-settings .container #account-block #account-button-block .account-button {
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+section#account-settings .container #account-block #account-button-block .account-button:hover {
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+}
+
+section#account-settings .container #account-block #account-button-block .account-button:focus {
+  outline: none;
+}
+
+section#account-settings .container #account-block #account-button-block .account-button#account-button-update {
+  background: #f56a58;
+}
+
+section#account-settings .container #account-block #account-button-block .account-button#account-button-cancel {
+  background: lightgray;
+}
+/*# sourceMappingURL=user_settings.css.map */
