@@ -144,3 +144,24 @@ $footerTextColor: white;
         }
     }
 }
+
+// Trending section
+.home-trending {
+    #carousel-inner-block {
+        width: 100%;
+        height: 30rem;
+        .carousel-item {
+            height: 100%;
+            width: 100%;
+            .trending-pic-a {
+                width: 100%;
+                height: 100%;
+                .trending-pic {
+                    width: 100%;
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

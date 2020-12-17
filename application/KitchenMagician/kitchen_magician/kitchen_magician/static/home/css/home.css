@@ -178,4 +178,26 @@
   border: 15px solid #F56A58;
   border-radius: 25px;
 }
+
+.home-trending #carousel-inner-block {
+  width: 100%;
+  height: 30rem;
+}
+
+.home-trending #carousel-inner-block .carousel-item {
+  height: 100%;
+  width: 100%;
+}
+
+.home-trending #carousel-inner-block .carousel-item .trending-pic-a {
+  width: 100%;
+  height: 100%;
+}
+
+.home-trending #carousel-inner-block .carousel-item .trending-pic-a .trending-pic {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
 /*# sourceMappingURL=home.css.map */

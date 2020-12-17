@@ -77,27 +77,20 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
               </ol>
-              <div class="carousel-inner trending-box">
-                <div class="carousel-item active">
-                  <img class="d-block h-250 w-100 trending-pic center" src="{% static 'home/images/1.jpg' %}"
-                    alt="first_recipe">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block h-250 w-100 trending-pic center" src="{% static 'home/images/2.jpg' %}"
-                    alt="second_recipe">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block h-250 w-100 trending-pic center" src="{% static 'home/images/3.jpg' %}"
-                    alt="third_recipe">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block h-250 w-100 trending-pic center" src="{% static 'home/images/4.jpg' %}"
-                    alt="fourth_recipe">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block h-250 w-100 trending-pic center" src="{% static 'home/images/5.jpg' %}"
-                    alt="fifth_recipe">
-                </div>
+              <!-- Top recipes -->
+              <div id="carousel-inner-block" class="carousel-inner trending-box">
+                {% for recipe in top_recipes %}
+                <!-- Add class active to first item -->
+                  {% if forloop.first %}
+                  <div class="carousel-item active">
+                  {% else %}
+                  <div class="carousel-item">
+                  {% endif %}
+                    <a href="{% url 'recipe' recipe_id=recipe.id %}" class="trending-pic-a">
+                      <img class="d-block h-250 w-100 trending-pic center" src="{{ recipe.image_path }}" alt="{{ recipe.name }}">
+                    </a>
+                  </div>
+                {% endfor %}
               </div>
               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -186,6 +179,6 @@
 
 {% block script %}
 <!-- to enable JavaScript -->
-<script type="text/javascript" src="{% static 'home/js/home.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/js/moving_arrow.js' %}"></script>
 <!-- <script type="text/javascript" src="{% static 'users/js/panelSwitch.js' %}"></script> -->
 {% endblock script %}

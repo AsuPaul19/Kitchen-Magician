@@ -89,7 +89,7 @@
                         <div class="recipe-wrapper {{ recipe.course_value }} {{ recipe.diet_value }} {{ recipe.occasion_value }}">
                             <div class="recipe-block">
                                 <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-image">
-                                    <img src="{{ recipe.images.url }}" alt="">
+                                    <img src="{{ recipe.images.url }}" alt="{{ recipe.alt }}">
                                 </a>
                                 <div class="recipe-info-block">
                                     <a href="{% url 'recipe' recipe_id=recipe.recipe_id %}" class="recipe-title recipe-info-item">{{ recipe.name }}</a>
