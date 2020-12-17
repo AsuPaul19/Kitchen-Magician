@@ -222,6 +222,10 @@ button.btn-type1:hover {
   margin: 0.5rem 0;
 }
 
+#header .container ul#ul-nav-link #nav-link-user li#account .dropdown-menu a:focus, #header .container ul#ul-nav-link #nav-link-user li#account .dropdown-menu a:active, #header .container ul#ul-nav-link #nav-link-user li#account .dropdown-menu a:visited {
+  background: #fef9f6;
+}
+
 /* FOOTER */
 #main-footer #footer-container {
   background: #f56a58;

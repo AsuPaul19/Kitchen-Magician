@@ -182,6 +182,11 @@ button.btn-type1:hover {
                             color: $textColor;
                             font-size: $textFontSize;
                             margin: 0.5rem 0;
+                            &:focus,
+                            &:active,
+                            &:visited {
+                                background: $backgroundColorText;
+                            }
                         }
                     }
                 }
