@@ -77,8 +77,8 @@ recipes_cats = [
                 "image_path": "home/images/cats/course_main-dishes.jpg",
             },
             {
-                "keywords": "Disserts",
-                "title": "Disserts",
+                "keywords": "Desserts",
+                "title": "Desserts",
                 "image_path": "home/images/cats/course_desserts.jpg",
             },
             {
