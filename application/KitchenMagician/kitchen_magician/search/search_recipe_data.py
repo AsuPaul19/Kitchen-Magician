@@ -68,7 +68,8 @@ class SearchRecipeData(RecipeDataFetch):
         res = ''
         if diets:
             for diet in diets:
-                res += cats_values['diets'][diet] + ' '
+                # print(diet.name)
+                res += cats_values['diets'][diet.name] + ' '
         return res
     
     def occasion_dict(self, occasions):

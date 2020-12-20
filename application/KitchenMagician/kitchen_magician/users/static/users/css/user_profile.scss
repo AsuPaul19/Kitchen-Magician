@@ -1,5 +1,13 @@
 $textColor: #f56a58;
 
+
+// Global
+.break-line {
+    height: 1px;
+    width: 100%;
+    background: lightgray;
+}
+
 section#user-profile {
     .container {
         padding: 0;
@@ -26,10 +34,25 @@ section#user-profile {
 }
 
 // Titles
-.recipe-title-p {
-    font-size: 1.5rem;
-    font-weight: bolder;
+section.user-recipe-title-block {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+        line-height: 2rem;
+        .recipe-title-p {
+            font-size: 1.5rem;
+            font-weight: bolder;
+            margin: 0;
+        }
+        .recipes-count {
+            margin: 0 1rem;
+        }
+    }
 }
+
 
 // Recipes & Favorites 
 section#user-recipe-favorite {
@@ -85,9 +108,8 @@ section#user-create-recipe-button {
             text-decoration: none;
             color: white;
             padding: 0.5rem 1rem;
-            filter: brightness(80%);
             &:hover {
-                filter: brightness(100%);
+                filter: brightness(80%);
             }
         }
     }

@@ -89,6 +89,7 @@ DJANGO_SETTINGS_MODULE = 'kitchen_magician.settings'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

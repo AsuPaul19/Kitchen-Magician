@@ -1,0 +1,294 @@
+
+
+@import url('base.css');
+
+/* global properties */
+* {
+  padding: 0;
+  margin: 0;
+
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+
+  color: black;
+}
+
+#home-block .container {
+  /* position: 100vw;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 7rem;
+  padding: 0 2rem; */
+}
+
+#home-block .container .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home-block .container .img img {
+  width: 900px;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home-block .container .home {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  z-index: 5;
+}
+
+#home-block .container .home form {
+  /* width: 450px; */
+}
+
+#home-block .container .home form #welcome {
+  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#home-block .container .home form #welcome .avatar {
+  width: 100px;
+}
+
+#home-block .container .home form #welcome h2 {
+  font-size: 2.9rem;
+  text-transform: uppercase;
+  margin: 15px 0;
+}
+
+#home-block .container .home form p#account-auth-error {
+  text-align: center;
+}
+
+#home-block .container .home form .input-div {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7% 93%;
+      grid-template-columns: 7% 93%;
+  margin: 25px 0;
+  padding: 5px 0;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+#home-block .container .home form .input-div::after, #home-block .container .home form .input-div::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #f56a58;
+
+  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+#home-block .container .home form .input-div .i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home-block .container .home form .input-div div.input-text .input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+#home-block .container .home form .btn {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  border: none;
+
+  background-image: -webkit-gradient(linear, left top, right top, from(#df6355), color-stop(#f56a58), to(#df6355));
+  background-image: linear-gradient(to right, #df6355, #f56a58, #df6355);
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  background-size: 200%;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#home-block .container .home form .btn:hover {
+  background-position: right;
+}
+
+#home-block .container .home form #password-signup {
+  /* for compatibility with certain versions of Chrome, Safari, Opera and Android */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#home-block .container .home form #password-signup a, #home-block .container .home form #password-signup button {
+  display: block;
+  text-decoration: none;
+  color: #999;
+  font-size: 0.9rem;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border: none;
+  background-color: white;
+}
+
+#home-block .container .home form #password-signup a:hover, #home-block .container .home form #password-signup button:hover {
+  color: #f56a58;
+}
+
+#home-block .container .home form .social-text {
+  padding: .7rem 0;
+  font-size: 1rem;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home-block .container .home form .social-media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#home-block .container .home form .social-media .social-icon {
+  height: 46px;
+  width: 46px;
+  border: 1px solid lightgrey;
+  margin: 0 0.45rem;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  color: #999;
+  font-size: 1.1rem;
+  border-radius: 50%;
+
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+#home-block .container .home form .social-media .social-icon:hover {
+  color: #df6355;
+  border-color: #df6355;
+}
+
+@media screen and (max-width: 1050px) {
+  #home-block .container {
+    grid-gap: 5rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #home-block .container .img {
+    width: 400px;
+  }
+  #home-block .container .home-container form {
+    width: 290px;
+  }
+  #home-block .container .home-container form h2 {
+    font-size: 2.4rem;
+    margin: 8px 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #home-block .background {
+    display: none;
+  }
+  #home-block .container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  #home-block .container .img {
+    display: none;
+  }
+  #home-block .container .home-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}

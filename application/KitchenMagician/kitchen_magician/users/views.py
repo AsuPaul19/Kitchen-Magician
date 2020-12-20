@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile
-from django.contrib.auth.models import User
+from users.service.update_password import update_password
 
 
 def signup(request):
@@ -79,7 +79,9 @@ def user_profile(request, username=None):
     # handle user names and unmatched links
     if request.user.is_authenticated:
         context = {
-            'title': 'Profile'
+            "title": "Profile",
+            "user_recipes": [],
+            "user_favorites": [],
         }
         # print(request.user)
         # user = User.objects.filter(username=request.user).first()
@@ -90,6 +92,8 @@ def user_profile(request, username=None):
         return render(request, 'user_profile.html', context)
     else:
         return login(request)
+
+    
 
 def profile_recipes(recipes=None):
     recipes_data = []
@@ -108,3 +112,55 @@ def profile_recipes(recipes=None):
 # @login_required
 # def account(request):
 #     return profile(request)
+
+
+@login_required
+def user_settings(request, username=None):
+    context = {
+        "title": "Settings",
+        "error_msg": "",
+        "update_success": ""
+    }
+    # handle user names and unmatched links
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            context = {
+                'title': 'Account Settings'
+            }
+            print(request.user)
+
+            return render(request, 'user_settings.html', context)
+        else:
+            return login(request)
+
+    if request.method == "POST":
+        data = request.POST
+        username = data.get('username')
+        cur_password= data.get('current-password')
+        new_password = data.get('new-password')
+        confirm_password = data.get('confirm-password')
+        # check info, return message
+        context["error_msg"] = update_password(username, cur_password, new_password, confirm_password)
+        
+        # updated successfully if no error
+        if not context["error_msg"]: 
+            context["update_success"] = "success"
+        
+        return render(request, 'user_settings.html', context)
+
+
+
+
+
+
+def term_of_use(request):
+    context = {
+        'title': 'Term of Use'
+    }
+    return render(request, 'term_of_use.html', context)
+
+def privacy_policy(request):
+    context = {
+        'title': 'Privacy Policy'
+    }
+    return render(request, 'privacy_policy.html', context)

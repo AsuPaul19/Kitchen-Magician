@@ -9,152 +9,165 @@
 
         {% block content %}
         <!-- Main Body Here -->
+        <section id="group-nav">
+            <div class="container">
+                <a href="{% url 'home' %}" class="group-nav-name">Home</a>
+                <img class="group-nav-arrow" src="{% static 'groups/images/right-arrow.png' %}"></img>
+                <a href="{% url 'groups' %}" class="group-nav-name">Groups</a>
+                <img class="group-nav-arrow" src="{% static 'groups/images/right-arrow.png' %}"></img>
+                <p class="group-nav-name">{{ name }}</p>
+            </div>
+        </section>
         <section id="group">
-            <div id="group-container" class="">
+            <div class="cointainer">
+                <div id="group-container" class="">
                     <div class="d-flex align-items-center flex-column">
                         <div id = "group-logo">
-                            <img id="group-image" class = "groupimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                            <img id="group-image" class = "groupimage img-thumbnail" src="{% static img_path %}" alt="">
                         </div>
-                        <h1 id="group-name">{{ group.name }}Vegan Forum</h1>            
+                        <h1 id="group-name">{{ name }}</h1>            
                     </div>
                     <div class="d-flex align-items-center flex-column">
                         <div class="block-line" style="width:90%">
                             <div class="block-line-line"></div>
                             <!--Want to change this image to be one of like a person/user to match the section-->
-                            <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                            <img src="{% static 'groups/images/group_member.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
                         </div>
                     </div>
                     <div id = "group-members" class="d-flex align-items-center flex-column">
-                        <h3>Forum Members:</h3>
+                        <div id="forum-member-block">
+                            <h3>Forum Members</h3>
+                            {% if user.is_authenticated %}
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <fieldset>
+                                    {% if user.is_authenticated %}
+                                        <input name="group_id" type="text" value={{ group_id }} hidden>
+                                        {% if is_joined %}
+                                        <button type="submit" id="forum-member-btn-leave" class="forum-menber-btn" name="join_group" value="leave"></button>
+                                        {% else %}
+                                        <button type="submit" id="forum-member-btn-join" class="forum-menber-btn" name="join_group" value="join">Join</button>
+                                        {% endif %}
+                                    {% endif %}
+                                </fieldset>
+                            </form>
+                            {% else %}
+                                <a href="/login/?next={{request.path}}" class="forum-login-btn" >Log in to Join Group</a>
+                            {% endif %}
+
+
+                        </div>
+
                         <div id = "group-members-container" class="scroller">
                             <div id = "group-members-container-horizontal" class="list-group list-group-horizontal">
                                 <!--To be replaced with a loop that loops through the groups users and displays their name and user avatar-->
+                                {% for user in users %}
                                 <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
                                     <a id = "username" href="" class="text-decoration-none">{{ user.username }}</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
+                                    <img id="user-image" class = "userimage img-thumbnail" src="{{ user.image.url }}" alt="">
                                 </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User1</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User2</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User3</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User4</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User5</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User6</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User7</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User8</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User9</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
-                                <li id = "userbox" class="list-group-item d-flex flex-column align-items-center">
-                                    <a id = "username" href="" class="text-decoration-none">User10</a>
-                                    <img id="user-image" class = "userimage img-thumbnail" src="{% static 'recipe/images/diet_test.png' %}" alt="">
-                                </li>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </section>
         <section id="forum-comments">
-            <div class="d-flex align-items-center flex-column">
-                <div class="block-line" style="width:90%">
-                    <div class="block-line-line"></div>
-                    <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+            <div class="cointainer">
+                <div class="d-flex align-items-center flex-column">
+                    <div class="block-line" style="width:90%">
+                        <div class="block-line-line"></div>
+                        <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                    </div>
+                </div>
+                <div id="forum-discussion-block">
+                    <h1 id="comment-title" class="d-flex align-items-center flex-column">Forum Discussion</h1>
+                </div>
+                {% if user.is_authenticated %}
+                <form action="" id="submit-comment" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="d-flex align-items-center flex-column">
+                        {% if is_joined %}
+                        <input name="group_id" type="text" value={{ group_id }} hidden>
+                        <div class="form-group" style ="width:80%">
+                            <textarea name="comment" required id="add-comment" class="form-control" rows="3" placeholder="Add to the discussion"></textarea>
+                        </div>
+                        <div id="submit-button-block">
+                            <button type="submit" id="submit-button" class="submit-btn" >Post</button>
+                        </div>
+                        {% else %}
+                        <div class="container">
+                            <input name="group_id" type="text" value={{ group_id }} hidden>
+                            <button type="submit" id="forum-member-btn-join" class="forum-menber-btn submit-btn" name="join_group" value="join">Join Group to Post</button>
+                        </div>
+                        {% endif %}
+                    </fieldset>
+                </form>
+                <!-- <div class="d-flex align-items-center flex-column">
+                    <div class="block-line" style="width:90%">
+                        <div class="block-line-line"></div>
+                        <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
+                    </div>
+                </div> -->
+                {% else %}
+                <div class="d-flex align-items-center flex-column">
+                    <a href="/login/?next={{request.path}}" class="forum-login-btn" >Log in to Add Post</a>
+                </div>
+                <br>
+                {% endif %}
+                <div class="d-flex align-items-center flex-column">
+                    <h3>Forum Posts</h3>
+                </div>
+                <div class="d-flex align-items-center flex-column">
+                        <div id="forum-all-comments" style ="width:80%">
+                            {% for comment in comments %}
+                            <div class="forum-comment-line"></div>
+                            <div class="forum-comment">
+                                <div class="comment-user-info">
+                                    <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
+                                    <p class="comment-user-info-user">{{ comment.user }}</p>
+                                    <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}</p>
+                                </div>
+                                <p>{{ comment.comment }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
                 </div>
             </div>
-            <div class="d-flex align-items-center flex-column">
-                        <h1 id="comment-title">Forum Discussion:</h1>            
-            </div>
-            {% if user.is_authenticated %}
-            <form action="" id="submit-comment" method="POST">
-                {% csrf_token %}
-                <fieldset class="d-flex align-items-center flex-column">
-                    <div class="form-group" style ="width:80%">
-                        <textarea name="comment" required id="add-comment" class="form-control" rows="3" placeholder="Add to the discussion"></textarea>
-                    </div>
-                    <div id="submit-button-block">
-                        <button type="submit" id="submit-button" class="submit-btn" >Post</button>
-                    </div>
-                </fieldset>
-            </form>
-            <div class="d-flex align-items-center flex-column">
-                <div class="block-line" style="width:90%">
-                    <div class="block-line-line"></div>
-                    <img src="{% static 'recipe/images/recipe_review.png' %}" alt="" class="image-block-line" id="image-block-line-ingredients">
-                </div>
-            </div>
-            {% else %}
-            <div class="d-flex align-items-center flex-column">
-                <a id="login-review" href="/login/?next={{request.path}}" class="submit-btn" >Error: User Not Logged In</a>
-            </div>
-            <br>
-            {% endif %}
-            <div class="d-flex align-items-center flex-column">
-                <h3>Forum Posts:</h3>
-            </div>
-            <div class="d-flex align-items-center flex-column">
-                    <div id="forum-all-comments" style ="width:80%">
-                        <div class="forum-comment-line"></div>
-                        <div class="forum-comment">
-                            <div class="comment-user-info">
-                                <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
-                                <p class="comment-user-info-user">{{ comment.user }}Username</p>
-                                <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}Month, Day, Year</p>
-                            </div>
-                            <p>{{ comment.comment }}Hello, I absolutely love being a vegan. I don't hurt any animals and I know what to do with my life. No matter what there are always animals out there who are suffering terrible conditions and I will not stand for it. All in the name of Sparta and the illuminati</p>
-                        </div>
-                        <div class="forum-comment-line"></div>
-                        <div class="forum-comment">
-                            <div class="comment-user-info">
-                                <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
-                                <p class="comment-user-info-user">{{ comment.user }}Username</p>
-                                <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}Month, Day, Year</p>
-                            </div>
-                            <p>{{ comment.comment }}Hello, I absolutely love being a vegan. I don't hurt any animals and I know what to do with my life. No matter what there are always animals out there who are suffering terrible conditions and I will not stand for it. All in the name of Sparta and the illuminati</p>
-                        </div>
-                        {% for comment in comments %}
-                        <div class="forum-comment-line"></div>
-                        <div class="forum-comment">
-                            <div class="comment-user-info">
-                                <img class="comment-user-info-user_avatar" src="{{ comment.user_avatar.url }}" alt="">
-                                <p class="comment-user-info-user">{{ comment.user }}Username</p>
-                                <p class="comment-user-info-created">{{ comment.created|date:"N d, Y" }}Month, Day, Year</p>
-                            </div>
-                            <p>{{ comment.comment }}Hello, I absolutely love being a vegan. I don't hurt any animals and I know what to do with my life. No matter what there are always animals out there who are suffering terrible conditions and I will not stand for it. All in the name of Sparta and the illuminati</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-            </div>
-
         </section>
         
         {% endblock content %}
 
         {% block script %}
         <script src="{% static 'groups/js/groupforum.js' %}"></script>
-        <!-- Script files Links here -->
-        <!-- <script type="text/javascript" src="{% static 'groups/js/groups.js' %}></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script >
+            // // Hover change image
+            // var leaveBtn = $("#forum-member-btn-leave");
+            // var joinBtn = $("#forum-member-btn-join");
+            // function leaveGroup() {
+            //     leaveBtn.css("display", "none");
+            //     joinBtn.css("display", "block");
+            // }
+            // function joinGroup() {
+            //     leaveBtn.css("display", "block")
+            //     joinBtn.css("display", "none")
+            // }
+
+            // // update favorite to database
+            // function updateUser() {
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "",
+            //         data: { 
+            //             "csrfmiddlewaretoken": "{{ csrf_token }}",
+            //             "favoriteValue": favoriteValue,
+            //         },
+            //         success: function() {
+            //         console.log('Updated Member of Group');
+            //         },
+            //     });
+            // }
+        </script>
         {% endblock script %}

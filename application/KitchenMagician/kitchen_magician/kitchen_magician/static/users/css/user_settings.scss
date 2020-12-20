@@ -1,0 +1,125 @@
+$textColor: #f56a58;
+$backgroundColor: white;
+$backgroundColorText: #fef9f6;
+$textFontSize: 1.5rem;
+$footerTextColor: white;
+
+
+
+section#account-settings {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10rem;
+
+        // update-password-block
+        #update-password-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            .update-password-title {
+                margin: 0.5rem 0;
+                font-size: 1.5rem;
+            }
+            .update-password-info {
+                font-size: 1rem;
+                font-style: italic;
+                color: gray;
+            }
+            // Message 
+            .update-password-msg-block {
+                height: 2rem;
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                margin: 1rem 0;
+                p.update-password-msg {
+                    width: 100%;
+                    padding: 0.5rem 1rem;
+                    margin: 0;
+                    border-radius: 5px;
+                    text-align: center;
+                    &#update-password-success {
+                        color: #155724;
+                        border: 1px solid #155724;
+                        background: #d4edda;
+                    }
+                    &#update-password-error {
+                        color: $textColor;
+                        background: $backgroundColorText;
+                        border: 1px solid $textColor;
+                    }
+
+                }
+
+            }
+        }
+        // Password Input
+        #account-block {
+            display: flex;
+            flex-direction: column;
+            #account-passwords-block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .account-password-block {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin: 0.5rem 0;
+                    font-size: 1rem;
+                    .account-label {
+                        min-width: 10rem;
+                    }
+                    .account-input {
+                        padding: 0.5rem;
+                        min-width: 15rem;
+                        border: gray 1px solid;
+                        border-radius: 2px;
+                        &:focus {
+                            outline: none;
+                            border: $textColor 1px solid;
+                            border-radius: 2px;
+                        }
+                    }
+                }
+            }
+            // Buttons
+            #account-button-block {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin: 1rem 0;
+                .account-button {
+                    border-radius: 5px;
+                    padding: 0.5rem 1rem;
+                    text-decoration: none;
+                    border: none;
+                    color: white;
+                    font-size: 1rem;
+                    margin: 0.5rem;
+                    &:hover {
+                        filter: brightness(90%);
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                    &#account-button-update {
+                        background: $textColor;
+                    }
+                    &#account-button-cancel {
+                        background: lightgray;
+                    }
+                }
+            }
+        }
+    }
+}

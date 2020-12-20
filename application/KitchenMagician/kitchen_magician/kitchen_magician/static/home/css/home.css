@@ -1,76 +1,203 @@
-
-
-.grid {
-  display: grid;
-
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 1em;
-  
-  /* horizontal alignment */
-  /* start center end */
-  justify-items: stretch;
-
-  /* vertical alignment */
-  /* start center end */
-  align-items: stretch;
-  /* number of divs shown in each row depends on the number of percentages that follows */
-  /* fr (fraction) is more preferrable */
-  /* grid-template-columns: 1fr 2fr 1fr;
-  grid-template-columns: repeat(3, 1fr 2fr); */
-  /* grid-template-columns: repeat(3, 1fr);
-  
-  /* horizontal spacing between elements */
-  /* grid-column-gap: 1em;
-  /* vertical spacing between elements */
-  /* grid-row-gap: 1em; */
-
-  /* grid-auto-rows: 100px; */
-  /* auto stretching only for the row that needs stretching */
-  /* grid_auto_rows: minmax(100px, 100); */
+#home-block {
+  margin: 2em 3em;
 }
 
-/* every direct div element has one color */
-.grid > div {
-  background: #eee;
-  padding: 1em;
+#home-block .wrapper {
+  outline: 1px solid white;
+  margin: 50px;
 }
 
-/* every other div element has a slight different color */
-.grid > div:nth-child(odd){
-  background:#ddd;
+#home-block .wrapper .home-first-block {
+  background-image: url("../images/home_share.svg");
+  width: 100%;
+  border: 15px solid #F56A58;
+  border-radius: 25px;
+  padding: 100px;
+  text-align: center;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
 }
 
-.box1 {
-  align-self: center;
-  justify-self: center;
-  /* from 1 to 2 */
-  /* changed from 6 to 5 */
-  grid-column: 2/5;
-  /* from 1 to 2 */
-  grid-row:1/3;
+#home-block .wrapper .home-first-block .btn-outline-info {
+  background-color: #F56A58;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.box2 {
-  /* align-self: end; */
-  /* left to right */
-  /* change from 3 to 4 */
-  grid-column: 5/6;
-  /* top to bottom */
-  grid-row: 1/4;
-  border: 1px solid #333;
+#home-block .wrapper #search-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  padding: 0 8rem;
 }
 
-.box3 {
-  /* justify-self: end; */
-  grid-column: 2/4;
-  grid-row: 3/5;
+#home-block .wrapper #search-input-container #search-input-block {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.box4 {
-  /* justify-self: start; */
-  /* overlapping */
-  grid-column: 1;
-  grid-row: 1/5;
-  border: 1px solid #333;
+#home-block .wrapper #search-input-container #search-input-block #search-input-text-icon {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
+
+#home-block .wrapper #search-input-container #search-input-block #search-input-text-icon i.fas {
+  padding: auto;
+  margin: auto;
+  line-height: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+}
+
+#home-block .wrapper #search-input-container .search-input {
+  border-radius: 5px 0 0 5px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  text-decoration: none;
+}
+
+#home-block .wrapper #search-input-container #search-input-text {
+  border: #f56a58 1px solid;
+  padding-left: 2rem;
+  width: 100%;
+}
+
+#home-block .wrapper #search-input-container #search-input-submit {
+  background-color: #f56a58;
+  border: 1px solid #f56a58;
+  border-radius: 0 5px 5px 0;
+  color: white;
+}
+
+#home-block .wrapper #search-input-container #search-input-submit:hover {
+  -webkit-filter: brightness(95%);
+          filter: brightness(95%);
+}
+
+#home-block .wrapper .welcome-popular-searches-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem 0;
+}
+
+#home-block .wrapper .welcome-popular-searches-block .welcome-popular-searches-title {
+  color: #f56a58;
+  font-size: 1.5rem;
+}
+
+#home-block .wrapper .welcome-popular-searches-block .welcome-popular-searches-items {
+  margin: 1rem 0;
+}
+
+#home-block .wrapper .welcome-popular-searches-block .welcome-popular-searches-items .popular-search-keyword {
+  background: #fef9f6;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 0.25rem;
+  opacity: 80%;
+  text-decoration: none;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+#home-block .wrapper .welcome-popular-searches-block .welcome-popular-searches-items .popular-search-keyword:hover {
+  -webkit-filter: brightness(80%);
+          filter: brightness(80%);
+}
+
+#home-block .wrapper .home-statement {
+  text-align: center;
+  background-color: #F56A58;
+  width: 100%;
+  border: 15px solid #F56A58;
+  border-radius: 25px;
+  padding: 5px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+}
+
+#home-block .wrapper .home-trending {
+  width: 100%;
+  border-radius: 45px;
+  padding: 0px;
+  margin: 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#home-block .wrapper .home-trending .form-group .d-block {
+  border: 15px solid #F56A58;
+  border-radius: 25px;
+}
+
+.home-trending #carousel-inner-block {
+  width: 100%;
+  height: 30rem;
+}
+
+.home-trending #carousel-inner-block .carousel-item {
+  height: 100%;
+  width: 100%;
+}
+
+.home-trending #carousel-inner-block .carousel-item .trending-pic-a {
+  width: 100%;
+  height: 100%;
+}
+
+.home-trending #carousel-inner-block .carousel-item .trending-pic-a .trending-pic {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+/*# sourceMappingURL=home.css.map */

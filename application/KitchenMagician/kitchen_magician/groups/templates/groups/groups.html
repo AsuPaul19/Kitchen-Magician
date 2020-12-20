@@ -5,33 +5,35 @@
     {% endblock css %}
 
     {% block content %}
-    <p style="text-align:center; font-size: 40px; width: 100%;">Joined Groups</p>
-    <section id="GROUP">
-        <div class="container">
-            <div id="GROUP-title">
-                <!-- <h1>Joined Groups</h1> -->
-                <div id="group-line"></div>
-            </div>
-        </div>
-    </section>
-   
-    <section id="people-images">
-        <div class="container">
-            {% for k, v in team.items %}
-            <div class="image-block">
-                <a class="image-block-wrapper" href="{% url 'group_forum' %}">
-                    <img src="{% static v.img %}" alt="" id="NP" class="images-img"/>
-                </a>
-                <div class="image-title">
-                    <h1>{{ v.name }}</h1>
-                    <h2>{{ v.title }}</h2>
+    {% if joined_groups %}
+        <p style="text-align:center; font-size: 40px; width: 100%;">Joined Groups</p>
+        <section id="GROUP">
+            <div class="container">
+                <div id="GROUP-title">
+                    <!-- <h1>Joined Groups</h1> -->
+                    <div id="group-line"></div>
                 </div>
             </div>
-            {% endfor %}
-        </div>
-    </section>
+        </section>
+    
+        <section id="people-images">
+            <div class="container">
+                {% for group in joined_groups %}
+                <div class="image-block">
+                    <a class="image-block-wrapper" href="{% url 'group_forum' group_id=group.id %}">
+                        <img src="{% static group.img_path %}" alt="" id="NP" class="images-img"/>
+                    </a>
+                    <div class="image-title">
+                        <h1>{{ group.name }}</h1>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 
-       <p style="text-align:center; font-size: 40px; width: 100%;">Available Groups</p>
+    {% if available_groups %}
+        <p style="text-align:center; font-size: 40px; width: 100%;">Available Groups</p>
         <section id="GROUP">
             <div class="container">
                 <div id="GROUP-title">
@@ -43,22 +45,26 @@
     
         <section id="people-images">
             <div class="container">
-                {% for k, v in team.items %}
+                {% for group in available_groups %}
                 <div class="image-block">
-                    <a class="image-block-wrapper" href="{% url 'group_forum' %}">
-                        <img src="{% static v.img %}" alt="" id="NP" class="images-img"/>
+                    <a class="image-block-wrapper" href="{% url 'group_forum' group_id=group.id %}">
+                        <img src="{% static group.img_path %}" alt="" id="NP" class="images-img"/>
                     </a>
                     <div class="image-title">
-                        <h1>{{ v.name }}</h1>
-                        <h2>{{ v.title }}</h2>
+                        <h1>{{ group.name }}</h1>
                     </div>
                 </div>
                 {% endfor %}
             </div>
+        </section>
+    {% endif %}
 
-    </section>
     {% endblock content%}
 
-{% block active-nav-link %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{% endblock active-nav-link %}
+    {% block script %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        let element = document.getElementById("nav-groups");
+        element.classList.add("active-nav-link");
+    </script>
+    {% endblock script %}

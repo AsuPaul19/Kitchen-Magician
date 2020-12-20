@@ -1,0 +1,31 @@
+section#term-policy .container {
+  font-size: 30px;
+  line-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#term-policy .container #term-policy-title {
+  text-align: center;
+  width: 100%;
+}
+
+section#term-policy .container .section-line {
+  width: 100%;
+  background-color: lightgray;
+  height: 1px;
+  margin: 1rem 0;
+}
+
+section#term-policy .container .term-policy-ul {
+  padding: 0 0 0 2rem;
+}
+/*# sourceMappingURL=privacy_policy.css.map */

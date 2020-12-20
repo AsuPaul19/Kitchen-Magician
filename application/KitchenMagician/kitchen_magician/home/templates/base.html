@@ -6,6 +6,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"/>
+        <link rel="icon" href="{% static 'home/images/icon.png' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}" />
         {% block css %}{% endblock css %}
@@ -21,48 +22,40 @@
     <body>
         <header id="header">
             <div class="container">
-                <a href="{% url 'home' %}" class="KitchenMagician">Kitchen Magician</a>
+                <a href="{% url 'home' %}" class="KitchenMagician">
+                    <img src="{% static 'home/images/logo_red.png' %}" alt="logo_red">
+                </a>
                 <ul id="ul-nav-link">
-                    <li class="nav-link"><a href="{% url 'about' %}">About</a></li>
-                    <li class="nav-link"><a href="{% url 'groups' %}">Groups</a></li>
+                    <li class="nav-link nav-link-underline"><a href="{% url 'about' %}" id="nav-about">About</a></li>
+                    <li class="nav-link nav-link-underline"><a href="{% url 'groups' %}" id="nav-groups">Groups</a></li>
                     <li id="search">
                         <form action="{% url 'search' %}" method="POST" id="search-form">
                             <!-- Authentication Token -->
                             {% csrf_token %}
                             <div id="search-box" class="search-box-block">
-                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Recipes for any ingredient, occasion, course or diet">
-                                <div class="search-btn" type="submit">
-                                    <button type="submit"  class="fas fa-search"></button>
-                                </div>
+                                <input id="search-text-id" class="search-text" type="text" name="keywords" placeholder="Search for a recipe">
+                                <button type="submit"  class="search-btn fas fa-search"></button>
                             </div> 
                         </form>
                     </li>
-
-                    {% if user.is_authenticated %}
-                    <li id="account" class="nav-item btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hi, {{ user.get_username }}
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <!-- 
-                                TODO 
-                                Change to items in dropdown
-                            -->
-                            <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
-                            <a class="dropdown-item" href="{% url 'user_profile' username=user.username %}">Profile</a>
-                            <!-- <a class="dropdown-item" href="#">Groups</a> -->
-                            <!-- <a class="dropdown-item" href="#">Recipes</a> -->
-                            <!-- <a class="dropdown-item" href="#">Favorites</a> -->
-                            <!-- redirect to home page after logout -->
-                            <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a>
-                        </div>
-                    </li>
-                        <!-- <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a> -->
-
-                    {% else %}
-                    <li class="nav-link"><a href="{% url 'login' %}">Log in</a></li>
-                    <li class="nav-link"><a href="{% url 'signup' %}">Sign up</a></li>
-                    {% endif %}
+                    <div id="nav-link-user">
+                        {% if user.is_authenticated %}
+                        <li id="account" class="nav-item btn-group">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hi, {{ user.get_username }}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{% url 'create_recipe' %}">Create a recipe</a>
+                                <a class="dropdown-item" href="{% url 'user_profile' username=user.username %}">Profile</a>
+                                <a class="dropdown-item" href="{% url 'user_settings' username=user.username %}">Settings</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}?next=/">Log out</a>
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-link nav-link-underline"><a href="{% url 'login' %}"  id="nav-login">Log in</a></li>
+                        <li class="nav-link nav-link-underline"><a href="{% url 'signup' %}"  id="nav-signup">Sign up</a></li>
+                        {% endif %}
+                    </div>
                 </ul>
             </div>
         </header>
@@ -71,7 +64,72 @@
         {% block content %}{% endblock content %}
 
         <footer id="main-footer">
-            <p>&copy; 2020 Kitchen Magician Inc.</p>
+            <div id="footer-container">
+                <div class="container">
+                    <div id="footer-logo-content">
+                        <div id="footer-logo">
+                            <img src="{% static 'home/images/logo_white.png' %}" alt="logo-white">
+                        </div>
+                        <div id="footer-learn-more" class="footer-content-block">
+                            <p class="footer-content-title">Learn More</p>
+                            <div class="footer-content-block-line"></div>
+                            <ul class="ul-footer-content-block">
+                                <li class="li-footer-content-item">
+                                    <a class="footer-content-text" href="{% url 'groups' %}">Groups</a>
+                                </li>
+                                <li class="li-footer-content-item">
+                                    <a class="footer-content-text" href="{% url 'search' %}">Recipes</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="footer-connect" class="footer-content-block">
+                            <p class="footer-content-title">Connect</p>
+                            <div class="footer-content-block-line"></div>
+                            <ul class="ul-footer-content-block">
+                                <li class="li-footer-content-item">
+                                    <a class="footer-content-text" href="{% url 'contact_us' %}">Contact us</a>
+                                </li>
+                                <li class="li-footer-content-item" id="li-footer-content-medias">
+                                    <p class="footer-content-text">Follow us</p>
+                                    <div id="footer-content-medias">
+                                        <a href="#" class="social-icon">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class="fab fa-google"></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- <li class="li-footer-content-item"  id="li-footer-content-signup">
+                                    <p>Join Us</p>
+                                    <a href="{% url 'signup' %}" id="footer-signup">Sign Up</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="footer-break-line"></div>
+                    <ul id="footer-policy">
+                        <li class="footer-policy-item">
+                            <a href="{% url 'about' %}">About KitchenMagician</a>
+                        </li>
+                        <li class="footer-policy-item footer-policy-item-line">|</li>
+                        <li class="footer-policy-item">
+                            <a href="{% url 'term_of_use' %}">Terms of Service</a>
+                        </li>
+                        <li class="footer-policy-item footer-policy-item-line">|</li>
+                        <li class="footer-policy-item">
+                            <a href="{% url 'privacy_policy' %}">Privacy Statement</a>
+                        </li>
+                    </ul>
+                    <p>&copy; 2020 Kitchen Magician Inc.</p>
+                </div>
+            </div>
         </footer>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

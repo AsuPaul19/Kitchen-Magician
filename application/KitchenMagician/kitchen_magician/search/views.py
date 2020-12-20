@@ -2,11 +2,13 @@ from django.shortcuts import render
 from .search_recipe import SearchRecipe
 from .search_recipe_data import SearchRecipeData
 from .values import cats_values
+from .popular_search import popular_search
 
 def search(request, keywords=''):
     context = {
         'title': 'Search',
         'recipes': '',
+        'popular_search_keywords': popular_search(5), # top5 search
         'keywords': keywords,
         'counts': 0,
         'categories': [
@@ -31,22 +33,24 @@ def search(request, keywords=''):
         ]
     }
 
+
     if request.method == 'POST':
         keywords = request.POST.get('keywords')
-        context['keywords'] = keywords
-        search_recipe = SearchRecipe(keywords)
-        context['counts'] = search_recipe.counts
-        recipe_instances = search_recipe.recipes
-        context['recipes'] = [SearchRecipeData(recipe=instance).recipe_data for instance in recipe_instances]
-        categories = recipes_category(context['recipes'])
-        # Update the items sets to recipes categories
-        for (k, v), i in zip(categories.items(), range(len(context['categories']))):
-            context['categories'][i]['items'] = v
         
-        # print(context['categories'])
-
+    context['keywords'] = keywords
+    search_recipe = SearchRecipe(keywords)
+    context['counts'] = search_recipe.counts
+    recipe_instances = search_recipe.recipes
+    context['recipes'] = [SearchRecipeData(recipe=instance).recipe_data for instance in recipe_instances]
+    categories = recipes_category(context['recipes'])
+    # Update the items sets to recipes categories
+    for (k, v), i in zip(categories.items(), range(len(context['categories']))):
+        context['categories'][i]['items'] = v
+    
+    # print(context['categories'])
 
     return render(request, 'search.html', context)
+
 
 
 def recipes_category(recipes):
@@ -66,7 +70,7 @@ def recipes_category(recipes):
         # Category Diets
         if recipe['diets']:
             for diet in recipe['diets']:
-                categories['diets'][diet] = cats_values['diets'][diet]
+                categories['diets'][diet.name] = cats_values['diets'][diet.name]
         # Category Occasions
         if recipe['occasions']: 
             for occasion in recipe['occasions']:

@@ -17,13 +17,17 @@ urlpatterns = [
     path('recipe/', include('recipe.urls')),
     path('team-profile/', about_views.profile, name='profile'), 
     path('groups/', groups_views.groups, name='groups'),
-    path('groupforum/', groups_views.group_forum, name='group_forum'),
+    # path('groupforum/', groups_views.group_forum, name='group_forum'),
+    path('groupforum/<str:group_id>', groups_views.group_forum, name='group_forum'),
     path('login-signup/', users_views.login_signup, name='login_signup'),
     path('login/', users_views.login, name='login'),
     path('forgot-password/', users_views.forgot_password, name='forgot_password'),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('<str:username>/profile/', users_views.user_profile, name='user_profile'), # /account/profile
+    path('<str:username>/account-settings/', users_views.user_settings, name='user_settings'), # /account/profile
     path('signup/', users_views.signup, name='signup'),
+    path('legal/terms-of-use', users_views.term_of_use, name='term_of_use'),
+    path('legal/privacy-policy', users_views.privacy_policy, name='privacy_policy'),
     path('testing/', testing_views.testing, name='testing'),
     path('', include('home.urls')),
     path('search/', include('search.urls')),

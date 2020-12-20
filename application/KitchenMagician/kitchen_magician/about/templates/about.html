@@ -8,33 +8,18 @@
     <section id="ABOUT">
         <div class="container">
             <div id="ABOUT-title">
-                <h1>MISSION STATEMENT</h1>
-                <div id="about-line">
-                </div>
-                    <h1>
-                        The developers at Kitchen Magician have a dream:
-                        <br>
-                        that one day people will no longer think of Westerners as Couch Potatoes,
-                        <br>
-                        that one day people are no longer forced to eat greasy, unhealthy Fast Food,
-                        <br>
-                        due to lack of recipe ideas,
-                        <br>
-                        that one day anyone willing can and will find ideas to make a change.
-                        <br>
-                        Ask, and you shall find!
-                    </h1>
-                
+                <h1>
+                    WHY THE KITCHEN WAS CREATED
+                </h1>
+                <div id="about-line"></div>
+                <h3>
+                    The Elder Magicians at Kitchen Magician have a dream: that one day every layman will become a magician, transforming any fresh ingredients into a magical dish that is both healthy and delicious.
+                </h3>                    
+                <div id="about-line"></div>
             </div>
         </div>
     </section>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+   
     <section id="ABOUT">
         <div class="container">
             <div id="ABOUT-title">
@@ -61,6 +46,10 @@
     </section>
     {% endblock content%}
 
-{% block active-nav-link %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{% endblock active-nav-link %}
+    {% block script %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        let element = document.getElementById("nav-about");
+        element.classList.add("active-nav-link");
+    </script>
+    {% endblock script %}

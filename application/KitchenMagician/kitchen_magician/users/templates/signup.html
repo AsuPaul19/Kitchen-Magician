@@ -64,6 +64,9 @@
                 </div>
                 <!-- sign up  -->
                 <input type="submit" class="btn" value="Sign up">
+                <div id="policy-service">By clicking “SIGN UP", you agree to our 
+                    <a href="{% url 'term_of_use' %}">Terms of Service</a> and <a href="{% url 'privacy_policy' %}">Privacy Statement</a>.
+                </div>
                 <div id="signup-page-login">
                     <p class="social-text">Already have an account?</p>
                     <a id="login-button" href="{% url 'login' %}">Login</a>
@@ -93,6 +96,12 @@
 
 
 
-<script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
 {% endblock content %}
 
+{% block script %}
+<script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
+<script>
+    let element = document.getElementById("nav-signup");
+    element.classList.add("active-nav-link");
+</script>
+{% endblock script %}

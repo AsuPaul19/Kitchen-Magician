@@ -4,12 +4,12 @@ from django.http import HttpResponse
 team = {
     "1001": {
         "id": "1001",
-        "img": "about/images/team/1NP.jpg",
-        "name": "Nicole Pang",
+        "img": "about/images/team/6KW.jpg",
+        "name": "Kevin Wei",
         "title": "Team Lead",
-        "intro": [ 
-            "Nicole Pang is a fourth year undergraduate computer science student at San Francisco State University.",
-            "In her free time she enjoys walking her three dogs, watching Netflix, and playing video games."
+        "intro": [
+            "Kevin is a fourth year undergraduate student at San Francisco State University. He is studying Computer Science",
+            "He really likes playing Video Games and has a special attachment to Pokemon since childhood. :D"
         ]
     },
     "1002": {
@@ -55,17 +55,18 @@ team = {
             "He also enjoys traveling and if he can live anywhere it will be anywhere that is near the beach!"
         ]
     },
-
     "1006": {
         "id": "1006",
-        "img": "about/images/team/6KW.jpg",
-        "name": "Kevin Wei",
+        "img": "about/images/team/1NP.jpg",
+        "name": "Nicole Pang",
         "title": "Developer",
-        "intro": [
-            "Kevin is a fourth year undergraduate student at San Francisco State University. He is studying Computer Science",
-            "He really likes playing Video Games and has a special attachment to Pokemon since childhood. :D"
+        "intro": [ 
+            "Nicole Pang is a fourth year undergraduate computer science student at San Francisco State University.",
+            "In her free time she enjoys walking her three dogs, watching Netflix, and playing video games."
         ]
     }
+
+
 }
 
 def about(request):
